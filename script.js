@@ -1,15 +1,16 @@
-const fileInput = document.querySelector(".file-input"),
-// filterOptions = document.querySelectorAll(".filter button"),
-filterName = document.querySelector(".filter-info .name"),
-filterValueBrightness = document.querySelector(".filter-info-brightness .value"),
-filterValueSaturation = document.querySelector(".filter-info-saturation .value"),
-filterSliderBrightness = document.querySelector(".slider_brightness input"),
-filterSliderSaturation = document.querySelector(".slider_saturation input"),
-rotateOptions = document.querySelectorAll(".rotate button"),
-previewImg = document.querySelector(".preview-img img"),
-resetFilterBtn = document.querySelector(".reset-filter"),
-chooseImgBtn = document.querySelector(".choose-img"),
-saveImgBtn = document.querySelector(".save-img");
+const
+    fileInput = document.querySelector(".file-input"),
+    filterName = document.querySelector(".filter-info .name"),
+    filterValueBrightness = document.querySelector(".filter-info-brightness .value"),
+    filterValueSaturation = document.querySelector(".filter-info-saturation .value"),
+    filterSliderBrightness = document.querySelector(".slider_brightness input"),
+    filterSliderSaturation = document.querySelector(".slider_saturation input"),
+    rotateOptions = document.querySelectorAll(".rotate button"),
+    previewImg = document.querySelector(".preview-img img"),
+    resetFilterBtn = document.querySelector(".reset-filter"),
+    chooseImgBtn = document.querySelector(".choose-img"),
+    saveImgBtn = document.querySelector(".save-img")
+    ;
 
 let brightness = "100",
     saturation = "100", 
@@ -91,7 +92,6 @@ const saveImage = () => {
     ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
     
     const link = document.createElement("a");
-    // link.download = "image.jpg";
     link.download = fileName;
     link.href = canvas.toDataURL('image/jpeg', 0.75);
     link.click();
