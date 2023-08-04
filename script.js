@@ -1,7 +1,8 @@
 const fileInput = document.querySelector(".file-input"),
 // filterOptions = document.querySelectorAll(".filter button"),
 filterName = document.querySelector(".filter-info .name"),
-filterValue = document.querySelector(".filter-info .value"),
+filterValueBrightness = document.querySelector(".filter-info-brightness .value"),
+filterValueSaturation = document.querySelector(".filter-info-saturation .value"),
 filterSliderBrightness = document.querySelector(".slider_brightness input"),
 filterSliderSaturation = document.querySelector(".slider_saturation input"),
 rotateOptions = document.querySelectorAll(".rotate button"),
@@ -38,7 +39,8 @@ const applyFilter = () => {
 }
 
 const updateFilter = () => {
-    filterValue.innerText = `${filterSliderBrightness.value}%`;
+    filterValueBrightness.innerText = `${filterSliderBrightness.value}%`;
+    filterValueSaturation.innerText = `${filterSliderSaturation.value}%`;
 
     brightness = filterSliderBrightness.value;
     saturation = filterSliderSaturation.value;
