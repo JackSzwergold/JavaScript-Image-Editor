@@ -66,10 +66,11 @@ const updateFilter = () => {
     filterValue.innerText = `${filterSliderBrightness.value}%`;
     const selectedFilter = document.querySelector(".filter .active");
 
+    brightness = filterSliderBrightness.value;
+    saturation = filterSliderSaturation.value;
+
     if(selectedFilter.id === "brightness") {
-        brightness = filterSliderBrightness.value;
     } else if(selectedFilter.id === "saturation") {
-        saturation = filterSliderSaturation.value;
     } else if(selectedFilter.id === "inversion") {
         inversion = filterSliderBrightness.value;
     } else {
@@ -124,36 +125,8 @@ const saveImage = () => {
     const link = document.createElement("a");
     // link.download = "image.jpg";
     link.download = fileName;
-    // setDPI(canvas, 72)
     link.href = canvas.toDataURL('image/jpeg', 0.75);
     link.click();
-}
-
-const setDPI = (canvas, dpi) => {
-    // Set up CSS size.
-    canvas.style.width = canvas.style.width || canvas.width + 'px';
-    canvas.style.height = canvas.style.height || canvas.height + 'px';
-
-    // Get size information.
-    var scaleFactor = dpi / 96;
-    var width = parseFloat(canvas.style.width);
-    var height = parseFloat(canvas.style.height);
-
-    // Backup the canvas contents.
-    var oldScale = canvas.width / width;
-    var backupScale = scaleFactor / oldScale;
-    var backup = canvas.cloneNode(false);
-    backup.getContext('2d').drawImage(canvas, 0, 0);
-
-    // Resize the canvas.
-    var ctx = canvas.getContext('2d');
-    canvas.width = Math.ceil(width * scaleFactor);
-    canvas.height = Math.ceil(height * scaleFactor);
-
-    // Redraw the canvas image and scale future draws.
-    ctx.setTransform(backupScale, 0, 0, backupScale, 0, 0);
-    ctx.drawImage(backup, 0, 0);
-    ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
 }
 
 filterSliderBrightness.addEventListener("input", updateFilter);
