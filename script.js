@@ -16,6 +16,7 @@ const loadImage = () => {
     let file = fileInput.files[0];
     if(!file) return;
     previewImg.src = URL.createObjectURL(file);
+    fileName = file.name
     previewImg.addEventListener("load", () => {
         resetFilterBtn.click();
         document.querySelector(".container").classList.remove("disable");
@@ -98,7 +99,7 @@ const saveImage = () => {
     resize_factor = (resize_height / previewImg.naturalHeight)
     canvas.width = previewImg.naturalWidth * resize_factor;
     canvas.height = previewImg.naturalHeight * resize_factor;
-    
+
     ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
     ctx.translate(canvas.width / 2, canvas.height / 2);
     if(rotate !== 0) {
@@ -108,7 +109,8 @@ const saveImage = () => {
     ctx.drawImage(previewImg, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
     
     const link = document.createElement("a");
-    link.download = "image.jpg";
+    // link.download = "image.jpg";
+    link.download = fileName;
     // setDPI(canvas, 72)
     link.href = canvas.toDataURL('image/jpeg', 0.75);
     link.click();
