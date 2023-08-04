@@ -1,5 +1,5 @@
 const fileInput = document.querySelector(".file-input"),
-filterOptions = document.querySelectorAll(".filter button"),
+// filterOptions = document.querySelectorAll(".filter button"),
 filterName = document.querySelector(".filter-info .name"),
 filterValue = document.querySelector(".filter-info .value"),
 filterSliderBrightness = document.querySelector(".slider_brightness input"),
@@ -39,16 +39,10 @@ const applyFilter = () => {
 
 const updateFilter = () => {
     filterValue.innerText = `${filterSliderBrightness.value}%`;
-    const selectedFilter = document.querySelector(".filter .active");
 
     brightness = filterSliderBrightness.value;
     saturation = filterSliderSaturation.value;
 
-    if(selectedFilter.id === "inversion") {
-        inversion = filterSliderBrightness.value;
-    } else {
-        grayscale = filterSliderBrightness.value;
-    }
     applyFilter();
 }
 
@@ -75,7 +69,6 @@ const resetFilter = () => {
     rotate = 0;
     flipHorizontal = 1;
     flipVertical = 1;
-    filterOptions[0].click();
     applyFilter();
 }
 
