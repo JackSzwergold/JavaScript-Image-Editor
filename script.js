@@ -107,7 +107,7 @@ const saveImage = () => {
     
     const link = document.createElement("a");
     link.download = "image.jpg";
-    setDPI(canvas, 72)
+    // setDPI(canvas, 72)
     link.href = canvas.toDataURL('image/jpeg');
     link.click();
 }
