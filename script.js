@@ -37,30 +37,30 @@ const applyFilter = () => {
     previewImg.style.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
 }
 
-filterOptions.forEach(option => {
-    option.addEventListener("click", () => {
-        document.querySelector(".active").classList.remove("active");
-        option.classList.add("active");
+// filterOptions.forEach(option => {
+//     option.addEventListener("click", () => {
+//         document.querySelector(".active").classList.remove("active");
+//         option.classList.add("active");
 
-        if(option.id === "brightness") {
-            filterSliderBrightness.max = "200";
-            filterSliderBrightness.value = brightness;
-            filterValue.innerText = `${brightness}%`;
-        } else if(option.id === "saturation") {
-            filterSliderSaturation.max = "200";
-            filterSliderSaturation.value = saturation;
-            filterValue.innerText = `${saturation}%`
-        } else if(option.id === "inversion") {
-            filterSliderBrightness.max = "100";
-            filterSliderBrightness.value = inversion;
-            filterValue.innerText = `${inversion}%`;
-        } else {
-            filterSliderBrightness.max = "100";
-            filterSliderBrightness.value = grayscale;
-            filterValue.innerText = `${grayscale}%`;
-        }
-    });
-});
+//         if(option.id === "brightness") {
+//             filterSliderBrightness.max = "200";
+//             filterSliderBrightness.value = brightness;
+//             filterValue.innerText = `${brightness}%`;
+//         } else if(option.id === "saturation") {
+//             filterSliderSaturation.max = "200";
+//             filterSliderSaturation.value = saturation;
+//             filterValue.innerText = `${saturation}%`
+//         } else if(option.id === "inversion") {
+//             filterSliderBrightness.max = "100";
+//             filterSliderBrightness.value = inversion;
+//             filterValue.innerText = `${inversion}%`;
+//         } else {
+//             filterSliderBrightness.max = "100";
+//             filterSliderBrightness.value = grayscale;
+//             filterValue.innerText = `${grayscale}%`;
+//         }
+//     });
+// });
 
 const updateFilter = () => {
     filterValue.innerText = `${filterSliderBrightness.value}%`;
