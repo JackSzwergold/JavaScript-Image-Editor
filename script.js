@@ -94,8 +94,10 @@ const resetFilter = () => {
 const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
-    canvas.width = previewImg.naturalWidth;
-    canvas.height = previewImg.naturalHeight;
+    resize_height = 1800
+    resize_factor = (resize_height / previewImg.naturalHeight)
+    canvas.width = previewImg.naturalWidth * resize_factor;
+    canvas.height = previewImg.naturalHeight * resize_factor;
     
     ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) invert(${inversion}%) grayscale(${grayscale}%)`;
     ctx.translate(canvas.width / 2, canvas.height / 2);
