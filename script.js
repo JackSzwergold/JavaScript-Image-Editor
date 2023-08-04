@@ -2,7 +2,8 @@ const fileInput = document.querySelector(".file-input"),
 filterOptions = document.querySelectorAll(".filter button"),
 filterName = document.querySelector(".filter-info .name"),
 filterValue = document.querySelector(".filter-info .value"),
-filterSlider = document.querySelector(".slider input"),
+filterSliderBrightness = document.querySelector(".slider_brightness input"),
+filterSliderSaturation = document.querySelector(".slider_saturation input"),
 rotateOptions = document.querySelectorAll(".rotate button"),
 previewImg = document.querySelector(".preview-img img"),
 resetFilterBtn = document.querySelector(".reset-filter"),
@@ -32,40 +33,40 @@ filterOptions.forEach(option => {
     option.addEventListener("click", () => {
         document.querySelector(".active").classList.remove("active");
         option.classList.add("active");
-        filterName.innerText = option.innerText;
+        // filterName.innerText = option.innerText;
 
         if(option.id === "brightness") {
-            filterSlider.max = "200";
-            filterSlider.value = brightness;
+            filterSliderBrightness.max = "200";
+            filterSliderBrightness.value = brightness;
             filterValue.innerText = `${brightness}%`;
         } else if(option.id === "saturation") {
-            filterSlider.max = "200";
-            filterSlider.value = saturation;
+            filterSliderSaturation.max = "200";
+            filterSliderSaturation.value = saturation;
             filterValue.innerText = `${saturation}%`
         } else if(option.id === "inversion") {
-            filterSlider.max = "100";
-            filterSlider.value = inversion;
+            filterSliderBrightness.max = "100";
+            filterSliderBrightness.value = inversion;
             filterValue.innerText = `${inversion}%`;
         } else {
-            filterSlider.max = "100";
-            filterSlider.value = grayscale;
+            filterSliderBrightness.max = "100";
+            filterSliderBrightness.value = grayscale;
             filterValue.innerText = `${grayscale}%`;
         }
     });
 });
 
 const updateFilter = () => {
-    filterValue.innerText = `${filterSlider.value}%`;
+    filterValue.innerText = `${filterSliderBrightness.value}%`;
     const selectedFilter = document.querySelector(".filter .active");
 
     if(selectedFilter.id === "brightness") {
-        brightness = filterSlider.value;
+        brightness = filterSliderBrightness.value;
     } else if(selectedFilter.id === "saturation") {
-        saturation = filterSlider.value;
+        saturation = filterSliderSaturation.value;
     } else if(selectedFilter.id === "inversion") {
-        inversion = filterSlider.value;
+        inversion = filterSliderBrightness.value;
     } else {
-        grayscale = filterSlider.value;
+        grayscale = filterSliderBrightness.value;
     }
     applyFilter();
 }
@@ -143,7 +144,8 @@ const setDPI = (canvas, dpi) => {
     ctx.setTransform(scaleFactor, 0, 0, scaleFactor, 0, 0);
 }
 
-filterSlider.addEventListener("input", updateFilter);
+filterSliderBrightness.addEventListener("input", updateFilter);
+filterSliderSaturation.addEventListener("input", updateFilter);
 resetFilterBtn.addEventListener("click", resetFilter);
 saveImgBtn.addEventListener("click", saveImage);
 fileInput.addEventListener("change", loadImage);
