@@ -65,10 +65,10 @@ rotateOptions.forEach(option => {
 });
 
 const resetFilter = () => {
-    filterSliderBrightness.innerText = 100;
+    filterValueBrightness.innerText = `100%`;
     filterSliderBrightness.value = 100;
 
-    filterSliderSaturation.innerText = 100;
+    filterValueSaturation.innerText = `100%`;
     filterSliderSaturation.value = 100;
 
     inversion = 0;
