@@ -10,8 +10,16 @@ resetFilterBtn = document.querySelector(".reset-filter"),
 chooseImgBtn = document.querySelector(".choose-img"),
 saveImgBtn = document.querySelector(".save-img");
 
-let brightness = "100", saturation = "100", inversion = "0", grayscale = "0";
-let rotate = 0, flipHorizontal = 1, flipVertical = 1;
+let brightness = "100",
+    saturation = "100", 
+    inversion = "0",
+    grayscale = "0"
+    ;
+
+let rotate = 0,
+    flipHorizontal = 1,
+    flipVertical = 1
+    ;
 
 const loadImage = () => {
     let file = fileInput.files[0];
@@ -33,7 +41,6 @@ filterOptions.forEach(option => {
     option.addEventListener("click", () => {
         document.querySelector(".active").classList.remove("active");
         option.classList.add("active");
-        // filterName.innerText = option.innerText;
 
         if(option.id === "brightness") {
             filterSliderBrightness.max = "200";
@@ -87,8 +94,13 @@ rotateOptions.forEach(option => {
 });
 
 const resetFilter = () => {
-    brightness = "100"; saturation = "100"; inversion = "0"; grayscale = "0";
-    rotate = 0; flipHorizontal = 1; flipVertical = 1;
+    brightness = "100";
+    saturation = "100";
+    inversion = "0";
+    grayscale = "0";
+    rotate = 0;
+    flipHorizontal = 1;
+    flipVertical = 1;
     filterOptions[0].click();
     applyFilter();
 }
