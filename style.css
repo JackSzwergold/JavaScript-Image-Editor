@@ -97,10 +97,6 @@ body{
   justify-content: center;
   width: calc(100% / 4 - 3px);
 }
-.rotate .options button:nth-child(3),
-.rotate .options button:nth-child(4){
-  font-size: 18px;
-}
 .rotate .options button:active{
   color: #fff;
   background: #5372F0;
