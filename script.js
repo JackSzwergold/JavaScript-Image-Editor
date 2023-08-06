@@ -1,18 +1,22 @@
-const
-    fileInput = document.querySelector(".file-input"),
-    filterName = document.querySelector(".filter-info .name"),
-    filterValueBrightness = document.querySelector(".filter-info-brightness .value"),
-    filterValueSaturation = document.querySelector(".filter-info-saturation .value"),
-    filterValueGrayscale = document.querySelector(".filter-info-grayscale .value"),
-    filterSliderBrightness = document.querySelector(".slider_brightness input"),
-    filterSliderSaturation = document.querySelector(".slider_saturation input"),
-    filterSliderGrayscale = document.querySelector(".slider_grayscale input"),
-    rotateOptions = document.querySelectorAll(".rotate button"),
-    previewImage = document.querySelector(".preview-image img"),
-    resetFilterBtn = document.querySelector(".reset-filter"),
-    chooseImageButton = document.querySelector(".choose-image"),
-    saveImageButton = document.querySelector(".save-image")
-    ;
+
+fileInput = document.querySelector(".file-input");
+
+filterValueBrightness = document.querySelector("#slider_brightness label span");
+filterValueSaturation = document.querySelector("#slider_saturation label span");
+filterValueGrayscale = document.querySelector("#slider_grayscale label span");
+
+filterSliderBrightness = document.querySelector("#slider_brightness input");
+filterSliderSaturation = document.querySelector("#slider_saturation input");
+filterSliderGrayscale = document.querySelector("#slider_grayscale input");
+
+rotateOptions = document.querySelectorAll(".rotate button");
+
+previewImage = document.querySelector(".preview-image img");
+resetFilterBtn = document.querySelector(".reset-filter");
+
+chooseImageButton = document.querySelector(".choose-image");
+saveImageButton = document.querySelector(".save-image");
+
 
 let brightness = 100,
     saturation = 100, 
@@ -110,6 +114,7 @@ const saveImage = () => {
 filterSliderBrightness.addEventListener("input", updateFilter);
 filterSliderSaturation.addEventListener("input", updateFilter);
 filterSliderGrayscale.addEventListener("input", updateFilter);
+
 resetFilterBtn.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
 fileInput.addEventListener("change", loadImage);
