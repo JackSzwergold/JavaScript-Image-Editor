@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Neue-Black';
+  src: url("../fonts/Neue/Neue-Black.woff") format("woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Neue-Bold';
+  src: url("../fonts/Neue/Neue-Bold.eot");
+  src: url("../fonts/Neue/Neue-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/Neue-Bold.ttf") format("truetype"), url("../fonts/Neue/Neue-Bold.woff") format("woff"), url("../fonts/Neue/Neue-Bold.svg#") format("svg");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Neue-BoldItalic';
+  src: url("../fonts/Neue/Neue-BoldItalic.ttf") format("truetype"), url("../fonts/Neue/Neue-BoldItalic.woff") format("woff"), url("../fonts/Neue/Neue-BoldItalic.svg#") format("svg");
+  font-style: italic;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Neue-Regular';
+  src: url("../fonts/Neue/Neue-Regular.eot");
+  src: url("../fonts/Neue/Neue-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/Neue-Regular.ttf") format("truetype"), url("../fonts/Neue/Neue-Regular.woff") format("woff"), url("../fonts/Neue/Neue-Regular.svg#") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Neue-RegularItalic';
+  src: url("../fonts/Neue/Neue-RegularItalic.eot");
+  src: url("../fonts/Neue/Neue-RegularItalic.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/Neue-RegularItalic.ttf") format("truetype"), url("../fonts/Neue/Neue-RegularItalic.woff") format("woff"), url("../fonts/Neue/Neue-RegularItalic.svg#") format("svg");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NeueDisplay-Black';
+  src: url("../fonts/Neue/NeueDisplay-Black.eot");
+  src: url("../fonts/Neue/NeueDisplay-Black.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/NeueDisplay-Black.ttf") format("truetype"), url("../fonts/Neue/NeueDisplay-Black.woff") format("woff"), url("../fonts/Neue/NeueDisplay-Black.svg#") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NeueDisplay-Random';
+  src: url("../fonts/Neue/NeueDisplay-Random.eot");
+  src: url("../fonts/Neue/NeueDisplay-Random.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/NeueDisplay-Random.ttf") format("truetype"), url("../fonts/Neue/NeueDisplay-Random.woff") format("woff"), url("../fonts/Neue/NeueDisplay-Random.svg#") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NeueDisplay-Ultra';
+  src: url("../fonts/Neue/NeueDisplay-Ultra.eot");
+  src: url("../fonts/Neue/NeueDisplay-Ultra.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/NeueDisplay-Ultra.ttf") format("truetype"), url("../fonts/Neue/NeueDisplay-Ultra.woff") format("woff"), url("../fonts/Neue/NeueDisplay-Ultra.svg#") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'NeueDisplay-Wide';
+  src: url("../fonts/Neue/NeueDisplay-Wide.eot");
+  src: url("../fonts/Neue/NeueDisplay-Wide.eot?#iefix") format("embedded-opentype"), url("../fonts/Neue/NeueDisplay-Wide.ttf") format("truetype"), url("../fonts/Neue/NeueDisplay-Wide.woff") format("woff"), url("../fonts/Neue/NeueDisplay-Wide.svg#") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
