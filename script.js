@@ -1,5 +1,5 @@
 
-fileInput = document.querySelector(".file-input");
+fileInput = document.querySelector("#file_input");
 
 filterValueBrightness = document.querySelector("#slider_brightness label span");
 filterValueSaturation = document.querySelector("#slider_saturation label span");
@@ -9,13 +9,13 @@ filterSliderBrightness = document.querySelector("#slider_brightness input");
 filterSliderSaturation = document.querySelector("#slider_saturation input");
 filterSliderGrayscale = document.querySelector("#slider_grayscale input");
 
-rotateOptions = document.querySelectorAll(".rotate button");
+rotateOptions = document.querySelectorAll("#rotate button");
 
-previewImage = document.querySelector(".preview-image img");
-resetFilterBtn = document.querySelector(".reset-filter");
+previewImage = document.querySelector("#preview_image img");
+resetFilterButton = document.querySelector("#reset_filter");
 
-chooseImageButton = document.querySelector(".choose-image");
-saveImageButton = document.querySelector(".save-image");
+chooseImageButton = document.querySelector("#choose_image");
+saveImageButton = document.querySelector("#save_image");
 
 
 let brightness = 100,
@@ -34,7 +34,7 @@ const loadImage = () => {
     previewImage.src = URL.createObjectURL(file);
     fileName = file.name
     previewImage.addEventListener("load", () => {
-        resetFilterBtn.click();
+        resetFilterButton.click();
         document.querySelector(".container").classList.remove("disable");
     });
 }
@@ -57,17 +57,23 @@ const updateFilter = () => {
 }
 
 rotateOptions.forEach(option => {
+
     option.addEventListener("click", () => {
-        if(option.id === "left") {
+        if (option.id === "left") {
             rotate -= 90;
-        } else if(option.id === "right") {
+        }
+        else if (option.id === "right") {
             rotate += 90;
-        } else if(option.id === "horizontal") {
+        }
+        else if (option.id === "horizontal") {
             flipHorizontal = flipHorizontal === 1 ? -1 : 1;
-        } else {
+        }
+        else if (option.id === "vertical") {
             flipVertical = flipVertical === 1 ? -1 : 1;
         }
+
         applyFilter();
+
     });
 });
 
@@ -115,7 +121,8 @@ filterSliderBrightness.addEventListener("input", updateFilter);
 filterSliderSaturation.addEventListener("input", updateFilter);
 filterSliderGrayscale.addEventListener("input", updateFilter);
 
-resetFilterBtn.addEventListener("click", resetFilter);
+resetFilterButton.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
+
 fileInput.addEventListener("change", loadImage);
 chooseImageButton.addEventListener("click", () => fileInput.click());
