@@ -98,8 +98,10 @@ const resetFilter = () => {
 const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+
     resize_height = 900
-    resize_factor = (resize_height / previewImage.naturalHeight)
+    resize_factor = (resize_height / previewImage.naturalHeight);
+
     canvas.width = previewImage.naturalWidth * resize_factor;
     canvas.height = previewImage.naturalHeight * resize_factor;
 
