@@ -20,27 +20,18 @@
 
                 <div class="form-group p-0 m-0" id="slider_brightness">
                     <label for="formControlBrightness">Brighteness <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" id="formControlBrightness">
+                    <input type="range" value="100" min="0" max="200" class="col col-12" id="formControlBrightness">
                 </div>
 
                 <div class="form-group p-0 m-0" id="slider_saturation">
                     <label for="formControlSaturation">Saturation <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" id="formControlSaturation">
+                    <input type="range" value="100" min="0" max="200" class="col col-12" id="formControlSaturation">
                 </div>
 
                 <div class="form-group p-0 m-0" id="slider_grayscale">
                     <label for="formControlGrayscale">Grayscale <span>0%</span></label><br clear="all" />
-                    <input type="range" value="0" min="0" max="100" id="formControlGrayscale">
+                    <input type="range" value="0" min="0" max="100" class="col col-12" id="formControlGrayscale">
                 </div>
-
-            </div>
-
-            <div class="p-0 m-0 mb-2 col col-12 bg-warning" id="rotate">
-
-                <button id="left" class="btn btn-primary"><em class="fa fa-reply"></em></button>
-                <button id="right" class="btn btn-primary"><em class="fa fa-share"></em></button>
-                <button id="horizontal" class="btn btn-primary"><em class='fa fa-arrows-h'></em></button>
-                <button id="vertical" class="btn btn-primary"><em class='fa fa-arrows-v'></em></button>
 
             </div>
 
@@ -49,12 +40,23 @@
             </div>
 
             <div class="p-0 m-0 mb-2 col col-12 bg-warning" id="preview_image">
- 
-                <input type="file" id="file_input" accept="image/*" hidden>
-                <button class="btn btn-primary" id="reset_filter">Reset</button>
-                <button class="btn btn-primary"  id="choose_image">Choose Image</button>
-                <button class="btn btn-primary" id="save_image">Save Image</button>
+                <div class="p-0 m-0 col col-6 bg-warning float-left" id="rotate">
 
+                    <button id="left" class="btn btn-primary"><em class="fa fa-reply"></em></button>
+                    <button id="right" class="btn btn-primary"><em class="fa fa-share"></em></button>
+                    <button id="horizontal" class="btn btn-primary"><em class='fa fa-arrows-h'></em></button>
+                    <button id="vertical" class="btn btn-primary"><em class='fa fa-arrows-v'></em></button>
+
+                </div>
+
+                <div class="p-0 m-0 col col-auto bg-warning float-right">
+
+                    <button class="btn btn-primary" id="choose_image">Choose Image</button>     
+                    <button class="btn btn-primary" id="reset_filter">Reset</button>
+                    <button class="btn btn-primary" id="save_image">Save Image</button>
+                    <input type="file" id="file_input" accept="image/*" hidden>
+
+                </div>
             </div>
 
         </div>
