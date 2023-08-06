@@ -102,8 +102,20 @@ const saveImage = () => {
     resize_height = 900
     resize_factor = (resize_height / previewImage.naturalHeight);
 
-    canvas.width = previewImage.naturalWidth * resize_factor;
-    canvas.height = previewImage.naturalHeight * resize_factor;
+    alert(rotate);
+
+    if (rotate == 90) {
+        canvas.height = previewImage.naturalWidth * resize_factor;
+        canvas.width = previewImage.naturalHeight * resize_factor;   
+    }
+    else if (rotate == 270) {
+        canvas.height = previewImage.naturalWidth * resize_factor;
+        canvas.width = previewImage.naturalHeight * resize_factor;   
+    }
+    else {
+        canvas.width = previewImage.naturalWidth * resize_factor;
+        canvas.height = previewImage.naturalHeight * resize_factor;  
+    }
 
     ctx.filter = `brightness(${brightness}%) saturate(${saturation}%) grayscale(${grayscale}%)`;
     ctx.translate(canvas.width / 2, canvas.height / 2);
@@ -111,7 +123,15 @@ const saveImage = () => {
         ctx.rotate(rotate * Math.PI / 180);
     }
     ctx.scale(flipHorizontal, flipVertical);
-    ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+    if (rotate == 90) {
+        ctx.drawImage(previewImage, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+    }
+    else if (rotate == 270) {
+        ctx.drawImage(previewImage, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+    }
+    else {
+        ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+    }
     
     const link = document.createElement("a");
     link.download = fileName;
