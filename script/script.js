@@ -35,7 +35,6 @@ const loadImage = () => {
     fileName = file.name
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
-        document.querySelector(".container").classList.remove("disable");
     });
 }
 
