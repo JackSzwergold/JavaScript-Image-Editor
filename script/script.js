@@ -130,7 +130,7 @@ const saveImage = () => {
     resize_height = 900
     resize_factor = (resize_height / previewImage.naturalHeight);
 
-    if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+    if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
         canvas.height = previewImage.naturalWidth * resize_factor;
         canvas.width = previewImage.naturalHeight * resize_factor;   
     }
@@ -148,7 +148,7 @@ const saveImage = () => {
         ctx.rotate(rotate * Math.PI / 180);
     }
     ctx.scale(flipHorizontal, flipVertical);
-    if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+    if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
         ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
     }
     else {
