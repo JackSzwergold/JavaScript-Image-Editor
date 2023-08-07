@@ -129,7 +129,6 @@ const saveImage = () => {
 
     resize_height = 900
     resize_factor = (resize_height / previewImage.naturalHeight);
-
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
         canvas.height = previewImage.naturalWidth * resize_factor;
         canvas.width = previewImage.naturalHeight * resize_factor;   
