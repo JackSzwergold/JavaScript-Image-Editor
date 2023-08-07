@@ -5,11 +5,13 @@ filterValueBrightness = document.querySelector("#slider_brightness label span");
 filterValueContrast = document.querySelector("#slider_contrast label span");
 filterValueSaturation = document.querySelector("#slider_saturation label span");
 filterValueGrayscale = document.querySelector("#slider_grayscale label span");
+filterValueBlur = document.querySelector("#slider_blur label span");
 
 filterSliderBrightness = document.querySelector("#slider_brightness input");
 filterSliderContrast = document.querySelector("#slider_contrast input");
 filterSliderSaturation = document.querySelector("#slider_saturation input");
 filterSliderGrayscale = document.querySelector("#slider_grayscale input");
+filterSliderBlur = document.querySelector("#slider_blur input");
 
 rotateOptions = document.querySelectorAll("#rotate button");
 
@@ -42,7 +44,7 @@ const loadImage = () => {
 
 const applyFilter = () => {
     previewImage.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
-    previewImage.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%)`;
+    previewImage.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
 }
 
 const updateFilter = () => {
@@ -51,11 +53,13 @@ const updateFilter = () => {
     filterValueContrast.innerText = `${filterSliderContrast.value}%`;
     filterValueSaturation.innerText = `${filterSliderSaturation.value}%`;
     filterValueGrayscale.innerText = `${filterSliderGrayscale.value}%`;
+    filterValueBlur.innerText = `${filterSliderBlur.value}px`;
 
     brightness = filterSliderBrightness.value;
     contrast = filterSliderContrast.value;
     saturation = filterSliderSaturation.value;
     grayscale = filterSliderGrayscale.value;
+    blur = filterSliderBlur.value;
 
     applyFilter();
 
@@ -107,6 +111,9 @@ const resetFilter = () => {
     filterValueGrayscale.innerText = `0%`;
     grayscale = filterSliderGrayscale.value = 0;
 
+    filterValueBlur.innerText = `0px`;
+    blur = filterSliderBlur.value = 0;
+
     rotate = 0;
 
     flipHorizontal = 1;
@@ -132,7 +139,7 @@ const saveImage = () => {
         canvas.height = previewImage.naturalHeight * resize_factor;  
     }
 
-    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%)`;
+    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(canvas.width / 2, canvas.height / 2);
     if (rotate !== 0) {
         ctx.rotate(rotate * Math.PI / 180);
@@ -155,6 +162,7 @@ filterSliderBrightness.addEventListener("input", updateFilter);
 filterSliderContrast.addEventListener("input", updateFilter);
 filterSliderSaturation.addEventListener("input", updateFilter);
 filterSliderGrayscale.addEventListener("input", updateFilter);
+filterSliderBlur.addEventListener("blur", updateFilter);
 
 resetFilterButton.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
