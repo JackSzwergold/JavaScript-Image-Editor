@@ -32,7 +32,7 @@ let rotate = 0,
 
 const loadImage = () => {
     let file = fileInput.files[0];
-    if(!file) return;
+    if (!file) return;
     previewImage.src = URL.createObjectURL(file);
     fileName = file.name
     previewImage.addEventListener("load", () => {
