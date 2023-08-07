@@ -67,7 +67,6 @@ const updateFilter = () => {
 
 rotateOptions.forEach(option => {
 
-
     option.addEventListener("click", () => {
         if (option.id === "left") {
             if (rotate == -270) {
