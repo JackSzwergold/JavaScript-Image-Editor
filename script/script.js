@@ -11,7 +11,7 @@ filterSliderGrayscale = document.querySelector("#slider_grayscale input");
 
 rotateOptions = document.querySelectorAll("#rotate button");
 
-previewImage = document.querySelector("#preview_image img");
+previewImage = document.querySelector(".preview_image img");
 resetFilterButton = document.querySelector("#reset_filter");
 
 chooseImageButton = document.querySelector("#choose_image");
