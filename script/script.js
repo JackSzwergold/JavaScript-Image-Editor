@@ -162,7 +162,7 @@ filterSliderBrightness.addEventListener("input", updateFilter);
 filterSliderContrast.addEventListener("input", updateFilter);
 filterSliderSaturation.addEventListener("input", updateFilter);
 filterSliderGrayscale.addEventListener("input", updateFilter);
-filterSliderBlur.addEventListener("blur", updateFilter);
+filterSliderBlur.addEventListener("input", updateFilter);
 
 resetFilterButton.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
