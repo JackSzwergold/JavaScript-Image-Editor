@@ -58,16 +58,28 @@ const updateFilter = () => {
     grayscale = filterSliderGrayscale.value;
 
     applyFilter();
+
 }
 
 rotateOptions.forEach(option => {
 
+
     option.addEventListener("click", () => {
         if (option.id === "left") {
-            rotate -= 90;
+            if (rotate == -270) {
+                rotate = 0;
+            }
+            else {
+                rotate -= 90;
+            }
         }
         else if (option.id === "right") {
-            rotate += 90;
+            if (rotate == 270) {
+                rotate = 0;
+            }
+            else {
+                rotate += 90;
+            }
         }
         else if (option.id === "horizontal") {
             flipHorizontal = flipHorizontal === 1 ? -1 : 1;
@@ -101,6 +113,7 @@ const resetFilter = () => {
     flipVertical = 1;
 
     applyFilter();
+
 }
 
 const saveImage = () => {
@@ -110,7 +123,7 @@ const saveImage = () => {
     resize_height = 900
     resize_factor = (resize_height / previewImage.naturalHeight);
 
-    if (rotate == 90 || rotate == 270) {
+    if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
         canvas.height = previewImage.naturalWidth * resize_factor;
         canvas.width = previewImage.naturalHeight * resize_factor;   
     }
@@ -125,7 +138,7 @@ const saveImage = () => {
         ctx.rotate(rotate * Math.PI / 180);
     }
     ctx.scale(flipHorizontal, flipVertical);
-    if (rotate == 90 || rotate == 270) {
+    if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
         ctx.drawImage(previewImage, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
     }
     else {
