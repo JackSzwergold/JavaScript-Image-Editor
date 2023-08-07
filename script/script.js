@@ -23,6 +23,7 @@ saveImageButton = document.querySelector("#save_image");
 
 
 let brightness = 100,
+    contrast = 100, 
     saturation = 100, 
     grayscale = 0
     ;
@@ -36,7 +37,7 @@ const loadImage = () => {
     let file = fileInput.files[0];
     if (!file) return;
     previewImage.src = URL.createObjectURL(file);
-    fileName = file.name
+    fileName = file.name;
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
     });
@@ -138,17 +139,20 @@ const saveImage = () => {
         canvas.height = previewImage.naturalHeight * resize_factor;  
     }
 
+    offset_x = (canvas.width / 2);
+    offset_y = (canvas.height / 2);
+
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
-    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.translate(offset_x, offset_y);
     if (rotate !== 0) {
         ctx.rotate(rotate * Math.PI / 180);
     }
     ctx.scale(flipHorizontal, flipVertical);
     if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-        ctx.drawImage(previewImage, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+        ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
     }
     else {
-        ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        ctx.drawImage(previewImage, -offset_x, -offset_y, canvas.width, canvas.height);
     }
     
     const link = document.createElement("a");
