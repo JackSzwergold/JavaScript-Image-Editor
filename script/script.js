@@ -55,11 +55,11 @@ const updateFilter = () => {
     filterValueGrayscale.innerText = `${filterSliderGrayscale.value}%`;
     filterValueBlur.innerText = `${filterSliderBlur.value}px`;
 
-    brightness = filterSliderBrightness.value;
-    contrast = filterSliderContrast.value;
-    saturation = filterSliderSaturation.value;
-    grayscale = filterSliderGrayscale.value;
-    blur = filterSliderBlur.value;
+    brightness = Math.floor(filterSliderBrightness.value);
+    contrast = Math.floor(filterSliderContrast.value);
+    saturation = Math.floor(filterSliderSaturation.value);
+    grayscale = Math.floor(filterSliderGrayscale.value);
+    blur = Math.floor(filterSliderBlur.value);
 
     applyFilter();
 
