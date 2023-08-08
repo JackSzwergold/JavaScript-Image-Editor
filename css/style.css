@@ -12,8 +12,8 @@
 
 .overlay {
   position: absolute;
-  left: 25%;
   top: 25%;
+  left: 25%;
   z-index: 999;
   width: 230px;
   height: 260px;
