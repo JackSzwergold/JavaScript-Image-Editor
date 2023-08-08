@@ -129,10 +129,10 @@ const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft - wrapperGrid.offsetLeft);
-    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop - wrapperGrid.offsetTop);
-    // alert(offset_test_x);
-    // alert(offset_test_y);
+    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
+    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
+    alert(offset_test_x);
+    alert(offset_test_y);
     // console.log(overlayGrid);
     // console.log(previewImage);
 
@@ -157,10 +157,10 @@ const saveImage = () => {
     }
     ctx.scale(flipHorizontal, flipVertical);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
+        ctx.drawImage(previewImage, -offset_y - offset_test_y, -offset_x - offset_test_x, canvas.height, canvas.width);
     }
     else {
-        ctx.drawImage(previewImage, -offset_x, -offset_y, canvas.width, canvas.height);
+        ctx.drawImage(previewImage, -offset_x - offset_test_x, -offset_y - offset_test_y, canvas.width, canvas.height);
     }
     
     const link = document.createElement("a");
