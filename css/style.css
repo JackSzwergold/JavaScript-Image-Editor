@@ -14,11 +14,13 @@
   position: absolute;
   top: 25%;
   left: 25%;
-  z-index: 999;
+  padding: 0px;
+  margin: 0px;
   width: 230px;
   height: 260px;
   border: dashed 2px #000000;
   box-sizing: content-box;
   pointer-events: none;
+  z-index: 999;
 }
 
