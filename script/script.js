@@ -134,28 +134,28 @@ const saveImage = () => {
 
     scale_factor = (previewImage.naturalHeight / previewImage.offsetHeight);
 
-    offset_scale_x = (offset_test_x * scale_factor);
-    offset_scale_y = (offset_test_y * scale_factor);
+    Math.abs(offset_scale_x) = (offset_test_x * scale_factor);
+    Math.abs(offset_scale_y) = (offset_test_y * scale_factor);
 
     // alert(offset_scale_x);
     // alert(offset_scale_y);
     // alert(offset_test_y);
     // console.log(overlayGrid);
-    console.log(previewImage);
+    // console.log(previewImage);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        canvas.width = previewImage.naturalHeight * resize_factor;   
-        canvas.height = previewImage.naturalWidth * resize_factor;
+        canvas.width = (previewImage.naturalHeight - offset_scale_y) * resize_factor;   
+        canvas.height = (previewImage.naturalWidth - offset_scale_x) * resize_factor;
     }
     else {
-        canvas.width = previewImage.naturalWidth * resize_factor;
-        canvas.height = previewImage.naturalHeight * resize_factor;  
+        canvas.width = (previewImage.naturalWidth - offset_scale_x) * resize_factor;
+        canvas.height = (previewImage.naturalHeight - offset_scale_y) * resize_factor;  
     }
 
-    offset_x = (canvas.width / 2);
-    offset_y = (canvas.height / 2);
+    offset_x = ((canvas.width - offset_scale_x) / 2);
+    offset_y = ((canvas.height - offset_scale_y) / 2);
 
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(offset_x, offset_y);
@@ -164,10 +164,10 @@ const saveImage = () => {
     }
     ctx.scale(flipHorizontal, flipVertical);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        ctx.drawImage(previewImage, -offset_y - offset_test_y, -offset_x - offset_test_x, canvas.height, canvas.width);
+        ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
     }
     else {
-        ctx.drawImage(previewImage, -offset_x - offset_test_x, -offset_y - offset_test_y, canvas.width, canvas.height);
+        ctx.drawImage(previewImage, -offset_x, -offset_y, canvas.width, canvas.height);
     }
     
     const link = document.createElement("a");
