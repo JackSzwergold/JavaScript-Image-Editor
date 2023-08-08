@@ -16,6 +16,7 @@ filterSliderBlur = document.querySelector("#slider_blur input");
 rotateOptions = document.querySelectorAll("#rotate button");
 
 previewImage = document.querySelector(".preview_image img");
+wrapperGrid = document.querySelector(".wrapper");
 overlayGrid = document.querySelector(".overlay");
 resetFilterButton = document.querySelector("#reset_filter");
 
@@ -128,13 +129,12 @@ const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
-    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
-    // alert(overlayGrid.offsetWidth);
-    // alert(overlayGrid.offsetHeight);
+    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft - wrapperGrid.offsetLeft);
+    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop - wrapperGrid.offsetTop);
+    // alert(offset_test_x);
+    // alert(offset_test_y);
     // console.log(overlayGrid);
     // console.log(previewImage);
-    // alert(offset_test_x);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
