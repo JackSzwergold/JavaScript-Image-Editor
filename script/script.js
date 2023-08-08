@@ -137,25 +137,23 @@ const saveImage = () => {
     offset_scale_x = Math.abs(offset_test_x * scale_factor);
     offset_scale_y = Math.abs(offset_test_y * scale_factor);
 
-    // alert(offset_scale_x);
-    // alert(offset_scale_y);
-
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        canvas.width = (previewImage.naturalHeight - offset_scale_y) * resize_factor;   
-        canvas.height = (previewImage.naturalWidth - offset_scale_x) * resize_factor;
+        canvas.width = (previewImage.naturalHeight - offset_scale_y) + offset_scale_y * resize_factor;   
+        canvas.height = (previewImage.naturalWidth - offset_scale_x) + offset_scale_x * resize_factor;
     }
     else {
-        canvas.width = (previewImage.naturalWidth - offset_scale_x) * resize_factor;
-        canvas.height = (previewImage.naturalHeight - offset_scale_y) * resize_factor;  
+        canvas.width = (previewImage.naturalWidth - offset_scale_x) + offset_scale_x * resize_factor;
+        canvas.height = (previewImage.naturalHeight - offset_scale_y) + offset_scale_y * resize_factor;  
     }
 
-    offset_x = Math.abs((canvas.width - offset_scale_x) / 2);
-    offset_y = Math.abs((canvas.height - offset_scale_y) / 2);
+    offset_x = (canvas.width / 2);
+    offset_y = (canvas.height / 2);
 
-    console.log(offset_x);
-    console.log(offset_y);
+    console.log(offset_scale_x + 'x' + offset_scale_y);
+    console.log(canvas.width + 'x' + canvas.height);
+    console.log(offset_x + 'x' + offset_y);
 
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(offset_x, offset_y);
@@ -163,6 +161,10 @@ const saveImage = () => {
         ctx.rotate(rotate * Math.PI / 180);
     }
     ctx.scale(flipHorizontal, flipVertical);
+
+    // ctx.rect(offset_x, offset_y, 100, 100);
+    // ctx.stroke();
+
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
         ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
     }
