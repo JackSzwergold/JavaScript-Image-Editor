@@ -133,6 +133,7 @@ const saveImage = () => {
     // alert(overlayGrid.offsetWidth);
     // alert(overlayGrid.offsetHeight);
     // console.log(overlayGrid);
+    console.log(previewImage);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
