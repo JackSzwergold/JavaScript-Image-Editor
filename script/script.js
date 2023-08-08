@@ -140,12 +140,12 @@ const saveImage = () => {
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        canvas.width = (previewImage.naturalHeight - offset_scale_y) + offset_scale_y * resize_factor;   
-        canvas.height = (previewImage.naturalWidth - offset_scale_x) + offset_scale_x * resize_factor;
+        canvas.width = (previewImage.naturalHeight - offset_scale_y) + (offset_scale_y * resize_factor);   
+        canvas.height = (previewImage.naturalWidth - offset_scale_x) + (offset_scale_x * resize_factor);
     }
     else {
-        canvas.width = (previewImage.naturalWidth - offset_scale_x) + offset_scale_x * resize_factor;
-        canvas.height = (previewImage.naturalHeight - offset_scale_y) + offset_scale_y * resize_factor;  
+        canvas.width = (previewImage.naturalWidth - offset_scale_x) + (offset_scale_x * resize_factor);
+        canvas.height = (previewImage.naturalHeight - offset_scale_y) + (offset_scale_y * resize_factor);  
     }
 
     offset_x = (canvas.width / 2);
@@ -158,9 +158,9 @@ const saveImage = () => {
     canvas.height = (canvas.height + offset_scale_y);
 
     console.log('Offset Scale: ' + offset_scale_x + 'x' + offset_scale_y);
-    console.log('Canvas: ' + canvas.width + 'x' + canvas.height);
     console.log('Offset: ' + offset_x + 'x' + offset_y);
     console.log('Offset Calc: ' + offset_calc_x + 'x' + offset_calc_y);
+    console.log('Canvas: ' + canvas.width + 'x' + canvas.height);
 
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(offset_x, offset_y);
