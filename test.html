@@ -16,16 +16,16 @@
          var ctx = canvas.getContext('2d');
          
          ctx.drawImage(img, 10, 30, 500, 500, 0, 0, 400, 350);
-         var imageData = ctx.getImageData(0, 0, 400, 350);
+         // var imageData = ctx.getImageData(0, 0, 400, 350);
 
-         var croppedCanvas = document.createElement('canvas');
-         var croppedCtx = croppedCanvas.getContext('2d');
+         // var croppedCanvas = document.createElement('canvas');
+         // var croppedCtx = croppedCanvas.getContext('2d');
 
-         croppedCanvas.width = imageData.width;
-         croppedCanvas.height = imageData.height;
+         // croppedCanvas.width = imageData.width;
+         // croppedCanvas.height = imageData.height;
 
-         croppedCtx.putImageData(imageData, 0, 0);
-         var croppedImg = croppedCanvas.toDataURL();
+         // croppedCtx.putImageData(imageData, 0, 0);
+         // var croppedImg = croppedCanvas.toDataURL();
 
       };
    </script>
