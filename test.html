@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Image Cropping Example</title>
+</head>
+<body>
+   <img id="myImage" src="https://images.unsplash.com/photo-1676629650907-d50f2f27db20?ixlib=rb4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60" alt="Original Image">
+   <canvas id="myCanvas"></canvas>
+   <script>
+      var img = new Image();
+      img.src= 'https://images.unsplash.com/photo-1676629650907-d50f2f27db20?ixlib=rb4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60';
+      img.onload = function() {
+         
+         var canvas = document.getElementById('myCanvas');
+         var ctx = canvas.getContext('2d');
+         
+         ctx.drawImage(img, 10, 30, 500, 500, 0, 0, 400, 350);
+         var imageData = ctx.getImageData(0, 0, 400, 350);
+
+         var croppedCanvas = document.createElement('canvas');
+         var croppedCtx = croppedCanvas.getContext('2d');
+
+         croppedCanvas.width = imageData.width;
+         croppedCanvas.height = imageData.height;
+
+         croppedCtx.putImageData(imageData, 0, 0);
+         var croppedImg = croppedCanvas.toDataURL();
+
+      };
+   </script>
+</body>
+</html> 
