@@ -129,13 +129,15 @@ const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
-    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
+    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft) + (overlayGrid.clientTop * 2); 
+    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop) + (overlayGrid.clientLeft * 2);
 
     scale_factor = (previewImage.naturalHeight / previewImage.offsetHeight);
 
     offset_scale_x = Math.abs(offset_test_x * scale_factor);
     offset_scale_y = Math.abs(offset_test_y * scale_factor);
+
+    console.log(overlayGrid);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
