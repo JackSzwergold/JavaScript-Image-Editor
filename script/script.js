@@ -151,9 +151,16 @@ const saveImage = () => {
     offset_x = (canvas.width / 2);
     offset_y = (canvas.height / 2);
 
-    console.log(offset_scale_x + 'x' + offset_scale_y);
-    console.log(canvas.width + 'x' + canvas.height);
-    console.log(offset_x + 'x' + offset_y);
+    offset_calc_x = (offset_x + offset_scale_x);
+    offset_calc_y = (offset_y + offset_scale_y);
+
+    canvas.width = (canvas.width + offset_scale_x);
+    canvas.height = (canvas.height + offset_scale_y);
+
+    console.log('Offset Scale: ' + offset_scale_x + 'x' + offset_scale_y);
+    console.log('Canvas: ' + canvas.width + 'x' + canvas.height);
+    console.log('Offset: ' + offset_x + 'x' + offset_y);
+    console.log('Offset Calc: ' + offset_calc_x + 'x' + offset_calc_y);
 
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(offset_x, offset_y);
@@ -166,10 +173,10 @@ const saveImage = () => {
     // ctx.stroke();
 
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
-        ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
+        ctx.drawImage(previewImage, -offset_calc_y, -offset_calc_x, canvas.height, canvas.width);
     }
     else {
-        ctx.drawImage(previewImage, -offset_x, -offset_y, canvas.width, canvas.height);
+        ctx.drawImage(previewImage, -offset_calc_x, -offset_calc_y, canvas.width, canvas.height);
     }
     
     const link = document.createElement("a");
