@@ -128,13 +128,13 @@ const saveImage = () => {
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
 
-    // alert(overlayGrid.offsetTop);
-    // alert(overlayGrid.offsetLeft);
+    offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
+    offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
     // alert(overlayGrid.offsetWidth);
     // alert(overlayGrid.offsetHeight);
     // console.log(overlayGrid);
-    console.log(previewImage);
-
+    // console.log(previewImage);
+    alert(offset_test_x);
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
