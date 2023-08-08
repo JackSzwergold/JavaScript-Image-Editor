@@ -179,9 +179,6 @@ const saveImage = () => {
     }
     ctx.scale(flipHorizontal, flipVertical);
 
-    // ctx.rect(offset_x, offset_y, 100, 100);
-    // ctx.stroke();
-
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
         ctx.drawImage(previewImage, -offset_y, -offset_x, canvas.height, canvas.width);
     }
