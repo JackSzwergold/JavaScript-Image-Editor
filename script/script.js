@@ -147,9 +147,6 @@ const saveImage = () => {
         canvas.height = previewImage.naturalHeight * resize_factor;  
     }
 
-    // offset_x = (offset_test_x * resize_factor);
-    // offset_y = (offset_test_y * resize_factor);
-
     offset_x = (canvas.width / 2);
     offset_y = (canvas.height / 2);
 
