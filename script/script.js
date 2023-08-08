@@ -131,10 +131,17 @@ const saveImage = () => {
 
     offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
     offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
-    // alert(offset_test_x);
+
+    scale_factor = (previewImage.naturalHeight / previewImage.offsetHeight);
+
+    offset_scale_x = (offset_test_x * scale_factor);
+    offset_scale_y = (offset_test_y * scale_factor);
+
+    // alert(offset_scale_x);
+    // alert(offset_scale_y);
     // alert(offset_test_y);
     // console.log(overlayGrid);
-    // console.log(previewImage);
+    console.log(previewImage);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
