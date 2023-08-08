@@ -134,7 +134,8 @@ const saveImage = () => {
     // alert(overlayGrid.offsetHeight);
     // console.log(overlayGrid);
     // console.log(previewImage);
-    alert(offset_test_x);
+    // alert(offset_test_x);
+
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
     if (Math.abs(rotate) == 90 || Math.abs(rotate) == 270) {
@@ -145,6 +146,9 @@ const saveImage = () => {
         canvas.width = previewImage.naturalWidth * resize_factor;
         canvas.height = previewImage.naturalHeight * resize_factor;  
     }
+
+    // offset_x = (offset_test_x * resize_factor);
+    // offset_y = (offset_test_y * resize_factor);
 
     offset_x = (canvas.width / 2);
     offset_y = (canvas.height / 2);
