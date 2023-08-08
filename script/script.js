@@ -137,7 +137,10 @@ const saveImage = () => {
     offset_scale_x = Math.abs(offset_test_x * scale_factor);
     offset_scale_y = Math.abs(offset_test_y * scale_factor);
 
-    console.log(overlayGrid);
+    offset_size_h = Math.abs(overlayGrid.offsetHeight * scale_factor);
+    offset_size_w = Math.abs(overlayGrid.offsetWidth * scale_factor);
+    
+    // console.log(overlayGrid);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
@@ -164,6 +167,7 @@ const saveImage = () => {
     new_height = (canvas.height + offset_scale_y);
 
     console.log('Offset Scale: ' + offset_scale_x + 'x' + offset_scale_y);
+    console.log('Offset Height: ' + offset_size_w + 'x' + offset_size_h);
     console.log('Offset: ' + offset_x + 'x' + offset_y);
     console.log('Offset Calc: ' + offset_calc_x + 'x' + offset_calc_y);
     console.log('Canvas: ' + canvas.width + 'x' + canvas.height);
