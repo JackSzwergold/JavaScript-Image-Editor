@@ -131,8 +131,8 @@ const saveImage = () => {
 
     offset_test_x = (overlayGrid.offsetLeft - previewImage.offsetLeft);
     offset_test_y = (overlayGrid.offsetTop - previewImage.offsetTop);
-    alert(offset_test_x);
-    alert(offset_test_y);
+    // alert(offset_test_x);
+    // alert(offset_test_y);
     // console.log(overlayGrid);
     // console.log(previewImage);
 
