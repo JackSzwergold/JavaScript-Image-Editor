@@ -134,14 +134,11 @@ const saveImage = () => {
 
     scale_factor = (previewImage.naturalHeight / previewImage.offsetHeight);
 
-    Math.abs(offset_scale_x) = (offset_test_x * scale_factor);
-    Math.abs(offset_scale_y) = (offset_test_y * scale_factor);
+    offset_scale_x = Math.abs(offset_test_x * scale_factor);
+    offset_scale_y = Math.abs(offset_test_y * scale_factor);
 
     // alert(offset_scale_x);
     // alert(offset_scale_y);
-    // alert(offset_test_y);
-    // console.log(overlayGrid);
-    // console.log(previewImage);
 
     resize_height = 900;
     resize_factor = (resize_height / previewImage.naturalHeight);
@@ -154,8 +151,11 @@ const saveImage = () => {
         canvas.height = (previewImage.naturalHeight - offset_scale_y) * resize_factor;  
     }
 
-    offset_x = ((canvas.width - offset_scale_x) / 2);
-    offset_y = ((canvas.height - offset_scale_y) / 2);
+    offset_x = Math.abs((canvas.width - offset_scale_x) / 2);
+    offset_y = Math.abs((canvas.height - offset_scale_y) / 2);
+
+    console.log(offset_x);
+    console.log(offset_y);
 
     ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) grayscale(${grayscale}%) blur(${blur}px)`;
     ctx.translate(offset_x, offset_y);
