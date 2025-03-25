@@ -109,7 +109,7 @@ const resetFilter = () => {
     filterValueSaturation.innerText = `100%`;
     saturation = filterSliderSaturation.value = 100;
 
-    filterValueGrayscale.innerText = `0%`;
+    // filterValueGrayscale.innerText = `0%`;
     // grayscale = filterSliderGrayscale.value = 0;
 
     filterValueBlur.innerText = `0px`;
