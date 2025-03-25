@@ -24,110 +24,74 @@
           <div class="modal-content">
 
             <div class="modal-header p-0 px-3 pt-2 pb-2">
-              <h2 class="modal-title parsons_text" id="alias_confirmation_title">Confirm Alias Selection</h2>
+              <h2 class="modal-title parsons_text" id="alias_confirmation_title">Edit Image</h2>
               <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
             </div><!-- modal-header -->
 
-            <form id="confirmAliasForm" action="#" method="POST">
+            <div class="container fluid">
+                <div class="row p-4 bg-secondary">
 
-              <div class="modal-body">
+                    <div class="wrapper p-0 m-0 col col-6 overflow-hidden">
 
-                <p class="small m-0 p-0">You have selected the following email alias:</p>
-                <div id="alias_display" class="show h3"></div>
+                        <div class="preview_image p-0 m-0 col col-12">
+                            <img src="images/placeholder.jpg" class="p-0 m-0 mx-auto d-block" />
+                        </div>
 
-                <div class="p-0 m-0" id="instructions_row">
-                  <p class="small">Please review your selection. You will not be able to change your alias once you click the "Confirm Selection" button</p>
-                  <p class="small">To save your selection, please accept the agreement and authenticate with your New School NetID credentials.</p>
+                    </div>
+
+                    <div class="p-0 m-0 p-3 col col-6 bg-white">
+
+                        <div class="form-group p-0 m-0 mb-2" id="slider_brightness">
+                            <label for="formControlBrightness" class="small">Brightness <span>100%</span></label><br clear="all" />
+                            <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlBrightness">
+                        </div>
+
+                        <div class="form-group p-0 m-0 mb-2" id="slider_contrast">
+                            <label for="formControlContrast" class="small">Contrast <span>100%</span></label><br clear="all" />
+                            <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlContrast">
+                        </div>
+
+                        <div class="form-group p-0 m-0 mb-2" id="slider_saturation">
+                            <label for="formControlSaturation" class="small">Saturation <span>100%</span></label><br clear="all" />
+                            <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlSaturation">
+                        </div>
+
+                        <!-- <div class="form-group p-0 m-0 mb-2" id="slider_grayscale">
+                            <label for="formControlGrayscale" class="small">Grayscale <span>0%</span></label><br clear="all" />
+                            <input type="range" value="0" min="0" max="100" class="custom-range col col-12" id="formControlGrayscale">
+                        </div> -->
+
+                        <div class="form-group p-0 m-0 mb-2" id="slider_blur">
+                            <label for="formControlBlur" class="small">Blur <span>0px</span></label><br clear="all" />
+                            <input type="range" value="0" min="0" max="10" class="custom-range col col-12" id="formControlBlur">
+                        </div>
+
+                        <div class="p-0 m-0">
+
+                            <div class="p-0 m-0 mb-2 col col-12" id="rotate">
+                                <button id="left" class="btn btn-secondary btn-sm">Rotate Left</em></button>
+                                <button id="right" class="btn btn-secondary btn-sm">Rotate Right</button>
+                                <button id="horizontal" class="btn btn-secondary btn-sm">Flip H</em></button>
+                                <button id="vertical" class="btn btn-secondary btn-sm">Flip V</button>
+                            </div>
+
+                            <div class="p-0 m-0 col col-12">
+                                <button class="btn btn-outline-dark btn-sm" id="choose_image">Choose Image</button>     
+                                <button class="btn btn-outline-dark btn-sm" id="reset_filter">Reset</button>
+                                <button class="btn btn-success btn-sm" id="save_image">Save Image</button>
+                                <input type="file" id="file_input" accept="image/*" hidden>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-
-                <div class="form-check mb-2" id="consent_row">
-                  <input class="form-check-input" id="ad_check" type="checkbox" value="1">
-                  <label class="form-check-label small" for="ad_check">
-                    I understand that I may choose only one alias and once submitted it can not be changed.
-                  </label>
-                </div>
-
-                <div id="password_row" class="mb-3 input-group input-group-lg">
-                    <input class="form-control form-control-md bound" placeholder="" aria-label="" id="ad_password" type="password" maxlength="256" autocomplete="off" value="">
-                  <span class="input-group-text user-select-none">NetID Password</span>
-                </div>
-
-                <div id="confirmation_panel"></div>
-
-              </div><!-- modal-body -->
-
-              <div class="modal-footer p-0 px-3 pb-3 border-0">
-                <div class="m-0 p-0 col col-12" id="confirm_alias_button_row">
-                  <button type="button" id="confirm_alias_button" class="btn btn-primary btn-lg text-uppercase col col-12 rounded-0">Confirm Selection</button>
-                </div>
-              </div><!-- modal-footer -->
-
-            </form><!-- form -->
+            </div>
 
           </div>
         </div>
       </div><!-- modal -->
-
-    <div class="container fluid">
-        <div class="row p-4 bg-secondary">
-
-            <div class="wrapper p-0 m-0 col col-6 overflow-hidden">
-
-                <div class="preview_image p-0 m-0 col col-12">
-                    <img src="images/placeholder.jpg" class="p-0 m-0 mx-auto d-block" />
-                </div>
-
-            </div>
-
-            <div class="p-0 m-0 p-3 col col-6 bg-white">
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_brightness">
-                    <label for="formControlBrightness" class="small">Brightness <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlBrightness">
-                </div>
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_contrast">
-                    <label for="formControlContrast" class="small">Contrast <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlContrast">
-                </div>
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_saturation">
-                    <label for="formControlSaturation" class="small">Saturation <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlSaturation">
-                </div>
-<!-- 
-                <div class="form-group p-0 m-0 mb-2" id="slider_grayscale">
-                    <label for="formControlGrayscale" class="small">Grayscale <span>0%</span></label><br clear="all" />
-                    <input type="range" value="0" min="0" max="100" class="custom-range col col-12" id="formControlGrayscale">
-                </div> -->
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_blur">
-                    <label for="formControlBlur" class="small">Blur <span>0px</span></label><br clear="all" />
-                    <input type="range" value="0" min="0" max="10" class="custom-range col col-12" id="formControlBlur">
-                </div>
-
-                <div class="p-0 m-0">
-
-                    <div class="p-0 m-0 mb-2 col col-12" id="rotate">
-                        <button id="left" class="btn btn-secondary btn-sm">Rotate Left</em></button>
-                        <button id="right" class="btn btn-secondary btn-sm">Rotate Right</button>
-                        <button id="horizontal" class="btn btn-secondary btn-sm">Flip H</em></button>
-                        <button id="vertical" class="btn btn-secondary btn-sm">Flip V</button>
-                    </div>
-
-                    <div class="p-0 m-0 col col-12">
-                        <button class="btn btn-outline-dark btn-sm" id="choose_image">Choose Image</button>     
-                        <button class="btn btn-outline-dark btn-sm" id="reset_filter">Reset</button>
-                        <button class="btn btn-success btn-sm" id="save_image">Save Image</button>
-                        <input type="file" id="file_input" accept="image/*" hidden>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 
     <script src="script/script.js"></script>
     
