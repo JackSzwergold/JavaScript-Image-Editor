@@ -14,6 +14,60 @@
   </head>
   <body>
 
+    <div class="m-0 p-0 col col-12">
+        <button type="button" id="choose_alias_button" class="btn btn-primary btn-lg text-uppercase mt-3 col col-12 rounded-0" data-bs-toggle="modal" data-bs-target="#alias_confirmation_modal">Edit Image</button>
+    </div>
+
+      <!-- modal -->
+      <div class="modal fade" id="alias_confirmation_modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+
+            <div class="modal-header p-0 px-3 pt-2 pb-2">
+              <h2 class="modal-title parsons_text" id="alias_confirmation_title">Confirm Alias Selection</h2>
+              <button type="button" class="btn-close"  data-bs-dismiss="modal" aria-label="Close"></button>
+            </div><!-- modal-header -->
+
+            <form id="confirmAliasForm" action="#" method="POST">
+
+              <div class="modal-body">
+
+                <p class="small m-0 p-0">You have selected the following email alias:</p>
+                <div id="alias_display" class="show h3"></div>
+
+                <div class="p-0 m-0" id="instructions_row">
+                  <p class="small">Please review your selection. You will not be able to change your alias once you click the "Confirm Selection" button</p>
+                  <p class="small">To save your selection, please accept the agreement and authenticate with your New School NetID credentials.</p>
+                </div>
+
+                <div class="form-check mb-2" id="consent_row">
+                  <input class="form-check-input" id="ad_check" type="checkbox" value="1">
+                  <label class="form-check-label small" for="ad_check">
+                    I understand that I may choose only one alias and once submitted it can not be changed.
+                  </label>
+                </div>
+
+                <div id="password_row" class="mb-3 input-group input-group-lg">
+                    <input class="form-control form-control-md bound" placeholder="" aria-label="" id="ad_password" type="password" maxlength="256" autocomplete="off" value="">
+                  <span class="input-group-text user-select-none">NetID Password</span>
+                </div>
+
+                <div id="confirmation_panel"></div>
+
+              </div><!-- modal-body -->
+
+              <div class="modal-footer p-0 px-3 pb-3 border-0">
+                <div class="m-0 p-0 col col-12" id="confirm_alias_button_row">
+                  <button type="button" id="confirm_alias_button" class="btn btn-primary btn-lg text-uppercase col col-12 rounded-0">Confirm Selection</button>
+                </div>
+              </div><!-- modal-footer -->
+
+            </form><!-- form -->
+
+          </div>
+        </div>
+      </div><!-- modal -->
+
     <div class="container fluid">
         <div class="row p-4 bg-secondary">
 
