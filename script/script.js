@@ -33,7 +33,16 @@ let rotate = 0,
     ;
 
 const loadImage = () => {
-    // New image embed stuff.
+    let file = fileInput.files[0];
+    if (!file) return;
+    previewImage.src = URL.createObjectURL(file);
+    fileName = file.name
+    previewImage.addEventListener("load", () => {
+        resetFilterButton.click();
+    });
+}
+
+const initImage = () => {
     url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
     fetch(url)
       .then(response => response.blob())
@@ -46,15 +55,8 @@ const loadImage = () => {
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
     });
-    // Old upload stuff.
-    // let file = fileInput.files[0];
-    // if (!file) return;
-    // previewImage.src = URL.createObjectURL(file);
-    // fileName = file.name
-    // previewImage.addEventListener("load", () => {
-    //     resetFilterButton.click();
-    // });
 }
+
 
 const applyFilter = () => {
     previewImage.style.transform = `rotate(${rotate}deg) scale(${flipHorizontal}, ${flipVertical})`;
@@ -183,6 +185,6 @@ filterSliderBlur.addEventListener("input", updateFilter);
 resetFilterButton.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
 
-fileInput.addEventListener("change", loadImage);
-// fileInput.addEventListener("load", loadImage);
+// fileInput.addEventListener("change", loadImage);
+window.addEventListener("load", initImage);
 chooseImageButton.addEventListener("click", () => fileInput.click());
