@@ -43,15 +43,15 @@ const loadImage = () => {
 }
 
 const initImage = () => {
-    url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
-    fetch(url)
+    var src_url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
+    fetch(src_url)
       .then(response => response.blob())
       .then(blob => {
         const url = URL.createObjectURL(blob);
         for (const previewImage of document.querySelectorAll('img'))
           previewImage.src = url;
       });
-    fileName = url.split('/').pop();
+    fileName = src_url.split('/').pop();
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
     });
