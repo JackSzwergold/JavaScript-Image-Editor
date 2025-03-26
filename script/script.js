@@ -44,14 +44,14 @@ const loadImage = () => {
 
 const initImage = () => {
     var src_url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
-    fetch(src_url)
-      .then(response => response.blob())
-      .then(blob => {
-        const url = URL.createObjectURL(blob);
-        for (const previewImage of document.querySelectorAll('img'))
-          previewImage.src = url;
-      });
-    fileName = src_url.split('/').pop();
+    fileName = 'test.jpg';
+    // fetch(src_url)
+    //   .then(response => response.blob())
+    //   .then(blob => {
+    //     const url = URL.createObjectURL(blob);
+    //     for (const previewImage of document.querySelectorAll('img'))
+    //       previewImage.src = url;
+    //   });
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
     });
