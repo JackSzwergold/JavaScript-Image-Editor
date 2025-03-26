@@ -1,25 +1,25 @@
 
-fileInput = document.querySelector("#file_input");
+fileInput = document.querySelector('#file_input');
 
-filterValueBrightness = document.querySelector("#slider_brightness label span");
-filterValueContrast = document.querySelector("#slider_contrast label span");
-filterValueSaturation = document.querySelector("#slider_saturation label span");
-// filterValueGrayscale = document.querySelector("#slider_grayscale label span");
-filterValueBlur = document.querySelector("#slider_blur label span");
+filterValueBrightness = document.querySelector('#slider_brightness label span');
+filterValueContrast = document.querySelector('#slider_contrast label span');
+filterValueSaturation = document.querySelector('#slider_saturation label span');
+// filterValueGrayscale = document.querySelector('#slider_grayscale label span');
+filterValueBlur = document.querySelector('#slider_blur label span');
 
-filterSliderBrightness = document.querySelector("#slider_brightness input");
-filterSliderContrast = document.querySelector("#slider_contrast input");
-filterSliderSaturation = document.querySelector("#slider_saturation input");
-// filterSliderGrayscale = document.querySelector("#slider_grayscale input");
+filterSliderBrightness = document.querySelector('#slider_brightness input');
+filterSliderContrast = document.querySelector('#slider_contrast input');
+filterSliderSaturation = document.querySelector('#slider_saturation input');
+// filterSliderGrayscale = document.querySelector('#slider_grayscale input');
 filterSliderBlur = document.querySelector("#slider_blur input");
 
-rotateOptions = document.querySelectorAll("#rotate button");
+rotateOptions = document.querySelectorAll('#rotate button');
 
-previewImage = document.querySelector(".preview_image img");
-resetFilterButton = document.querySelector("#reset_filter");
+previewImage = document.querySelector('.preview_image img');
+resetFilterButton = document.querySelector('#reset_filter');
 
-// chooseImageButton = document.querySelector("#choose_image");
-saveImageButton = document.querySelector("#save_image");
+// chooseImageButton = document.querySelector('#choose_image');
+saveImageButton = document.querySelector('#save_image');
 
 
 let brightness = 100,
@@ -37,23 +37,14 @@ const loadImage = () => {
     if (!file) return;
     previewImage.src = URL.createObjectURL(file);
     fileName = file.name
-    previewImage.addEventListener("load", () => {
+    previewImage.addEventListener('click', () => {
         resetFilterButton.click();
     });
 }
 
 const initImage = () => {
-    var img_element = document.getElementById('image');
-    fileName = img_element.getAttribute('alt');
-    // var src_url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
-    // fetch(src_url)
-    //   .then(response => response.blob())
-    //   .then(blob => {
-    //     const url = URL.createObjectURL(blob);
-    //     for (const previewImage of document.querySelectorAll('img'))
-    //       previewImage.src = url;
-    //   });
-    previewImage.addEventListener("load", () => {
+    fileName = previewImage.getAttribute('alt');
+    previewImage.addEventListener('click', () => {
         resetFilterButton.click();
     });
 }
@@ -86,8 +77,8 @@ const updateFilter = () => {
 rotateOptions.forEach(option => {
 
 
-    option.addEventListener("click", () => {
-        if (option.id === "left") {
+    option.addEventListener('click', () => {
+        if (option.id === 'left') {
             if (rotate == -270) {
                 rotate = 0;
             }
@@ -95,7 +86,7 @@ rotateOptions.forEach(option => {
                 rotate -= 90;
             }
         }
-        else if (option.id === "right") {
+        else if (option.id === 'right') {
             if (rotate == 270) {
                 rotate = 0;
             }
@@ -103,10 +94,10 @@ rotateOptions.forEach(option => {
                 rotate += 90;
             }
         }
-        else if (option.id === "horizontal") {
+        else if (option.id === 'horizontal') {
             flipHorizontal = flipHorizontal === 1 ? -1 : 1;
         }
-        else if (option.id === "vertical") {
+        else if (option.id === 'vertical') {
             flipVertical = flipVertical === 1 ? -1 : 1;
         }
 
@@ -142,8 +133,8 @@ const resetFilter = () => {
 }
 
 const saveImage = () => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
     resize_height = 900
     resize_factor = (resize_height / previewImage.naturalHeight);
@@ -171,21 +162,21 @@ const saveImage = () => {
         ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
     }
     
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.download = fileName;
     link.href = canvas.toDataURL('image/jpeg', 0.75);
     link.click();
 }
 
-filterSliderBrightness.addEventListener("input", updateFilter);
-filterSliderContrast.addEventListener("input", updateFilter);
-filterSliderSaturation.addEventListener("input", updateFilter);
-// filterSliderGrayscale.addEventListener("input", updateFilter);
-filterSliderBlur.addEventListener("input", updateFilter);
+filterSliderBrightness.addEventListener('input', updateFilter);
+filterSliderContrast.addEventListener('input', updateFilter);
+filterSliderSaturation.addEventListener('input', updateFilter);
+// filterSliderGrayscale.addEventListener('input', updateFilter);
+filterSliderBlur.addEventListener('input', updateFilter);
 
-resetFilterButton.addEventListener("click", resetFilter);
-saveImageButton.addEventListener("click", saveImage);
+resetFilterButton.addEventListener('click', resetFilter);
+saveImageButton.addEventListener('click', saveImage);
 
 // fileInput.addEventListener("change", loadImage);
-window.addEventListener("load", initImage);
-// chooseImageButton.addEventListener("click", () => fileInput.click());
+window.addEventListener('click', initImage);
+// chooseImageButton.addEventListener('click', () => fileInput.click());
