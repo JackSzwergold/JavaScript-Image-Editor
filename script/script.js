@@ -33,13 +33,27 @@ let rotate = 0,
     ;
 
 const loadImage = () => {
-    let file = fileInput.files[0];
-    if (!file) return;
-    previewImage.src = URL.createObjectURL(file);
-    fileName = file.name
+    // New image embed stuff.
+    url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const url = URL.createObjectURL(blob);
+        for (const previewImage of document.querySelectorAll('img'))
+          previewImage.src = url;
+      });
+    fileName = url.split('/').pop();
     previewImage.addEventListener("load", () => {
         resetFilterButton.click();
     });
+    // Old upload stuff.
+    // let file = fileInput.files[0];
+    // if (!file) return;
+    // previewImage.src = URL.createObjectURL(file);
+    // fileName = file.name
+    // previewImage.addEventListener("load", () => {
+    //     resetFilterButton.click();
+    // });
 }
 
 const applyFilter = () => {
@@ -170,4 +184,5 @@ resetFilterButton.addEventListener("click", resetFilter);
 saveImageButton.addEventListener("click", saveImage);
 
 fileInput.addEventListener("change", loadImage);
+// fileInput.addEventListener("load", loadImage);
 chooseImageButton.addEventListener("click", () => fileInput.click());
