@@ -18,7 +18,7 @@ rotateOptions = document.querySelectorAll("#rotate button");
 previewImage = document.querySelector(".preview_image img");
 resetFilterButton = document.querySelector("#reset_filter");
 
-chooseImageButton = document.querySelector("#choose_image");
+// chooseImageButton = document.querySelector("#choose_image");
 saveImageButton = document.querySelector("#save_image");
 
 
@@ -188,4 +188,4 @@ saveImageButton.addEventListener("click", saveImage);
 
 // fileInput.addEventListener("change", loadImage);
 window.addEventListener("load", initImage);
-chooseImageButton.addEventListener("click", () => fileInput.click());
+// chooseImageButton.addEventListener("click", () => fileInput.click());
