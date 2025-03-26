@@ -43,8 +43,9 @@ const loadImage = () => {
 }
 
 const initImage = () => {
-    var src_url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
-    fileName = 'test.jpg';
+    var img_element = document.getElementById('image');
+    fileName = img_element.getAttribute('alt');
+    // var src_url = 'http://localhost:8888/JavaScript-Image-Editor/images/test.jpg';
     // fetch(src_url)
     //   .then(response => response.blob())
     //   .then(blob => {
