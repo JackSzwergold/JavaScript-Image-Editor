@@ -164,7 +164,11 @@ const saveImage = () => {
     
     const link = document.createElement('a');
     link.download = fileName;
-    link.href = canvas.toDataURL('image/jpeg', 0.75);
+    base64_raw = canvas.toDataURL('image/jpeg', 0.75);
+    link.href = base64_raw;
+    // base64_content = canvas.toDataURL('image/jpeg', 0.75).split(';base64,')[1];
+    // alert(base64_raw);
+    // alert(base64_content);
     link.click();
 }
 
