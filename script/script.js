@@ -164,12 +164,21 @@ const saveImage = () => {
     
     const link = document.createElement('a');
     link.download = fileName;
-    base64_raw = canvas.toDataURL('image/jpeg', 0.75);
-    link.href = base64_raw;
+    base64_data = canvas.toDataURL('image/jpeg', 0.75);
+    link.href = base64_data;
     // base64_content = canvas.toDataURL('image/jpeg', 0.75).split(';base64,')[1];
-    // alert(base64_raw);
+    // alert(base64_data);
     // alert(base64_content);
     link.click();
+    $.ajax({
+        url: 'test_receiver.php', 
+        type: 'POST', 
+        data:{
+            data: base64_data
+        }
+    });
+
+
 }
 
 filterSliderBrightness.addEventListener('input', updateFilter);
