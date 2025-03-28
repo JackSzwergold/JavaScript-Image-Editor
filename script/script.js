@@ -168,9 +168,10 @@ jQuery.noConflict();
         }
 
         mimeType = 'image/jpeg';
+        fileExtension = 'jpg';
         quality = 0.95;
 
-        base64_data = canvas.toDataURL(mime_type, 0.95);
+        base64_data = canvas.toDataURL(mimeType, 0.95);
         // const link = document.createElement('a');
         // link.href = base64_data;
         // link.download = fileName;
@@ -181,6 +182,7 @@ jQuery.noConflict();
             type: 'POST', 
             data:{
                 filename: fileName,
+                extension: fileExtension,
                 mime_type: mimeType,
                 data: base64_data
             }
