@@ -166,17 +166,19 @@ jQuery.noConflict();
         else {
             ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
-        
-        const link = document.createElement('a');
-        link.download = fileName;
+
         base64_data = canvas.toDataURL('image/jpeg', 0.95);
-        link.href = base64_data;
+        // const link = document.createElement('a');
+        // link.href = base64_data;
+        // link.download = fileName;
         // link.click();
+        // This sends the image to the receiver.
         $.ajax({
-            url: 'test_receiver.php', 
+            url: 'receiver.php', 
             type: 'POST', 
             data:{
-                data: base64_data
+                data: base64_data,
+                filname: fileName
             }
         });
 
