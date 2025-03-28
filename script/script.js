@@ -185,6 +185,13 @@ jQuery.noConflict();
                 extension: fileExtension,
                 mime_type: mimeType,
                 data: base64_data
+            },
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (c) {
+                alert('It worked!');
             }
         });
 
