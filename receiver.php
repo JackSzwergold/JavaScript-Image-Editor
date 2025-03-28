@@ -1,9 +1,11 @@
 <?php
 
 $data = $_POST['data'];
+$filename = $_POST['filename'];
+
 $data = substr($data, strpos($data, ",") + 1);
 $data = base64_decode($data);
-$file = 'test.jpg';
-file_put_contents($file, $data);
+
+file_put_contents($filename, $data);
 
 ?>

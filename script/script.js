@@ -178,10 +178,9 @@ jQuery.noConflict();
             type: 'POST', 
             data:{
                 data: base64_data,
-                filname: fileName
+                filename: fileName
             }
         });
-
 
     }
 
