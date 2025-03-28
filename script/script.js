@@ -169,11 +169,8 @@ jQuery.noConflict();
         
         const link = document.createElement('a');
         link.download = fileName;
-        base64_data = canvas.toDataURL('image/jpeg', 0.75);
+        base64_data = canvas.toDataURL('image/jpeg', 0.95);
         link.href = base64_data;
-        // base64_content = canvas.toDataURL('image/jpeg', 0.75).split(';base64,')[1];
-        // alert(base64_data);
-        // alert(base64_content);
         // link.click();
         $.ajax({
             url: 'test_receiver.php', 
