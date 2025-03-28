@@ -167,7 +167,10 @@ jQuery.noConflict();
             ctx.drawImage(previewImage, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
-        base64_data = canvas.toDataURL('image/jpeg', 0.95);
+        mimeType = 'image/jpeg';
+        quality = 0.95;
+
+        base64_data = canvas.toDataURL(mime_type, 0.95);
         // const link = document.createElement('a');
         // link.href = base64_data;
         // link.download = fileName;
@@ -177,8 +180,9 @@ jQuery.noConflict();
             url: 'receiver.php', 
             type: 'POST', 
             data:{
-                data: base64_data,
-                filename: fileName
+                filename: fileName,
+                mime_type: mimeType,
+                data: base64_data
             }
         });
 
