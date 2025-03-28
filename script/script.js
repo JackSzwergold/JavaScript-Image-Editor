@@ -27,6 +27,7 @@ jQuery.noConflict();
 
 
     let brightness = 100,
+        contrast = 100, 
         saturation = 100, 
         grayscale = 0
         ;
