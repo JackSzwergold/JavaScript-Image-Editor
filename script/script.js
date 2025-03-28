@@ -179,17 +179,14 @@ jQuery.noConflict();
         // This sends the image to the receiver.
         $.ajax({
             url: 'receiver.php', 
-            type: 'POST', 
             data:{
                 filename: fileName,
                 extension: fileExtension,
                 mime_type: mimeType,
                 data: base64_data
             },
+            type: 'POST', 
             cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST',
             success: function (c) {
                 alert('It worked!');
             }
