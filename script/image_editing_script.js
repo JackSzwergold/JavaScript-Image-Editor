@@ -36,6 +36,10 @@ jQuery.noConflict();
     blur_slider = document.querySelector('#blur_slider input');
 
     /**************************************************************************/
+    // The rotate buttons.
+    rotate_buttons = document.querySelectorAll('#rotate button');
+
+    /**************************************************************************/
     // The image preview itself.
     preview_image = document.querySelector('.preview_image img');
 
@@ -200,7 +204,9 @@ jQuery.noConflict();
 
     } // save_image_handler
 
-    document.querySelectorAll('#rotate button').forEach(option => {
+    /****************************************************************************/
+    // Set the rotate buttons.
+    rotate_buttons.forEach(option => {
 
         option.addEventListener('click', () => {
             if (option.id === 'left') {
@@ -232,8 +238,8 @@ jQuery.noConflict();
 
         });
     });
-
-    /**************************************************************************/
+ 
+    /****************************************************************************/
     // Set the listeners.
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
