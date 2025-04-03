@@ -35,7 +35,6 @@ jQuery.noConflict();
     saturation_slider = document.querySelector('#saturation_slider input');
     blur_slider = document.querySelector('#blur_slider input');
 
-
     /**************************************************************************/
     // The image preview itself.
     preview_image = document.querySelector('.preview_image img');
