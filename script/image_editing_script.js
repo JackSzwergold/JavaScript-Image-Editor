@@ -44,10 +44,12 @@ jQuery.noConflict();
     reset_filter_button = $('#reset_filter');
     save_image_button = $('#save_image');
 
+
+    /**************************************************************************/
+    // Initial control values.
     brightness = 100;
     contrast = 100;
     saturation = 100;
-
     rotate = 0;
     flip_horizontal = 1;
     flip_vertical = 1;
