@@ -97,6 +97,8 @@ jQuery.noConflict();
         saturation = Math.floor(saturation_slider.value);
         blur = Math.floor(blur_slider.value);
 
+        /************************************************************************/
+        // Apply the filter handler.
         apply_filter_handler();
 
     } // update_filter_values_handler
@@ -122,6 +124,8 @@ jQuery.noConflict();
         flip_horizontal = 1;
         flip_vertical = 1;
 
+        /************************************************************************/
+        // Apply the filter handler.
         apply_filter_handler();
 
     } // reset_filter_handler
@@ -221,6 +225,8 @@ jQuery.noConflict();
                 flip_vertical = flip_vertical === 1 ? -1 : 1;
             }
 
+            /********************************************************************/
+            // Apply the filter handler.
             apply_filter_handler();
 
         });
