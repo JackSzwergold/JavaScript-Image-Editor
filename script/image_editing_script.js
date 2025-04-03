@@ -22,17 +22,17 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The slider text values.
-    brightness_text = document.querySelector('#slider_brightness label span');
-    contrast_text = document.querySelector('#slider_contrast label span');
-    saturation_text = document.querySelector('#slider_saturation label span');
-    blur_text = document.querySelector('#slider_blur label span');
+    brightness_text = document.querySelector('#brightness_slider label span');
+    contrast_text = document.querySelector('#contrast_slider label span');
+    saturation_text = document.querySelector('#saturation_slider label span');
+    blur_text = document.querySelector('#blur_slider label span');
 
     /**************************************************************************/
     // The slider input items.
-    slider_brightness = document.querySelector('#slider_brightness input');
-    slider_contrast = document.querySelector('#slider_contrast input');
-    slider_saturation = document.querySelector('#slider_saturation input');
-    slider_blur = document.querySelector("#slider_blur input");
+    brightness_slider = document.querySelector('#brightness_slider input');
+    contrast_slider = document.querySelector('#contrast_slider input');
+    saturation_slider = document.querySelector('#saturation_slider input');
+    blur_slider = document.querySelector("#blur_slider input");
 
     preview_image = document.querySelector('.preview_image img');
 
@@ -82,15 +82,15 @@ jQuery.noConflict();
     // Handler to update the filters.
     function update_filter_values_handler() {
 
-        brightness_text.innerText = `${slider_brightness.value}%`;
-        contrast_text.innerText = `${slider_contrast.value}%`;
-        saturation_text.innerText = `${slider_saturation.value}%`;
-        blur_text.innerText = `${slider_blur.value}px`;
+        brightness_text.innerText = `${brightness_slider.value}%`;
+        contrast_text.innerText = `${contrast_slider.value}%`;
+        saturation_text.innerText = `${saturation_slider.value}%`;
+        blur_text.innerText = `${blur_slider.value}px`;
 
-        brightness = Math.floor(slider_brightness.value);
-        contrast = Math.floor(slider_contrast.value);
-        saturation = Math.floor(slider_saturation.value);
-        blur = Math.floor(slider_blur.value);
+        brightness = Math.floor(brightness_slider.value);
+        contrast = Math.floor(contrast_slider.value);
+        saturation = Math.floor(saturation_slider.value);
+        blur = Math.floor(blur_slider.value);
 
         apply_filter_handler();
 
@@ -101,16 +101,16 @@ jQuery.noConflict();
     function reset_filter_handler() {
 
         brightness_text.innerText = `100%`;
-        brightness = slider_brightness.value = 100;
+        brightness = brightness_slider.value = 100;
 
         contrast_text.innerText = `100%`;
-        contrast = slider_contrast.value = 100;
+        contrast = contrast_slider.value = 100;
 
         saturation_text.innerText = `100%`;
-        saturation = slider_saturation.value = 100;
+        saturation = saturation_slider.value = 100;
 
         blur_text.innerText = `0px`;
-        blur = slider_blur.value = 0;
+        blur = blur_slider.value = 0;
 
         rotate = 0;
 
@@ -221,10 +221,10 @@ jQuery.noConflict();
         });
     });
 
-    slider_brightness.addEventListener('input', update_filter_values_handler);
-    slider_contrast.addEventListener('input', update_filter_values_handler);
-    slider_saturation.addEventListener('input', update_filter_values_handler);
-    slider_blur.addEventListener('input', update_filter_values_handler);
+    brightness_slider.addEventListener('input', update_filter_values_handler);
+    contrast_slider.addEventListener('input', update_filter_values_handler);
+    saturation_slider.addEventListener('input', update_filter_values_handler);
+    blur_slider.addEventListener('input', update_filter_values_handler);
 
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
