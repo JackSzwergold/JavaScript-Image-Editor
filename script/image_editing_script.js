@@ -205,7 +205,7 @@ jQuery.noConflict();
     } // save_image_handler
 
     /****************************************************************************/
-    // Set the rotate buttons.
+    // Stuff for the rotate buttons.
     rotate_buttons.forEach(option => {
 
         option.addEventListener('click', () => {
