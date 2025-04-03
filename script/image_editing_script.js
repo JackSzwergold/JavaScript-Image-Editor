@@ -162,6 +162,7 @@ jQuery.noConflict();
             ctx.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
+        /************************************************************************/
         // Set the variables for the Ajax POST.
         mimeType = 'image/jpeg';
         fileExtension = 'jpg';
