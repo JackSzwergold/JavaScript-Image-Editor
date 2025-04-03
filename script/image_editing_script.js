@@ -22,10 +22,10 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The slider text values.
-    filter_value_brightness_text = document.querySelector('#slider_brightness label span');
-    filter_value_contrast_text = document.querySelector('#slider_contrast label span');
-    filter_value_saturation_text = document.querySelector('#slider_saturation label span');
-    filter_value_blur_text = document.querySelector('#slider_blur label span');
+    brightness_text = document.querySelector('#slider_brightness label span');
+    contrast_text = document.querySelector('#slider_contrast label span');
+    saturation_text = document.querySelector('#slider_saturation label span');
+    blur_text = document.querySelector('#slider_blur label span');
 
     /**************************************************************************/
     // The slider input items.
@@ -82,10 +82,10 @@ jQuery.noConflict();
     // Handler to update the filters.
     function update_filter_values_handler() {
 
-        filter_value_brightness_text.innerText = `${slider_brightness.value}%`;
-        filter_value_contrast_text.innerText = `${slider_contrast.value}%`;
-        filter_value_saturation_text.innerText = `${slider_saturation.value}%`;
-        filter_value_blur_text.innerText = `${slider_blur.value}px`;
+        brightness_text.innerText = `${slider_brightness.value}%`;
+        contrast_text.innerText = `${slider_contrast.value}%`;
+        saturation_text.innerText = `${slider_saturation.value}%`;
+        blur_text.innerText = `${slider_blur.value}px`;
 
         brightness = Math.floor(slider_brightness.value);
         contrast = Math.floor(slider_contrast.value);
@@ -100,16 +100,16 @@ jQuery.noConflict();
     // Handler to reset the filters.
     function reset_filter_handler() {
 
-        filter_value_brightness_text.innerText = `100%`;
+        brightness_text.innerText = `100%`;
         brightness = slider_brightness.value = 100;
 
-        filter_value_contrast_text.innerText = `100%`;
+        contrast_text.innerText = `100%`;
         contrast = slider_contrast.value = 100;
 
-        filter_value_saturation_text.innerText = `100%`;
+        saturation_text.innerText = `100%`;
         saturation = slider_saturation.value = 100;
 
-        filter_value_blur_text.innerText = `0px`;
+        blur_text.innerText = `0px`;
         blur = slider_blur.value = 0;
 
         rotate = 0;
@@ -228,9 +228,6 @@ jQuery.noConflict();
 
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
-
-    // reset_filter_button.addEventListener('click', reset_filter_handler);
-    // save_image_button.addEventListener('click', save_image_handler);
 
     window.addEventListener('load', init_image_handler);
 
