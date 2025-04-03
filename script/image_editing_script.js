@@ -94,22 +94,26 @@ jQuery.noConflict();
 
         apply_filter_handler();
 
-    } // reset_filter_handler
+    } // update_filter_values_handler
 
     /****************************************************************************/
     // Handler to reset the filters.
     function reset_filter_handler() {
 
         brightness_text.innerText = `100%`;
+        // brightness_text.text('100%');
         brightness = brightness_slider.value = 100;
 
         contrast_text.innerText = `100%`;
+        // contrast_text.text('100%');
         contrast = contrast_slider.value = 100;
 
         saturation_text.innerText = `100%`;
+        // saturation_text.text('100%');
         saturation = saturation_slider.value = 100;
 
         blur_text.innerText = `0px`;
+        // blur_text.text('0px');
         blur = blur_slider.value = 0;
 
         rotate = 0;
