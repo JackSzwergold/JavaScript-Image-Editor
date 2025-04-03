@@ -1,9 +1,9 @@
 <?php
 
-$filename = $_POST['filename'];
-$extension = $_POST['extension'];
-$mime_type = $_POST['mime_type'];
-$data = $_POST['data'];
+$filename = $_POST['base64_filename'];
+$extension = $_POST['base64_extension'];
+$mime_type = $_POST['base64_mime_type'];
+$data = $_POST['base64_data'];
 
 $data = substr($data, strpos($data, ',') + 1);
 $data = base64_decode($data);
