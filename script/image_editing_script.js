@@ -197,6 +197,8 @@ jQuery.noConflict();
 
     document.querySelectorAll('#rotate button').forEach(option => {
 
+        alert(option.id);
+
         option.addEventListener('click', () => {
             if (option.id === 'left') {
                 if (rotate == -270) {
@@ -226,11 +228,14 @@ jQuery.noConflict();
         });
     });
 
+    /**************************************************************************/
+    // Set the listeners.
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
     saturation_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
 
+    // document.querySelectorAll('#rotate button').on('click', _.debounce(rotate_item_handler, general_debounce));
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
 
