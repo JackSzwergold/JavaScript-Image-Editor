@@ -32,7 +32,7 @@ jQuery.noConflict();
     brightness_slider = document.querySelector('#brightness_slider input');
     contrast_slider = document.querySelector('#contrast_slider input');
     saturation_slider = document.querySelector('#saturation_slider input');
-    blur_slider = document.querySelector("#blur_slider input");
+    blur_slider = document.querySelector('#blur_slider input');
 
     preview_image = document.querySelector('.preview_image img');
 
