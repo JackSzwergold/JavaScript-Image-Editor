@@ -197,8 +197,6 @@ jQuery.noConflict();
 
     document.querySelectorAll('#rotate button').forEach(option => {
 
-        alert(option.id);
-
         option.addEventListener('click', () => {
             if (option.id === 'left') {
                 if (rotate == -270) {
