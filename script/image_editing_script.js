@@ -23,6 +23,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The slider text values.
     brightness_text = document.querySelector('#brightness_slider label span');
+    // brightness_text = $('body').find('#brightness_slider label span');
     contrast_text = document.querySelector('#contrast_slider label span');
     saturation_text = document.querySelector('#saturation_slider label span');
     blur_text = document.querySelector('#blur_slider label span');
