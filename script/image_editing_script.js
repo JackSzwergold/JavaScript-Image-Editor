@@ -23,7 +23,6 @@ jQuery.noConflict();
     /**************************************************************************/
     // The slider text values.
     brightness_text = document.querySelector('#brightness_slider label span');
-    // brightness_text = $('body').find('#brightness_slider label span');
     contrast_text = document.querySelector('#contrast_slider label span');
     saturation_text = document.querySelector('#saturation_slider label span');
     blur_text = document.querySelector('#blur_slider label span');
@@ -249,7 +248,6 @@ jQuery.noConflict();
     saturation_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
 
-    // document.querySelectorAll('#rotate button').on('click', _.debounce(rotate_item_handler, general_debounce));
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
 
