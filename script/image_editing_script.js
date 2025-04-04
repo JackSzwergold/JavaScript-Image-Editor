@@ -112,34 +112,74 @@ jQuery.noConflict();
 
     } // update_filter_values_handler
 
+
     /****************************************************************************/
-    // Handler to reset the filters.
-    function reset_filter_handler() {
+    // Handler to rotate left.
+    function rotate_left_handler() {
 
-        brightness_text.innerText = '100%';
-        brightness = brightness_slider.value = 100;
-
-        contrast_text.innerText = '100%';
-        contrast = contrast_slider.value = 100;
-
-        saturation_text.innerText = '100%';
-        saturation = saturation_slider.value = 100;
-
-        blur_text.innerText = '0px';
-        blur = blur_slider.value = 0;
-
-        rotate = 0;
-
-        flip_horizontal = 1;
-        flip_vertical = 1;
+        /************************************************************************/
+        // Do it.
+        if (rotate == -270) {
+            rotate = 0;
+        }
+        else {
+            rotate -= 90;
+        }
 
         /************************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
-    } // reset_filter_handler
+    } // rotate_left_handler
 
     /****************************************************************************/
+    // Handler to rotate right.
+    function rotate_right_handler() {
+
+        /************************************************************************/
+        // Do it.
+        if (rotate == 270) {
+            rotate = 0;
+        }
+        else {
+            rotate += 90;
+        }
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
+    } // rotate_left_handler
+
+    /****************************************************************************/
+    // Handler to flip horizontal.
+    function flip_horizontal_handler() {
+
+        /************************************************************************/
+        // Do it.
+        flip_horizontal = flip_horizontal === 1 ? -1 : 1;
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
+    } // flip_horizontal_handler
+
+    /****************************************************************************/
+    // Handler to flip vertical.
+    function flip_vertical_handler() {
+
+        /************************************************************************/
+        // Do it.
+        flip_vertical = flip_vertical === 1 ? -1 : 1;
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
+    } // flip_vertical_handler
+
+   /****************************************************************************/
     // Handler to save the image.
     function save_image_handler() {
 
@@ -211,73 +251,35 @@ jQuery.noConflict();
         $.ajax(ajax_options);
 
     } // save_image_handler
+
+    /****************************************************************************/
+    // Handler to reset the filters.
+    function reset_filter_handler() {
+
+        brightness_text.innerText = '100%';
+        brightness = brightness_slider.value = 100;
+
+        contrast_text.innerText = '100%';
+        contrast = contrast_slider.value = 100;
+
+        saturation_text.innerText = '100%';
+        saturation = saturation_slider.value = 100;
+
+        blur_text.innerText = '0px';
+        blur = blur_slider.value = 0;
+
+        rotate = 0;
+
+        flip_horizontal = 1;
+        flip_vertical = 1;
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
+    } // reset_filter_handler
+
  
-    /****************************************************************************/
-    // Handler to rotate left.
-    function rotate_left_handler() {
-
-        /************************************************************************/
-        // Do it.
-        if (rotate == -270) {
-            rotate = 0;
-        }
-        else {
-            rotate -= 90;
-        }
-
-        /************************************************************************/
-        // Apply the filter handler.
-        apply_filter_handler();
-
-    } // rotate_left_handler
-
-    /****************************************************************************/
-    // Handler to rotate right.
-    function rotate_right_handler() {
-
-        /************************************************************************/
-        // Do it.
-        if (rotate == 270) {
-            rotate = 0;
-        }
-        else {
-            rotate += 90;
-        }
-
-        /************************************************************************/
-        // Apply the filter handler.
-        apply_filter_handler();
-
-    } // rotate_left_handler
-
-    /****************************************************************************/
-    // Handler to flip horizontal.
-    function flip_horizontal_handler() {
-
-        /************************************************************************/
-        // Do it.
-        flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-
-        /************************************************************************/
-        // Apply the filter handler.
-        apply_filter_handler();
-
-    } // flip_horizontal_handler
-
-    /****************************************************************************/
-    // Handler to flip vertical.
-    function flip_vertical_handler() {
-
-        /************************************************************************/
-        // Do it.
-        flip_vertical = flip_vertical === 1 ? -1 : 1;
-
-        /************************************************************************/
-        // Apply the filter handler.
-        apply_filter_handler();
-
-    } // flip_vertical_handler
-
     /****************************************************************************/
     // Set the listeners for the sliders.
     brightness_slider.addEventListener('input', update_filter_values_handler);
