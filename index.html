@@ -79,28 +79,20 @@
                 <input type="range" value="0" min="0" max="10" class="form-range col col-12" id="blur_slider_control">
               </div>
 
-              <div class="p-0 m-0">
+              <div class="d-grid gap-2" id="rotate">
+                <button id="left" class="btn btn-secondary btn-sm mb-2"><em class="fa fa-repeat fa-flip-horizontal"></em> Rotate Left</em></button>
+                <button id="right" class="btn btn-secondary btn-sm mb-2"><em class="fa fa-repeat"></em> Rotate Right</button>
+              </div>
 
-                <div class="m-0 p-0 col col-12" id="rotate">
-                  <div class="row">
-                    <button id="left" class="btn btn-secondary btn-sm mb-2 col col-6"><em class="fa fa-repeat fa-flip-horizontal"></em> Rotate Left</em></button>
-                    <button id="right" class="btn btn-secondary btn-sm mb-2 col col-6"><em class="fa fa-repeat"></em> Rotate Right</button>
-                  </div>
-                </div>
+              <div class="d-grid gap-2" id="rotate">
+                <button id="horizontal" class="btn btn-secondary btn-sm mb-2"><em class="fa fa-arrows-h"></em> Flip Horizontal</em></button>
+                <button id="vertical" class="btn btn-secondary btn-sm mb-2"><em class="fa fa-arrows-v"></em> Flip Vertical</button>
+              </div>
 
-                <div class="m-0 p-0 col col-12" id="rotate">
-                  <div class="row">
-                    <button id="horizontal" class="btn btn-secondary btn-sm mb-2 col col-6"><em class="fa fa-arrows-h"></em> Flip Horizontal</em></button>
-                    <button id="vertical" class="btn btn-secondary btn-sm mb-2 col col-6"><em class="fa fa-arrows-v"></em> Flip Vertical</button>
-                  </div>
-                </div>
-
-                <div class="d-grid gap-2">
-                  <button class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12" id="save_image">Save</button>
-                  <button class="btn btn-outline-danger text-danger bg-white btn-lg col col-12" id="reset_filter">Reset</button>
-                  <input type="file" id="file_input" accept="image/*" hidden>
-                </div>
-
+              <div class="d-grid gap-2">
+                <button class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12" id="save_image">Save</button>
+                <button class="btn btn-outline-danger text-danger bg-white btn-lg col col-12" id="reset_filter">Reset</button>
+                <input type="file" id="file_input" accept="image/*" hidden>
               </div>
 
             </div>
