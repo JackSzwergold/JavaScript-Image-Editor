@@ -53,6 +53,7 @@ jQuery.noConflict();
     // The main buttions.
     reset_filter_button = $('#reset_filter');
     save_image_button = $('#save_image');
+    modal_close_button = $('#modal_close');
 
     /**************************************************************************/
     // Initial control values.
@@ -236,7 +237,8 @@ jQuery.noConflict();
             success: function(response_data, textStatus, jqXHR) {
                 reset_filter_button.prop('disabled', true);
                 save_image_button.html('Working…').prop('disabled', true);
-                $('.close').click();
+                modal_close_button.click();
+                reset_filter_handler();
             },
             error: function(jqXHR, textStatus) {
                 console.log('error: ' + jqXHR.status + ' ' + textStatus + ' | ' + jqXHR.getResponseHeader('content-type'));
@@ -257,6 +259,8 @@ jQuery.noConflict();
     // Handler to reset the filters.
     function reset_filter_handler() {
 
+        /************************************************************************/
+        // Reset various values.
         brightness_text.innerText = '100%';
         brightness = brightness_slider.value = 100;
 
