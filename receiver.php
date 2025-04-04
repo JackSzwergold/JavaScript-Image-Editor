@@ -13,8 +13,6 @@ $md5_short = substr($md5_full, 0, 7);
 
 $filename_full = $filename . '_' . $md5_short . '.' . $extension;
 
-// touch($filename_full);
-
 sleep(5);
 
 file_put_contents($filename_full, $data);
