@@ -189,12 +189,14 @@ jQuery.noConflict();
             type: 'POST', 
             cache: false,
             success: function(response_data, textStatus, jqXHR) {
+                reset_filter_button.prop('disabled', true);
                 save_image_button.html('Working…').prop('disabled', true);
             },
             error: function(jqXHR, textStatus) {
                 console.log('error: ' + jqXHR.status + ' ' + textStatus + ' | ' + jqXHR.getResponseHeader('content-type'));
             },
             complete: function(jqXHR, textStatus) {
+                reset_filter_button.prop('disabled', false);
                 save_image_button.html('Save').prop('disabled', false);
             }
         };
