@@ -48,7 +48,7 @@ jQuery.noConflict();
     rotate_right_button = $('#rotate_right');
     flip_horizontal_button = $('#flip_horizontal');
     flip_vertical_button = $('#flip_vertical');
-    alert(rotate_left_button.length);
+
     /**************************************************************************/
     // The main buttions.
     reset_filter_button = $('#reset_filter');
