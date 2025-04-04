@@ -229,10 +229,10 @@ jQuery.noConflict();
                 }
             }
             else if (option.id === 'horizontal') {
-                flip_vertical = flip_vertical === 1 ? -1 : 1;
+                flip_horizontal = flip_horizontal === 1 ? -1 : 1;
             }
             else if (option.id === 'vertical') {
-                flip_horizontal = flip_horizontal === 1 ? -1 : 1;
+                flip_vertical = flip_vertical === 1 ? -1 : 1;
             }
 
             /********************************************************************/
