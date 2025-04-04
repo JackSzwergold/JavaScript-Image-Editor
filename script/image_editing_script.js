@@ -43,10 +43,16 @@ jQuery.noConflict();
     preview_image = document.querySelector('.preview_image img');
 
     /**************************************************************************/
+    // The rotation buttons.
+    rotate_left_button = $('#reset_filter');
+    rotate_right_button = $('#reset_filter');
+    flip_horizontal_button = $('#reset_filter');
+    flip_vertical_button = $('#reset_filter');
+
+    /**************************************************************************/
     // The main buttions.
     reset_filter_button = $('#reset_filter');
     save_image_button = $('#save_image');
-
 
     /**************************************************************************/
     // Initial control values.
@@ -241,6 +247,28 @@ jQuery.noConflict();
         });
     });
  
+
+    /****************************************************************************/
+    // Handler to rotate left.
+    function rotate_left_handler() {
+    } // rotate_left_handler
+
+
+    /****************************************************************************/
+    // Handler to rotate right.
+    function rotate_right_handler() {
+    } // rotate_left_handler
+
+    /****************************************************************************/
+    // Handler to flip horizontal.
+    function flip_horizontal_handler() {
+    } // flip_horizontal_handler
+
+    /****************************************************************************/
+    // Handler to flip vertical.
+    function flip_vertical_handler() {
+    } // flip_vertical_handler
+
     /****************************************************************************/
     // Set the listeners.
     brightness_slider.addEventListener('input', update_filter_values_handler);
