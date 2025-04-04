@@ -44,11 +44,11 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The rotation buttons.
-    rotate_left_button = $('#reset_filter');
-    rotate_right_button = $('#reset_filter');
-    flip_horizontal_button = $('#reset_filter');
-    flip_vertical_button = $('#reset_filter');
-
+    rotate_left_button = $('#rotate_left');
+    rotate_right_button = $('#rotate_right');
+    flip_horizontal_button = $('#flip_horizontal');
+    flip_vertical_button = $('#flip_vertical');
+    alert(rotate_left_button.length);
     /**************************************************************************/
     // The main buttions.
     reset_filter_button = $('#reset_filter');
@@ -247,35 +247,46 @@ jQuery.noConflict();
         });
     });
  
-
     /****************************************************************************/
     // Handler to rotate left.
     function rotate_left_handler() {
+        alert('Left');
     } // rotate_left_handler
-
 
     /****************************************************************************/
     // Handler to rotate right.
     function rotate_right_handler() {
+        alert('Right');
     } // rotate_left_handler
 
     /****************************************************************************/
     // Handler to flip horizontal.
     function flip_horizontal_handler() {
+        alert('Horizontal');
     } // flip_horizontal_handler
 
     /****************************************************************************/
     // Handler to flip vertical.
     function flip_vertical_handler() {
+        alert('Vertical');
     } // flip_vertical_handler
 
     /****************************************************************************/
-    // Set the listeners.
+    // Set the listeners for the sliders.
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
     saturation_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
 
+    /****************************************************************************/
+    // Set the listeners for the rotation buttons.
+    rotate_left_button.on('click', _.debounce(rotate_left_handler, general_debounce));
+    rotate_right_button.on('click', _.debounce(rotate_right_handler, general_debounce));
+    flip_horizontal_button.on('click', _.debounce(flip_horizontal_handler, general_debounce));
+    flip_vertical_button.on('click', _.debounce(flip_vertical_handler, general_debounce));
+
+    /****************************************************************************/
+    // Set the listeners for the buttons.
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
 
