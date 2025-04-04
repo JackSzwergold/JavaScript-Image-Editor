@@ -211,64 +211,71 @@ jQuery.noConflict();
         $.ajax(ajax_options);
 
     } // save_image_handler
-
-    /****************************************************************************/
-    // Stuff for the rotate buttons.
-    rotate_buttons.forEach(option => {
-
-        option.addEventListener('click', () => {
-            if (option.id === 'left') {
-                if (rotate == -270) {
-                    rotate = 0;
-                }
-                else {
-                    rotate -= 90;
-                }
-            }
-            else if (option.id === 'right') {
-                if (rotate == 270) {
-                    rotate = 0;
-                }
-                else {
-                    rotate += 90;
-                }
-            }
-            else if (option.id === 'horizontal') {
-                flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-            }
-            else if (option.id === 'vertical') {
-                flip_vertical = flip_vertical === 1 ? -1 : 1;
-            }
-
-            /********************************************************************/
-            // Apply the filter handler.
-            apply_filter_handler();
-
-        });
-    });
  
     /****************************************************************************/
     // Handler to rotate left.
     function rotate_left_handler() {
-        alert('Left');
+
+        /************************************************************************/
+        // Do it.
+        if (rotate == -270) {
+            rotate = 0;
+        }
+        else {
+            rotate -= 90;
+        }
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
     } // rotate_left_handler
 
     /****************************************************************************/
     // Handler to rotate right.
     function rotate_right_handler() {
-        alert('Right');
+
+        /************************************************************************/
+        // Do it.
+        if (rotate == 270) {
+            rotate = 0;
+        }
+        else {
+            rotate += 90;
+        }
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
     } // rotate_left_handler
 
     /****************************************************************************/
     // Handler to flip horizontal.
     function flip_horizontal_handler() {
-        alert('Horizontal');
+
+        /************************************************************************/
+        // Do it.
+        flip_horizontal = flip_horizontal === 1 ? -1 : 1;
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
     } // flip_horizontal_handler
 
     /****************************************************************************/
     // Handler to flip vertical.
     function flip_vertical_handler() {
-        alert('Vertical');
+
+        /************************************************************************/
+        // Do it.
+        flip_vertical = flip_vertical === 1 ? -1 : 1;
+
+        /************************************************************************/
+        // Apply the filter handler.
+        apply_filter_handler();
+
     } // flip_vertical_handler
 
     /****************************************************************************/
