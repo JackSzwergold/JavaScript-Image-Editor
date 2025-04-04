@@ -189,7 +189,7 @@ jQuery.noConflict();
             type: 'POST', 
             cache: false,
             success: function(response_data, textStatus, jqXHR) {
-                alert('Saved!');
+                save_image_button.prop('disabled', true);
             },
             error: function(jqXHR, textStatus) {
                 console.log('error: ' + jqXHR.status + ' ' + textStatus + ' | ' + jqXHR.getResponseHeader('content-type'));
