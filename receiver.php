@@ -15,6 +15,8 @@ $filename_full = $filename . '_' . $md5_short . '.' . $extension;
 
 // touch($filename_full);
 
+sleep(5);
+
 file_put_contents($filename_full, $data);
 
 
