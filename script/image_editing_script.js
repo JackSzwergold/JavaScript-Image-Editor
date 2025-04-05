@@ -113,7 +113,6 @@ jQuery.noConflict();
 
     } // update_filter_values_handler
 
-
     /****************************************************************************/
     // Handler to rotate left.
     function rotate_left_handler() {
