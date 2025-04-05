@@ -52,6 +52,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The main buttions.
     reset_filter_button = $('#reset_filter');
+    download_image_button = $('#download_image');
     save_image_button = $('#save_image');
     modal_close_button = $('#modal_close');
 
@@ -339,8 +340,9 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // Set the listeners for the buttons.
-    reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
+    download_image_button.on('click', _.debounce(download_image_handler, general_debounce));
+    reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
 
     window.addEventListener('load', init_image_handler);
 
