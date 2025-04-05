@@ -279,13 +279,16 @@ jQuery.noConflict();
         /************************************************************************/
         // Set the variables for the image download.
         mime_type = 'image/jpeg';
+        file_extension = 'jpg';
         quality = 0.95;
+        destination_url = data_url + data_uri;
+        base64_data = canvas.toDataURL(mime_type, quality);
 
         /************************************************************************/
         // Do the actual image download.
         const link = document.createElement('a');
         link.download = file_name;
-        link.href = canvas.toDataURL(mime_type, quality);
+        link.href = base64_data;
         link.click();
 
     } // download_image_handler
