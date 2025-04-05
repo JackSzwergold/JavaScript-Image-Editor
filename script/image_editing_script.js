@@ -199,11 +199,15 @@ jQuery.noConflict();
         }
 
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+ 
         context.translate(canvas.width / 2, canvas.height / 2);
+ 
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
+ 
         context.scale(flip_horizontal, flip_vertical);
+
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
         }
