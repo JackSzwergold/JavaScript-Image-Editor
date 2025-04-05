@@ -194,8 +194,8 @@ jQuery.noConflict();
             canvas.width = preview_image.naturalHeight * resize_factor;   
         }
         else {
-            canvas.width = preview_image.naturalWidth * resize_factor;
-            canvas.height = preview_image.naturalHeight * resize_factor;  
+            canvas.height = preview_image.naturalHeight * resize_factor;
+            canvas.width = preview_image.naturalWidth * resize_factor;  
         }
 
         ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
