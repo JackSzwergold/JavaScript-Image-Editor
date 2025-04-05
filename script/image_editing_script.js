@@ -184,7 +184,7 @@ jQuery.noConflict();
     function save_image_handler() {
 
         const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
+        const context = canvas.getContext('2d');
 
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
@@ -198,17 +198,17 @@ jQuery.noConflict();
             canvas.width = preview_image.naturalWidth * resize_factor;  
         }
 
-        ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        ctx.translate(canvas.width / 2, canvas.height / 2);
+        context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+        context.translate(canvas.width / 2, canvas.height / 2);
         if (rotate !== 0) {
-            ctx.rotate(rotate * Math.PI / 180);
+            context.rotate(rotate * Math.PI / 180);
         }
-        ctx.scale(flip_horizontal, flip_vertical);
+        context.scale(flip_horizontal, flip_vertical);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            ctx.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
         }
         else {
-            ctx.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
         /************************************************************************/
