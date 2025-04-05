@@ -216,6 +216,14 @@ jQuery.noConflict();
             context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
+        /************************************************************************/
+        // Set the variables for the Ajax POST and download.
+        mime_type = 'image/jpeg';
+        file_extension = 'jpg';
+        quality = 0.95;
+        destination_url = data_url + data_uri;
+        base64_data = canvas.toDataURL(mime_type, quality);
+
     } // render_image_handler
 
     /****************************************************************************/
@@ -225,14 +233,6 @@ jQuery.noConflict();
         /************************************************************************/
         // Render the image.
         render_image_handler();
-
-        /************************************************************************/
-        // Set the variables for the Ajax POST.
-        mime_type = 'image/jpeg';
-        file_extension = 'jpg';
-        quality = 0.95;
-        destination_url = data_url + data_uri;
-        base64_data = canvas.toDataURL(mime_type, quality);
 
         /************************************************************************/
         // Set the Ajax options.
@@ -276,14 +276,6 @@ jQuery.noConflict();
         /************************************************************************/
         // Render the image.
         render_image_handler();
-
-        /************************************************************************/
-        // Set the variables for the image download.
-        mime_type = 'image/jpeg';
-        file_extension = 'jpg';
-        quality = 0.95;
-        destination_url = data_url + data_uri;
-        base64_data = canvas.toDataURL(mime_type, quality);
 
         /************************************************************************/
         // Do the actual image download.
