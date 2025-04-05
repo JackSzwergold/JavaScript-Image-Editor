@@ -8,74 +8,108 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-5.3.3/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <script src="script/jquery/jquery-3.7.1.min.js" defer="defer"></script>
     <script src="script/bootstrap-5.3.3/bootstrap.bundle.min.js" defer="defer"></script>
-    <script src="script/jquery/jquery-3.5.1.min.js"></script>
+    <script src="script/underscore/underscore-min.js" defer="defer"></script>
+
     <script src="script/context-filter-polyfill.min.js"></script>
   </head>
   <body>
 
-    <div class="container fluid">
-        <div class="row p-4 bg-secondary">
+<input type="hidden" id="BASE_URL" name="BASE_URL" value="http://localhost:8888/JavaScript-Image-Editor/">
+<input type="hidden" id="BASE_URI" name="BASE_URI" value="receiver.php">
 
-            <div class="wrapper p-0 m-0 col col-6 overflow-hidden">
+<!-- Image Edit Area BEGIN -->
+<div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
 
-                <div class="preview_image p-0 m-0 col col-12">
-                    <img src="images/placeholder.jpg" class="p-0 m-0 mx-auto d-block" />
-                </div>
+  <div class="col col-12">
+    <div class="mt-0">
+      <button type="button" class="submit btn btn-outline-primary btn-md m-0 p-0 py-1 px-3" id="trigger_image_edit" name="trigger_image_edit" value="" data-bs-toggle="modal" data-bs-target="#image_edit_modal">
+        <span class="text-arial-regular">
+          <em class="fa fa-picture-o"></em> Image Edit
+        </span>
+      </button>
 
-            </div>
-
-            <div class="p-0 m-0 p-3 col col-6 bg-white">
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_brightness">
-                    <label for="formControlBrightness" class="small">Brightness <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlBrightness">
-                </div>
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_contrast">
-                    <label for="formControlContrast" class="small">Contrast <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlContrast">
-                </div>
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_saturation">
-                    <label for="formControlSaturation" class="small">Saturation <span>100%</span></label><br clear="all" />
-                    <input type="range" value="100" min="0" max="200" class="custom-range col col-12" id="formControlSaturation">
-                </div>
-<!-- 
-                <div class="form-group p-0 m-0 mb-2" id="slider_grayscale">
-                    <label for="formControlGrayscale" class="small">Grayscale <span>0%</span></label><br clear="all" />
-                    <input type="range" value="0" min="0" max="100" class="custom-range col col-12" id="formControlGrayscale">
-                </div> -->
-
-                <div class="form-group p-0 m-0 mb-2" id="slider_blur">
-                    <label for="formControlBlur" class="small">Blur <span>0px</span></label><br clear="all" />
-                    <input type="range" value="0" min="0" max="10" class="custom-range col col-12" id="formControlBlur">
-                </div>
-
-                <div class="p-0 m-0">
-
-                    <div class="p-0 m-0 mb-2 col col-12" id="rotate">
-                        <button id="left" class="btn btn-secondary btn-sm">Rotate Left</em></button>
-                        <button id="right" class="btn btn-secondary btn-sm">Rotate Right</button>
-                        <button id="horizontal" class="btn btn-secondary btn-sm">Flip H</em></button>
-                        <button id="vertical" class="btn btn-secondary btn-sm">Flip V</button>
-                    </div>
-
-                    <div class="p-0 m-0 col col-12">
-                        <button class="btn btn-outline-dark btn-sm" id="choose_image">Choose Image</button>     
-                        <button class="btn btn-outline-dark btn-sm" id="reset_filter">Reset</button>
-                        <button class="btn btn-success btn-sm" id="save_image">Save Image</button>
-                        <input type="file" id="file_input" accept="image/*" hidden>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
     </div>
+  </div>
 
-    <script src="script/script.js"></script>
+  <!-- Image Editing Modal BEGIN -->
+  <div class="modal fade" id="image_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content user-select-none">
+
+        <div class="modal-header p-0 px-3 pt-2 pb-2 bg-dark">
+          <h4 class="modal-title text-white" id="alias_confirmation_title">Editing the Image for N00623551</h4>
+          <button id="modal_close" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="container fluid">
+          <div class="row p-0 bg-secondary">
+
+            <div class="wrapper p-0 m-0 col col-8 overflow-hidden">
+              <div class="preview_image text-center p-0 m-0 col col-12">
+
+                <!-- <img src="images/placeholder.jpg" class="img-fluid"> -->
+                <img src="images/test.jpg" class="img-fluid">
+                
+                <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
+                <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="700">
+              </div>
+            </div>
+
+            <div class="p-0 m-0 p-3 col col-4 bg-light">
+
+              <div class="d-grid gap-2 mb-2" id="brightness_slider">
+                <label for="brightness_slider_control" class="small">Brightness <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="brightness_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="contrast_slider">
+                <label for="contrast_slider_control" class="small">Contrast <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="contrast_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="saturation_slider">
+                <label for="saturation_slider_control" class="small">Saturation <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="saturation_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="blur_slider">
+                <label for="blur_slider_control" class="small">Blur <span>0px</span></label>
+                <input type="range" value="0" min="0" max="10" class="form-range col col-12" id="blur_slider_control">
+              </div>
+
+              <div class="input-group mb-2">
+                <button id="rotate_left" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat fa-flip-horizontal"></em> Rotate Left</em></button>
+                <button id="rotate_right" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat"></em> Rotate Right</em></button>
+              </div>
+
+              <div class="input-group mb-2">
+                <button id="flip_horizontal" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-h"></em> Flip Horizontal</em></button>
+                <button id="flip_vertical" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-v"></em> Flip Vertical</em></button>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button id="save_image" type="button" class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12">Save</button>
+                <button id="download_image" type="button" class="align-baseline pt-md-1 pb-md-1 btn btn-dark btn-sm col col-12">Download</button>
+                <button id="reset_filter" type="button" class="btn btn-outline-danger text-danger bg-white btn-lg col col-12">Reset</button>
+                <input type="file" id="file_input" accept="image/*" hidden>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- Image Editing Modal END -->
+
+
+  <script src="script/image_editing_script.js" defer="defer"></script>
+
+</div>
+<!-- Image Edit Area END -->
     
   </body>
 </html>
