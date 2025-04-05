@@ -180,8 +180,8 @@ jQuery.noConflict();
     } // flip_vertical_handler
 
     /****************************************************************************/
-    // Handler to save the image.
-    function save_image_handler() {
+    // Handler to render the image.
+    function render_image_handler() {
 
         canvas = document.createElement('canvas');
         context = canvas.getContext('2d');
@@ -215,18 +215,28 @@ jQuery.noConflict();
             context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
+    } // render_image_handler
+
+    /****************************************************************************/
+    // Handler to save the image.
+    function save_image_handler() {
+
+        /************************************************************************/
+        // Render the image.
+        render_image_handler();
+
         /************************************************************************/
         // Set the variables for the Ajax POST.
         mime_type = 'image/jpeg';
         file_extension = 'jpg';
         quality = 0.95;
-        destinationURL = data_url + data_uri;
+        destination_url = data_url + data_uri;
         base64_data = canvas.toDataURL(mime_type, quality);
 
         /************************************************************************/
         // Set the Ajax options.
         var ajax_options = {
-            url: destinationURL,
+            url: destination_url,
             data:{
                 persons: 'profiles',
                 personid: file_name,
@@ -262,37 +272,9 @@ jQuery.noConflict();
     // Handler to download the image.
     function download_image_handler() {
 
-        canvas = document.createElement('canvas');
-        context = canvas.getContext('2d');
-
-        resize_height = resize_height <= 900 ? resize_height : 900;
-        resize_factor = (resize_height / preview_image.naturalHeight);
-
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.height = preview_image.naturalWidth * resize_factor;
-            canvas.width = preview_image.naturalHeight * resize_factor;   
-        }
-        else {
-            canvas.height = preview_image.naturalHeight * resize_factor;
-            canvas.width = preview_image.naturalWidth * resize_factor;  
-        }
-
-        context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
- 
-        context.translate(canvas.width / 2, canvas.height / 2);
- 
-        if (rotate !== 0) {
-            context.rotate(rotate * Math.PI / 180);
-        }
- 
-        context.scale(flip_horizontal, flip_vertical);
-
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
-        }
-        else {
-            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-        }
+        /************************************************************************/
+        // Render the image.
+        render_image_handler();
 
         /************************************************************************/
         // Set the variables for the image download.
