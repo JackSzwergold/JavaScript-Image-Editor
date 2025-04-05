@@ -315,7 +315,6 @@ jQuery.noConflict();
 
     } // reset_filter_handler
 
- 
     /****************************************************************************/
     // Set the listeners for the sliders.
     brightness_slider.addEventListener('input', update_filter_values_handler);
