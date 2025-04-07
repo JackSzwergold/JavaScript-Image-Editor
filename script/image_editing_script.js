@@ -244,8 +244,8 @@ jQuery.noConflict();
         source_h = canvas.height;
         dest_x = 0;
         dest_y = 0;
-        dest_w = canvas.width;
-        dest_h = canvas.height;      
+        dest_w = canvas_save.width;
+        dest_h = canvas_save.height;      
 
         /************************************************************************/
         // Draw the image onto the new canvas.
