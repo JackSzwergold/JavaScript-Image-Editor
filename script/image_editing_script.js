@@ -219,6 +219,7 @@ jQuery.noConflict();
         /************************************************************************/
         // Flip the image.
         context.scale(flip_vertical, flip_horizontal);
+        console.log('V: ' + flip_vertical + ' H: ' + flip_horizontal);
 
         /************************************************************************/
         // Rotate the image.
