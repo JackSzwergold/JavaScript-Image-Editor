@@ -236,7 +236,6 @@ jQuery.noConflict();
         canvas_save.width = canvas.width;
         canvas_save.height = canvas.height;
 
-
         /************************************************************************/
         // Setting source and destination coordinates.
         source_x = 0;
