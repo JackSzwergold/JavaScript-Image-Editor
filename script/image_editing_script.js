@@ -194,18 +194,18 @@ jQuery.noConflict();
 
         var imgWidth = preview_image.naturalWidth;
         var screenWidth  = canvas.width;
-
         var scaleX = resize_factor;
         if (imgWidth > screenWidth) {
             scaleX = screenWidth / imgWidth;
         }
+
         var imgHeight = preview_image.naturalHeight;
         var screenHeight = canvas.height;
-
         var scaleY = resize_factor;
         if (imgHeight > screenHeight) {
             scaleY = screenHeight / imgHeight;
         }
+
         var scale = scaleY;
         if (scaleX < scaleY) {
             scale = scaleX;
@@ -235,7 +235,7 @@ jQuery.noConflict();
         // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         // context.translate(canvas.width / 2, canvas.height / 2);
-        // context.translate(0, 0);
+        context.translate(0, 0);
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
