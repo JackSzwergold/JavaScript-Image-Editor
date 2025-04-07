@@ -221,7 +221,7 @@ jQuery.noConflict();
         }
         else {
             context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
-            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, -canvas.width, -canvas.height, canvas.width * resize_factor, canvas.height * resize_factor);
+            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, -canvas.width, -canvas.height, canvas.width, canvas.height);
         }
 
         /************************************************************************/
