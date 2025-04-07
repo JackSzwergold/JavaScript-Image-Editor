@@ -212,7 +212,7 @@ jQuery.noConflict();
         cropX = -canvas.width / 2;
         cropY = -canvas.height / 2;
 
-        console.log(cropX + 'x' + cropY);
+        console.log(cropX + ', ' + cropY + ', ' + canvas.width + ', ' + canvas.height);
 
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
