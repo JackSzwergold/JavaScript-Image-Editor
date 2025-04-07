@@ -184,49 +184,49 @@ jQuery.noConflict();
     // Handler to render the image.
     function render_image_handler() {
 
-        canvas = document.createElement('canvas');
-        context = canvas.getContext('2d');
+        canvas1 = document.createElement('canvas');
+        context1 = canvas1.getContext('2d');
 
         /************************************************************************/
         // Make adjustments to the dimensions.
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.width = preview_image.naturalHeight * resize_factor;
-            canvas.height = preview_image.naturalWidth * resize_factor;
+            canvas1.width = preview_image.naturalHeight * resize_factor;
+            canvas1.height = preview_image.naturalWidth * resize_factor;
         }
         else {
-            canvas.width = preview_image.naturalWidth * resize_factor;
-            canvas.height = preview_image.naturalHeight * resize_factor;
+            canvas1.width = preview_image.naturalWidth * resize_factor;
+            canvas1.height = preview_image.naturalHeight * resize_factor;
         }
 
         /************************************************************************/
         // Save the context.
-        context.save();
+        context1.save();
 
         /************************************************************************/
         // Make adjustments to the image.
-        context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        context.translate(canvas.width / 2, canvas.height / 2);
+        context1.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+        context1.translate(canvas1.width / 2, canvas1.height / 2);
         if (rotate !== 0) {
-            context.rotate(rotate * Math.PI / 180);
+            context1.rotate(rotate * Math.PI / 180);
         }
-        context.scale(flip_horizontal, flip_vertical);
+        context1.scale(flip_horizontal, flip_vertical);
 
         /************************************************************************/
         // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            context1.drawImage(preview_image, -canvas1.height / 2, -canvas1.width / 2, canvas1.height, canvas1.width);
         }
         else {
-            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+            context1.drawImage(preview_image, -canvas1.width / 2, -canvas1.height / 2, canvas1.width, canvas1.height);
         }
 
         /************************************************************************/
         // Restore the context.
-        context.restore();
+        context1.restore();
 
-        console.log(rotate + ' | ' + resize_factor + ', ' + canvas.height + ', ' + canvas.width);
+        console.log(rotate + ' | ' + resize_factor + ', ' + canvas1.height + ', ' + canvas1.width);
 
         /************************************************************************/
         // Set the variables for the Ajax POST and download.
@@ -234,7 +234,7 @@ jQuery.noConflict();
         file_extension = 'jpg';
         quality = 0.95;
         destination_url = data_url + data_uri;
-        base64_data = canvas.toDataURL(mime_type, quality);
+        base64_data = canvas1.toDataURL(mime_type, quality);
 
     } // render_image_handler
 
