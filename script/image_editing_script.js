@@ -201,6 +201,10 @@ jQuery.noConflict();
         }
 
         /************************************************************************/
+        // Save the context.
+        context.save();
+
+        /************************************************************************/
         // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         context.translate(canvas.width / 2, canvas.height / 2);
@@ -217,6 +221,10 @@ jQuery.noConflict();
         else {
             context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
+
+        /************************************************************************/
+        // Restore the context.
+        context.restore();
 
         console.log(rotate + ' | ' + resize_factor + ', ' + canvas.height + ', ' + canvas.width);
 
