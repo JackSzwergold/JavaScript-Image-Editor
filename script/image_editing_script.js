@@ -187,9 +187,10 @@ jQuery.noConflict();
         canvas = document.createElement('canvas');
         context = canvas.getContext('2d');
 
+        /************************************************************************/
+        // Make adjustments to the dimensions.
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
-
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.height = preview_image.naturalWidth * resize_factor;
             canvas.width = preview_image.naturalHeight * resize_factor;   
@@ -199,26 +200,27 @@ jQuery.noConflict();
             canvas.width = preview_image.naturalWidth * resize_factor;  
         }
 
+        /************************************************************************/
+        // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
- 
         context.translate(canvas.width / 2, canvas.height / 2);
- 
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
- 
         context.scale(flip_horizontal, flip_vertical);
 
+        /************************************************************************/
+        // Testing stuff.
         cropX = -canvas.width / 2;
         cropY = -canvas.height / 2;
 
         console.log(cropX + ', ' + cropY + ', ' + canvas.width + ', ' + canvas.height);
 
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
+            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width, 0, 0, 320, 320);
         }
         else {
-            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
+            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, 0, 0, 320, 320);
         }
 
         /************************************************************************/
