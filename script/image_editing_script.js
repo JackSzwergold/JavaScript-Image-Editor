@@ -214,8 +214,8 @@ jQuery.noConflict();
         cropX = -canvas.width / 2;
         cropY = -canvas.height / 2;
 
-        scaleX = -(Math.round(canvas.width * resize_factor) / 2);
-        scaleY = -(Math.round(canvas.height * resize_factor) / 2);
+        scaleX = Math.round(-(canvas.width * resize_factor / 2));
+        scaleY = Math.round(-(canvas.height * resize_factor / 2));
         scaleW = Math.round(canvas.width * resize_factor);
         scaleH = Math.round(canvas.height * resize_factor);
 
