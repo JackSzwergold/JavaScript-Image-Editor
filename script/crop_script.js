@@ -1,6 +1,7 @@
-var canvas = document.getElementById('canvas');
+var canvas = document.createElement('canvas');
 var context = canvas.getContext('2d');
-var imageObj = new Image();
+// var imageObj = new Image();
+var imageObj = document.querySelector('.preview_image img');
 
 imageObj.onload = function() {
     // crop from 0,0, to 250,150
@@ -22,4 +23,4 @@ imageObj.onload = function() {
     link.click();
 
 };
-imageObj.src = 'images/test.jpg';
+// imageObj.src = 'images/test.jpg';
