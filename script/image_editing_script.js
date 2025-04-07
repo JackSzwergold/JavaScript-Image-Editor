@@ -212,7 +212,7 @@ jQuery.noConflict();
 
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             // context.drawImage(preview_image, 0, 0, canvas.height, canvas.width);
-            context.drawImage(preview_image, 0, 0, preview_image.naturalHeight, preview_image.naturalWidth);
+            context.drawImage(preview_image, 0, 0, preview_image.naturalHeight, preview_image.naturalWidth, 0,0, canvas.height, canvas.width);
         }
         else {
             // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
