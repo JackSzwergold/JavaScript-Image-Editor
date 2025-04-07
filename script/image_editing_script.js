@@ -204,7 +204,6 @@ jQuery.noConflict();
         /************************************************************************/
         // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        // context.translate(canvas.width / 2, canvas.height / 2);
         context.translate(0, 0);
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
