@@ -216,7 +216,6 @@ jQuery.noConflict();
         }
         else {
             context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-            // context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
         console.log(rotate + ' | ' + resize_factor + ', ' + canvas.height + ', ' + canvas.width);
