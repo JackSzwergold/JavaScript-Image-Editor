@@ -199,7 +199,6 @@ jQuery.noConflict();
             canvas.height = preview_image.naturalHeight * resize_factor;
             canvas.width = preview_image.naturalWidth * resize_factor;
         }
-        // console.log(resize_factor + ' | ' + canvas.height + ' | ' + canvas.width);
 
         /************************************************************************/
         // Make adjustments to the image.
@@ -210,15 +209,16 @@ jQuery.noConflict();
         }
         context.scale(flip_horizontal, flip_vertical);
 
+        /************************************************************************/
+        // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            // context.drawImage(preview_image, 0, 0, canvas.height, canvas.width);
-            context.drawImage(preview_image, -(canvas.width / 2), -(canvas.height / 2), preview_image.naturalHeight, preview_image.naturalWidth, 0,0, canvas.height, canvas.width);
+            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
         }
         else {
-            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
-            context.drawImage(preview_image, 0, 0, preview_image.naturalWidth, preview_image.naturalHeight, 0,0, canvas.width, canvas.height);
+            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+            // context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
-        // context.translate(0, 0);
+
         console.log(rotate + ' | ' + resize_factor + ', ' + canvas.height + ', ' + canvas.width);
 
         /************************************************************************/
