@@ -210,29 +210,16 @@ jQuery.noConflict();
         }
         context.scale(flip_horizontal, flip_vertical);
 
-        // /************************************************************************/
-        // // Testing stuff.
-        // cropX = -canvas.width / 2;
-        // cropY = -canvas.height / 2;
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            // context.drawImage(preview_image, 0, 0, canvas.height, canvas.width);
+            context.drawImage(preview_image, 0, 0, preview_image.naturalHeight, preview_image.naturalWidth);
+        }
+        else {
+            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
+            context.drawImage(preview_image, 0, 0, preview_image.naturalWidth, preview_image.naturalHeight, 0,0, canvas.width, canvas.height);
+        }
 
-        // scaleX = Math.round(-(canvas.width * resize_factor) / 2);
-        // scaleY = Math.round(-(canvas.height * resize_factor) / 2);
-        // scaleW = Math.round(canvas.width * resize_factor);
-        // scaleH = Math.round(canvas.height * resize_factor);
-
-
-        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-        //     context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
-        // }
-        // else {
-        //     // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
-        //     context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, scaleX, scaleY, scaleW, scaleH);
-        // }
-
-        // console.log(resize_factor + ', ' + scaleX + ', ' + scaleY + ', ' + flip_horizontal + ', ' + flip_vertical);
-
-        context.drawImage(preview_image, 0, 0, preview_image.naturalWidth, preview_image.naturalHeight, 0,0, canvas.width, canvas.height);
-
+        console.log(rotate + ' | ' + resize_factor + ', ' + preview_image.naturalHeight + ', ' + preview_image.naturalWidth);
 
         /************************************************************************/
         // Set the variables for the Ajax POST and download.
