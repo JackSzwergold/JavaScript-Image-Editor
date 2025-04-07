@@ -158,13 +158,12 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Do it.
-        flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
-        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-        //     flip_vertical = flip_vertical === 1 ? -1 : 1;
-        // }
-        // else {
-        //     flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
-        // }
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            flip_vertical = flip_vertical === 1 ? -1 : 1;
+        }
+        else {
+            flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
+        }
 
         /************************************************************************/
         // Apply the filter handler.
@@ -178,13 +177,12 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Do it.
-        flip_vertical = flip_vertical === 1 ? -1 : 1; 
-        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-        //     flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-        // }
-        // else {
-        //     flip_vertical = flip_vertical === 1 ? -1 : 1; 
-        // }
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            flip_horizontal = flip_horizontal === 1 ? -1 : 1;
+        }
+        else {
+            flip_vertical = flip_vertical === 1 ? -1 : 1; 
+        }
 
         /************************************************************************/
         // Apply the filter handler.
@@ -230,12 +228,7 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Flip the image.
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.scale(flip_horizontal, flip_vertical);
-        }
-        else {
-            context.scale(flip_vertical, flip_horizontal);
-        }
+        context.scale(flip_horizontal, flip_vertical);
 
         /************************************************************************/
         // Rotate the image.
