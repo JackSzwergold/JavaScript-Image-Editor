@@ -92,6 +92,7 @@ jQuery.noConflict();
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        console.log('V: ' + flip_vertical + ' H: ' + flip_horizontal);
     } // apply_filter_handler
 
     /****************************************************************************/
@@ -219,7 +220,6 @@ jQuery.noConflict();
         /************************************************************************/
         // Flip the image.
         context.scale(flip_vertical, flip_horizontal);
-        console.log('V: ' + flip_vertical + ' H: ' + flip_horizontal);
 
         /************************************************************************/
         // Rotate the image.
