@@ -192,12 +192,12 @@ jQuery.noConflict();
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.height = preview_image.naturalWidth * resize_factor;
             canvas.width = preview_image.naturalHeight * resize_factor;
+            canvas.height = preview_image.naturalWidth * resize_factor;
         }
         else {
-            canvas.height = preview_image.naturalHeight * resize_factor;
             canvas.width = preview_image.naturalWidth * resize_factor;
+            canvas.height = preview_image.naturalHeight * resize_factor;
         }
 
         /************************************************************************/
