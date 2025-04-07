@@ -270,7 +270,7 @@ jQuery.noConflict();
         dest_h = canvas_save.height;      
 
         /************************************************************************/
-        // Draw the image onto the new canvas.
+        // Draw the image onto the new destination canvas.
         context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
         /************************************************************************/
