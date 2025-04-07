@@ -191,6 +191,37 @@ jQuery.noConflict();
         // Make adjustments to the dimensions.
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
+
+        var imgWidth = preview_image.naturalWidth;
+        var screenWidth  = canvas.width;
+
+        var scaleX = resize_factor;
+        if (imgWidth > screenWidth) {
+            scaleX = screenWidth / imgWidth;
+        }
+        var imgHeight = preview_image.naturalHeight;
+        var screenHeight = canvas.height;
+
+        var scaleY = resize_factor;
+        if (imgHeight > screenHeight) {
+            scaleY = screenHeight / imgHeight;
+        }
+        var scale = scaleY;
+        if (scaleX < scaleY) {
+            scale = scaleX;
+        }
+        if (scale < 1) {
+            imgHeight = imgHeight * scale;
+            imgWidth = imgWidth * scale;          
+        }
+
+        canvas.height = imgHeight;
+        canvas.width = imgWidth;
+
+        /************************************************************************/
+        // Make adjustments to the dimensions.
+        resize_height = resize_height <= 900 ? resize_height : 900;
+        resize_factor = (resize_height / preview_image.naturalHeight);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.height = preview_image.naturalWidth * resize_factor;
             canvas.width = preview_image.naturalHeight * resize_factor;   
@@ -203,31 +234,36 @@ jQuery.noConflict();
         /************************************************************************/
         // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        context.translate(canvas.width / 2, canvas.height / 2);
+        // context.translate(canvas.width / 2, canvas.height / 2);
+        // context.translate(0, 0);
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
-        context.scale(flip_horizontal, flip_vertical);
+        // context.scale(flip_horizontal, flip_vertical);
 
-        /************************************************************************/
-        // Testing stuff.
-        cropX = -canvas.width / 2;
-        cropY = -canvas.height / 2;
+        // /************************************************************************/
+        // // Testing stuff.
+        // cropX = -canvas.width / 2;
+        // cropY = -canvas.height / 2;
 
-        scaleX = Math.round(-(canvas.width * resize_factor) / 2);
-        scaleY = Math.round(-(canvas.height * resize_factor) / 2);
-        scaleW = Math.round(canvas.width * resize_factor);
-        scaleH = Math.round(canvas.height * resize_factor);
+        // scaleX = Math.round(-(canvas.width * resize_factor) / 2);
+        // scaleY = Math.round(-(canvas.height * resize_factor) / 2);
+        // scaleW = Math.round(canvas.width * resize_factor);
+        // scaleH = Math.round(canvas.height * resize_factor);
 
-        console.log(resize_factor + ', ' + scaleX + ', ' + scaleY + ', ' + scaleW + ', ' + scaleH);
 
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
-        }
-        else {
-            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
-            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, scaleX, scaleY, scaleW, scaleH);
-        }
+        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+        //     context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
+        // }
+        // else {
+        //     // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
+        //     context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, scaleX, scaleY, scaleW, scaleH);
+        // }
+
+        console.log(resize_factor + ', ' + scaleX + ', ' + scaleY + ', ' + flip_horizontal + ', ' + flip_vertical);
+
+        context.drawImage(preview_image, 0, 0, preview_image.naturalWidth, preview_image.naturalHeight, 0,0, canvas.width, canvas.height);
+
 
         /************************************************************************/
         // Set the variables for the Ajax POST and download.
