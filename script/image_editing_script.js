@@ -198,13 +198,14 @@ jQuery.noConflict();
         if (image_width > screenWidth) {
             scaleX = screenWidth / image_width;
         }
+
         var image_height = preview_image.naturalHeight;
         var screenHeight = canvas.height;
-
         var scaleY = resize_factor;
         if (image_height > screenHeight) {
             scaleY = screenHeight / image_height;
         }
+
         var scale = scaleY;
         if (scaleX < scaleY) {
             scale = scaleX;
@@ -219,8 +220,8 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Make adjustments to the dimensions.
-        resize_height = resize_height <= 900 ? resize_height : 900;
-        resize_factor = (resize_height / preview_image.naturalHeight);
+        // resize_height = resize_height <= 900 ? resize_height : 900;
+        // resize_factor = (resize_height / preview_image.naturalHeight);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.height = preview_image.naturalWidth * resize_factor;
             canvas.width = preview_image.naturalHeight * resize_factor;   
