@@ -191,55 +191,25 @@ jQuery.noConflict();
         // Make adjustments to the dimensions.
         resize_height = resize_height <= 900 ? resize_height : 900;
         resize_factor = (resize_height / preview_image.naturalHeight);
-
-        var image_width = preview_image.naturalWidth;
-        var screenWidth  = canvas.width;
-        var scaleX = resize_factor;
-        if (image_width > screenWidth) {
-            scaleX = screenWidth / image_width;
-        }
-
-        var image_height = preview_image.naturalHeight;
-        var screenHeight = canvas.height;
-        var scaleY = resize_factor;
-        if (image_height > screenHeight) {
-            scaleY = screenHeight / image_height;
-        }
-
-        var scale = scaleY;
-        if (scaleX < scaleY) {
-            scale = scaleX;
-        }
-        if (scale < 1) {
-            image_height = image_height * scale;
-            image_width = image_width * scale;          
-        }
-
-        canvas.height = image_height;
-        canvas.width = image_width;
-
-        /************************************************************************/
-        // Make adjustments to the dimensions.
-        // resize_height = resize_height <= 900 ? resize_height : 900;
-        // resize_factor = (resize_height / preview_image.naturalHeight);
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.height = preview_image.naturalWidth * resize_factor;
-            canvas.width = preview_image.naturalHeight * resize_factor;   
+            canvas.width = preview_image.naturalHeight * resize_factor;
         }
         else {
             canvas.height = preview_image.naturalHeight * resize_factor;
-            canvas.width = preview_image.naturalWidth * resize_factor;  
+            canvas.width = preview_image.naturalWidth * resize_factor;
         }
+        // console.log(resize_factor + ' | ' + canvas.height + ' | ' + canvas.width);
 
         /************************************************************************/
         // Make adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         // context.translate(canvas.width / 2, canvas.height / 2);
-        // context.translate(0, 0);
+        context.translate(0, 0);
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
-        // context.scale(flip_horizontal, flip_vertical);
+        context.scale(flip_horizontal, flip_vertical);
 
         // /************************************************************************/
         // // Testing stuff.
