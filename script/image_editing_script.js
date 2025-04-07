@@ -205,21 +205,20 @@ jQuery.noConflict();
         context.save();
 
         /************************************************************************/
-        // Make adjustments to the image.
+        // Make color and tone adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+
+        /************************************************************************/
+        // Do this for the image rotation stuff.
         context.translate(canvas.width / 2, canvas.height / 2);
-        if (rotate !== 0) {
-            context.rotate(rotate * Math.PI / 180);
-        }
+ 
+        /************************************************************************/
+        // Rotate the image.
+        context.rotate(rotate * (Math.PI / 180));
 
         /************************************************************************/
         // Flip the image.
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.scale(flip_horizontal, flip_vertical);
-        }
-        else {
-            context.scale(flip_vertical, flip_horizontal);
-        }
+        context.scale(flip_vertical, flip_horizontal);
 
         /************************************************************************/
         // Rotate the image.
