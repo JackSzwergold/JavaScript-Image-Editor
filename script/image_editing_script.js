@@ -214,8 +214,8 @@ jQuery.noConflict();
         cropX = -canvas.width / 2;
         cropY = -canvas.height / 2;
 
-        scaleX = Math.round(-(canvas.width * resize_factor) / 1.325);
-        scaleY = Math.round(-(canvas.height * resize_factor) / 1.325);
+        scaleX = Math.round(-(canvas.width * resize_factor) / 2);
+        scaleY = Math.round(-(canvas.height * resize_factor) / 2);
         scaleW = Math.round(canvas.width * resize_factor);
         scaleH = Math.round(canvas.height * resize_factor);
 
@@ -225,8 +225,8 @@ jQuery.noConflict();
             context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
         }
         else {
-            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
-            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, scaleX, scaleY, scaleW, scaleH);
+            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
+            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, scaleX, scaleY, scaleW, scaleH);
         }
 
         /************************************************************************/
