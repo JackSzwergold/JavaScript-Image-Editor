@@ -236,9 +236,21 @@ jQuery.noConflict();
         canvas_save.width = canvas.width;
         canvas_save.height = canvas.height;
 
+
+        /************************************************************************/
+        // Setting source and destination coordinates.
+        source_x = 0;
+        source_y = 0;
+        source_w = canvas.width;
+        source_h = canvas.height;
+        dest_x = 0;
+        dest_y = 0;
+        dest_w = canvas.width;
+        dest_h = canvas.height;      
+
         /************************************************************************/
         // Draw the image onto the new canvas.
-        context_save.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+        context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
         /************************************************************************/
         // Set the variables for the Ajax POST and download.
