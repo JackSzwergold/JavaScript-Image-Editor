@@ -158,12 +158,13 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Do it.
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            flip_vertical = flip_vertical === 1 ? -1 : 1;
-        }
-        else {
-            flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
-        }
+        flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
+        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+        //     flip_vertical = flip_vertical === 1 ? -1 : 1;
+        // }
+        // else {
+        //     flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
+        // }
 
         /************************************************************************/
         // Apply the filter handler.
@@ -177,12 +178,13 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Do it.
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-        }
-        else {
-            flip_vertical = flip_vertical === 1 ? -1 : 1; 
-        }
+        flip_vertical = flip_vertical === 1 ? -1 : 1; 
+        // if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+        //     flip_horizontal = flip_horizontal === 1 ? -1 : 1;
+        // }
+        // else {
+        //     flip_vertical = flip_vertical === 1 ? -1 : 1; 
+        // }
 
         /************************************************************************/
         // Apply the filter handler.
