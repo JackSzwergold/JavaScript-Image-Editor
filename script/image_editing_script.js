@@ -209,11 +209,16 @@ jQuery.noConflict();
  
         context.scale(flip_horizontal, flip_vertical);
 
+        cropX = -canvas.width / 2;
+        cropY = -canvas.height / 2;
+
+        console.log(cropX + 'x' + cropY);
+
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
         }
         else {
-            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
         }
 
         /************************************************************************/
