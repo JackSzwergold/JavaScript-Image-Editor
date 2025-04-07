@@ -211,7 +211,15 @@ jQuery.noConflict();
         if (rotate !== 0) {
             context.rotate(rotate * Math.PI / 180);
         }
-        context.scale(flip_horizontal, flip_vertical);
+
+        /************************************************************************/
+        // Flip the image.
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            context.scale(flip_horizontal, flip_vertical);
+        }
+        else {
+            context.scale(flip_vertical, flip_horizontal);
+        }
 
         /************************************************************************/
         // Rotate the image.
