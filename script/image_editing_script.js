@@ -214,13 +214,14 @@ jQuery.noConflict();
         cropX = -canvas.width / 2;
         cropY = -canvas.height / 2;
 
-        console.log(cropX + ', ' + cropY + ', ' + canvas.width + ', ' + canvas.height);
+        console.log(resize_factor + ', ' + cropX + ', ' + cropY + ', ' + canvas.width + ', ' + canvas.height);
 
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width, 0, 0, 320, 320);
+            context.drawImage(preview_image, cropY, cropX, canvas.height, canvas.width);
         }
         else {
-            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, 0, 0, 320, 320);
+            context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height);
+            // context.drawImage(preview_image, cropX, cropY, canvas.width, canvas.height, -canvas.width, -canvas.height, canvas.width * resize_factor, canvas.height * resize_factor);
         }
 
         /************************************************************************/
