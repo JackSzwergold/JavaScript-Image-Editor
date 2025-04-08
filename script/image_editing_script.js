@@ -14,7 +14,11 @@ jQuery.noConflict();
     /**************************************************************************/
     // Set the N Number.
     file_name = typeof($('#N_NUMBER').val()) != 'undefined' ? $('#N_NUMBER').val() : '';
+
+    /**************************************************************************/
+    // Set the resize height and width.
     resize_height = typeof($('#RESIZE_HEIGHT').val()) != 'undefined' ? $('#RESIZE_HEIGHT').val() : '';
+    resize_width = typeof($('#RESIZE_WIDTH').val()) != 'undefined' ? $('#RESIZE_WIDTH').val() : '';
 
     /**************************************************************************/
     // Select different elements.
@@ -198,16 +202,28 @@ jQuery.noConflict();
         context = canvas.getContext('2d');
 
         /************************************************************************/
-        // Make adjustments to the dimensions.
+        // Set a top limit for the resize width and resize height.
+        resize_width = resize_width <= 900 ? resize_width : 900;
         resize_height = resize_height <= 900 ? resize_height : 900;
-        resize_factor = (resize_height / preview_image.naturalHeight);
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.width = preview_image.naturalHeight * resize_factor;
-            canvas.height = preview_image.naturalWidth * resize_factor;
+
+        /************************************************************************/
+        // Calculate the resize ratio.
+        if (preview_image.naturalWidth > preview_image.naturalHeight) {
+            resize_ratio = (resize_width / preview_image.naturalWidth);
         }
         else {
-            canvas.width = preview_image.naturalWidth * resize_factor;
-            canvas.height = preview_image.naturalHeight * resize_factor;
+            resize_ratio = (resize_height / preview_image.naturalHeight);
+        }
+
+        /************************************************************************/
+        // Apply the resize ratios.
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            canvas.width = preview_image.naturalHeight * resize_ratio;
+            canvas.height = preview_image.naturalWidth * resize_ratio;
+        }
+        else {
+            canvas.width = preview_image.naturalWidth * resize_ratio;
+            canvas.height = preview_image.naturalHeight * resize_ratio;
         }
 
         /************************************************************************/
