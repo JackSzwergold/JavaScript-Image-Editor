@@ -198,21 +198,21 @@ jQuery.noConflict();
     // Handler to render the image.
     function render_image_handler() {
 
-        canvas = document.createElement('canvas');
-        context = canvas.getContext('2d');
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
 
         /************************************************************************/
         // Set a top limit for the resize width and resize height.
-        resize_width = resize_width <= 900 ? resize_width : 900;
-        resize_height = resize_height <= 900 ? resize_height : 900;
+        var resize_width = resize_width <= 900 ? resize_width : 900;
+        var resize_height = resize_height <= 900 ? resize_height : 900;
 
         /************************************************************************/
         // Calculate the resize ratio.
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
-            resize_ratio = (resize_width / preview_image.naturalWidth);
+            var resize_ratio = (resize_width / preview_image.naturalWidth);
         }
         else {
-            resize_ratio = (resize_height / preview_image.naturalHeight);
+            var resize_ratio = (resize_height / preview_image.naturalHeight);
         }
 
         /************************************************************************/
@@ -261,29 +261,31 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Pasting stuff into a new canvas for final saving,
-        canvas_save = document.createElement('canvas');
-        context_save = canvas_save.getContext('2d');
+        var canvas_save = document.createElement('canvas');
+        var context_save = canvas_save.getContext('2d');
 
         /************************************************************************/
         // Setting the target width and height.
-        target_w = canvas.width;
-        target_h = canvas.height;
+        var source_target_x = 0;
+        var source_target_y = 0;
+        var source_target_w = canvas.width;
+        var source_target_h = canvas.height;
 
         /************************************************************************/
         // Setting the new canvas width and height.
-        canvas_save.width = target_w;
-        canvas_save.height = target_h;
+        canvas_save.width = source_target_w;
+        canvas_save.height = source_target_h;
 
         /************************************************************************/
         // Setting source and destination coordinates.
-        source_x = 0;
-        source_y = 0;
-        source_w = target_w;
-        source_h = target_h;
-        dest_x = 0;
-        dest_y = 0;
-        dest_w = canvas_save.width;
-        dest_h = canvas_save.height;      
+        var source_x = source_target_x;
+        var source_y = source_target_y;
+        var source_w = source_target_w;
+        var source_h = source_target_h;
+        var dest_x = 0;
+        var dest_y = 0;
+        var dest_w = canvas_save.width;
+        var dest_h = canvas_save.height;      
 
         /************************************************************************/
         // Draw the image onto the new destination canvas.
