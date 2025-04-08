@@ -265,16 +265,21 @@ jQuery.noConflict();
         context_save = canvas_save.getContext('2d');
 
         /************************************************************************/
+        // Setting the target width and height.
+        target_w = canvas.width;
+        target_h = canvas.height;
+
+        /************************************************************************/
         // Setting the new canvas width and height.
-        canvas_save.width = canvas.width;
-        canvas_save.height = canvas.height;
+        canvas_save.width = target_w;
+        canvas_save.height = target_h;
 
         /************************************************************************/
         // Setting source and destination coordinates.
         source_x = 0;
         source_y = 0;
-        source_w = canvas.width;
-        source_h = canvas.height;
+        source_w = target_w;
+        source_h = target_h;
         dest_x = 0;
         dest_y = 0;
         dest_w = canvas_save.width;
