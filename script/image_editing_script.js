@@ -212,11 +212,12 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Calculate the resize ratio.
+        var resize_ratio = 1;
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
-            var resize_ratio = (resize_width / preview_image.naturalWidth);
+            resize_ratio = (resize_width / preview_image.naturalWidth);
         }
         else {
-            var resize_ratio = (resize_height / preview_image.naturalHeight);
+            resize_ratio = (resize_height / preview_image.naturalHeight);
         }
 
         /************************************************************************/
@@ -270,14 +271,10 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the crop selector stuff.
-        // var crop_x = crop_selector.position().top;
-        // var crop_y = crop_selector.position().left;
-        // var crop_w = crop_selector.outerWidth();
-        // var crop_h = crop_selector.outerHeight();
-        var crop_x = Math.round(crop_selector.position().top * resize_ratio);
-        var crop_y = Math.round(crop_selector.position().left * resize_ratio);
-        var crop_w = Math.round(crop_selector.outerWidth() * resize_ratio);
-        var crop_h = Math.round(crop_selector.outerHeight() * resize_ratio);
+        var crop_x = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * resize_ratio);
+        var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().left * resize_ratio);
+        var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * resize_ratio);
+        var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * resize_ratio);
         console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
