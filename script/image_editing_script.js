@@ -47,12 +47,12 @@ jQuery.noConflict();
     preview_image = document.querySelector('.preview_image img');
 
     /**************************************************************************/
-    // The crop selector.
-    crop_selector = $('#crop_selector');
+    // The crop selection area.
+    crop_selection = $('#crop_selection');
 
     /**************************************************************************/
-    // The cropper button.
-    crop_selector_button = $('#crop_selector');
+    // The crop selection button.
+    crop_selection_button = $('#crop_selection_button');
 
     /**************************************************************************/
     // The rotation buttons.
@@ -285,29 +285,29 @@ jQuery.noConflict();
 
         /***********************************************************************/
         // If we have a cropping selector in place, use it.
-        if (crop_selector.hasClass('show') == true) {
+        if (crop_selection.hasClass('show') == true) {
 
             /********************************************************************/
             // Set the X and Y values.
-            if (typeof(crop_selector.position()) != 'undefined') {
-                if (crop_selector.position().left >= 0) {
-                    crop_x = Math.round(crop_selector.position().left * cropping_ratio);
+            if (typeof(crop_selection.position()) != 'undefined') {
+                if (crop_selection.position().left >= 0) {
+                    crop_x = Math.round(crop_selection.position().left * cropping_ratio);
                 }
-                if (crop_selector.position().top >= 0) {
-                    crop_y = Math.round(crop_selector.position().top * cropping_ratio);
+                if (crop_selection.position().top >= 0) {
+                    crop_y = Math.round(crop_selection.position().top * cropping_ratio);
                 }
             }
 
             /********************************************************************/
             // Set the width value.
-            if (typeof(crop_selector.outerWidth()) != 'undefined' || crop_selector.outerWidth() > 0 ) {
-                crop_w = Math.round(crop_selector.outerWidth() * cropping_ratio);
+            if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
+                crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
             }
 
             /********************************************************************/
             // Set the height value.
-            if (typeof(crop_selector.outerHeight()) != 'undefined' || crop_selector.outerHeight() > 0 ) {
-                crop_h = Math.round(crop_selector.outerHeight() * cropping_ratio);
+            if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
+                crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
             }
 
         }
@@ -453,22 +453,22 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // Handler for the crop selector.
-    function crop_selector_handler() {
+    function crop_selection_handler() {
 
         /****************************************************************************/
         // Toggle the crop selector.
-        if (crop_selector.hasClass('hide')) {
-          crop_selector.removeClass('hide').addClass('show');
-          crop_selector.draggable({
+        if (crop_selection.hasClass('hide')) {
+          crop_selection.removeClass('hide').addClass('show');
+          crop_selection.draggable({
             opacity: 0.35
           });
-          crop_selector.resizable({
+          crop_selection.resizable({
             handles: 'n, e, s, w, ne, se, sw, nw',
             animate: false
           });
-          crop_selector.draggable('enable');
-          crop_selector.resizable('enable');
-          crop_selector.css({
+          crop_selection.draggable('enable');
+          crop_selection.resizable('enable');
+          crop_selection.css({
             'top': '0px', 
             'left': '0px', 
             'width': '100px', 
@@ -480,10 +480,10 @@ jQuery.noConflict();
 
         }
         else {
-          crop_selector.removeClass('show').addClass('hide');
-          crop_selector.draggable('disable');
-          crop_selector.resizable('disable');
-          crop_selector.css({
+          crop_selection.removeClass('show').addClass('hide');
+          crop_selection.draggable('disable');
+          crop_selection.resizable('disable');
+          crop_selection.css({
             'top': '0px', 
             'left': '0px', 
             'width': '0px', 
@@ -493,7 +493,7 @@ jQuery.noConflict();
           });
         }
 
-    } // crop_selector_handler
+    } // crop_selection_handler
 
     /****************************************************************************/
     // Set the listeners for the sliders.
@@ -504,7 +504,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // Set the listeners for the rotation buttons.
-    crop_selector_button.on('click', _.debounce(crop_selector_handler, general_debounce));
+    crop_selection_button.on('click', _.debounce(crop_selection_handler, general_debounce));
 
     /****************************************************************************/
     // Set the listeners for the rotation buttons.
