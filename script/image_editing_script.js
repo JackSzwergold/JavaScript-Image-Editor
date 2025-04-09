@@ -103,9 +103,7 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        // preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
-        crop_selection_handler();
     } // apply_filter_handler
 
     /****************************************************************************/
