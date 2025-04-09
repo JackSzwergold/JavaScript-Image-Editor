@@ -278,11 +278,34 @@ jQuery.noConflict();
         var context_save = canvas_save.getContext('2d');
 
         /************************************************************************/
-        // Setting the crop selector stuff.
-        var crop_x = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().left * cropping_ratio);
-        var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * cropping_ratio);
-        var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * cropping_ratio);
-        var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * cropping_ratio);
+        // Setting the crop selector defaults.
+        var crop_x = 0;
+        var crop_y = 0;
+        var crop_w = canvas.width;
+        var crop_h = canvas.height;
+
+        /************************************************************************/
+        // Set the X and Y values.
+        if (typeof(crop_selector.position()) != 'undefined') {
+            if (crop_selector.position().left >= 0) {
+                crop_x = Math.round(crop_selector.position().left * cropping_ratio);
+            }
+            if (crop_selector.position().top >= 0) {
+                crop_y = Math.round(crop_selector.position().top * cropping_ratio);
+            }
+        }
+
+        /************************************************************************/
+        // Set the width value.
+        if (typeof(crop_selector.outerWidth()) != 'undefined' && crop_selector.outerWidth() > 0 ) {
+            crop_w = Math.round(crop_selector.outerWidth() * cropping_ratio);
+        }
+
+        /************************************************************************/
+        // Set the height value.
+        if (typeof(crop_selector.outerHeight()) != 'undefined' && crop_selector.outerHeight() > 0 ) {
+            crop_h = Math.round(crop_selector.outerHeight() * cropping_ratio);
+        }
 
         /************************************************************************/
         // Calculations to make sure the canvas is not larger than the content.
