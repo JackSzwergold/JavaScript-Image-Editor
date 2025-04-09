@@ -282,14 +282,14 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the target width and height.
-        // var source_target_x = 0;
-        // var source_target_y = 0;
-        // var source_target_w = canvas.width;
-        // var source_target_h = canvas.height;
-        var source_target_x = crop_x;
-        var source_target_y = crop_y;
-        var source_target_w = crop_w;
-        var source_target_h = crop_h;
+        var source_target_x = 0;
+        var source_target_y = 0;
+        var source_target_w = canvas.width;
+        var source_target_h = canvas.height;
+        // var source_target_x = crop_x;
+        // var source_target_y = crop_y;
+        // var source_target_w = crop_w;
+        // var source_target_h = crop_h;
 
         /************************************************************************/
         // Setting the new canvas width and height.
