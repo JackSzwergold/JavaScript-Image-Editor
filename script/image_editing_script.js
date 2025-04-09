@@ -58,6 +58,10 @@ jQuery.noConflict();
     });
 
     /**************************************************************************/
+    // The cropper button.
+    show_cropper_button = $('#show_cropper');
+
+    /**************************************************************************/
     // The rotation buttons.
     rotate_left_button = $('#rotate_left');
     rotate_right_button = $('#rotate_right');
@@ -427,11 +431,23 @@ jQuery.noConflict();
     } // reset_filter_handler
 
     /****************************************************************************/
+    // Handler to reset the filters.
+    function show_cropper_handler() {
+
+        crop_selector.hide();
+
+    } // show_cropper_handler
+
+    /****************************************************************************/
     // Set the listeners for the sliders.
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
     saturation_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
+
+    /****************************************************************************/
+    // Set the listeners for the rotation buttons.
+    show_cropper_button.on('click', _.debounce(show_cropper_handler, general_debounce));
 
     /****************************************************************************/
     // Set the listeners for the rotation buttons.
