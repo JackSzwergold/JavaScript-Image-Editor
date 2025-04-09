@@ -282,6 +282,7 @@ jQuery.noConflict();
         var crop_y = 0;
         var crop_w = canvas.width;
         var crop_h = canvas.height;
+        var canvas_save_ratio = 1;
 
         /***********************************************************************/
         // If we have a cropping selector in place, use it.
@@ -310,6 +311,10 @@ jQuery.noConflict();
                 crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
             }
 
+            /********************************************************************/
+            // Set the canvas save ratio.
+            canvas_save_ratio = resize_ratio;
+
         }
 
         /************************************************************************/
@@ -334,8 +339,8 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the new canvas width and height.
-        canvas_save.width = source_target_w;
-        canvas_save.height = source_target_h;
+        canvas_save.width = source_target_w * canvas_save_ratio;
+        canvas_save.height = source_target_h * canvas_save_ratio;
 
         /************************************************************************/
         // Setting source and destination coordinates.
