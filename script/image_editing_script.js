@@ -283,7 +283,7 @@ jQuery.noConflict();
         var crop_w = canvas.width;
         var crop_h = canvas.height;
 
-        /********************************************************************/
+        /***********************************************************************/
         // If we have a cropping selector in place, use it.
         if (crop_selector.hasClass('show') == true) {
 
