@@ -207,8 +207,8 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Set a top limit for the resize width and resize height.
-        var resize_width = resize_width <= 900 ? resize_width : 900;
-        var resize_height = resize_height <= 900 ? resize_height : 900;
+        resize_width = resize_width <= 900 ? resize_width : 900;
+        resize_height = resize_height <= 900 ? resize_height : 900;
 
         /************************************************************************/
         // Calculate the resize ratio.
