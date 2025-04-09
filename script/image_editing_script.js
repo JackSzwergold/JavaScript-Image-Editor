@@ -213,12 +213,16 @@ jQuery.noConflict();
         /************************************************************************/
         // Calculate the resize ratio.
         var resize_ratio = 1;
+        var actual_ratio = 1;
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
             resize_ratio = (resize_width / preview_image.naturalWidth);
+            actual_ratio = (resize_width / preview_image.width);
         }
         else {
             resize_ratio = (resize_height / preview_image.naturalHeight);
+            actual_ratio = (resize_height / preview_image.height);
         }
+        // console.log(resize_ratio + ' | ' + actual_ratio);
 
         /************************************************************************/
         // Apply the resize ratios.
@@ -275,7 +279,7 @@ jQuery.noConflict();
         var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * resize_ratio);
         var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * resize_ratio);
         var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * resize_ratio);
-        console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
+        // console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
         // Setting the target width and height.
