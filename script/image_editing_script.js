@@ -279,10 +279,11 @@ jQuery.noConflict();
         var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * cropping_ratio);
         var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * cropping_ratio);
         var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * cropping_ratio);
-        console.log(cropping_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
-        // var crop_w = crop_w > resize_width ? resize_width - crop_x : crop_w;
-        // var crop_h = crop_h > resize_height ? resize_height - crop_y : crop_w;
+        /************************************************************************/
+        // Make sure the canvas is not larger than the content.
+        crop_w = crop_w > (resize_width - crop_x) ? (resize_width - crop_x) : crop_w;
+        crop_h = crop_h > (resize_height - crop_y) ? (resize_height - crop_y) : crop_h;
 
         /************************************************************************/
         // Setting the target width and height.
