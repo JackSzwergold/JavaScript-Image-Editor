@@ -52,7 +52,7 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The cropper button.
-    show_cropper_button = $('#show_cropper');
+    crop_selector_button = $('#crop_selector');
 
     /**************************************************************************/
     // The rotation buttons.
@@ -452,8 +452,8 @@ jQuery.noConflict();
     } // reset_filter_handler
 
     /****************************************************************************/
-    // Handler to reset the filters.
-    function show_cropper_handler() {
+    // Handler for the crop selector.
+    function crop_selector_handler() {
 
         /****************************************************************************/
         // Toggle the crop selector.
@@ -493,7 +493,7 @@ jQuery.noConflict();
           });
         }
 
-    } // show_cropper_handler
+    } // crop_selector_handler
 
     /****************************************************************************/
     // Set the listeners for the sliders.
@@ -504,7 +504,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // Set the listeners for the rotation buttons.
-    show_cropper_button.on('click', _.debounce(show_cropper_handler, general_debounce));
+    crop_selector_button.on('click', _.debounce(crop_selector_handler, general_debounce));
 
     /****************************************************************************/
     // Set the listeners for the rotation buttons.
