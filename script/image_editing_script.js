@@ -270,10 +270,14 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the crop selector stuff.
-        var crop_x = crop_selector.position().top * resize_ratio;
-        var crop_y = crop_selector.position().left * resize_ratio;
-        var crop_w = crop_selector.outerWidth() * resize_ratio;
-        var crop_h = crop_selector.outerHeight() * resize_ratio;
+        var crop_x = crop_selector.position().top;
+        var crop_y = crop_selector.position().left;
+        var crop_w = crop_selector.outerWidth();
+        var crop_h = crop_selector.outerHeight();
+        // var crop_x = crop_selector.position().top * resize_ratio;
+        // var crop_y = crop_selector.position().left * resize_ratio;
+        // var crop_w = crop_selector.outerWidth() * resize_ratio;
+        // var crop_h = crop_selector.outerHeight() * resize_ratio;
         console.log(crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
