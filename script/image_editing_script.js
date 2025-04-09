@@ -215,7 +215,7 @@ jQuery.noConflict();
         resize_height = resize_height <= 900 ? resize_height : 900;
 
         /************************************************************************/
-        // Calculate the resize ratio.
+        // Calculate the resize and cropping ratios.
         var resize_ratio = 1;
         var cropping_ratio = 1;
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
@@ -282,6 +282,7 @@ jQuery.noConflict();
         var crop_y = 0;
         var crop_w = canvas.width;
         var crop_h = canvas.height;
+        var canvas_save_ratio = 1;
 
         /***********************************************************************/
         // If we have a cropping selector in place, use it.
@@ -310,6 +311,15 @@ jQuery.noConflict();
                 crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
             }
 
+            /********************************************************************/
+            // Calculate the canvas save ratio.
+            if (crop_w > crop_h) {
+                canvas_save_ratio = (resize_width / crop_w);
+            }
+            else {
+                canvas_save_ratio = (resize_height / crop_h);
+            }
+
         }
 
         /************************************************************************/
@@ -334,8 +344,8 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the new canvas width and height.
-        canvas_save.width = source_target_w;
-        canvas_save.height = source_target_h;
+        canvas_save.width = source_target_w * canvas_save_ratio;
+        canvas_save.height = source_target_h * canvas_save_ratio;
 
         /************************************************************************/
         // Setting source and destination coordinates.
