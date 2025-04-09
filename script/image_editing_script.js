@@ -49,6 +49,9 @@ jQuery.noConflict();
     /**************************************************************************/
     // The crop selector.
     crop_selector = $('#crop_selector');
+    crop_selector.draggable({
+        opacity: 0.35
+    });
     crop_selector.resizable({
             handles: 'n, e, s, w, ne, se, sw, nw',
             animate: false
