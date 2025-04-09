@@ -226,7 +226,6 @@ jQuery.noConflict();
             resize_ratio = (resize_height / preview_image.naturalHeight);
             cropping_ratio = (resize_height / preview_image.height);
         }
-        // console.log(resize_ratio + ' | ' + cropping_ratio);
 
         /************************************************************************/
         // Apply the resize ratios.
