@@ -283,27 +283,33 @@ jQuery.noConflict();
         var crop_w = canvas.width;
         var crop_h = canvas.height;
 
-        /************************************************************************/
-        // Set the X and Y values.
-        if (typeof(crop_selector.position()) != 'undefined') {
-            if (crop_selector.position().left >= 0) {
-                crop_x = Math.round(crop_selector.position().left * cropping_ratio);
-            }
-            if (crop_selector.position().top >= 0) {
-                crop_y = Math.round(crop_selector.position().top * cropping_ratio);
-            }
-        }
+        /********************************************************************/
+        // If we have a cropping selector in place, use it.
+        if (crop_selector.hasClass('show') == true) {
 
-        /************************************************************************/
-        // Set the width value.
-        if (typeof(crop_selector.outerWidth()) != 'undefined' && crop_selector.outerWidth() > 0 ) {
-            crop_w = Math.round(crop_selector.outerWidth() * cropping_ratio);
-        }
+            /********************************************************************/
+            // Set the X and Y values.
+            if (typeof(crop_selector.position()) != 'undefined') {
+                if (crop_selector.position().left >= 0) {
+                    crop_x = Math.round(crop_selector.position().left * cropping_ratio);
+                }
+                if (crop_selector.position().top >= 0) {
+                    crop_y = Math.round(crop_selector.position().top * cropping_ratio);
+                }
+            }
 
-        /************************************************************************/
-        // Set the height value.
-        if (typeof(crop_selector.outerHeight()) != 'undefined' && crop_selector.outerHeight() > 0 ) {
-            crop_h = Math.round(crop_selector.outerHeight() * cropping_ratio);
+            /********************************************************************/
+            // Set the width value.
+            if (typeof(crop_selector.outerWidth()) != 'undefined' || crop_selector.outerWidth() > 0 ) {
+                crop_w = Math.round(crop_selector.outerWidth() * cropping_ratio);
+            }
+
+            /********************************************************************/
+            // Set the height value.
+            if (typeof(crop_selector.outerHeight()) != 'undefined' || crop_selector.outerHeight() > 0 ) {
+                crop_h = Math.round(crop_selector.outerHeight() * cropping_ratio);
+            }
+
         }
 
         /************************************************************************/
@@ -488,7 +494,6 @@ jQuery.noConflict();
         }
 
     } // show_cropper_handler
-
 
     /****************************************************************************/
     // Set the listeners for the sliders.
