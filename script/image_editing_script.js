@@ -49,13 +49,6 @@ jQuery.noConflict();
     /**************************************************************************/
     // The crop selector.
     crop_selector = $('#crop_selector');
-    crop_selector.draggable({
-        opacity: 0.35
-    });
-    crop_selector.resizable({
-            handles: 'n, e, s, w, ne, se, sw, nw',
-            animate: false
-    });
 
     /**************************************************************************/
     // The cropper button.
@@ -437,14 +430,39 @@ jQuery.noConflict();
         /****************************************************************************/
         // Toggle the crop selector.
         if (crop_selector.hasClass('hide')) {
+          crop_selector.removeClass('hide').addClass('show');
+          crop_selector.draggable({
+            opacity: 0.35
+          });
+          crop_selector.resizable({
+            handles: 'n, e, s, w, ne, se, sw, nw',
+            animate: false
+          });
           crop_selector.draggable('enable');
           crop_selector.resizable('enable');
-          crop_selector.removeClass('hide').addClass('show');
+          crop_selector.css({
+            'top': '0px', 
+            'left': '0px', 
+            'width': '100px', 
+            'height': '100px', 
+            'border-color': '#cc0000', 
+            'border-width': '3px', 
+            'border-style': 'dashed'
+          });
+
         }
         else {
+          crop_selector.removeClass('show').addClass('hide');
           crop_selector.draggable('disable');
           crop_selector.resizable('disable');
-          crop_selector.removeClass('show').addClass('hide');
+          crop_selector.css({
+            'top': '0px', 
+            'left': '0px', 
+            'width': '0px', 
+            'height': '0px',
+            'border-width': '0px', 
+            'border-style': 'none'
+          });
         }
 
     } // show_cropper_handler
