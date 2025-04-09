@@ -14,7 +14,11 @@ jQuery.noConflict();
     /**************************************************************************/
     // Set the N Number.
     file_name = typeof($('#N_NUMBER').val()) != 'undefined' ? $('#N_NUMBER').val() : '';
+
+    /**************************************************************************/
+    // Set the resize height and width.
     resize_height = typeof($('#RESIZE_HEIGHT').val()) != 'undefined' ? $('#RESIZE_HEIGHT').val() : '';
+    resize_width = typeof($('#RESIZE_WIDTH').val()) != 'undefined' ? $('#RESIZE_WIDTH').val() : '';
 
     /**************************************************************************/
     // Select different elements.
@@ -41,6 +45,10 @@ jQuery.noConflict();
     /**************************************************************************/
     // The image preview itself.
     preview_image = document.querySelector('.preview_image img');
+
+    /**************************************************************************/
+    // The crop selector.
+    crop_selector = $('#crop_selector');
 
     /**************************************************************************/
     // The rotation buttons.
@@ -194,20 +202,37 @@ jQuery.noConflict();
     // Handler to render the image.
     function render_image_handler() {
 
-        canvas = document.createElement('canvas');
-        context = canvas.getContext('2d');
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
 
         /************************************************************************/
-        // Make adjustments to the dimensions.
+        // Set a top limit for the resize width and resize height.
+        resize_width = resize_width <= 900 ? resize_width : 900;
         resize_height = resize_height <= 900 ? resize_height : 900;
-        resize_factor = (resize_height / preview_image.naturalHeight);
-        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.width = preview_image.naturalHeight * resize_factor;
-            canvas.height = preview_image.naturalWidth * resize_factor;
+
+        /************************************************************************/
+        // Calculate the resize ratio.
+        var resize_ratio = 1;
+        var actual_ratio = 1;
+        if (preview_image.naturalWidth > preview_image.naturalHeight) {
+            resize_ratio = (resize_width / preview_image.naturalWidth);
+            actual_ratio = (resize_width / preview_image.width);
         }
         else {
-            canvas.width = preview_image.naturalWidth * resize_factor;
-            canvas.height = preview_image.naturalHeight * resize_factor;
+            resize_ratio = (resize_height / preview_image.naturalHeight);
+            actual_ratio = (resize_height / preview_image.height);
+        }
+        // console.log(resize_ratio + ' | ' + actual_ratio);
+
+        /************************************************************************/
+        // Apply the resize ratios.
+        if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            canvas.width = preview_image.naturalHeight * resize_ratio;
+            canvas.height = preview_image.naturalWidth * resize_ratio;
+        }
+        else {
+            canvas.width = preview_image.naturalWidth * resize_ratio;
+            canvas.height = preview_image.naturalHeight * resize_ratio;
         }
 
         /************************************************************************/
@@ -245,24 +270,39 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Pasting stuff into a new canvas for final saving,
-        canvas_save = document.createElement('canvas');
-        context_save = canvas_save.getContext('2d');
+        var canvas_save = document.createElement('canvas');
+        var context_save = canvas_save.getContext('2d');
+
+        /************************************************************************/
+        // Setting the crop selector stuff.
+        var crop_x = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().left * actual_ratio);
+        var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * actual_ratio);
+        var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * actual_ratio);
+        var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * actual_ratio);
+        // console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
+
+        /************************************************************************/
+        // Setting the target width and height.
+        var source_target_x = crop_x;
+        var source_target_y = crop_y;
+        var source_target_w = crop_w;
+        var source_target_h = crop_h;
 
         /************************************************************************/
         // Setting the new canvas width and height.
-        canvas_save.width = canvas.width;
-        canvas_save.height = canvas.height;
+        canvas_save.width = source_target_w;
+        canvas_save.height = source_target_h;
 
         /************************************************************************/
         // Setting source and destination coordinates.
-        source_x = 0;
-        source_y = 0;
-        source_w = canvas.width;
-        source_h = canvas.height;
-        dest_x = 0;
-        dest_y = 0;
-        dest_w = canvas_save.width;
-        dest_h = canvas_save.height;      
+        var source_x = source_target_x;
+        var source_y = source_target_y;
+        var source_w = source_target_w;
+        var source_h = source_target_h;
+        var dest_x = 0;
+        var dest_y = 0;
+        var dest_w = canvas_save.width;
+        var dest_h = canvas_save.height; 
 
         /************************************************************************/
         // Draw the image onto the new destination canvas.

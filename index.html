@@ -11,8 +11,6 @@
     <script src="script/jquery/jquery-3.7.1.min.js" defer="defer"></script>
     <script src="script/bootstrap-5.3.3/bootstrap.bundle.min.js" defer="defer"></script>
     <script src="script/underscore/underscore-min.js" defer="defer"></script>
-
-    <script src="script/context-filter-polyfill.min.js"></script>
   </head>
   <body>
 
@@ -47,13 +45,18 @@
           <div class="row p-0 bg-secondary">
 
             <div class="wrapper p-0 m-0 col col-8 overflow-hidden">
-              <div class="preview_image text-center p-0 m-0 col col-12">
+              <div class="preview_image text-left p-0 m-0 col col-12">
 
-                <!-- <img src="images/placeholder.jpg" class="img-fluid"> -->
-                <img src="images/test.jpg" class="img-fluid">
-                
+                <div class="position-relative bg-warning">
+                  <!-- <img src="images/placeholder.jpg" class="img-fluid"> -->
+                  <img src="images/test.jpg" class="img-fluid">
+                  <!-- <img src="images/darth.jpg" class="img-fluid"> -->
+                  <div id="crop_selector" class="" style="position: absolute; top: 100px; left: 50px; width: 100px; height: 200px; border: 3px solid #cc0000;"></div>
+                </div>
+
                 <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
                 <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="700">
+                <input type="hidden" id="RESIZE_WIDTH" name="RESIZE_WIDTH" value="700">
               </div>
             </div>
 
