@@ -213,16 +213,16 @@ jQuery.noConflict();
         /************************************************************************/
         // Calculate the resize ratio.
         var resize_ratio = 1;
-        var actual_ratio = 1;
+        var cropping_ratio = 1;
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
             resize_ratio = (resize_width / preview_image.naturalWidth);
-            actual_ratio = (resize_width / preview_image.width);
+            cropping_ratio = (resize_width / preview_image.width);
         }
         else {
             resize_ratio = (resize_height / preview_image.naturalHeight);
-            actual_ratio = (resize_height / preview_image.height);
+            cropping_ratio = (resize_height / preview_image.height);
         }
-        // console.log(resize_ratio + ' | ' + actual_ratio);
+        // console.log(resize_ratio + ' | ' + cropping_ratio);
 
         /************************************************************************/
         // Apply the resize ratios.
@@ -275,10 +275,10 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Setting the crop selector stuff.
-        var crop_x = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().left * actual_ratio);
-        var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * actual_ratio);
-        var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * actual_ratio);
-        var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * actual_ratio);
+        var crop_x = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().left * cropping_ratio);
+        var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * cropping_ratio);
+        var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * cropping_ratio);
+        var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * cropping_ratio);
         // console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
