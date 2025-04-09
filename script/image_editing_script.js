@@ -274,11 +274,11 @@ jQuery.noConflict();
         // var crop_y = crop_selector.position().left;
         // var crop_w = crop_selector.outerWidth();
         // var crop_h = crop_selector.outerHeight();
-        var crop_x = Math.round(crop_selector.position().top * resize_ratio);
-        var crop_y = Math.round(crop_selector.position().left * resize_ratio);
-        var crop_w = Math.round(crop_selector.outerWidth() * resize_ratio);
-        var crop_h = Math.round(crop_selector.outerHeight() * resize_ratio);
-        console.log(crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
+        // var crop_x = Math.round(crop_selector.position().top * resize_ratio);
+        // var crop_y = Math.round(crop_selector.position().left * resize_ratio);
+        // var crop_w = Math.round(crop_selector.outerWidth() * resize_ratio);
+        // var crop_h = Math.round(crop_selector.outerHeight() * resize_ratio);
+        console.log(resize_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
         // Setting the target width and height.
