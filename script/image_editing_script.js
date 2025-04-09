@@ -104,6 +104,9 @@ jQuery.noConflict();
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        // preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        // preview_image.parentElement.style.width = $('.preview_image img').width();
+        // preview_image.parentElement.style.height = $('.preview_image img').height();
     } // apply_filter_handler
 
     /****************************************************************************/
