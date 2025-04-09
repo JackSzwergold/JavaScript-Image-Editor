@@ -49,7 +49,10 @@ jQuery.noConflict();
     /**************************************************************************/
     // The crop selector.
     crop_selector = $('#crop_selector');
-    crop_selector.resizable();
+    crop_selector.resizable({
+            handles: 'n, e, s, w, ne, se, sw, nw',
+            animate: false
+    });
 
     /**************************************************************************/
     // The rotation buttons.
