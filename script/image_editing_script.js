@@ -437,13 +437,18 @@ jQuery.noConflict();
         /****************************************************************************/
         // Toggle the crop selector.
         if (crop_selector.hasClass('hide')) {
+          crop_selector.draggable('enable');
+          crop_selector.resizable('enable');
           crop_selector.removeClass('hide').addClass('show');
         }
         else {
+          crop_selector.draggable('disable');
+          crop_selector.resizable('disable');
           crop_selector.removeClass('show').addClass('hide');
         }
 
     } // show_cropper_handler
+
 
     /****************************************************************************/
     // Set the listeners for the sliders.
