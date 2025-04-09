@@ -268,8 +268,17 @@ jQuery.noConflict();
         var canvas_save = document.createElement('canvas');
         var context_save = canvas_save.getContext('2d');
 
-        console.dir(crop_selector.position());
-        console.log(crop_selector.naturalWidth + ' | ' + crop_selector.naturalHeight)
+        var crop_x = crop_selector.position().top;
+        var crop_y = crop_selector.position().left;
+        var crop_w = crop_selector.outerWidth();
+        var crop_h = crop_selector.outerHeight();
+
+        // console.log(crop_selector.position().top + ' | ' + crop_selector.position().left);
+        // // console.log(crop_selector.innerWidth() + ' | ' + crop_selector.innerHeight());
+        // console.log(crop_selector.outerWidth() + ' | ' + crop_selector.outerHeight());
+        // // console.log(crop_selector.width() + ' | ' + crop_selector.height());
+
+        console.log(crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
         /************************************************************************/
         // Setting the target width and height.
