@@ -47,6 +47,10 @@ jQuery.noConflict();
     preview_image = document.querySelector('.preview_image img');
 
     /**************************************************************************/
+    // The image preview itself.
+    crop_selector = $('#crop_selector');
+
+    /**************************************************************************/
     // The rotation buttons.
     rotate_left_button = $('#rotate_left');
     rotate_right_button = $('#rotate_right');
@@ -263,6 +267,9 @@ jQuery.noConflict();
         // Pasting stuff into a new canvas for final saving,
         var canvas_save = document.createElement('canvas');
         var context_save = canvas_save.getContext('2d');
+
+        console.dir(crop_selector.position());
+        console.log(crop_selector.naturalWidth + ' | ' + crop_selector.naturalHeight)
 
         /************************************************************************/
         // Setting the target width and height.
