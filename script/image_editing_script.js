@@ -103,10 +103,9 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
-        // preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
-        // preview_image.parentElement.style.width = $('.preview_image img').width();
-        // preview_image.parentElement.style.height = $('.preview_image img').height();
+        // preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        crop_selection_handler();
     } // apply_filter_handler
 
     /****************************************************************************/
@@ -492,7 +491,6 @@ jQuery.noConflict();
             'border-width': '3px', 
             'border-style': 'dashed'
           });
-
         }
         else {
           crop_selection.removeClass('show').addClass('hide');
