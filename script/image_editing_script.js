@@ -47,7 +47,7 @@ jQuery.noConflict();
     preview_image = document.querySelector('.preview_image img');
 
     /**************************************************************************/
-    // The image preview itself.
+    // The crop selector.
     crop_selector = $('#crop_selector');
 
     /**************************************************************************/
