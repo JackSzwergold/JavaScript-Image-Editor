@@ -312,8 +312,13 @@ jQuery.noConflict();
             }
 
             /********************************************************************/
-            // Set the canvas save ratio.
-            // canvas_save_ratio = resize_ratio;
+            // Calculate the canvas save ratio.
+            if (crop_w > crop_h) {
+                canvas_save_ratio = (resize_width / crop_w);
+            }
+            else {
+                canvas_save_ratio = (resize_height / crop_h);
+            }
 
         }
 
