@@ -279,11 +279,10 @@ jQuery.noConflict();
         var crop_y = typeof(crop_selector.position()) == 'undefined' ? 0 : Math.round(crop_selector.position().top * cropping_ratio);
         var crop_w = typeof(crop_selector.outerWidth()) == 'undefined' ? canvas.width : Math.round(crop_selector.outerWidth() * cropping_ratio);
         var crop_h = typeof(crop_selector.outerHeight()) == 'undefined' ? canvas.height : Math.round(crop_selector.outerHeight() * cropping_ratio);
-        // console.log(cropping_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
+        console.log(cropping_ratio + ' | ' + crop_x + ' | ' + crop_y + ' | ' + crop_w + ' | ' + crop_h);
 
-        var crop_w = crop_w > resize_width ? resize_width - crop_x : crop_w;
-        var crop_h = crop_h > resize_height ? resize_height - crop_y : crop_w;
-        console.log(resize_width - crop_x + ' | ' + resize_height - crop_y);
+        // var crop_w = crop_w > resize_width ? resize_width - crop_x : crop_w;
+        // var crop_h = crop_h > resize_height ? resize_height - crop_y : crop_w;
 
         /************************************************************************/
         // Setting the target width and height.
