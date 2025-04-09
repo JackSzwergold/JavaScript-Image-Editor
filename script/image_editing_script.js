@@ -434,7 +434,14 @@ jQuery.noConflict();
     // Handler to reset the filters.
     function show_cropper_handler() {
 
-        crop_selector.hide();
+        /****************************************************************************/
+        // Toggle the crop selector.
+        if (crop_selector.hasClass('hide')) {
+          crop_selector.removeClass('hide').addClass('show');
+        }
+        else {
+          crop_selector.removeClass('show').addClass('hide');
+        }
 
     } // show_cropper_handler
 
