@@ -215,7 +215,7 @@ jQuery.noConflict();
         resize_height = resize_height <= 900 ? resize_height : 900;
 
         /************************************************************************/
-        // Calculate the resize ratio.
+        // Calculate the resize and cropping ratios.
         var resize_ratio = 1;
         var cropping_ratio = 1;
         if (preview_image.naturalWidth > preview_image.naturalHeight) {
@@ -313,7 +313,7 @@ jQuery.noConflict();
 
             /********************************************************************/
             // Set the canvas save ratio.
-            canvas_save_ratio = resize_ratio;
+            // canvas_save_ratio = resize_ratio;
 
         }
 
