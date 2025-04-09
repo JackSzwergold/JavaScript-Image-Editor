@@ -460,9 +460,11 @@ jQuery.noConflict();
         if (crop_selection.hasClass('hide')) {
           crop_selection.removeClass('hide').addClass('show');
           crop_selection.draggable({
+            containment: 'parent',
             opacity: 0.35
           });
           crop_selection.resizable({
+            containment: 'parent',
             handles: 'n, e, s, w, ne, se, sw, nw',
             animate: false
           });
