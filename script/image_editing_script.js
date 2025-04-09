@@ -103,7 +103,8 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        disable_crop_selection();
     } // apply_filter_handler
 
     /****************************************************************************/
@@ -468,44 +469,59 @@ jQuery.noConflict();
         /****************************************************************************/
         // Toggle the crop selector.
         if (crop_selection.hasClass('hide')) {
-          crop_selection.removeClass('hide').addClass('show');
-          crop_selection.draggable({
-            containment: 'parent',
-            opacity: 0.35
-          });
-          crop_selection.resizable({
-            containment: 'parent',
-            handles: 'n, e, s, w, ne, se, sw, nw',
-            animate: false
-          });
-          crop_selection.draggable('enable');
-          crop_selection.resizable('enable');
-          crop_selection.css({
-            'top': '0px', 
-            'left': '0px', 
-            'width': Math.round(preview_image.naturalWidth / 2) + 'px', 
-            'height': Math.round(preview_image.naturalHeight / 2) + 'px', 
-            'border-color': '#cc0000', 
-            'border-width': '3px', 
-            'border-style': 'dashed'
-          });
-
+          enable_crop_selection();
         }
         else {
-          crop_selection.removeClass('show').addClass('hide');
-          crop_selection.draggable('disable');
-          crop_selection.resizable('disable');
-          crop_selection.css({
-            'top': '0px', 
-            'left': '0px', 
-            'width': '0px', 
-            'height': '0px',
-            'border-width': '0px', 
-            'border-style': 'none'
-          });
+          disable_crop_selection();
         }
 
     } // crop_selection_handler
+
+    /****************************************************************************/
+    // Enable the crop selection stuff.
+    function enable_crop_selection() {
+
+      crop_selection.removeClass('hide').addClass('show');
+      crop_selection.draggable({
+        containment: 'parent',
+        opacity: 0.35
+      });
+      crop_selection.resizable({
+        containment: 'parent',
+        handles: 'n, e, s, w, ne, se, sw, nw',
+        animate: false
+      });
+      crop_selection.draggable('enable');
+      crop_selection.resizable('enable');
+      crop_selection.css({
+        'top': '0px', 
+        'left': '0px', 
+        'width': Math.round(preview_image.naturalWidth / 2) + 'px', 
+        'height': Math.round(preview_image.naturalHeight / 2) + 'px', 
+        'border-color': '#cc0000', 
+        'border-width': '3px', 
+        'border-style': 'dashed'
+      });
+
+    } // enable_crop_selection
+
+    /****************************************************************************/
+    // Disable the crop selection stuff.
+    function disable_crop_selection() {
+
+      crop_selection.removeClass('show').addClass('hide');
+      crop_selection.draggable('disable');
+      crop_selection.resizable('disable');
+      crop_selection.css({
+        'top': '0px', 
+        'left': '0px', 
+        'width': '0px', 
+        'height': '0px',
+        'border-width': '0px', 
+        'border-style': 'none'
+      });
+    
+    } // disable_crop_selection
 
     /****************************************************************************/
     // Set the listeners for the sliders.
