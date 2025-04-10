@@ -67,7 +67,9 @@ jQuery.noConflict();
     } // disable_crop_selection
 
     enable_crop_selection();
-
+    // alert(preview_image.width + ' x ' + preview_image.height);
+    // $('.test_wrapper').width(preview_image.naturalHeight);
+    // $('.test_wrapper').height(preview_image.naturalWidth);
 
   }); // $(document).ready
 
