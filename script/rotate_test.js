@@ -69,10 +69,10 @@ jQuery.noConflict();
 
     enable_crop_selection();
     // alert(preview_image.width + ' x ' + preview_image.height);
-    // $('#crop_constrainer').width(preview_image.naturalHeight);
-    // $('#crop_constrainer').height(preview_image.naturalWidth);
-    $('#crop_constrainer').width(preview_image.naturalWidth);
-    $('#crop_constrainer').height(preview_image.naturalHeight);
+    $('#crop_constrainer').width(preview_image.naturalHeight);
+    $('#crop_constrainer').height(preview_image.naturalWidth);
+    // $('#crop_constrainer').width(preview_image.naturalWidth);
+    // $('#crop_constrainer').height(preview_image.naturalHeight);
 
   }); // $(document).ready
 
