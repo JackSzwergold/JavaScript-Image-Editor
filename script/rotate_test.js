@@ -6,7 +6,6 @@ jQuery.noConflict();
   // The core 'document ready' logic.
   $(document).ready(function() {
 
-
     /**************************************************************************/
     // The image preview itself.
     preview_image = document.querySelector('.preview_image img');
@@ -14,6 +13,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The crop selection area.
     crop_selection = $('#crop_selection');
+    test_wrapper = $('#test_wrapper');
 
     /****************************************************************************/
     // Enable the crop selection stuff.
@@ -67,6 +67,8 @@ jQuery.noConflict();
     } // disable_crop_selection
 
     enable_crop_selection();
+    $('.test_wrapper').width(preview_image.naturalWidth);
+    $('.test_wrapper').height(preview_image.naturalHeight);
 
   }); // $(document).ready
 
