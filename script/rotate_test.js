@@ -22,11 +22,11 @@ jQuery.noConflict();
       crop_selection.removeClass('hide').addClass('show');
       // if (crop_selection.hasClass('ui-resizable') == false) {
         crop_selection.draggable({
-          containment: 'parent',
+          containment: '#crop_constrainer',
           opacity: 0.35
         });
         crop_selection.resizable({
-          containment: 'parent',
+          containment: '#crop_constrainer',
           handles: 'n, e, s, w, ne, se, sw, nw',
           animate: false
         });
@@ -68,9 +68,8 @@ jQuery.noConflict();
 
     enable_crop_selection();
     // alert(preview_image.width + ' x ' + preview_image.height);
-    // $('.test_wrapper').width(preview_image.naturalHeight);
-    // $('.test_wrapper').height(preview_image.naturalWidth);
+    $('#crop_constrainer').width(preview_image.naturalHeight);
+    $('#crop_constrainer').height(preview_image.naturalWidth);
 
-  }); // $(document).ready
 
 })(jQuery);
