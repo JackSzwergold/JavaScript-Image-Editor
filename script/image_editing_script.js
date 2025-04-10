@@ -44,7 +44,7 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The image preview itself.
-    preview_image = document.querySelector('#image_to_adjust');
+    preview_image = document.querySelector('#image_to_edit');
 
     /**************************************************************************/
     // The crop selection area.
