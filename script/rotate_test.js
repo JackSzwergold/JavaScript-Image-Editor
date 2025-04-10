@@ -71,5 +71,6 @@ jQuery.noConflict();
     $('#crop_constrainer').width(preview_image.naturalHeight);
     $('#crop_constrainer').height(preview_image.naturalWidth);
 
+  }); // $(document).ready
 
 })(jQuery);
