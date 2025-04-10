@@ -13,6 +13,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The crop selection area.
     crop_selection = $('#crop_selection');
+    crop_constrainer = $('#crop_constrainer');
     test_wrapper = $('#test_wrapper');
 
     /****************************************************************************/
