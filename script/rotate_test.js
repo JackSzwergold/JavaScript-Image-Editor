@@ -67,8 +67,7 @@ jQuery.noConflict();
     } // disable_crop_selection
 
     enable_crop_selection();
-    $('.test_wrapper').width(preview_image.naturalWidth);
-    $('.test_wrapper').height(preview_image.naturalHeight);
+
 
   }); // $(document).ready
 
