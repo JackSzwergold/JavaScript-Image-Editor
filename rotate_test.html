@@ -31,7 +31,7 @@
       <div class="wrapper p-0 m-0 col col-12 overflow-hidden">
         <div class="preview_image p-0 m-0 col col-12">
           <div class="d-flex align-items-start justify-content-center">
-            <div class="position-relative border border-3">
+            <div class="test_wrapper position-relative border border-3">
               <!-- <img src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
               <!-- <img src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
               <img src="images/darth.jpg" class="img-fluid pe-none" width="438" height="300">
@@ -46,6 +46,16 @@
 
     </div>
   </div>
+
+  <style>
+    .preview_image img {
+      transform: rotate(-90deg);
+    }
+
+    .test_wrapper {
+/*      transform: rotate(-90deg);*/
+    }
+  </style>
 
   <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css" />
   <script src="script/jquery/jquery-ui-1.14.1.js" defer="defer"></script>
