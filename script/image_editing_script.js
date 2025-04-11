@@ -522,6 +522,7 @@ jQuery.noConflict();
       crop_selection.draggable('enable');
       crop_selection.resizable('enable');
       crop_selection.css({
+        'display': 'block',
         'top': '0px', 
         'left': '0px', 
         'width': Math.round(preview_image.width / 2) + 'px', 
@@ -539,10 +540,11 @@ jQuery.noConflict();
 
       crop_selection.removeClass('show').addClass('hide');
       crop_selection.draggable();
-      crop_selection.draggable('disable');
+      crop_selection.draggable('destroy');
       crop_selection.resizable();
-      crop_selection.resizable('disable');
+      crop_selection.resizable('destroy');
       crop_selection.css({
+        'display': 'none',
         'top': '0px', 
         'left': '0px', 
         'width': '0px', 
