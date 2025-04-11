@@ -49,12 +49,12 @@
 
             <div class="wrapper p-0 m-0 col col-8 overflow-hidden">
               <div class="preview_image p-0 m-0 col col-12">
-                <div class="d-flex align-items-start justify-content-center">
+                <div class="d-flex align-items-center justify-content-center py-sm-2 py-md-5">
                   <div class="position-relative">
                     <!-- <img id="image_to_edit" src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
                     <!-- <img id="image_to_edit" src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
-                    <!-- <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395"> -->
-                    <img id="image_to_edit" src="images/girl_pearl_earring.jpg" class="img-fluid pe-none" width="590" height="699">   
+                    <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395">
+                    <!-- <img id="image_to_edit" src="images/girl_pearl_earring.jpg" class="img-fluid pe-none" width="590" height="699">    -->
                     <div id="crop_selection" class="position-absolute hide"></div>
                   </div>
                 </div>
@@ -101,9 +101,9 @@
               </div>
 
               <div class="d-grid gap-2">
-                <button id="save_image" type="button" class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12">Save</button>
+                <button id="save_image" type="button" class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12"><span id="save_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="save_text" class="d-inline-block">Save</span></button>
                 <button id="download_image" type="button" class="align-baseline pt-md-1 pb-md-1 btn btn-dark btn-sm col col-12">Download</button>
-                <button id="reset_filter" type="button" class="btn btn-outline-danger text-danger bg-white btn-lg col col-12">Reset</button>
+                <button id="reset_filter" type="button" class="btn btn-outline-danger text-danger bg-white btn-lg col col-12"><span id="reset_spinner" class="d-none spinner-border spinner-border text-danger" role="status"></span><span id="reset_text" class="d-inline-block">Reset</span></button>
                 <input type="file" id="file_input" accept="image/*" hidden>
               </div>
 

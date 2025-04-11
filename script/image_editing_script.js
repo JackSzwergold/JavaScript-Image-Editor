@@ -69,6 +69,13 @@ jQuery.noConflict();
     modal_close_button = $('#modal_close');
 
     /**************************************************************************/
+    // The save and reset button related stuff.
+    save_text = $('#save_text');
+    save_spinner = $('#save_spinner');
+    reset_text = $('#reset_text');
+    reset_spinner = $('#reset_spinner');
+
+    /**************************************************************************/
     // Initial control values.
     brightness = 100;
     contrast = 100;
@@ -396,18 +403,26 @@ jQuery.noConflict();
             },
             type: 'POST', 
             cache: false,
-            success: function(response_data, textStatus, jqXHR) {
+            beforeSend: function(jqXHR, settings) {
+                save_text.removeClass('d-inline-block').addClass('d-none');
+                save_spinner.removeClass('d-none').addClass('d-inline-block');
+                reset_text.removeClass('d-inline-block').addClass('d-none');
+                reset_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_filter_button.prop('disabled', true);
-                save_image_button.html('Working…').prop('disabled', true);
+                save_image_button.prop('disabled', true);
+            },
+            success: function(response_data, textStatus, jqXHR) {
+                save_text.removeClass('d-none').addClass('d-inline-block');
+                save_spinner.removeClass('d-inline-block').addClass('d-none');
+                reset_text.removeClass('d-none').addClass('d-inline-block');
+                reset_spinner.removeClass('d-inline-block').addClass('d-none');
+                reset_filter_button.prop('disabled', false);
+                save_image_button.prop('disabled', false);
                 modal_close_button.click();
                 reset_filter_handler();
             },
             error: function(jqXHR, textStatus) {
                 console.log('error: ' + jqXHR.status + ' ' + textStatus + ' | ' + jqXHR.getResponseHeader('content-type'));
-            },
-            complete: function(jqXHR, textStatus) {
-                reset_filter_button.prop('disabled', false);
-                save_image_button.html('Save').prop('disabled', false);
             }
         };
 
@@ -483,28 +498,27 @@ jQuery.noConflict();
     function enable_crop_selection() {
 
       crop_selection.removeClass('hide').addClass('show');
-      // if (crop_selection.hasClass('ui-resizable') == false) {
-        crop_selection.draggable({
-          containment: 'parent',
-          opacity: 0.35
-        });
-        crop_selection.resizable({
-          containment: 'parent',
-          handles: 'n, e, s, w, ne, se, sw, nw',
-          animate: false
-        });
-        crop_selection.draggable('enable');
-        crop_selection.resizable('enable');
-        crop_selection.css({
-          'top': '0px', 
-          'left': '0px', 
-          'width': Math.round(preview_image.naturalWidth / 2) + 'px', 
-          'height': Math.round(preview_image.naturalHeight / 2) + 'px', 
-          'border-color': '#cc0000', 
-          'border-width': '3px', 
-          'border-style': 'dashed'
-        });
-      // }
+      crop_selection.draggable({
+        containment: 'parent',
+        opacity: 0.35
+      });
+      crop_selection.resizable({
+        containment: 'parent',
+        handles: 'n, e, s, w, ne, se, sw, nw',
+        animate: false
+      });
+      crop_selection.draggable('enable');
+      crop_selection.resizable('enable');
+      crop_selection.css({
+        'top': '0px', 
+        'left': '0px', 
+        'width': Math.round(preview_image.width / 2) + 'px', 
+        'height': Math.round(preview_image.height / 2) + 'px', 
+        'border-color': '#cc0000', 
+        'border-width': '3px', 
+        'border-style': 'dashed'
+      });
+ 
     } // enable_crop_selection
 
     /****************************************************************************/
@@ -512,20 +526,18 @@ jQuery.noConflict();
     function disable_crop_selection() {
 
       crop_selection.removeClass('show').addClass('hide');
-      // if (crop_selection.hasClass('ui-resizable') == true) {
-          crop_selection.draggable();
-          crop_selection.draggable('disable');
-          crop_selection.resizable();
-          crop_selection.resizable('disable');
-          crop_selection.css({
-            'top': '0px', 
-            'left': '0px', 
-            'width': '0px', 
-            'height': '0px',
-            'border-width': '0px', 
-            'border-style': 'none'
-          });
-      // }
+      crop_selection.draggable();
+      crop_selection.draggable('disable');
+      crop_selection.resizable();
+      crop_selection.resizable('disable');
+      crop_selection.css({
+        'top': '0px', 
+        'left': '0px', 
+        'width': '0px', 
+        'height': '0px',
+        'border-width': '0px', 
+        'border-style': 'none'
+      });
     
     } // disable_crop_selection
 
