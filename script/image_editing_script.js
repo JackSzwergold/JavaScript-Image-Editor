@@ -113,8 +113,12 @@ jQuery.noConflict();
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         if (preview_image.width != preview_image.height) {
           if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-                disable_crop_selection();
-            } 
+            disable_crop_selection();
+            crop_selection_button.prop('disabled', true);
+          }
+          else {
+            crop_selection_button.prop('disabled', false);
+          }
         }
 
     } // apply_filter_handler
