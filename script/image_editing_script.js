@@ -112,7 +112,6 @@ jQuery.noConflict();
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
         // preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
-        disable_crop_selection();
     } // apply_filter_handler
 
     /****************************************************************************/
@@ -475,6 +474,10 @@ jQuery.noConflict();
         /************************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
+
+        /************************************************************************/
+        // Disable the crop selection.
+        disable_crop_selection();
 
     } // reset_filter_handler
 
