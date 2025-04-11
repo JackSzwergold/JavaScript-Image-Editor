@@ -69,9 +69,11 @@ jQuery.noConflict();
     modal_close_button = $('#modal_close');
 
     /**************************************************************************/
-    // The save image text and save image spinner.
-    save_image_text = $('#save_image_text');
-    save_image_spinner = $('#save_image_spinner');
+    // The save and reset button related stuff.
+    save_text = $('#save_text');
+    save_spinner = $('#save_spinner');
+    reset_text = $('#reset_text');
+    reset_spinner = $('#reset_spinner');
 
     /**************************************************************************/
     // Initial control values.
@@ -402,14 +404,18 @@ jQuery.noConflict();
             type: 'POST', 
             cache: false,
             beforeSend: function(jqXHR, settings) {
-                save_image_text.removeClass('d-inline-block').addClass('d-none');
-                save_image_spinner.removeClass('d-none').addClass('d-inline-block');
+                save_text.removeClass('d-inline-block').addClass('d-none');
+                save_spinner.removeClass('d-none').addClass('d-inline-block');
+                reset_text.removeClass('d-inline-block').addClass('d-none');
+                reset_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_filter_button.prop('disabled', true);
                 save_image_button.prop('disabled', true);
             },
             success: function(response_data, textStatus, jqXHR) {
-                save_image_text.removeClass('d-none').addClass('d-inline-block');
-                save_image_spinner.removeClass('d-inline-block').addClass('d-none');
+                save_text.removeClass('d-none').addClass('d-inline-block');
+                save_spinner.removeClass('d-inline-block').addClass('d-none');
+                reset_text.removeClass('d-none').addClass('d-inline-block');
+                reset_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_filter_button.prop('disabled', false);
                 save_image_button.prop('disabled', false);
                 modal_close_button.click();
