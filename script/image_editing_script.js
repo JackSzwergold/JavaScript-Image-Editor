@@ -110,8 +110,17 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        // preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        if (preview_image.width != preview_image.height) {
+          if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+            disable_crop_selection();
+            crop_selection_button.prop('disabled', true);
+          }
+          else {
+            crop_selection_button.prop('disabled', false);
+          }
+        }
+
     } // apply_filter_handler
 
     /****************************************************************************/
@@ -513,6 +522,7 @@ jQuery.noConflict();
       crop_selection.draggable('enable');
       crop_selection.resizable('enable');
       crop_selection.css({
+        'display': 'block',
         'top': '0px', 
         'left': '0px', 
         'width': Math.round(preview_image.width / 2) + 'px', 
@@ -530,10 +540,11 @@ jQuery.noConflict();
 
       crop_selection.removeClass('show').addClass('hide');
       crop_selection.draggable();
-      crop_selection.draggable('disable');
+      crop_selection.draggable('destroy');
       crop_selection.resizable();
-      crop_selection.resizable('disable');
+      crop_selection.resizable('destroy');
       crop_selection.css({
+        'display': 'none',
         'top': '0px', 
         'left': '0px', 
         'width': '0px', 
