@@ -513,8 +513,8 @@ jQuery.noConflict();
         crop_selection.css({
           'top': '0px', 
           'left': '0px', 
-          'width': Math.round(preview_image.naturalWidth / 2) + 'px', 
-          'height': Math.round(preview_image.naturalHeight / 2) + 'px', 
+          'width': Math.round(preview_image.width / 2) + 'px', 
+          'height': Math.round(preview_image.height / 2) + 'px', 
           'border-color': '#cc0000', 
           'border-width': '3px', 
           'border-style': 'dashed'
