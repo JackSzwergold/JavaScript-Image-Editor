@@ -69,6 +69,11 @@ jQuery.noConflict();
     modal_close_button = $('#modal_close');
 
     /**************************************************************************/
+    // The save image text and save image spinner.
+    save_image_text = $('#save_image_text');
+    save_image_spinner = $('#save_image_spinner');
+
+    /**************************************************************************/
     // Initial control values.
     brightness = 100;
     contrast = 100;
@@ -397,12 +402,16 @@ jQuery.noConflict();
             type: 'POST', 
             cache: false,
             beforeSend: function(jqXHR, settings) {
+                save_image_text.removeClass('d-block').addClass('d-none');
+                save_image_spinner.removeClass('d-none').addClass('d-block');
                 reset_filter_button.prop('disabled', true);
-                save_image_button.html('Working…').prop('disabled', true);
+                save_image_button.prop('disabled', true);
             },
             success: function(response_data, textStatus, jqXHR) {
+                save_image_text.removeClass('d-none').addClass('d-block');
+                save_image_spinner.removeClass('d-block').addClass('d-none');
                 reset_filter_button.prop('disabled', false);
-                save_image_button.html('Save').prop('disabled', false);
+                save_image_button.prop('disabled', false);
                 modal_close_button.click();
                 reset_filter_handler();
             },
