@@ -110,8 +110,13 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
-        // preview_image.parentElement.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        if (preview_image.width != preview_image.height) {
+          if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
+                disable_crop_selection();
+            } 
+        }
+
     } // apply_filter_handler
 
     /****************************************************************************/
