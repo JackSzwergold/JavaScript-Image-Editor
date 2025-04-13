@@ -82,6 +82,7 @@ jQuery.noConflict();
     brightness = 100;
     contrast = 100;
     saturation = 100;
+    tint = 0;
     rotate = 0;
     flip_horizontal = 1;
     flip_vertical = 1;
