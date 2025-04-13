@@ -23,11 +23,11 @@ jQuery.noConflict();
       crop_selection.removeClass('hide').addClass('show');
       // if (crop_selection.hasClass('ui-resizable') == false) {
         crop_selection.draggable({
-          containment: '#crop_constrainer',
+          containment: '#image_to_edit',
           opacity: 0.35
         });
         crop_selection.resizable({
-          containment: '#crop_constrainer',
+          containment: '#image_to_edit',
           handles: 'n, e, s, w, ne, se, sw, nw',
           animate: false
         });

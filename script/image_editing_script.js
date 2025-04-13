@@ -29,6 +29,7 @@ jQuery.noConflict();
     brightness_text = document.querySelector('#brightness_slider label span');
     contrast_text = document.querySelector('#contrast_slider label span');
     saturation_text = document.querySelector('#saturation_slider label span');
+    tint_text = document.querySelector('#tint_slider label span');
     blur_text = document.querySelector('#blur_slider label span');
 
     /**************************************************************************/
@@ -36,6 +37,7 @@ jQuery.noConflict();
     brightness_slider = document.querySelector('#brightness_slider input');
     contrast_slider = document.querySelector('#contrast_slider input');
     saturation_slider = document.querySelector('#saturation_slider input');
+    tint_slider = document.querySelector('#tint_slider input');
     blur_slider = document.querySelector('#blur_slider input');
 
     /**************************************************************************/
@@ -80,6 +82,7 @@ jQuery.noConflict();
     brightness = 100;
     contrast = 100;
     saturation = 100;
+    tint = 0;
     rotate = 0;
     flip_horizontal = 1;
     flip_vertical = 1;
@@ -109,7 +112,8 @@ jQuery.noConflict();
     /****************************************************************************/
     // Handler to apply the filters.
     function apply_filter_handler() {
-        preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+        preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg)
+blur(${blur}px)`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
         if (preview_image.width != preview_image.height) {
           if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
@@ -130,11 +134,13 @@ jQuery.noConflict();
         brightness_text.innerText = `${brightness_slider.value}%`;
         contrast_text.innerText = `${contrast_slider.value}%`;
         saturation_text.innerText = `${saturation_slider.value}%`;
+        tint_text.innerText = `${tint_slider.value}deg`;
         blur_text.innerText = `${blur_slider.value}px`;
 
         brightness = Math.floor(brightness_slider.value);
         contrast = Math.floor(contrast_slider.value);
         saturation = Math.floor(saturation_slider.value);
+        tint = Math.floor(tint_slider.value);
         blur = Math.floor(blur_slider.value);
 
         /************************************************************************/
@@ -261,7 +267,7 @@ jQuery.noConflict();
 
         /************************************************************************/
         // Make color and tone adjustments to the image.
-        context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) blur(${blur}px)`;
+        context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
         /************************************************************************/
         // Do this for the image rotation stuff.
@@ -472,6 +478,9 @@ jQuery.noConflict();
         saturation_text.innerText = '100%';
         saturation = saturation_slider.value = 100;
 
+        tint_text.innerText = '0deg';
+        tint = saturation_slider.value = 0;
+
         blur_text.innerText = '0px';
         blur = blur_slider.value = 0;
 
@@ -560,6 +569,7 @@ jQuery.noConflict();
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
     saturation_slider.addEventListener('input', update_filter_values_handler);
+    tint_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
 
     /****************************************************************************/
