@@ -92,7 +92,9 @@
   <div class="container fluid">
     <div class="row p-0">
 
-      <p><label>Histogram for: <select id="histType">
+      <div class="mb-3">
+        <label for="histType" class="form-label">Histogram for:</label>
+        <select id="histType" class="form-select">
           <option value="rgb">RGB</option>
           <option value="red">Red</option>
           <option value="green">Green</option>
@@ -105,25 +107,37 @@
           <option value="magenta">Magenta</option>
           <option value="yellow">Yellow</option>
           <option value="kelvin">Kelvin (Black)</option>
-      </select></label></p>
+        </select>
+      </div>
 
-      <p><label>Count every <input id="accuracy" type="number" min="10" max="100" value="10"> pixels</label></p>
-
-      <p><label>Plot style: <select id="plotStyle">
-          <option value="continuous">Continuous</option>
-          <option value="discreet">Discreet</option>
-      </select></label></p>
-
-      <p><label>Plot fill <input id="plotFill" type="checkbox"></label></p>
-
-      <p><label>Plot colors: <select id="plotColors">
+      <div class="mb-3">
+        <label for="plotColors" class="form-label">Plot colors:</label>
+        <select id="plotColors" class="form-select">
           <option value="none">None</option>
           <option value="flat">Flat colors</option>
           <option value="gradient">Gradients</option>
-      </select></label></p>
+        </select>
+      </div>
 
-        </div>
+      <div class="mb-3">
+        <label for="plotStyle" class="form-label">Plot colors:</label>
+        <select id="plotStyle" class="form-select">
+          <option value="continuous">Continuous</option>
+          <option value="discreet">Discreet</option>
+        </select>
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="plotFill">
+        <label class="form-check-label" for="plotFill">
+          Plot fill
+        </label>
+      </div>
+
+      <p><label>Count every <input id="accuracy" type="number" min="10" max="100" value="10"> pixels</label></p>
+
       </div>
     </div>
+
   </body>
 </html>
