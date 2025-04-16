@@ -54,7 +54,7 @@ jQuery.noConflict();
 
     var initHistogram = function () {
       // Plot defaults
-      accuracy.value = 1;
+      accuracy.value = 10;
       plotStyle.value = 'continuous';
       plotColors.value = 'flat';
       plotFill.checked = true;
