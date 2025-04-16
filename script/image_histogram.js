@@ -12,7 +12,7 @@ jQuery.noConflict();
         histCtx = histCanvas.getContext('2d'),
         histType = document.getElementById('histType'),
         accuracy = document.getElementById('accuracy'),
-        runtime = document.getElementById('runtime'),
+        // runtime = document.getElementById('runtime'),
         plotStyle = document.getElementById('plotStyle'),
         plotFill = document.getElementById('plotFill'),
         plotColors = document.getElementById('plotColors'),
@@ -280,12 +280,12 @@ jQuery.noConflict();
     var updateHist = function () {
       var timeStart = (new Date()).getTime();
 
-      runtime.innerHTML = 'Calculating histogram...';
+      // runtime.innerHTML = 'Calculating histogram...';
 
       calcHist(histType.value);
 
-      var timeEnd = (new Date()).getTime();
-      runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
+      // var timeEnd = (new Date()).getTime();
+      // runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
     };
 
     var thumbClick = function (ev) {

@@ -28,7 +28,7 @@
         <div class="preview_image p-0 m-0 col col-12">
           <div class="d-flex align-items-start justify-content-center">
             <!-- <div id="crop_constrainer" class="position-absolute border border-3"></div> -->
-            <div class="test_wrapper position-relative my-5">
+            <div class="position-relative my-5">
               <!-- <img id="image_to_edit" src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
               <!-- <img id="image_to_edit" src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
               <!-- <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395"> -->
@@ -36,9 +36,20 @@
               <div id="crop_selection" class="position-absolute hide"></div>
             </div>
           </div>
+
           <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
           <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="900">
           <input type="hidden" id="RESIZE_WIDTH" name="RESIZE_WIDTH" value="900">
+        </div>
+      </div>
+
+      <div class="wrapper p-0 m-0 col col-12">
+        <div class="histogram p-0 m-0 col col-12">
+          <div class="d-flex align-items-start justify-content-center">
+            <div class="position-relative">
+              <canvas class="thumb" id="histogram" width="590" height="240"></canvas>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -75,12 +86,6 @@
 
 </div>
 <!-- Image Edit Area END -->
-
- 
-    <p><canvas class="thumb" id="histogram" width="640" height="480">Your 
-    browser does not have support for Canvas.</canvas></p>
-
-    <p id="runtime">Plot runtime...</p>
 
     <p><label>Histogram for: <select id="histType">
         <option value="rgb">RGB</option>
