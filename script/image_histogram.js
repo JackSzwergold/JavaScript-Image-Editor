@@ -82,6 +82,7 @@ jQuery.noConflict();
       img.className = 'thumb';
 
       updateHist();
+
     };
 
     var calcHist = function (type) {
@@ -91,7 +92,8 @@ jQuery.noConflict();
       if (type === 'rgb') {
         chans = [[], [], []];
         subtypes = ['red', 'green', 'blue'];
-      } else if (type === 'cmyk') {
+      }
+      else if (type === 'cmyk') {
         chans = [[], [], [], []];
         subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
       }
@@ -99,7 +101,8 @@ jQuery.noConflict();
       var step = parseInt(accuracy.value);
       if (isNaN(step) || step < 1) {
         step = 1;
-      } else if (step > 50) {
+      }
+      else if (step > 50) {
         step = 50;
       }
       accuracy.value = step;
@@ -110,28 +113,34 @@ jQuery.noConflict();
             'blue') {
           val = [imgData[i], imgData[i+1], imgData[i+2]];
 
-        } else if (type === 'cmyk' || type === 'cyan' || type === 'magenta' || 
+        }
+        else if (type === 'cmyk' || type === 'cyan' || type === 'magenta' || 
             type === 'yellow' || type === 'kelvin') {
           val = rgb2cmyk(imgData[i], imgData[i+1], imgData[i+2]);
 
-        } else if (type === 'hue' || type === 'sat' || type === 'val') {
+        }
+        else if (type === 'hue' || type === 'sat' || type === 'val') {
           val = rgb2hsv(imgData[i], imgData[i+1], imgData[i+2]);
         }
 
         if (type === 'red' || type === 'hue' || type === 'cyan') {
           val = [val[0]];
-        } else if (type === 'green' || type === 'sat' || type === 'magenta') {
+        }
+        else if (type === 'green' || type === 'sat' || type === 'magenta') {
           val = [val[1]];
-        } else if (type === 'blue' || type === 'val' || type === 'yellow') {
+        }
+        else if (type === 'blue' || type === 'val' || type === 'yellow') {
           val = [val[2]];
-        } else if (type === 'kelvin') {
+        }
+        else if (type === 'kelvin') {
           val = [val[3]];
         }
 
         for (var y = 0, m = val.length; y < m; y++) {
           if (val[y] in chans[y]) {
             chans[y][val[y]]++;
-          } else {
+          }
+          else {
             chans[y][val[y]] = 1;
           }
 
@@ -179,9 +188,11 @@ jQuery.noConflict();
 
         if (max === red) {
           hue = (green -  blue) / delta;
-        } else if (max === green) {
+        }
+        else if (max === green) {
           hue = (blue  -   red) / delta + 2;
-        } else if (max ===  blue) {
+        }
+        else if (max ===  blue) {
           hue = (red   - green) / delta + 4;
         }
 
@@ -205,7 +216,8 @@ jQuery.noConflict();
 
       if (black === 1) {
         cyan = magenta = yellow = 0;
-      } else {
+      }
+      else {
         var w = 1 - black;
         cyan    = (cyan    - black) / w;
         magenta = (magenta - black) / w;
@@ -222,7 +234,8 @@ jQuery.noConflict();
       if (plotFill.checked || plotStyle.value === 'discreet') {
         ctxStyle = 'fillStyle';
         histCtx.strokeStyle = '#000';
-      } else {
+      }
+      else {
         ctxStyle = 'strokeStyle';
       }
 
@@ -231,17 +244,21 @@ jQuery.noConflict();
           histCtx[ctxStyle] = gradients.hue;
         } else if (type in colors && type !== 'val') {
           histCtx[ctxStyle] = colors[type][1];
-        } else {
+        }
+        else {
           histCtx[ctxStyle] = '#000';
         }
 
-      } else if (plotColors.value === 'gradient') {
+      }
+      else if (plotColors.value === 'gradient') {
         if (type in gradients) {
           histCtx[ctxStyle] = gradients[type];
-        } else {
+        }
+        else {
           histCtx[ctxStyle] = '#000';
         }
-      } else if (plotColors.value === 'none') {
+      }
+      else if (plotColors.value === 'none') {
         histCtx[ctxStyle] = '#000';
       }
 
@@ -260,10 +277,12 @@ jQuery.noConflict();
 
         if (plotStyle.value === 'continuous') {
           histCtx.lineTo(x, histCanvas.height - y);
-        } else if (plotStyle.value === 'discreet') {
+        }
+        else if (plotStyle.value === 'discreet') {
           if (plotFill.checked) {
             histCtx.fillRect(x, histCanvas.height - y, discreetWidth, y);
-          } else {
+          }
+          else {
             histCtx.fillRect(x, histCanvas.height - y, discreetWidth, 2);
           }
         }
@@ -295,7 +314,8 @@ jQuery.noConflict();
 
       if (this.className === 'thumb') {
         this.className = '';
-      } else {
+      }
+      else {
         this.className = 'thumb';
       }
     };
