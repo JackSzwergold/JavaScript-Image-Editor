@@ -1,4 +1,15 @@
-input[type=range]::-webkit-slider-thumb,
+input[type=range]::-webkit-slider-thumb {
+    background: #0d0;
+}
+
 input[type=range]::-moz-range-thumb {
-    background: #f00;
+    background: #0d0;
+}
+
+input[type=range]:hover::-webkit-slider-thumb {
+    background: #0f0;
+}
+
+input[type=range]:hover::-moz-range-thumb {
+    background: #0f0;
 }
