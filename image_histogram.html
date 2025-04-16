@@ -20,7 +20,6 @@
 <!-- Image Edit Area BEGIN -->
 <div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
 
-
   <div class="container fluid">
     <div class="row p-0 bg-secondary">
 
@@ -87,35 +86,45 @@
 </div>
 <!-- Image Edit Area END -->
 
-    <p><label>Histogram for: <select id="histType">
-        <option value="rgb">RGB</option>
-        <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="hue">Hue</option>
-        <option value="sat">Saturation</option>
-        <option value="val">Value (brightness)</option>
-        <option value="cmyk">CMYK</option>
-        <option value="cyan">Cyan</option>
-        <option value="magenta">Magenta</option>
-        <option value="yellow">Yellow</option>
-        <option value="kelvin">Kelvin (Black)</option>
-    </select></label></p>
+<!-- Image Edit Area BEGIN -->
+<div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
 
-    <p><label>Count every <input id="accuracy" type="number" min="1" max="50" 
-      value="1"> pixels</label></p>
+  <div class="container fluid">
+    <div class="row p-0">
 
-    <p><label>Plot style: <select id="plotStyle">
-        <option value="continuous">Continuous</option>
-        <option value="discreet">Discreet</option>
-    </select></label></p>
+      <p><label>Histogram for: <select id="histType">
+          <option value="rgb">RGB</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="hue">Hue</option>
+          <option value="sat">Saturation</option>
+          <option value="val">Value (brightness)</option>
+          <option value="cmyk">CMYK</option>
+          <option value="cyan">Cyan</option>
+          <option value="magenta">Magenta</option>
+          <option value="yellow">Yellow</option>
+          <option value="kelvin">Kelvin (Black)</option>
+      </select></label></p>
 
-    <p><label>Plot fill <input id="plotFill" type="checkbox"></label></p>
+      <p><label>Count every <input id="accuracy" type="number" min="1" max="50" 
+        value="1"> pixels</label></p>
 
-    <p><label>Plot colors: <select id="plotColors">
-        <option value="none">None</option>
-        <option value="flat">Flat colors</option>
-        <option value="gradient">Gradients</option>
-    </select></label></p>
+      <p><label>Plot style: <select id="plotStyle">
+          <option value="continuous">Continuous</option>
+          <option value="discreet">Discreet</option>
+      </select></label></p>
+
+      <p><label>Plot fill <input id="plotFill" type="checkbox"></label></p>
+
+      <p><label>Plot colors: <select id="plotColors">
+          <option value="none">None</option>
+          <option value="flat">Flat colors</option>
+          <option value="gradient">Gradients</option>
+      </select></label></p>
+
+        </div>
+      </div>
+    </div>
   </body>
 </html>
