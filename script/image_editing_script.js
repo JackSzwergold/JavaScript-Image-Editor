@@ -479,7 +479,7 @@ blur(${blur}px)`;
         saturation = saturation_slider.value = 100;
 
         tint_text.innerText = '0deg';
-        tint = saturation_slider.value = 0;
+        tint = tint_slider.value = 0;
 
         blur_text.innerText = '0px';
         blur = blur_slider.value = 0;

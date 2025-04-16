@@ -1,0 +1,4 @@
+input[type=range]::-webkit-slider-thumb,
+input[type=range]::-moz-range-thumb {
+    background: #f00;
+}
