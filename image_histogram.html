@@ -125,18 +125,23 @@
       </div>
     </div>
 
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="plotFill" checked>
-      <label class="form-check-label" for="plotFill">
-        Plot fill
-      </label>
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="plotFill" checked>
+          <label class="form-check-label" for="plotFill">
+            Plot fill
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-0 mb-2">
+          <label for="accuracy" class="small">Count every <span>10</span></label>
+          <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="accuracy">
+        </div>
+      </div>
     </div>
-
-    <div class="d-grid gap-0 mb-2">
-      <label for="accuracy" class="small">Count every <span>10</span></label>
-      <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="accuracy">
-    </div>
-
+    
   </div>
 
 </body>
