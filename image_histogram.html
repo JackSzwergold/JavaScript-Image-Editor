@@ -90,9 +90,8 @@
 <div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
 
   <div class="container fluid">
-    <div class="row p-0">
-
-      <div class="d-grid gap-0 mb-2">
+    <div class="row">
+      <div class="col">
         <label for="histType" class="form-label">Histogram for:</label>
         <select id="histType" class="form-select">
           <option value="rgb">RGB</option>
@@ -109,8 +108,7 @@
           <option value="kelvin">Kelvin (Black)</option>
         </select>
       </div>
-
-      <div class="d-grid gap-0 mb-2">
+      <div class="col">
         <label for="plotColors" class="form-label">Plot colors:</label>
         <select id="plotColors" class="form-select">
           <option value="none">None</option>
@@ -118,29 +116,28 @@
           <option value="gradient">Gradients</option>
         </select>
       </div>
-
-      <div class="d-grid gap-0 mb-2">
+      <div class="col">
         <label for="plotStyle" class="form-label">Plot colors:</label>
         <select id="plotStyle" class="form-select">
           <option value="continuous">Continuous</option>
           <option value="discreet">Discreet</option>
         </select>
       </div>
-
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="plotFill" checked>
-        <label class="form-check-label" for="plotFill">
-          Plot fill
-        </label>
-      </div>
-
-      <div class="d-grid gap-0 mb-2">
-        <label for="accuracy" class="small">Count every <span>10</span></label>
-        <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="accuracy">
-      </div>
-
-      </div>
     </div>
 
-  </body>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="plotFill" checked>
+      <label class="form-check-label" for="plotFill">
+        Plot fill
+      </label>
+    </div>
+
+    <div class="d-grid gap-0 mb-2">
+      <label for="accuracy" class="small">Count every <span>10</span></label>
+      <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="accuracy">
+    </div>
+
+  </div>
+
+</body>
 </html>
