@@ -7,6 +7,8 @@ jQuery.noConflict();
   $(document).ready(function() {
   }); // $(document).ready
 
+  /****************************************************************************/
+  // Source: https://a402539.github.io/OCR/examples/histogram.html
   window.addEventListener('load', function () {
     var histCanvas = document.getElementById('histogram'),
         histCtx = histCanvas.getContext('2d'),
