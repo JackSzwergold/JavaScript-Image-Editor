@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>JavaScript Image Histogram</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-5.3.3/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css" /> -->
+    <script src="script/jquery/jquery-3.7.1.min.js" defer="defer"></script>
+    <!-- <script src="script/jquery/jquery-ui-1.14.1.js" defer="defer"></script> -->
+    <!-- <script src="script/jquery/jquery.ui.touch-punch.min.js" defer="defer"></script> -->
+    <script src="script/bootstrap-5.3.3/bootstrap.bundle.min.js" defer="defer"></script>
+    <script src="script/underscore/underscore-min.js" defer="defer"></script>
+  </head>
+  <body>
+
+<!-- Image Edit Area BEGIN -->
+<div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
+
+  <div class="container fluid">
+    <div class="row p-0 bg-secondary">
+
+      <div class="wrapper p-0 m-0 col my-5 col-12">
+        <div class="preview_image p-0 m-0 col col-12">
+          <div class="d-flex align-items-start justify-content-center">
+            <!-- <div id="crop_constrainer" class="position-absolute border border-3"></div> -->
+            <div class="position-relative">
+              <!-- <img id="image_to_edit" src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
+              <!-- <img id="image_to_edit" src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
+              <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395">
+              <!-- <img id="image_to_edit" src="images/girl_pearl_earring.jpg" class="img-fluid pe-none" width="590" height="699">      -->
+              <div id="crop_selection" class="position-absolute hide"></div>
+            </div>
+          </div>
+
+          <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
+          <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="900">
+          <input type="hidden" id="RESIZE_WIDTH" name="RESIZE_WIDTH" value="900">
+        </div>
+      </div>
+
+      <div class="wrapper p-0 m-0 my-5 col col-12">
+        <div class="histogram p-0 m-0 col col-12">
+          <div class="d-flex align-items-start justify-content-center">
+            <div class="position-relative">
+              <canvas class="thumb" id="histogram" width="590" height="240"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <style type="text/css">
+    #histogram, #image_to_edit {
+      border: 1px solid #000;
+      cursor: pointer;
+      float: left;
+    }
+
+    /*#image_to_edit.thumb {
+      max-width: 300px;
+      max-height: 400px;
+    }*/
+
+    /*#histogram.thumb {
+      max-width: 300px;
+      max-height: 200px;
+    }*/
+
+    #runtime { clear: both }
+  </style>
+
+  <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css" />
+  <script src="script/jquery/jquery-ui-1.14.1.js" defer="defer"></script>
+  <script src="script/jquery/jquery.ui.touch-punch.min.js" defer="defer"></script>
+  <script src="script/image_histogram.js" defer="defer"></script>
+  <script src="script/context-filter-polyfill/context-filter-polyfill.min.js" defer="defer"></script>
+
+</div>
+<!-- Image Edit Area END -->
+
+<!-- Image Edit Area BEGIN -->
+<div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
+
+  <div class="container fluid">
+    <div class="row">
+      <div class="col">
+        <label for="histogram_type" class="form-label">Histogram for:</label>
+        <select id="histogram_type" class="form-select">
+          <option value="rgb">RGB</option>
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="hue">Hue</option>
+          <option value="sat">Saturation</option>
+          <option value="val">Value (brightness)</option>
+          <option value="cmyk">CMYK</option>
+          <option value="cyan">Cyan</option>
+          <option value="magenta">Magenta</option>
+          <option value="yellow">Yellow</option>
+          <option value="kelvin">Kelvin (Black)</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="plot_colors" class="form-label">Plot colors:</label>
+        <select id="plot_colors" class="form-select">
+          <option value="flat">Flat colors</option>
+          <option value="gradient">Gradients</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="plot_style" class="form-label">Plot colors:</label>
+        <select id="plot_style" class="form-select">
+          <option value="continuous">Continuous</option>
+          <option value="discreet">Discreet</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="plot_fill" checked>
+          <label class="form-check-label" for="plot_fill">
+            Plot fill
+          </label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid gap-0 mb-2">
+          <label for="histogram_accuracy" class="small">Count every <span>10</span></label>
+          <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="histogram_accuracy">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
