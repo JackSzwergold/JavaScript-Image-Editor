@@ -90,8 +90,8 @@
   <div class="container fluid">
     <div class="row">
       <div class="col">
-        <label for="histType" class="form-label">Histogram for:</label>
-        <select id="histType" class="form-select">
+        <label for="histogram_type" class="form-label">Histogram for:</label>
+        <select id="histogram_type" class="form-select">
           <option value="rgb">RGB</option>
           <option value="red">Red</option>
           <option value="green">Green</option>
@@ -107,16 +107,16 @@
         </select>
       </div>
       <div class="col">
-        <label for="plotColors" class="form-label">Plot colors:</label>
-        <select id="plotColors" class="form-select">
-          <option value="none">None</option>
+        <label for="plot_colors" class="form-label">Plot colors:</label>
+        <select id="plot_colors" class="form-select">
           <option value="flat">Flat colors</option>
           <option value="gradient">Gradients</option>
+          <option value="none">None</option>
         </select>
       </div>
       <div class="col">
-        <label for="plotStyle" class="form-label">Plot colors:</label>
-        <select id="plotStyle" class="form-select">
+        <label for="plot_style" class="form-label">Plot colors:</label>
+        <select id="plot_style" class="form-select">
           <option value="continuous">Continuous</option>
           <option value="discreet">Discreet</option>
         </select>
@@ -126,16 +126,16 @@
     <div class="row">
       <div class="col">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="plotFill" checked>
-          <label class="form-check-label" for="plotFill">
+          <input class="form-check-input" type="checkbox" value="" id="plot_fill" checked>
+          <label class="form-check-label" for="plot_fill">
             Plot fill
           </label>
         </div>
       </div>
       <div class="col">
         <div class="d-grid gap-0 mb-2">
-          <label for="accuracy" class="small">Count every <span>10</span></label>
-          <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="accuracy">
+          <label for="histogram_accuracy" class="small">Count every <span>10</span></label>
+          <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="histogram_accuracy">
         </div>
       </div>
     </div>

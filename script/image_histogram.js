@@ -10,12 +10,12 @@ jQuery.noConflict();
   window.addEventListener('load', function () {
     var histCanvas = document.getElementById('histogram'),
         histCtx = histCanvas.getContext('2d'),
-        histType = document.getElementById('histType'),
-        accuracy = document.getElementById('accuracy'),
+        histType = document.getElementById('histogram_type'),
+        accuracy = document.getElementById('histogram_accuracy'),
         // runtime = document.getElementById('runtime'),
-        plotStyle = document.getElementById('plotStyle'),
-        plotFill = document.getElementById('plotFill'),
-        plotColors = document.getElementById('plotColors'),
+        plotStyle = document.getElementById('plot_style'),
+        plotFill = document.getElementById('plot_fill'),
+        plotColors = document.getElementById('plot_colors'),
         // imgSelector = document.getElementById('imgSelector'),
         img = document.getElementById('image_to_edit'),
         imgCanvas = document.createElement('canvas'),
@@ -53,6 +53,7 @@ jQuery.noConflict();
         imgData = null;
 
     var initHistogram = function () {
+
       // Plot defaults
       accuracy.value = 10;
       plotStyle.value = 'continuous';
@@ -69,6 +70,7 @@ jQuery.noConflict();
           grad.addColorStop(i*1/(n-1), color[i]);
         }
       }
+ 
     };
 
     var imgLoaded = function () {
