@@ -15,8 +15,8 @@ jQuery.noConflict();
           plotStyle = document.getElementById('plotStyle'),
           plotFill = document.getElementById('plotFill'),
           plotColors = document.getElementById('plotColors'),
-          imgSelector = document.getElementById('imgSelector'),
-          img = document.getElementById('myImg'),
+          // imgSelector = document.getElementById('imgSelector'),
+          img = document.getElementById('image_to_edit'),
           imgCanvas = document.createElement('canvas'),
           imgCtx = imgCanvas.getContext('2d'),
           gradients = {
@@ -307,9 +307,9 @@ jQuery.noConflict();
       plotColors.addEventListener('change', updateHist, false);
       accuracy.addEventListener('change', updateHist, false);
 
-      imgSelector.addEventListener('change', function () {
-        img.src = this.value;
-      }, false);
+      // imgSelector.addEventListener('change', function () {
+      //   img.src = this.value;
+      // }, false);
 
       initHistogram();
       imgLoaded();
