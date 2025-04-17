@@ -349,21 +349,8 @@ jQuery.noConflict();
       calculateHistogram(histogram_type_value);
     } // update_histogram_handler
 
-    // var thumbClick = function (ev) {
-    //   ev.preventDefault();
-
-    //   if (this.className === 'thumb') {
-    //     this.className = '';
-    //   }
-    //   else {
-    //     this.className = 'thumb';
-    //   }
-    // };
-
-    // preview_image.addEventListener('load', imageLoaded, false);
-    // preview_image.addEventListener('click', thumbClick, false);
-    // histogram_canvas.addEventListener('click', thumbClick, false);
-
+    /****************************************************************************/
+    // The handler to update the histogram.
     if (histogram_type != null) {
       histogram_type.addEventListener('change', update_histogram_handler, false);
     }
