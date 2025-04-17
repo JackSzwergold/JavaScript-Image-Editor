@@ -206,7 +206,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to handle RGB to HSV conversion.
-    var rgb2hsv = function (red, green, blue) {
+    function rgb2hsv(red, green, blue) {
       red /= 255;
       green /= 255;
       blue /= 255;
@@ -244,11 +244,12 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to handle RGB to CMYK conversion.
-    var rgb2cmyk = function (red, green, blue) {
+    function rgb2cmyk(red, green, blue) {
+
       var cyan    = 1 - red/255;
-          magenta = 1 - green/255;
-          yellow  = 1 - blue/255;
-          black = Math.min(cyan, magenta, yellow, 1);
+      var magenta = 1 - green/255;
+      var yellow  = 1 - blue/255;
+      var black = Math.min(cyan, magenta, yellow, 1);
 
       if (black === 1) {
         cyan = magenta = yellow = 0;
@@ -266,7 +267,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to draw the histogram.
-    var drawHistogram = function (type, vals, maxCount) {
+    function drawHistogram(type, vals, maxCount) {
       var ctxStyle;
 
       if (plot_fill_value || plot_style_value === 'discreet') {
@@ -338,7 +339,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to update the histogram.
-    var updateHistogram = function () {
+    function updateHistogram() {
       var timeStart = (new Date()).getTime();
 
       // runtime.innerHTML = 'Calculating histogram...';
