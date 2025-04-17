@@ -93,7 +93,7 @@ jQuery.noConflict();
       histogram_image_context.drawImage(preview_image, 0, 0);
       histogram_image_data = histogram_image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
 
-      update_histogram_handler();
+      calculateHistogram();
 
     } // imageLoaded
 
@@ -335,30 +335,24 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The handler to update the histogram.
-    function update_histogram_handler() {
-      calculateHistogram();
-    } // update_histogram_handler
-
-    /****************************************************************************/
-    // The handler to update the histogram.
     if (histogram_type != null) {
-      histogram_type.addEventListener('change', update_histogram_handler, false);
+      histogram_type.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_style != null) {
-      plot_style.addEventListener('change', update_histogram_handler, false);
+      plot_style.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_colors != null) {
-      plot_colors.addEventListener('change', update_histogram_handler, false);
+      plot_colors.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_fill != null) {
-      plot_fill.addEventListener('change', update_histogram_handler, false);
+      plot_fill.addEventListener('change', calculateHistogram, false);
     }
 
     if (accuracy != null) {
-      accuracy.addEventListener('change', update_histogram_handler, false);
+      accuracy.addEventListener('change', calculateHistogram, false);
     }
 
     initHistogram();
