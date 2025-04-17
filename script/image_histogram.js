@@ -117,6 +117,10 @@ jQuery.noConflict();
     // The function to calculate the histogram.
     function calculateHistogram(histogram_type_value) {
 
+      if (histogram_type != null) {
+        histogram_type_value = histogram_type.value;
+      }
+
       if (plot_style != null) {
         plot_style_value = plot_style.value;
       }
