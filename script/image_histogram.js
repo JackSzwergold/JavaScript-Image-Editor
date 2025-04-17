@@ -54,7 +54,7 @@ jQuery.noConflict();
           'magenta': ['#000', '#f0f']
         };
     var discreetWidth = Math.round(histogram_canvas.width / 255);
-    var imageData = null;
+    var image_data = null;
 
     /****************************************************************************/
     // The function to init the histogram.
@@ -103,16 +103,17 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The image loaded function.
-    var imageLoaded = function () {
-      preview_image.className = '';
+    function imageLoaded() {
+
+      // preview_image.className = '';
   
       image_canvas.width = preview_image.width;
       image_canvas.height = preview_image.height;
 
       image_context.drawImage(preview_image, 0, 0);
-      imageData = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
+      image_data = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
  
-      preview_image.className = 'thumb';
+      // preview_image.className = 'thumb';
 
       updateHistogram();
 
@@ -120,7 +121,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to calculate the histogram.
-    var calculateHistogram = function (type) {
+    function calculateHistogram(type) {
       var chans = [[]],
           maxCount = 0, val, subtypes = [type];
 
@@ -143,19 +144,19 @@ jQuery.noConflict();
       accuracy_value = step;
       step *= 4;
 
-      for (var i = 0, n = imageData.length; i < n; i+= step) {
+      for (var i = 0, n = image_data.length; i < n; i+= step) {
         if (type === 'rgb' || type === 'red' || type === 'green' || type === 
             'blue') {
-          val = [imageData[i], imageData[i+1], imageData[i+2]];
+          val = [image_data[i], image_data[i+1], image_data[i+2]];
 
         }
         else if (type === 'cmyk' || type === 'cyan' || type === 'magenta' || 
             type === 'yellow' || type === 'kelvin') {
-          val = rgb2cmyk(imageData[i], imageData[i+1], imageData[i+2]);
+          val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
 
         }
         else if (type === 'hue' || type === 'sat' || type === 'val') {
-          val = rgb2hsv(imageData[i], imageData[i+1], imageData[i+2]);
+          val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
         }
 
         if (type === 'red' || type === 'hue' || type === 'cyan') {
@@ -207,15 +208,19 @@ jQuery.noConflict();
     /****************************************************************************/
     // The function to handle RGB to HSV conversion.
     function rgb2hsv(red, green, blue) {
+ 
       red /= 255;
       green /= 255;
       blue /= 255;
 
-      var hue, sat, val,
-          min   = Math.min(red, green, blue),
-          max   = Math.max(red, green, blue),
-          delta = max - min,
-          val   = max;
+      var hue;
+      var sat;
+      var val;
+
+      var min = Math.min(red, green, blue);
+      var max = Math.max(red, green, blue);
+      var delta = max - min;
+      val  = max;
 
       // This is gray (red==green==blue)
       if (delta === 0) {
@@ -240,6 +245,7 @@ jQuery.noConflict();
       }
 
       return [Math.round(hue*255), Math.round(sat*255), Math.round(val*255)];
+ 
     };
 
     /****************************************************************************/
@@ -263,6 +269,7 @@ jQuery.noConflict();
 
       return [Math.round(cyan*255), Math.round(magenta*255), 
              Math.round(yellow*255), Math.round(black*255)];
+
     };
 
     /****************************************************************************/
@@ -335,6 +342,7 @@ jQuery.noConflict();
         histogram_context.stroke();
         histogram_context.closePath();
       }
+
     };
 
     /****************************************************************************/
