@@ -57,12 +57,33 @@ jQuery.noConflict();
 
   var initHistogram = function () {
 
-    // Plot defaults
-    accuracy.value = 10;
-    plotStyle.value = 'continuous';
-    plotColors.value = 'flat';
-    plotFill.checked = true;
-    histogram_type.value = 'rgb';
+    // Set the default form values.
+    accuracy_value = 10;
+    plotStyle_value = 'continuous';
+    plotColors_value = 'flat';
+    plotFill_value = true;
+    histogram_type_value = 'rgb';
+
+    // Set the default form values.
+    if (accuracy != null) {
+      accuracy.value = accuracy_value;
+    }
+
+    if (plotStyle != null) {
+      plotStyle.value = plotStyle_value;
+    }
+
+    if (plotColors != null) {
+      plotColors.value = plotColors_value;
+    }
+
+    if (plotFill != null) {
+      plotFill.checked = plotFill_value;
+    }
+
+    if (histogram_type != null) {
+      histogram_type.value = histogram_type_value;
+    }
 
     var grad, color, i, n;
     for (grad in gradients) {
