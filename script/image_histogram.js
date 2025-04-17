@@ -29,20 +29,21 @@ jQuery.noConflict();
 
     var preview_image = document.getElementById('image_to_edit');
 
-    var image_canvas = document.createElement('canvas');
-    var histogram_image_context = image_canvas.getContext('2d');
+    var histogram_image_canvas = document.createElement('canvas');
+    var histogram_image_context = histogram_image_canvas.getContext('2d');
 
     var gradients = {
-          'red':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'green':   histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'blue':    histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'hue':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'val':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'cyan':    histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'red': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'green': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'blue': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'hue': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'val': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'cyan': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
           'magenta': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'yellow':  histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'kelvin':  histogram_context.createLinearGradient(0, 0, preview_image.width, 0)
+          'yellow': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'kelvin': histogram_context.createLinearGradient(0, 0, preview_image.width, 0)
         };
+
     var colors = {
           'red':   ['#000', '#f00'],
           'green': ['#000', '#0f0'],
@@ -61,6 +62,7 @@ jQuery.noConflict();
           'yellow':  ['#000', '#ff0'],
           'magenta': ['#000', '#f0f']
         };
+
     var discreetWidth = Math.round(histogram_canvas.width / 255);
     var histogram_image_data = null;
 
@@ -87,8 +89,8 @@ jQuery.noConflict();
     // The image loaded function.
     function imageLoaded() {
 
-      image_canvas.width = preview_image.width;
-      image_canvas.height = preview_image.height;
+      histogram_image_canvas.width = preview_image.width;
+      histogram_image_canvas.height = preview_image.height;
 
       histogram_image_context.drawImage(preview_image, 0, 0);
       histogram_image_data = histogram_image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
