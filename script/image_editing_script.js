@@ -45,8 +45,8 @@ jQuery.noConflict();
     rotate_buttons = document.querySelectorAll('#rotate button');
 
     /**************************************************************************/
-    // The image preview itself.
-    preview_image = document.querySelector('#image_to_edit');
+    // The image to edit itself.
+    image_to_edit = document.querySelector('#image_to_edit');
 
     /**************************************************************************/
     // The crop selection area.
@@ -94,9 +94,9 @@ jQuery.noConflict();
     // const loadImage = () => {
     //     let file = fileInput.files[0];
     //     if (!file) return;
-    //     preview_image.src = URL.createObjectURL(file);
+    //     image_to_edit.src = URL.createObjectURL(file);
     //     file_name = file.name
-    //     preview_image.addEventListener('click', () => {
+    //     image_to_edit.addEventListener('click', () => {
     //         reset_filter_button.click();
     //     });
     // }
@@ -104,7 +104,7 @@ jQuery.noConflict();
     /****************************************************************************/
     // Handler to init the image.
     function init_image_handler() {
-        preview_image.addEventListener('click', () => {
+        image_to_edit.addEventListener('click', () => {
             reset_filter_button.click();
         });
     } // init_image_handler
@@ -113,10 +113,10 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
 
-        preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
-        preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
+        image_to_edit.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
 
-        if (preview_image.width != preview_image.height) {
+        if (image_to_edit.width != image_to_edit.height) {
           if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             disable_crop_selection();
             crop_selection_button.prop('disabled', true);
@@ -242,24 +242,24 @@ jQuery.noConflict();
         // Calculate the resize and cropping ratios.
         var resize_ratio = 1;
         var cropping_ratio = 1;
-        if (preview_image.naturalWidth > preview_image.naturalHeight) {
-            resize_ratio = (resize_width / preview_image.naturalWidth);
-            cropping_ratio = (resize_width / preview_image.width);
+        if (image_to_edit.naturalWidth > image_to_edit.naturalHeight) {
+            resize_ratio = (resize_width / image_to_edit.naturalWidth);
+            cropping_ratio = (resize_width / image_to_edit.width);
         }
         else {
-            resize_ratio = (resize_height / preview_image.naturalHeight);
-            cropping_ratio = (resize_height / preview_image.height);
+            resize_ratio = (resize_height / image_to_edit.naturalHeight);
+            cropping_ratio = (resize_height / image_to_edit.height);
         }
 
         /************************************************************************/
         // Apply the resize ratios.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.width = preview_image.naturalHeight * resize_ratio;
-            canvas.height = preview_image.naturalWidth * resize_ratio;
+            canvas.width = image_to_edit.naturalHeight * resize_ratio;
+            canvas.height = image_to_edit.naturalWidth * resize_ratio;
         }
         else {
-            canvas.width = preview_image.naturalWidth * resize_ratio;
-            canvas.height = preview_image.naturalHeight * resize_ratio;
+            canvas.width = image_to_edit.naturalWidth * resize_ratio;
+            canvas.height = image_to_edit.naturalHeight * resize_ratio;
         }
 
         /************************************************************************/
@@ -285,10 +285,10 @@ jQuery.noConflict();
         /************************************************************************/
         // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+            context.drawImage(image_to_edit, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
         }
         else {
-            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+            context.drawImage(image_to_edit, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         }
 
         /************************************************************************/
@@ -535,8 +535,8 @@ jQuery.noConflict();
         'display': 'block',
         'top': '0px', 
         'left': '0px', 
-        'width': Math.round(preview_image.width / 2) + 'px', 
-        'height': Math.round(preview_image.height / 2) + 'px', 
+        'width': Math.round(image_to_edit.width / 2) + 'px', 
+        'height': Math.round(image_to_edit.height / 2) + 'px', 
         'border-color': '#cc0000', 
         'border-width': '3px', 
         'border-style': 'dashed'

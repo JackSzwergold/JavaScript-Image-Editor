@@ -29,18 +29,18 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // Get the preview image.
-    var preview_image = document.getElementById('image_to_edit');
+    var image_to_edit = document.getElementById('image_to_edit');
 
     var gradients = {
-          'red': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'green': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'blue': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'hue': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'val': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'cyan': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'magenta': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'yellow': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
-          'kelvin': histogram_context.createLinearGradient(0, 0, preview_image.width, 0)
+          'red': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'green': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'blue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'hue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'cyan': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'magenta': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'yellow': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
+          'kelvin': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
         };
 
     var colors = {
@@ -91,14 +91,14 @@ jQuery.noConflict();
       var image_context = image_canvas.getContext('2d');
 
       // TODO: Explpore this stuff.
-      // preview_image.style.filter = `hue-rotate(90deg) blur(10px)`;
+      // image_to_edit.style.filter = `hue-rotate(90deg) blur(10px)`;
       // image_context.filter = `hue-rotate(90deg) blur(50px)`;
 
-      image_canvas.width = preview_image.width;
-      image_canvas.height = preview_image.height;
+      image_canvas.width = image_to_edit.width;
+      image_canvas.height = image_to_edit.height;
 
-      image_context.drawImage(preview_image, 0, 0);
-      image_data = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
+      image_context.drawImage(image_to_edit, 0, 0);
+      image_data = image_context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
 
       calculateHistogram();
 
