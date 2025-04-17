@@ -61,7 +61,6 @@ jQuery.noConflict();
         };
 
     var discreetWidth = Math.round(histogram_canvas.width / 255);
-    var histogram_image_data = null;
 
     /****************************************************************************/
     // The function to init the histogram.
