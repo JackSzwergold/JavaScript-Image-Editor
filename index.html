@@ -44,7 +44,7 @@
           <button id="modal_close" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <div class="container fluid">
+        <div class="container-fluid">
           <div class="row p-0 bg-secondary">
 
             <div class="wrapper p-0 m-0 col col-8 overflow-hidden">
@@ -67,7 +67,9 @@
 
             <div class="p-0 m-0 p-3 col col-4 bg-light">
 
-              <canvas class="histogram border border-dark" id="histogram" width="350" height="100"></canvas>
+              <div class="d-grid gap-2 mb-2 bg-white" id="histogram_canvas">
+                <canvas class="container-fluid border border-dark" id="histogram"></canvas>
+              </div>
 
               <div class="d-grid gap-2 mb-2" id="brightness_slider">
                 <label for="brightness_slider_control" class="small">Brightness <span>100%</span></label>
