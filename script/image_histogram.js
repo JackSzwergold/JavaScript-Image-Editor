@@ -13,11 +13,9 @@ jQuery.noConflict();
 
     var histogram_type = document.getElementById('histogram_type');
     var accuracy = document.getElementById('histogram_accuracy');
-    // var runtime = document.getElementById('runtime');
     var plot_style = document.getElementById('plot_style');
     var plot_fill = document.getElementById('plot_fill');
     var plot_colors = document.getElementById('plot_colors');
-    // var imgSelector = document.getElementById('imgSelector');
 
     var preview_image = document.getElementById('image_to_edit');
 
@@ -40,13 +38,13 @@ jQuery.noConflict();
           'green': ['#000', '#0f0'],
           'blue':  ['#000', '#00f'],
           'hue':   [
-            '#f00',   // 0, Red,       0�
-            '#ff0',   // 1, Yellow,   60�
-            '#0f0',   // 2, Green,   120�
-            '#0ff',   // 3, Cyan,    180�
-            '#00f',   // 4, Blue,    240�
-            '#f0f',   // 5, Magenta, 300�
-            '#f00'],  // 6, Red,     360�
+            '#f00',   // 0, Red,       0
+            '#ff0',   // 1, Yellow,   60
+            '#0f0',   // 2, Green,   120
+            '#0ff',   // 3, Cyan,    180
+            '#00f',   // 4, Blue,    240
+            '#f0f',   // 5, Magenta, 300
+            '#f00'],  // 6, Red,     360
           'val':     ['#000', '#fff'],
           'kelvin':  ['#fff', '#000'],
           'cyan':    ['#000', '#0ff'],
