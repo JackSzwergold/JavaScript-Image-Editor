@@ -11,11 +11,21 @@ jQuery.noConflict();
     var histogram_canvas = document.getElementById('histogram_canvas');
     var histogram_context = histogram_canvas.getContext('2d');
 
+    /**************************************************************************/
+    // Select the form elements of they are set.
     var histogram_type = document.getElementById('histogram_type');
-    var accuracy = document.getElementById('histogram_accuracy');
+    var plot_colors = document.getElementById('plot_colors');
     var plot_style = document.getElementById('plot_style');
     var plot_fill = document.getElementById('plot_fill');
-    var plot_colors = document.getElementById('plot_colors');
+    var accuracy = document.getElementById('histogram_accuracy');
+
+    /**************************************************************************/
+    // Set the default form values.
+    var histogram_type_value = 'rgb';
+    var plot_colors_value = 'flat';
+    var plot_style_value = 'continuous';
+    var plot_fill_checked = true;
+    var accuracy_value = 10;
 
     var preview_image = document.getElementById('image_to_edit');
 
@@ -58,32 +68,6 @@ jQuery.noConflict();
     // The function to init the histogram.
     var initHistogram = function () {
 
-      /**************************************************************************/
-      // Set the default form values.
-      accuracy_value = 10;
-      plot_style_value = 'continuous';
-      plot_colors_value = 'flat';
-      plot_fill_checked = true;
-      histogram_type_value = 'rgb';
-
-      /**************************************************************************/
-      // Set the default form values.
-      if (accuracy != null) {
-        accuracy.value = accuracy_value;
-      }
-      if (plot_style != null) {
-        plot_style.value = plot_style_value;
-      }
-      if (plot_colors != null) {
-        plot_colors.value = plot_colors_value;
-      }
-      if (plot_fill != null) {
-        plot_fill.checked = plot_fill_checked;
-      }
-      if (histogram_type != null) {
-        histogram_type.value = histogram_type_value;
-      }
-
       var grad;
       var color;
       var i;
@@ -115,7 +99,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to calculate the histogram.
-    function calculateHistogram(histogram_type_value) {
+    function calculateHistogram() {
 
       histogram_type_value = histogram_type != null ? histogram_type.value : histogram_type_value;
       plot_style_value = plot_style != null ? plot_style.value : plot_style_value;
@@ -278,7 +262,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to draw the histogram.
-    function drawHistogram(histogram_type_value, vals, maxCount) {
+    function drawHistogram(histogram_subtype, vals, maxCount) {
       var ctxStyle;
 
       if (plot_fill_checked || plot_style_value === 'discreet') {
@@ -290,10 +274,10 @@ jQuery.noConflict();
       }
 
       if (plot_colors_value === 'flat') {
-        if (histogram_type_value === 'hue') {
+        if (histogram_subtype === 'hue') {
           histogram_context[ctxStyle] = gradients.hue;
-        } else if (histogram_type_value in colors && histogram_type_value !== 'val') {
-          histogram_context[ctxStyle] = colors[histogram_type_value][1];
+        } else if (histogram_subtype in colors && histogram_subtype !== 'val') {
+          histogram_context[ctxStyle] = colors[histogram_subtype][1];
         }
         else {
           histogram_context[ctxStyle] = '#000';
@@ -301,8 +285,8 @@ jQuery.noConflict();
 
       }
       else if (plot_colors_value === 'gradient') {
-        if (histogram_type_value in gradients) {
-          histogram_context[ctxStyle] = gradients[histogram_type_value];
+        if (histogram_subtype in gradients) {
+          histogram_context[ctxStyle] = gradients[histogram_subtype];
         }
         else {
           histogram_context[ctxStyle] = '#000';
@@ -352,7 +336,7 @@ jQuery.noConflict();
     /****************************************************************************/
     // The handler to update the histogram.
     function update_histogram_handler() {
-      calculateHistogram(histogram_type_value);
+      calculateHistogram();
     } // update_histogram_handler
 
     /****************************************************************************/
