@@ -111,15 +111,18 @@ jQuery.noConflict();
       histogram_image_context.drawImage(preview_image, 0, 0);
       histogram_image_data = histogram_image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
 
-      updateHistogram();
+      update_histogram_handler();
 
     } // imageLoaded
 
     /****************************************************************************/
     // The function to calculate the histogram.
     function calculateHistogram(type) {
-      var chans = [[]],
-          maxCount = 0, val, subtypes = [type];
+
+      var chans = [[]];
+      var maxCount = 0;
+      var val;
+      var subtypes = [type];
 
       if (type === 'rgb') {
         chans = [[], [], []];
@@ -343,10 +346,10 @@ jQuery.noConflict();
     } // drawHistogram
 
     /****************************************************************************/
-    // The function to update the histogram.
-    function updateHistogram() {
+    // The handler to update the histogram.
+    function update_histogram_handler() {
       calculateHistogram(histogram_type_value);
-    } // updateHistogram
+    } // update_histogram_handler
 
     // var thumbClick = function (ev) {
     //   ev.preventDefault();
@@ -364,23 +367,23 @@ jQuery.noConflict();
     // histogram_canvas.addEventListener('click', thumbClick, false);
 
     if (histogram_type != null) {
-      histogram_type.addEventListener('change', calculateHistogram, false);
+      histogram_type.addEventListener('change', update_histogram_handler, false);
     }
 
     if (plot_style != null) {
-      plot_style.addEventListener('change', calculateHistogram, false);
+      plot_style.addEventListener('change', update_histogram_handler, false);
     }
 
     if (plot_fill != null) {
-      plot_fill.addEventListener('change', calculateHistogram, false);
+      plot_fill.addEventListener('change', update_histogram_handler, false);
     }
 
     if (plot_colors != null) {
-      plot_colors.addEventListener('change', calculateHistogram, false);
+      plot_colors.addEventListener('change', update_histogram_handler, false);
     }
 
     if (accuracy != null) {
-      accuracy.addEventListener('change', updateHistogram, false);
+      accuracy.addEventListener('change', update_histogram_handler, false);
     }
 
     initHistogram();
