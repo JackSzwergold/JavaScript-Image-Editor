@@ -12,12 +12,12 @@ jQuery.noConflict();
     var histogram_context = histogram_canvas.getContext('2d');
 
     /**************************************************************************/
-    // Select the form elements of they are set.
-    var histogram_type = document.getElementById('histogram_type');
-    var plot_colors = document.getElementById('plot_colors');
-    var plot_style = document.getElementById('plot_style');
-    var plot_fill = document.getElementById('plot_fill');
-    var accuracy = document.getElementById('histogram_accuracy');
+    // Select the form elements.
+    var histogram_type_element = document.getElementById('histogram_type');
+    var plot_colors_element = document.getElementById('plot_colors');
+    var plot_style_element = document.getElementById('plot_style');
+    var plot_fill_element = document.getElementById('plot_fill');
+    var accuracy_element = document.getElementById('histogram_accuracy');
 
     /**************************************************************************/
     // Set the default form values.
@@ -102,11 +102,11 @@ jQuery.noConflict();
     // The function to calculate the histogram.
     function calculateHistogram() {
 
-      histogram_type_value = histogram_type != null ? histogram_type.value : histogram_type_value;
-      plot_style_value = plot_style != null ? plot_style.value : plot_style_value;
-      plot_colors_value = plot_colors != null ? plot_colors.value : plot_colors_value;
-      plot_fill_checked = plot_fill != null ? plot_fill.checked : plot_fill_checked;
-      accuracy_value = accuracy != null ? accuracy.value : accuracy_value;
+      histogram_type_value = histogram_type_element ? histogram_type.value : histogram_type_value;
+      plot_style_value = plot_style_element ? plot_style.value : plot_style_value;
+      plot_colors_value = plot_colors_element ? plot_colors.value : plot_colors_value;
+      plot_fill_checked = plot_fill_element ? plot_fill.checked : plot_fill_checked;
+      accuracy_value = accuracy_element ? accuracy.value : accuracy_value;
 
       var chans = [[]];
       var maxCount = 0;
