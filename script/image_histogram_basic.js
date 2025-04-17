@@ -90,6 +90,10 @@ jQuery.noConflict();
       var histogram_image_canvas = document.createElement('canvas');
       var histogram_image_context = histogram_image_canvas.getContext('2d');
 
+      // TODO: Explpore this stuff.
+      // preview_image.style.filter = `hue-rotate(90deg) blur(10px)`;
+      // histogram_image_context.filter = `hue-rotate(90deg) blur(50px)`;
+
       histogram_image_canvas.width = preview_image.width;
       histogram_image_canvas.height = preview_image.height;
 
