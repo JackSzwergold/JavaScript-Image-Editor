@@ -335,18 +335,18 @@ jQuery.noConflict();
       // runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
     };
 
-    var thumbClick = function (ev) {
-      ev.preventDefault();
+    // var thumbClick = function (ev) {
+    //   ev.preventDefault();
 
-      if (this.className === 'thumb') {
-        this.className = '';
-      }
-      else {
-        this.className = 'thumb';
-      }
-    };
+    //   if (this.className === 'thumb') {
+    //     this.className = '';
+    //   }
+    //   else {
+    //     this.className = 'thumb';
+    //   }
+    // };
 
-    preview_image.addEventListener('load', imageLoaded, false);
+    // preview_image.addEventListener('load', imageLoaded, false);
     // preview_image.addEventListener('click', thumbClick, false);
     // histogram_canvas.addEventListener('click', thumbClick, false);
 
