@@ -10,28 +10,31 @@ jQuery.noConflict();
   /****************************************************************************/
   // Source: https://a402539.github.io/OCR/examples/histogram.html
   window.addEventListener('load', function () {
-    var histCanvas = document.getElementById('histogram'),
-        histCtx = histCanvas.getContext('2d'),
-        histType = document.getElementById('histogram_type'),
-        accuracy = document.getElementById('histogram_accuracy'),
-        // runtime = document.getElementById('runtime'),
-        plotStyle = document.getElementById('plot_style'),
-        plotFill = document.getElementById('plot_fill'),
-        plotColors = document.getElementById('plot_colors'),
-        // imgSelector = document.getElementById('imgSelector'),
-        img = document.getElementById('image_to_edit'),
-        imgCanvas = document.createElement('canvas'),
-        imgCtx = imgCanvas.getContext('2d'),
-        gradients = {
-          'red':     histCtx.createLinearGradient(0, 0, img.width, 0),
-          'green':   histCtx.createLinearGradient(0, 0, img.width, 0),
-          'blue':    histCtx.createLinearGradient(0, 0, img.width, 0),
-          'hue':     histCtx.createLinearGradient(0, 0, img.width, 0),
-          'val':     histCtx.createLinearGradient(0, 0, img.width, 0),
-          'cyan':    histCtx.createLinearGradient(0, 0, img.width, 0),
-          'magenta': histCtx.createLinearGradient(0, 0, img.width, 0),
-          'yellow':  histCtx.createLinearGradient(0, 0, img.width, 0),
-          'kelvin':  histCtx.createLinearGradient(0, 0, img.width, 0)
+
+    var histogram_canvas = document.getElementById('histogram');
+    var histogram_context = histogram_canvas.getContext('2d');
+
+    var histogram_type = document.getElementById('histogram_type');
+    var accuracy = document.getElementById('histogram_accuracy');
+    // var runtime = document.getElementById('runtime');
+    var plotStyle = document.getElementById('plot_style');
+    var plotFill = document.getElementById('plot_fill');
+    var plotColors = document.getElementById('plot_colors');
+    // var imgSelector = document.getElementById('imgSelector');
+    var preview_image = document.getElementById('image_to_edit');
+    var imgCanvas = document.createElement('canvas');
+    var imgCtx = imgCanvas.getContext('2d');
+
+    var gradients = {
+          'red':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'green':   histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'blue':    histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'hue':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'val':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'cyan':    histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'magenta': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'yellow':  histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
+          'kelvin':  histogram_context.createLinearGradient(0, 0, preview_image.width, 0)
         },
         colors = {
           'red':   ['#000', '#f00'],
@@ -51,7 +54,7 @@ jQuery.noConflict();
           'yellow':  ['#000', '#ff0'],
           'magenta': ['#000', '#f0f']
         },
-        discreetWidth = Math.round(histCanvas.width / 255),
+        discreetWidth = Math.round(histogram_canvas.width / 255),
         imgData = null;
 
     var initHistogram = function () {
@@ -61,7 +64,7 @@ jQuery.noConflict();
       plotStyle.value = 'continuous';
       plotColors.value = 'flat';
       plotFill.checked = true;
-      histType.value = 'rgb';
+      histogram_type.value = 'rgb';
 
       var grad, color, i, n;
       for (grad in gradients) {
@@ -76,14 +79,14 @@ jQuery.noConflict();
     };
 
     var imgLoaded = function () {
-      img.className = '';
-      imgCanvas.width = img.width;
-      imgCanvas.height = img.height;
-      imgCtx.drawImage(img, 0, 0);
-      imgData = imgCtx.getImageData(0, 0, img.width, img.height).data;
-      img.className = 'thumb';
+      preview_image.className = '';
+      imgCanvas.width = preview_image.width;
+      imgCanvas.height = preview_image.height;
+      imgCtx.drawImage(preview_image, 0, 0);
+      imgData = imgCtx.getImageData(0, 0, preview_image.width, preview_image.height).data;
+      preview_image.className = 'thumb';
 
-      updateHist();
+      updateHistogram();
 
     };
 
@@ -156,10 +159,10 @@ jQuery.noConflict();
         return;
       }
 
-      histCtx.clearRect(0, 0, histCanvas.width, histCanvas.height);
+      histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
       if (plotFill.checked && chans.length > 1) {
-        histCtx.globalCompositeOperation = 'lighter';
+        histogram_context.globalCompositeOperation = 'lighter';
       }
 
       for (var i = 0, n = chans.length; i < n; i++) {
@@ -167,7 +170,7 @@ jQuery.noConflict();
       }
 
       if (plotFill.checked && chans.length > 1) {
-        histCtx.globalCompositeOperation = 'source-over';
+        histogram_context.globalCompositeOperation = 'source-over';
       }
     };
 
@@ -235,7 +238,7 @@ jQuery.noConflict();
 
       if (plotFill.checked || plotStyle.value === 'discreet') {
         ctxStyle = 'fillStyle';
-        histCtx.strokeStyle = '#000';
+        histogram_context.strokeStyle = '#000';
       }
       else {
         ctxStyle = 'strokeStyle';
@@ -243,30 +246,30 @@ jQuery.noConflict();
 
       if (plotColors.value === 'flat') {
         if (type === 'hue') {
-          histCtx[ctxStyle] = gradients.hue;
+          histogram_context[ctxStyle] = gradients.hue;
         } else if (type in colors && type !== 'val') {
-          histCtx[ctxStyle] = colors[type][1];
+          histogram_context[ctxStyle] = colors[type][1];
         }
         else {
-          histCtx[ctxStyle] = '#000';
+          histogram_context[ctxStyle] = '#000';
         }
 
       }
       else if (plotColors.value === 'gradient') {
         if (type in gradients) {
-          histCtx[ctxStyle] = gradients[type];
+          histogram_context[ctxStyle] = gradients[type];
         }
         else {
-          histCtx[ctxStyle] = '#000';
+          histogram_context[ctxStyle] = '#000';
         }
       }
       else if (plotColors.value === 'none') {
-        histCtx[ctxStyle] = '#000';
+        histogram_context[ctxStyle] = '#000';
       }
 
       if (plotStyle.value === 'continuous') {
-        histCtx.beginPath();
-        histCtx.moveTo(0, histCanvas.height);
+        histogram_context.beginPath();
+        histogram_context.moveTo(0, histogram_canvas.height);
       }
 
       for (var x, y, i = 0; i <= 255; i++) {
@@ -274,38 +277,38 @@ jQuery.noConflict();
           continue;
         }
 
-        y = Math.round((vals[i]/maxCount)*histCanvas.height);
-        x = Math.round((i/255)*histCanvas.width);
+        y = Math.round((vals[i]/maxCount)*histogram_canvas.height);
+        x = Math.round((i/255)*histogram_canvas.width);
 
         if (plotStyle.value === 'continuous') {
-          histCtx.lineTo(x, histCanvas.height - y);
+          histogram_context.lineTo(x, histogram_canvas.height - y);
         }
         else if (plotStyle.value === 'discreet') {
           if (plotFill.checked) {
-            histCtx.fillRect(x, histCanvas.height - y, discreetWidth, y);
+            histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, y);
           }
           else {
-            histCtx.fillRect(x, histCanvas.height - y, discreetWidth, 2);
+            histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, 2);
           }
         }
       }
 
       if (plotStyle.value === 'continuous') {
-        histCtx.lineTo(x, histCanvas.height);
+        histogram_context.lineTo(x, histogram_canvas.height);
         if (plotFill.checked) {
-          histCtx.fill();
+          histogram_context.fill();
         }
-        histCtx.stroke();
-        histCtx.closePath();
+        histogram_context.stroke();
+        histogram_context.closePath();
       }
     };
 
-    var updateHist = function () {
+    var updateHistogram = function () {
       var timeStart = (new Date()).getTime();
 
       // runtime.innerHTML = 'Calculating histogram...';
 
-      calcHist(histType.value);
+      calcHist(histogram_type.value);
 
       // var timeEnd = (new Date()).getTime();
       // runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
@@ -322,18 +325,18 @@ jQuery.noConflict();
       }
     };
 
-    img.addEventListener('load', imgLoaded, false);
-    img.addEventListener('click', thumbClick, false);
-    histCanvas.addEventListener('click', thumbClick, false);
+    preview_image.addEventListener('load', imgLoaded, false);
+    preview_image.addEventListener('click', thumbClick, false);
+    histogram_canvas.addEventListener('click', thumbClick, false);
 
-    histType.addEventListener('change', updateHist, false);
-    plotStyle.addEventListener('change', updateHist, false);
-    plotFill.addEventListener('change', updateHist, false);
-    plotColors.addEventListener('change', updateHist, false);
-    accuracy.addEventListener('change', updateHist, false);
+    histogram_type.addEventListener('change', updateHistogram, false);
+    plotStyle.addEventListener('change', updateHistogram, false);
+    plotFill.addEventListener('change', updateHistogram, false);
+    plotColors.addEventListener('change', updateHistogram, false);
+    accuracy.addEventListener('change', updateHistogram, false);
 
     // imgSelector.addEventListener('change', function () {
-    //   img.src = this.value;
+    //   preview_image.src = this.value;
     // }, false);
 
     initHistogram();
