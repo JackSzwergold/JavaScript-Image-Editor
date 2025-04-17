@@ -117,6 +117,18 @@ jQuery.noConflict();
     // The function to calculate the histogram.
     function calculateHistogram(histogram_type_value) {
 
+      if (plot_style != null) {
+        plot_style_value = plot_style.value;
+      }
+
+      if (plot_colors != null) {
+        plot_colors_value = plot_colors.value;
+      }
+
+      // if (plot_fill != null) {
+      //   plot_fill_value = plot_fill.value;
+      // }
+
       if (accuracy != null) {
         accuracy_value = accuracy.value;
       }
@@ -363,12 +375,12 @@ jQuery.noConflict();
       plot_style.addEventListener('change', update_histogram_handler, false);
     }
 
-    if (plot_fill != null) {
-      plot_fill.addEventListener('change', update_histogram_handler, false);
-    }
-
     if (plot_colors != null) {
       plot_colors.addEventListener('change', update_histogram_handler, false);
+    }
+
+    if (plot_fill != null) {
+      plot_fill.addEventListener('change', update_histogram_handler, false);
     }
 
     if (accuracy != null) {
