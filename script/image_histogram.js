@@ -29,9 +29,6 @@ jQuery.noConflict();
 
     var preview_image = document.getElementById('image_to_edit');
 
-    var histogram_image_canvas = document.createElement('canvas');
-    var histogram_image_context = histogram_image_canvas.getContext('2d');
-
     var gradients = {
           'red': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
           'green': histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
@@ -89,6 +86,9 @@ jQuery.noConflict();
     // The image loaded function.
     function imageLoaded() {
 
+      var histogram_image_canvas = document.createElement('canvas');
+      var histogram_image_context = histogram_image_canvas.getContext('2d');
+    
       histogram_image_canvas.width = preview_image.width;
       histogram_image_canvas.height = preview_image.height;
 
