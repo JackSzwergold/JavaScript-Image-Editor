@@ -56,6 +56,8 @@ jQuery.noConflict();
     var discreetWidth = Math.round(histogram_canvas.width / 255);
     var imageData = null;
 
+    /****************************************************************************/
+    // The function to init the histogram.
     var initHistogram = function () {
 
       /**************************************************************************/
@@ -99,18 +101,25 @@ jQuery.noConflict();
 
     };
 
+    /****************************************************************************/
+    // The image loaded function.
     var imageLoaded = function () {
       preview_image.className = '';
+  
       image_canvas.width = preview_image.width;
       image_canvas.height = preview_image.height;
+
       image_context.drawImage(preview_image, 0, 0);
       imageData = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
+ 
       preview_image.className = 'thumb';
 
       updateHistogram();
 
     };
 
+    /****************************************************************************/
+    // The function to calculate the histogram.
     var calculateHistogram = function (type) {
       var chans = [[]],
           maxCount = 0, val, subtypes = [type];
@@ -195,6 +204,8 @@ jQuery.noConflict();
       }
     };
 
+    /****************************************************************************/
+    // The function to handle RGB to HSV conversion.
     var rgb2hsv = function (red, green, blue) {
       red /= 255;
       green /= 255;
@@ -231,9 +242,8 @@ jQuery.noConflict();
       return [Math.round(hue*255), Math.round(sat*255), Math.round(val*255)];
     };
 
-    // Note that this is only an approximation of the CMYK color space. for proper
-    // CMYK color space conversion one needs to implement support for color
-    // profiles.
+    /****************************************************************************/
+    // The function to handle RGB to CMYK conversion.
     var rgb2cmyk = function (red, green, blue) {
       var cyan    = 1 - red/255;
           magenta = 1 - green/255;
@@ -254,6 +264,8 @@ jQuery.noConflict();
              Math.round(yellow*255), Math.round(black*255)];
     };
 
+    /****************************************************************************/
+    // The function to draw the histogram.
     var drawHistogram = function (type, vals, maxCount) {
       var ctxStyle;
 
@@ -324,6 +336,8 @@ jQuery.noConflict();
       }
     };
 
+    /****************************************************************************/
+    // The function to update the histogram.
     var updateHistogram = function () {
       var timeStart = (new Date()).getTime();
 
