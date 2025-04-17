@@ -87,14 +87,14 @@ jQuery.noConflict();
     // The image loaded function.
     function imageLoaded() {
 
-      var histogram_image_canvas = document.createElement('canvas');
-      var histogram_image_context = histogram_image_canvas.getContext('2d');
+      var image_canvas = document.createElement('canvas');
+      var image_context = image_canvas.getContext('2d');
 
-      histogram_image_canvas.width = preview_image.width;
-      histogram_image_canvas.height = preview_image.height;
+      image_canvas.width = preview_image.width;
+      image_canvas.height = preview_image.height;
 
-      histogram_image_context.drawImage(preview_image, 0, 0);
-      histogram_image_data = histogram_image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
+      image_context.drawImage(preview_image, 0, 0);
+      image_data = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
 
       calculateHistogram();
 
@@ -134,20 +134,20 @@ jQuery.noConflict();
       accuracy_value = step;
       step *= 4;
 
-      for (var i = 0, n = histogram_image_data.length; i < n; i+= step) {
+      for (var i = 0, n = image_data.length; i < n; i+= step) {
 
         if (histogram_type_value === 'rgb' || histogram_type_value === 'red' || histogram_type_value === 'green' || histogram_type_value === 
             'blue') {
-          val = [histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]];
+          val = [image_data[i], image_data[i+1], image_data[i+2]];
 
         } // if
         else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
             histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
-          val = rgb2cmyk(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
+          val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
 
         } // else if
         else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
-          val = rgb2hsv(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
+          val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
         } // else if
 
         if (histogram_type_value === 'red' || histogram_type_value === 'hue' || histogram_type_value === 'cyan') {
