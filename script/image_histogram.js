@@ -63,7 +63,7 @@ jQuery.noConflict();
       accuracy_value = 10;
       plot_style_value = 'continuous';
       plot_colors_value = 'flat';
-      plot_fill_value = true;
+      plot_fill_checked = true;
       histogram_type_value = 'rgb';
 
       /**************************************************************************/
@@ -78,7 +78,7 @@ jQuery.noConflict();
         plot_colors.value = plot_colors_value;
       }
       if (plot_fill != null) {
-        plot_fill.checked = plot_fill_value;
+        plot_fill.checked = plot_fill_checked;
       }
       if (histogram_type != null) {
         histogram_type.value = histogram_type_value;
@@ -130,7 +130,7 @@ jQuery.noConflict();
       }
 
       if (plot_fill != null) {
-        plot_fill_value = plot_fill.checked;
+        plot_fill_checked = plot_fill.checked;
       }
 
       if (accuracy != null) {
@@ -209,7 +209,7 @@ jQuery.noConflict();
 
       histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
-      if (plot_fill_value && chans.length > 1) {
+      if (plot_fill_checked && chans.length > 1) {
         histogram_context.globalCompositeOperation = 'lighter';
       }
 
@@ -217,7 +217,7 @@ jQuery.noConflict();
         drawHistogram(subtypes[i], chans[i], maxCount);
       }
 
-      if (plot_fill_value && chans.length > 1) {
+      if (plot_fill_checked && chans.length > 1) {
         histogram_context.globalCompositeOperation = 'source-over';
       }
 
@@ -295,7 +295,7 @@ jQuery.noConflict();
     function drawHistogram(histogram_type_value, vals, maxCount) {
       var ctxStyle;
 
-      if (plot_fill_value || plot_style_value === 'discreet') {
+      if (plot_fill_checked || plot_style_value === 'discreet') {
         ctxStyle = 'fillStyle';
         histogram_context.strokeStyle = '#000';
       }
@@ -343,7 +343,7 @@ jQuery.noConflict();
           histogram_context.lineTo(x, histogram_canvas.height - y);
         }
         else if (plot_style_value === 'discreet') {
-          if (plot_fill_value) {
+          if (plot_fill_checked) {
             histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, y);
           }
           else {
@@ -354,7 +354,7 @@ jQuery.noConflict();
 
       if (plot_style_value === 'continuous') {
         histogram_context.lineTo(x, histogram_canvas.height);
-        if (plot_fill_value) {
+        if (plot_fill_checked) {
           histogram_context.fill();
         }
         histogram_context.stroke();
