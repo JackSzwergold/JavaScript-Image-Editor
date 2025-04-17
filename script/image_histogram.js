@@ -18,9 +18,11 @@ jQuery.noConflict();
     var plotFill = document.getElementById('plot_fill');
     var plotColors = document.getElementById('plot_colors');
     // var imgSelector = document.getElementById('imgSelector');
+
     var preview_image = document.getElementById('image_to_edit');
-    var imgCanvas = document.createElement('canvas');
-    var imgCtx = imgCanvas.getContext('2d');
+
+    var image_canvas = document.createElement('canvas');
+    var image_context = image_canvas.getContext('2d');
 
     var gradients = {
           'red':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
@@ -96,10 +98,10 @@ jQuery.noConflict();
 
     var imageLoaded = function () {
       preview_image.className = '';
-      imgCanvas.width = preview_image.width;
-      imgCanvas.height = preview_image.height;
-      imgCtx.drawImage(preview_image, 0, 0);
-      imageData = imgCtx.getImageData(0, 0, preview_image.width, preview_image.height).data;
+      image_canvas.width = preview_image.width;
+      image_canvas.height = preview_image.height;
+      image_context.drawImage(preview_image, 0, 0);
+      imageData = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
       preview_image.className = 'thumb';
 
       updateHistogram();
