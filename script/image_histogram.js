@@ -99,7 +99,7 @@ jQuery.noConflict();
         }
       }
 
-    };
+    } // initHistogram
 
     /****************************************************************************/
     // The image loaded function.
@@ -113,7 +113,7 @@ jQuery.noConflict();
 
       updateHistogram();
 
-    };
+    } // imageLoaded
 
     /****************************************************************************/
     // The function to calculate the histogram.
@@ -199,7 +199,8 @@ jQuery.noConflict();
       if (plot_fill_value && chans.length > 1) {
         histogram_context.globalCompositeOperation = 'source-over';
       }
-    };
+
+    } // calculateHistogram
 
     /****************************************************************************/
     // The function to handle RGB to HSV conversion.
@@ -242,7 +243,7 @@ jQuery.noConflict();
 
       return [Math.round(hue*255), Math.round(sat*255), Math.round(val*255)];
  
-    };
+    } // rgb2hsv
 
     /****************************************************************************/
     // The function to handle RGB to CMYK conversion.
@@ -266,7 +267,7 @@ jQuery.noConflict();
       return [Math.round(cyan*255), Math.round(magenta*255), 
              Math.round(yellow*255), Math.round(black*255)];
 
-    };
+    } // rgb2cmyk
 
     /****************************************************************************/
     // The function to draw the histogram.
@@ -339,20 +340,13 @@ jQuery.noConflict();
         histogram_context.closePath();
       }
 
-    };
+    } // drawHistogram
 
     /****************************************************************************/
     // The function to update the histogram.
     function updateHistogram() {
-      var timeStart = (new Date()).getTime();
-
-      // runtime.innerHTML = 'Calculating histogram...';
-
       calculateHistogram(histogram_type_value);
-
-      // var timeEnd = (new Date()).getTime();
-      // runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
-    };
+    } // updateHistogram
 
     // var thumbClick = function (ev) {
     //   ev.preventDefault();
@@ -370,19 +364,19 @@ jQuery.noConflict();
     // histogram_canvas.addEventListener('click', thumbClick, false);
 
     if (histogram_type != null) {
-      histogram_type.addEventListener('change', updateHistogram, false);
+      histogram_type.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_style != null) {
-      plot_style.addEventListener('change', updateHistogram, false);
+      plot_style.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_fill != null) {
-      plot_fill.addEventListener('change', updateHistogram, false);
+      plot_fill.addEventListener('change', calculateHistogram, false);
     }
 
     if (plot_colors != null) {
-      plot_colors.addEventListener('change', updateHistogram, false);
+      plot_colors.addEventListener('change', calculateHistogram, false);
     }
 
     if (accuracy != null) {
