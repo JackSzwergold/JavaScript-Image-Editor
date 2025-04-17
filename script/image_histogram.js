@@ -27,6 +27,8 @@ jQuery.noConflict();
     var plot_fill_checked = true;
     var accuracy_value = 10;
 
+    /**************************************************************************/
+    // Get the preview image.
     var preview_image = document.getElementById('image_to_edit');
 
     var gradients = {
