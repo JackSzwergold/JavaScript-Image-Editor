@@ -336,28 +336,6 @@ jQuery.noConflict();
 
     } // drawHistogram
 
-    /****************************************************************************/
-    // The handler to update the histogram.
-    if (histogram_type_element != null) {
-      histogram_type_element.addEventListener('change', calculateHistogram, false);
-    }
-
-    if (plot_style_element != null) {
-      plot_style_element.addEventListener('change', calculateHistogram, false);
-    }
-
-    if (plot_colors_element != null) {
-      plot_colors_element.addEventListener('change', calculateHistogram, false);
-    }
-
-    if (plot_fill_element != null) {
-      plot_fill_element.addEventListener('change', calculateHistogram, false);
-    }
-
-    if (accuracy_element != null) {
-      accuracy_element.addEventListener('change', calculateHistogram, false);
-    }
-
     initHistogram();
     imageLoaded();
 

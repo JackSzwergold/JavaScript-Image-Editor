@@ -112,18 +112,20 @@ jQuery.noConflict();
     /****************************************************************************/
     // Handler to apply the filters.
     function apply_filter_handler() {
+
         preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg)
 blur(${blur}px)`;
         preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+
         if (preview_image.width != preview_image.height) {
           if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             disable_crop_selection();
             crop_selection_button.prop('disabled', true);
-          }
+          } // if
           else {
             crop_selection_button.prop('disabled', false);
-          }
-        }
+          } // else
+        } // if
 
     } // apply_filter_handler
 
