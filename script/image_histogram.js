@@ -122,14 +122,14 @@ jQuery.noConflict();
       subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
     }
 
-    var step = parseInt(accuracy.value);
+    var step = parseInt(accuracy_value);
     if (isNaN(step) || step < 1) {
       step = 1;
     }
     else if (step > 50) {
       step = 50;
     }
-    accuracy.value = step;
+    accuracy_value = step;
     step *= 4;
 
     for (var i = 0, n = imageData.length; i < n; i+= step) {
@@ -180,7 +180,7 @@ jQuery.noConflict();
 
     histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
-    if (plotFill.checked && chans.length > 1) {
+    if (plotFill_value && chans.length > 1) {
       histogram_context.globalCompositeOperation = 'lighter';
     }
 
@@ -188,7 +188,7 @@ jQuery.noConflict();
       drawHistogram(subtypes[i], chans[i], maxCount);
     }
 
-    if (plotFill.checked && chans.length > 1) {
+    if (plotFill_value && chans.length > 1) {
       histogram_context.globalCompositeOperation = 'source-over';
     }
   };
@@ -255,7 +255,7 @@ jQuery.noConflict();
   var drawHistogram = function (type, vals, maxCount) {
     var ctxStyle;
 
-    if (plotFill.checked || plotStyle.value === 'discreet') {
+    if (plotFill_value || plotStyle_value === 'discreet') {
       ctxStyle = 'fillStyle';
       histogram_context.strokeStyle = '#000';
     }
@@ -263,7 +263,7 @@ jQuery.noConflict();
       ctxStyle = 'strokeStyle';
     }
 
-    if (plotColors.value === 'flat') {
+    if (plotColors_value === 'flat') {
       if (type === 'hue') {
         histogram_context[ctxStyle] = gradients.hue;
       } else if (type in colors && type !== 'val') {
@@ -274,7 +274,7 @@ jQuery.noConflict();
       }
 
     }
-    else if (plotColors.value === 'gradient') {
+    else if (plotColors_value === 'gradient') {
       if (type in gradients) {
         histogram_context[ctxStyle] = gradients[type];
       }
@@ -282,11 +282,11 @@ jQuery.noConflict();
         histogram_context[ctxStyle] = '#000';
       }
     }
-    else if (plotColors.value === 'none') {
+    else if (plotColors_value === 'none') {
       histogram_context[ctxStyle] = '#000';
     }
 
-    if (plotStyle.value === 'continuous') {
+    if (plotStyle_value=== 'continuous') {
       histogram_context.beginPath();
       histogram_context.moveTo(0, histogram_canvas.height);
     }
@@ -299,11 +299,11 @@ jQuery.noConflict();
       y = Math.round((vals[i]/maxCount)*histogram_canvas.height);
       x = Math.round((i/255)*histogram_canvas.width);
 
-      if (plotStyle.value === 'continuous') {
+      if (plotStyle_value === 'continuous') {
         histogram_context.lineTo(x, histogram_canvas.height - y);
       }
-      else if (plotStyle.value === 'discreet') {
-        if (plotFill.checked) {
+      else if (plotStyle_value === 'discreet') {
+        if (plotFill_value) {
           histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, y);
         }
         else {
@@ -312,9 +312,9 @@ jQuery.noConflict();
       }
     }
 
-    if (plotStyle.value === 'continuous') {
+    if (plotStyle_value === 'continuous') {
       histogram_context.lineTo(x, histogram_canvas.height);
-      if (plotFill.checked) {
+      if (plotFill_value) {
         histogram_context.fill();
       }
       histogram_context.stroke();
@@ -327,7 +327,7 @@ jQuery.noConflict();
 
     // runtime.innerHTML = 'Calculating histogram...';
 
-    calculateHistogram(histogram_type.value);
+    calculateHistogram(histogram_type_value);
 
     // var timeEnd = (new Date()).getTime();
     // runtime.innerHTML = 'Plot runtime: ' + (timeEnd - timeStart) + ' ms.';
