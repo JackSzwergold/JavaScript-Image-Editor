@@ -129,9 +129,9 @@ jQuery.noConflict();
         plot_colors_value = plot_colors.value;
       }
 
-      // if (plot_fill != null) {
-      //   plot_fill_value = plot_fill.value;
-      // }
+      if (plot_fill != null) {
+        plot_fill_value = plot_fill.checked;
+      }
 
       if (accuracy != null) {
         accuracy_value = accuracy.value;
