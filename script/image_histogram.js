@@ -327,11 +327,25 @@ jQuery.noConflict();
   // preview_image.addEventListener('click', thumbClick, false);
   // histogram_canvas.addEventListener('click', thumbClick, false);
 
-  histogram_type.addEventListener('change', updateHistogram, false);
-  plotStyle.addEventListener('change', updateHistogram, false);
-  plotFill.addEventListener('change', updateHistogram, false);
-  plotColors.addEventListener('change', updateHistogram, false);
-  accuracy.addEventListener('change', updateHistogram, false);
+  if (histogram_type != null) {
+    histogram_type.addEventListener('change', updateHistogram, false);
+  }
+
+  if (plotStyle != null) {
+    plotStyle.addEventListener('change', updateHistogram, false);
+  }
+
+  if (plotFill != null) {
+    plotFill.addEventListener('change', updateHistogram, false);
+  }
+
+  if (plotColors != null) {
+    plotColors.addEventListener('change', updateHistogram, false);
+  }
+
+  if (accuracy != null) {
+    accuracy.addEventListener('change', updateHistogram, false);
+  }
 
   initHistogram();
   imageLoaded();
