@@ -87,7 +87,7 @@ jQuery.noConflict();
 
       var histogram_image_canvas = document.createElement('canvas');
       var histogram_image_context = histogram_image_canvas.getContext('2d');
-    
+
       histogram_image_canvas.width = preview_image.width;
       histogram_image_canvas.height = preview_image.height;
 
@@ -116,63 +116,65 @@ jQuery.noConflict();
       if (histogram_type_value === 'rgb') {
         chans = [[], [], []];
         histogram_subtypes = ['red', 'green', 'blue'];
-      }
+      } // if
       else if (histogram_type_value === 'cmyk') {
         chans = [[], [], [], []];
         histogram_subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
-      }
+      } // else if
 
       var step = parseInt(accuracy_value);
       if (isNaN(step) || step < 1) {
         step = 1;
-      }
+      } // if
       else if (step > 50) {
         step = 50;
-      }
+      } // else if
       accuracy_value = step;
       step *= 4;
 
       for (var i = 0, n = histogram_image_data.length; i < n; i+= step) {
+
         if (histogram_type_value === 'rgb' || histogram_type_value === 'red' || histogram_type_value === 'green' || histogram_type_value === 
             'blue') {
           val = [histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]];
 
-        }
+        } // if
         else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
             histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
           val = rgb2cmyk(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
 
-        }
+        } // else if
         else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
           val = rgb2hsv(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
-        }
+        } // else if
 
         if (histogram_type_value === 'red' || histogram_type_value === 'hue' || histogram_type_value === 'cyan') {
           val = [val[0]];
-        }
+        } // if
         else if (histogram_type_value === 'green' || histogram_type_value === 'sat' || histogram_type_value === 'magenta') {
           val = [val[1]];
-        }
+        } // else if
         else if (histogram_type_value === 'blue' || histogram_type_value === 'val' || histogram_type_value === 'yellow') {
           val = [val[2]];
-        }
+        } // else if
         else if (histogram_type_value === 'kelvin') {
           val = [val[3]];
-        }
+        } // else if
 
         for (var y = 0, m = val.length; y < m; y++) {
           if (val[y] in chans[y]) {
             chans[y][val[y]]++;
-          }
+          } // if
           else {
             chans[y][val[y]] = 1;
-          }
+          } // else
 
           if (chans[y][val[y]] > maxCount) {
             maxCount = chans[y][val[y]];
-          }
-        }
-      }
+          } // if
+        } // for
+ 
+      } // for
 
       if (maxCount === 0) {
         return;
@@ -182,15 +184,15 @@ jQuery.noConflict();
 
       if (plot_fill_checked && chans.length > 1) {
         histogram_context.globalCompositeOperation = 'lighter';
-      }
+      } // if
 
       for (var i = 0, n = chans.length; i < n; i++) {
         drawHistogram(histogram_subtypes[i], chans[i], maxCount);
-      }
+      } // for
 
       if (plot_fill_checked && chans.length > 1) {
         histogram_context.globalCompositeOperation = 'source-over';
-      }
+      } // if
 
     } // calculateHistogram
 
