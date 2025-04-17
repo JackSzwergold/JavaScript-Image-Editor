@@ -22,7 +22,7 @@ jQuery.noConflict();
     var preview_image = document.getElementById('image_to_edit');
 
     var image_canvas = document.createElement('canvas');
-    var image_context = image_canvas.getContext('2d');
+    var histogram_image_context = image_canvas.getContext('2d');
 
     var gradients = {
           'red':     histogram_context.createLinearGradient(0, 0, preview_image.width, 0),
@@ -54,7 +54,7 @@ jQuery.noConflict();
           'magenta': ['#000', '#f0f']
         };
     var discreetWidth = Math.round(histogram_canvas.width / 255);
-    var image_data = null;
+    var histogram_image_data = null;
 
     /****************************************************************************/
     // The function to init the histogram.
@@ -105,15 +105,11 @@ jQuery.noConflict();
     // The image loaded function.
     function imageLoaded() {
 
-      // preview_image.className = '';
-  
       image_canvas.width = preview_image.width;
       image_canvas.height = preview_image.height;
 
-      image_context.drawImage(preview_image, 0, 0);
-      image_data = image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
- 
-      // preview_image.className = 'thumb';
+      histogram_image_context.drawImage(preview_image, 0, 0);
+      histogram_image_data = histogram_image_context.getImageData(0, 0, preview_image.width, preview_image.height).data;
 
       updateHistogram();
 
@@ -144,19 +140,19 @@ jQuery.noConflict();
       accuracy_value = step;
       step *= 4;
 
-      for (var i = 0, n = image_data.length; i < n; i+= step) {
+      for (var i = 0, n = histogram_image_data.length; i < n; i+= step) {
         if (type === 'rgb' || type === 'red' || type === 'green' || type === 
             'blue') {
-          val = [image_data[i], image_data[i+1], image_data[i+2]];
+          val = [histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]];
 
         }
         else if (type === 'cmyk' || type === 'cyan' || type === 'magenta' || 
             type === 'yellow' || type === 'kelvin') {
-          val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
+          val = rgb2cmyk(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
 
         }
         else if (type === 'hue' || type === 'sat' || type === 'val') {
-          val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
+          val = rgb2hsv(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
         }
 
         if (type === 'red' || type === 'hue' || type === 'cyan') {
