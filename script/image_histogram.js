@@ -110,15 +110,15 @@ jQuery.noConflict();
       var chans = [[]];
       var maxCount = 0;
       var val;
-      var subtypes = [histogram_type_value];
+      var histogram_subtypes = [histogram_type_value];
 
       if (histogram_type_value === 'rgb') {
         chans = [[], [], []];
-        subtypes = ['red', 'green', 'blue'];
+        histogram_subtypes = ['red', 'green', 'blue'];
       }
       else if (histogram_type_value === 'cmyk') {
         chans = [[], [], [], []];
-        subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
+        histogram_subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
       }
 
       var step = parseInt(accuracy_value);
@@ -184,7 +184,7 @@ jQuery.noConflict();
       }
 
       for (var i = 0, n = chans.length; i < n; i++) {
-        drawHistogram(subtypes[i], chans[i], maxCount);
+        drawHistogram(histogram_subtypes[i], chans[i], maxCount);
       }
 
       if (plot_fill_checked && chans.length > 1) {
