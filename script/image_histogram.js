@@ -120,19 +120,15 @@ jQuery.noConflict();
       if (histogram_type != null) {
         histogram_type_value = histogram_type.value;
       }
-
       if (plot_style != null) {
         plot_style_value = plot_style.value;
       }
-
       if (plot_colors != null) {
         plot_colors_value = plot_colors.value;
       }
-
       if (plot_fill != null) {
         plot_fill_checked = plot_fill.checked;
       }
-
       if (accuracy != null) {
         accuracy_value = accuracy.value;
       }
