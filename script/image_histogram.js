@@ -131,6 +131,10 @@ jQuery.noConflict();
         subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
       }
 
+      if (accuracy != null) {
+        accuracy_value = accuracy.value;
+      }
+
       var step = parseInt(accuracy_value);
       if (isNaN(step) || step < 1) {
         step = 1;
