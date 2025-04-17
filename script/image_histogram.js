@@ -86,10 +86,10 @@ jQuery.noConflict();
         histogram_type.value = histogram_type_value;
       }
 
-      var grad,
-          color,
-          i,
-          n;
+      var grad;
+      var color;
+      var i;
+      var n;
 
       for (grad in gradients) {
         color = colors[grad];
