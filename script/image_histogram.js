@@ -102,11 +102,11 @@ jQuery.noConflict();
     // The function to calculate the histogram.
     function calculateHistogram() {
 
-      histogram_type_value = histogram_type_element ? histogram_type.value : histogram_type_value;
-      plot_style_value = plot_style_element ? plot_style.value : plot_style_value;
-      plot_colors_value = plot_colors_element ? plot_colors.value : plot_colors_value;
-      plot_fill_checked = plot_fill_element ? plot_fill.checked : plot_fill_checked;
-      accuracy_value = accuracy_element ? accuracy.value : accuracy_value;
+      histogram_type_value = histogram_type_element ? histogram_type_element.value : histogram_type_value;
+      plot_style_value = plot_style_element ? plot_style_element.value : plot_style_value;
+      plot_colors_value = plot_colors_element ? plot_colors_element.value : plot_colors_value;
+      plot_fill_checked = plot_fill_element ? plot_fill_element.checked : plot_fill_checked;
+      accuracy_value = accuracy_element ? accuracy_element.value : accuracy_value;
 
       var chans = [[]];
       var maxCount = 0;
@@ -338,24 +338,24 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The handler to update the histogram.
-    if (histogram_type != null) {
-      histogram_type.addEventListener('change', calculateHistogram, false);
+    if (histogram_type_element != null) {
+      histogram_type_element.addEventListener('change', calculateHistogram, false);
     }
 
-    if (plot_style != null) {
-      plot_style.addEventListener('change', calculateHistogram, false);
+    if (plot_style_element != null) {
+      plot_style_element.addEventListener('change', calculateHistogram, false);
     }
 
-    if (plot_colors != null) {
-      plot_colors.addEventListener('change', calculateHistogram, false);
+    if (plot_colors_element != null) {
+      plot_colors_element.addEventListener('change', calculateHistogram, false);
     }
 
-    if (plot_fill != null) {
-      plot_fill.addEventListener('change', calculateHistogram, false);
+    if (plot_fill_element != null) {
+      plot_fill_element.addEventListener('change', calculateHistogram, false);
     }
 
-    if (accuracy != null) {
-      accuracy.addEventListener('change', calculateHistogram, false);
+    if (accuracy_element != null) {
+      accuracy_element.addEventListener('change', calculateHistogram, false);
     }
 
     initHistogram();

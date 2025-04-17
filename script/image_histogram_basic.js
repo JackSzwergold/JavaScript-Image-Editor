@@ -102,11 +102,11 @@ jQuery.noConflict();
     // The function to calculate the histogram.
     function calculateHistogram() {
 
-      histogram_type_value = histogram_type_element ? histogram_type.value : histogram_type_value;
-      plot_style_value = plot_style_element ? plot_style.value : plot_style_value;
-      plot_colors_value = plot_colors_element ? plot_colors.value : plot_colors_value;
-      plot_fill_checked = plot_fill_element ? plot_fill.checked : plot_fill_checked;
-      accuracy_value = accuracy_element ? accuracy.value : accuracy_value;
+      histogram_type_value = histogram_type_element ? histogram_type_element.value : histogram_type_value;
+      plot_style_value = plot_style_element ? plot_style_element.value : plot_style_value;
+      plot_colors_value = plot_colors_element ? plot_colors_element.value : plot_colors_value;
+      plot_fill_checked = plot_fill_element ? plot_fill_element.checked : plot_fill_checked;
+      accuracy_value = accuracy_element ? accuracy_element.value : accuracy_value;
 
       var chans = [[]];
       var maxCount = 0;
