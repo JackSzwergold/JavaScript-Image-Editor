@@ -115,24 +115,24 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to calculate the histogram.
-    function calculateHistogram(type) {
+    function calculateHistogram(histogram_type_value) {
+
+      if (accuracy != null) {
+        accuracy_value = accuracy.value;
+      }
 
       var chans = [[]];
       var maxCount = 0;
       var val;
-      var subtypes = [type];
+      var subtypes = [histogram_type_value];
 
-      if (type === 'rgb') {
+      if (histogram_type_value === 'rgb') {
         chans = [[], [], []];
         subtypes = ['red', 'green', 'blue'];
       }
-      else if (type === 'cmyk') {
+      else if (histogram_type_value === 'cmyk') {
         chans = [[], [], [], []];
         subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
-      }
-
-      if (accuracy != null) {
-        accuracy_value = accuracy.value;
       }
 
       var step = parseInt(accuracy_value);
@@ -146,30 +146,30 @@ jQuery.noConflict();
       step *= 4;
 
       for (var i = 0, n = histogram_image_data.length; i < n; i+= step) {
-        if (type === 'rgb' || type === 'red' || type === 'green' || type === 
+        if (histogram_type_value === 'rgb' || histogram_type_value === 'red' || histogram_type_value === 'green' || histogram_type_value === 
             'blue') {
           val = [histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]];
 
         }
-        else if (type === 'cmyk' || type === 'cyan' || type === 'magenta' || 
-            type === 'yellow' || type === 'kelvin') {
+        else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
+            histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
           val = rgb2cmyk(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
 
         }
-        else if (type === 'hue' || type === 'sat' || type === 'val') {
+        else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
           val = rgb2hsv(histogram_image_data[i], histogram_image_data[i+1], histogram_image_data[i+2]);
         }
 
-        if (type === 'red' || type === 'hue' || type === 'cyan') {
+        if (histogram_type_value === 'red' || histogram_type_value === 'hue' || histogram_type_value === 'cyan') {
           val = [val[0]];
         }
-        else if (type === 'green' || type === 'sat' || type === 'magenta') {
+        else if (histogram_type_value === 'green' || histogram_type_value === 'sat' || histogram_type_value === 'magenta') {
           val = [val[1]];
         }
-        else if (type === 'blue' || type === 'val' || type === 'yellow') {
+        else if (histogram_type_value === 'blue' || histogram_type_value === 'val' || histogram_type_value === 'yellow') {
           val = [val[2]];
         }
-        else if (type === 'kelvin') {
+        else if (histogram_type_value === 'kelvin') {
           val = [val[3]];
         }
 
@@ -276,7 +276,7 @@ jQuery.noConflict();
 
     /****************************************************************************/
     // The function to draw the histogram.
-    function drawHistogram(type, vals, maxCount) {
+    function drawHistogram(histogram_type_value, vals, maxCount) {
       var ctxStyle;
 
       if (plot_fill_value || plot_style_value === 'discreet') {
@@ -288,10 +288,10 @@ jQuery.noConflict();
       }
 
       if (plot_colors_value === 'flat') {
-        if (type === 'hue') {
+        if (histogram_type_value === 'hue') {
           histogram_context[ctxStyle] = gradients.hue;
-        } else if (type in colors && type !== 'val') {
-          histogram_context[ctxStyle] = colors[type][1];
+        } else if (histogram_type_value in colors && histogram_type_value !== 'val') {
+          histogram_context[ctxStyle] = colors[histogram_type_value][1];
         }
         else {
           histogram_context[ctxStyle] = '#000';
@@ -299,8 +299,8 @@ jQuery.noConflict();
 
       }
       else if (plot_colors_value === 'gradient') {
-        if (type in gradients) {
-          histogram_context[ctxStyle] = gradients[type];
+        if (histogram_type_value in gradients) {
+          histogram_context[ctxStyle] = gradients[histogram_type_value];
         }
         else {
           histogram_context[ctxStyle] = '#000';
