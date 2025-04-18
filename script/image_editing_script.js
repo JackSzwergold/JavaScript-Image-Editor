@@ -45,8 +45,8 @@ jQuery.noConflict();
     rotate_buttons = document.querySelectorAll('#rotate button');
 
     /**************************************************************************/
-    // The image preview itself.
-    preview_image = document.querySelector('#image_to_edit');
+    // The image to edit itself.
+    image_to_edit = document.querySelector('#image_to_edit');
 
     /**************************************************************************/
     // The crop selection area.
@@ -94,9 +94,9 @@ jQuery.noConflict();
     // const loadImage = () => {
     //     let file = fileInput.files[0];
     //     if (!file) return;
-    //     preview_image.src = URL.createObjectURL(file);
+    //     image_to_edit.src = URL.createObjectURL(file);
     //     file_name = file.name
-    //     preview_image.addEventListener('click', () => {
+    //     image_to_edit.addEventListener('click', () => {
     //         reset_filter_button.click();
     //     });
     // }
@@ -104,7 +104,7 @@ jQuery.noConflict();
     /****************************************************************************/
     // Handler to init the image.
     function init_image_handler() {
-        preview_image.addEventListener('click', () => {
+        image_to_edit.addEventListener('click', () => {
             reset_filter_button.click();
         });
     } // init_image_handler
@@ -113,11 +113,10 @@ jQuery.noConflict();
     // Handler to apply the filters.
     function apply_filter_handler() {
 
-        preview_image.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg)
-blur(${blur}px)`;
-        preview_image.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
+        image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
+        image_to_edit.style.transform = `rotate(${rotate}deg) scale(${flip_horizontal}, ${flip_vertical})`;
 
-        if (preview_image.width != preview_image.height) {
+        if (image_to_edit.width != image_to_edit.height) {
           if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             disable_crop_selection();
             crop_selection_button.prop('disabled', true);
@@ -159,10 +158,10 @@ blur(${blur}px)`;
         // Do it.
         if (rotate == -270) {
             rotate = 0;
-        }
+        } // if
         else {
             rotate -= 90;
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -178,10 +177,10 @@ blur(${blur}px)`;
         // Do it.
         if (rotate == 270) {
             rotate = 0;
-        }
+        } // if
         else {
             rotate += 90;
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -197,10 +196,10 @@ blur(${blur}px)`;
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_vertical = flip_vertical === 1 ? -1 : 1;
-        }
+        } // if
         else {
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -216,10 +215,10 @@ blur(${blur}px)`;
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-        }
+        } // if
         else {
             flip_vertical = flip_vertical === 1 ? -1 : 1; 
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -243,25 +242,25 @@ blur(${blur}px)`;
         // Calculate the resize and cropping ratios.
         var resize_ratio = 1;
         var cropping_ratio = 1;
-        if (preview_image.naturalWidth > preview_image.naturalHeight) {
-            resize_ratio = (resize_width / preview_image.naturalWidth);
-            cropping_ratio = (resize_width / preview_image.width);
-        }
+        if (image_to_edit.naturalWidth > image_to_edit.naturalHeight) {
+            resize_ratio = (resize_width / image_to_edit.naturalWidth);
+            cropping_ratio = (resize_width / image_to_edit.width);
+        } // if
         else {
-            resize_ratio = (resize_height / preview_image.naturalHeight);
-            cropping_ratio = (resize_height / preview_image.height);
-        }
+            resize_ratio = (resize_height / image_to_edit.naturalHeight);
+            cropping_ratio = (resize_height / image_to_edit.height);
+        } // else
 
         /************************************************************************/
         // Apply the resize ratios.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            canvas.width = preview_image.naturalHeight * resize_ratio;
-            canvas.height = preview_image.naturalWidth * resize_ratio;
-        }
+            canvas.width = image_to_edit.naturalHeight * resize_ratio;
+            canvas.height = image_to_edit.naturalWidth * resize_ratio;
+        } // if
         else {
-            canvas.width = preview_image.naturalWidth * resize_ratio;
-            canvas.height = preview_image.naturalHeight * resize_ratio;
-        }
+            canvas.width = image_to_edit.naturalWidth * resize_ratio;
+            canvas.height = image_to_edit.naturalHeight * resize_ratio;
+        } // else
 
         /************************************************************************/
         // Save the context.
@@ -286,11 +285,11 @@ blur(${blur}px)`;
         /************************************************************************/
         // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
-            context.drawImage(preview_image, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
-        }
+            context.drawImage(image_to_edit, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
+        } // if
         else {
-            context.drawImage(preview_image, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-        }
+            context.drawImage(image_to_edit, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        } // else
 
         /************************************************************************/
         // Restore the context.
@@ -318,34 +317,34 @@ blur(${blur}px)`;
             if (typeof(crop_selection.position()) != 'undefined') {
                 if (crop_selection.position().left >= 0) {
                     crop_x = Math.round(crop_selection.position().left * cropping_ratio);
-                }
+                } // if
                 if (crop_selection.position().top >= 0) {
                     crop_y = Math.round(crop_selection.position().top * cropping_ratio);
-                }
-            }
+                } // if
+            } // if
 
             /********************************************************************/
             // Set the width value.
             if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
                 crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
-            }
+            } // if
 
             /********************************************************************/
             // Set the height value.
             if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
                 crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
-            }
+            } // if
 
             /********************************************************************/
             // Calculate the canvas save ratio.
             if (crop_w > crop_h) {
                 canvas_save_ratio = (resize_width / crop_w);
-            }
+            } // if
             else {
                 canvas_save_ratio = (resize_height / crop_h);
-            }
+            } // else
 
-        }
+        } // if
 
         /************************************************************************/
         // Calculations to make sure the canvas is not larger than the content.
@@ -354,11 +353,11 @@ blur(${blur}px)`;
         if (crop_x < 0) {
             crop_w = crop_w - Math.abs(crop_x); 
             crop_x = 0;
-        }
+        } // if
         if (crop_y < 0) {
             crop_h = crop_h - Math.abs(crop_y); 
             crop_y = 0;
-        }
+        } // if
 
         /************************************************************************/
         // Setting the target width and height.
@@ -509,10 +508,10 @@ blur(${blur}px)`;
         // Toggle the crop selector.
         if (crop_selection.hasClass('hide')) {
           enable_crop_selection();
-        }
+        } // if
         else {
           disable_crop_selection();
-        }
+        } // else
 
     } // crop_selection_handler
 
@@ -536,8 +535,8 @@ blur(${blur}px)`;
         'display': 'block',
         'top': '0px', 
         'left': '0px', 
-        'width': Math.round(preview_image.width / 2) + 'px', 
-        'height': Math.round(preview_image.height / 2) + 'px', 
+        'width': Math.round(image_to_edit.width / 2) + 'px', 
+        'height': Math.round(image_to_edit.height / 2) + 'px', 
         'border-color': '#cc0000', 
         'border-width': '3px', 
         'border-style': 'dashed'
