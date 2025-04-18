@@ -36,11 +36,7 @@ jQuery.noConflict();
           'green': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'blue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'hue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'cyan': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'magenta': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'yellow': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'kelvin': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
+          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
         };
 
     var colors = {
@@ -55,11 +51,7 @@ jQuery.noConflict();
             '#00f',   // 4, Blue,    240
             '#f0f',   // 5, Magenta, 300
             '#f00'],  // 6, Red,     360
-          'val':     ['#000', '#fff'],
-          'kelvin':  ['#fff', '#000'],
-          'cyan':    ['#000', '#0ff'],
-          'yellow':  ['#000', '#ff0'],
-          'magenta': ['#000', '#f0f']
+          'val':     ['#000', '#fff']
         };
 
     var discreetWidth = Math.round(histogram_canvas.width / 255);
@@ -131,10 +123,6 @@ jQuery.noConflict();
         chans = [[], [], []];
         histogram_subtypes = ['red', 'green', 'blue'];
       } // if
-      // else if (histogram_type_value === 'cmyk') {
-      //   chans = [[], [], [], []];
-      //   histogram_subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
-      // } // else if
 
       var step = parseInt(accuracy_value);
       if (isNaN(step) || step < 1) {
@@ -152,25 +140,15 @@ jQuery.noConflict();
             'blue') {
           val = [image_data[i], image_data[i+1], image_data[i+2]];
         } // if
-        else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
-            histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
-          val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
-        } // else if
-        else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
-          val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
-        } // else if
 
-        if (histogram_type_value === 'red' || histogram_type_value === 'hue' || histogram_type_value === 'cyan') {
+        if (histogram_type_value === 'red') {
           val = [val[0]];
         } // if
-        else if (histogram_type_value === 'green' || histogram_type_value === 'sat' || histogram_type_value === 'magenta') {
+        else if (histogram_type_value === 'green') {
           val = [val[1]];
         } // else if
-        else if (histogram_type_value === 'blue' || histogram_type_value === 'val' || histogram_type_value === 'yellow') {
+        else if (histogram_type_value === 'blue') {
           val = [val[2]];
-        } // else if
-        else if (histogram_type_value === 'kelvin') {
-          val = [val[3]];
         } // else if
 
         for (var y = 0, m = val.length; y < m; y++) {
@@ -207,73 +185,6 @@ jQuery.noConflict();
       } // if
 
     } // calculateHistogram
-
-    /****************************************************************************/
-    // The function to handle RGB to HSV conversion.
-    function rgb2hsv(red, green, blue) {
- 
-      red /= 255;
-      green /= 255;
-      blue /= 255;
-
-      var hue;
-      var sat;
-      var val;
-
-      var min = Math.min(red, green, blue);
-      var max = Math.max(red, green, blue);
-      var delta = max - min;
-      val  = max;
-
-      // This is gray (red==green==blue)
-      if (delta === 0) {
-        hue = sat = 0;
-      } else {
-        sat = delta / max;
-
-        if (max === red) {
-          hue = (green -  blue) / delta;
-        }
-        else if (max === green) {
-          hue = (blue  -   red) / delta + 2;
-        }
-        else if (max ===  blue) {
-          hue = (red   - green) / delta + 4;
-        }
-
-        hue /= 6;
-        if (hue < 0) {
-          hue += 1;
-        }
-      }
-
-      return [Math.round(hue*255), Math.round(sat*255), Math.round(val*255)];
- 
-    } // rgb2hsv
-
-    /****************************************************************************/
-    // The function to handle RGB to CMYK conversion.
-    function rgb2cmyk(red, green, blue) {
-
-      var cyan    = 1 - red/255;
-      var magenta = 1 - green/255;
-      var yellow  = 1 - blue/255;
-      var black = Math.min(cyan, magenta, yellow, 1);
-
-      if (black === 1) {
-        cyan = magenta = yellow = 0;
-      }
-      else {
-        var w = 1 - black;
-        cyan    = (cyan    - black) / w;
-        magenta = (magenta - black) / w;
-        yellow  = (yellow  - black) / w;
-      }
-
-      return [Math.round(cyan*255), Math.round(magenta*255), 
-             Math.round(yellow*255), Math.round(black*255)];
-
-    } // rgb2cmyk
 
     /****************************************************************************/
     // The function to draw the histogram.
