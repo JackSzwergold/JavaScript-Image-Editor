@@ -104,47 +104,47 @@ jQuery.noConflict();
 
       /**************************************************************************/
       // Pasting stuff into a new canvas for final saving,
-      var canvas_save = document.createElement('canvas');
-      var context_save = canvas_save.getContext('2d');
+      // var canvas_save = document.createElement('canvas');
+      // var context_save = canvas_save.getContext('2d');
 
       /**************************************************************************/
       // Setting the crop selector defaults.
-      var crop_x = 0;
-      var crop_y = 0;
-      var crop_w = canvas.width;
-      var crop_h = canvas.height;
-      var canvas_save_ratio = 1;
+      // var crop_x = 0;
+      // var crop_y = 0;
+      // var crop_w = canvas.width;
+      // var crop_h = canvas.height;
+      // var canvas_save_ratio = 1;
 
       /**************************************************************************/
       // Setting the target width and height.
-      var source_target_x = crop_x;
-      var source_target_y = crop_y;
-      var source_target_w = crop_w;
-      var source_target_h = crop_h;
+      // var source_target_x = crop_x;
+      // var source_target_y = crop_y;
+      // var source_target_w = crop_w;
+      // var source_target_h = crop_h;
 
       /**************************************************************************/
       // Setting the new canvas width and height.
-      canvas_save.width = source_target_w * canvas_save_ratio;
-      canvas_save.height = source_target_h * canvas_save_ratio;
+      // canvas_save.width = source_target_w * canvas_save_ratio;
+      // canvas_save.height = source_target_h * canvas_save_ratio;
 
       /**************************************************************************/
       // Setting source and destination coordinates.
-      var source_x = source_target_x;
-      var source_y = source_target_y;
-      var source_w = source_target_w;
-      var source_h = source_target_h;
+      // var source_x = source_target_x;
+      // var source_y = source_target_y;
+      // var source_w = source_target_w;
+      // var source_h = source_target_h;
       var dest_x = 0;
       var dest_y = 0;
-      var dest_w = canvas_save.width;
-      var dest_h = canvas_save.height; 
+      var dest_w = canvas.width;
+      var dest_h = canvas.height; 
 
       /**************************************************************************/
       // Draw the image onto the new destination canvas.
-      context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
+      // context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
       /**************************************************************************/
       // Get the image data.
-      image_data = context_save.getImageData(source_x, source_y, dest_w, dest_h).data;
+      image_data = context.getImageData(dest_x, dest_y, dest_w, dest_h).data;
 
       /**************************************************************************/
       // Set the variables for the Ajax POST and download.
