@@ -84,11 +84,15 @@ jQuery.noConflict();
     } // initHistogram
 
     /****************************************************************************/
-    // The image loaded function.
-    function imageLoaded() {
+    // The load image function.
+    function loadImage() {
 
       var canvas = document.createElement('canvas');
       var context = canvas.getContext('2d');
+
+      // TODO: Explpore how to do this stuff.
+      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
 
       canvas.width = image_to_edit.width;
       canvas.height = image_to_edit.height;
@@ -96,9 +100,7 @@ jQuery.noConflict();
       context.drawImage(image_to_edit, 0, 0);
       image_data = context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
 
-      calculateHistogram();
-
-    } // imageLoaded
+    } // loadImage
 
     /****************************************************************************/
     // The function to calculate the histogram.
@@ -363,7 +365,8 @@ jQuery.noConflict();
     }
 
     initHistogram();
-    imageLoaded();
+    loadImage();
+    calculateHistogram();
 
   }); // $(document).ready
 
