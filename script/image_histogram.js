@@ -21,11 +21,11 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // Set the default form values.
-    var histogram_type_value = 'rgb';
-    var plot_colors_value = 'flat';
-    var plot_style_value = 'continuous';
-    var plot_fill_checked = true;
-    var accuracy_value = 10;
+    var histogram_type_value = histogram_type_element ? histogram_type_element.value : 'rgb';
+    var plot_colors_value = plot_colors_element ? plot_colors_element.value : 'flat';
+    var plot_style_value = plot_style_element ? plot_style_element.value : 'continuous';
+    var plot_fill_checked = plot_fill_element ? plot_fill_element.checked : true;
+    var accuracy_value = accuracy_element ? accuracy_element.value : 10;
 
     /**************************************************************************/
     // Get the preview image.
