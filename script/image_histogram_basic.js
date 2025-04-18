@@ -131,10 +131,10 @@ jQuery.noConflict();
         chans = [[], [], []];
         histogram_subtypes = ['red', 'green', 'blue'];
       } // if
-      else if (histogram_type_value === 'cmyk') {
-        chans = [[], [], [], []];
-        histogram_subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
-      } // else if
+      // else if (histogram_type_value === 'cmyk') {
+      //   chans = [[], [], [], []];
+      //   histogram_subtypes = ['cyan', 'magenta', 'yellow', 'kelvin'];
+      // } // else if
 
       var step = parseInt(accuracy_value);
       if (isNaN(step) || step < 1) {
@@ -151,12 +151,10 @@ jQuery.noConflict();
         if (histogram_type_value === 'rgb' || histogram_type_value === 'red' || histogram_type_value === 'green' || histogram_type_value === 
             'blue') {
           val = [image_data[i], image_data[i+1], image_data[i+2]];
-
         } // if
         else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
             histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
           val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
-
         } // else if
         else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
           val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
