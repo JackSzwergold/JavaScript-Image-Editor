@@ -93,12 +93,14 @@ jQuery.noConflict();
       canvas.width = image_to_edit.width;
       canvas.height = image_to_edit.height;
 
-      context.drawImage(image_to_edit, 0, 0);
-
       /************************************************************************/
       // TODO: Explore how to do this stuff.
-      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(0px)`;
-      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(0px)`;
+      image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(4px)`;
+      context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(4px)`;
+
+      /************************************************************************/
+      // Draw the image to edit onto a new canvas.
+      context.drawImage(image_to_edit, 0, 0);
 
       /************************************************************************/
       // Pasting stuff into a new canvas for final saving,
@@ -143,6 +145,22 @@ jQuery.noConflict();
       /************************************************************************/
       // Get the image data.
       image_data = context_save.getImageData(source_x, source_y, dest_w, dest_h).data;
+
+
+        /************************************************************************/
+        // Set the variables for the Ajax POST and download.
+        mime_type = 'image/jpeg';
+        file_extension = 'jpg';
+        quality = 0.95;
+        // destination_url = data_url + data_uri;
+        base64_data = canvas_save.toDataURL(mime_type, quality);
+
+        /************************************************************************/
+        // Do the actual image download.
+        const link = document.createElement('a');
+        link.download = 'test.' + file_extension;
+        link.href = base64_data;
+        link.click();
 
     } // loadImage
 
