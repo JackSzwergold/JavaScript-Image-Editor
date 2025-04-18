@@ -87,18 +87,18 @@ jQuery.noConflict();
     // The image loaded function.
     function imageLoaded() {
 
-      var image_canvas = document.createElement('canvas');
-      var image_context = image_canvas.getContext('2d');
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
 
       // TODO: Explpore this stuff.
       // image_to_edit.style.filter = `hue-rotate(90deg) blur(10px)`;
-      // image_context.filter = `hue-rotate(90deg) blur(50px)`;
+      // context.filter = `hue-rotate(90deg) blur(50px)`;
 
-      image_canvas.width = image_to_edit.width;
-      image_canvas.height = image_to_edit.height;
+      canvas.width = image_to_edit.width;
+      canvas.height = image_to_edit.height;
 
-      image_context.drawImage(image_to_edit, 0, 0);
-      image_data = image_context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
+      context.drawImage(image_to_edit, 0, 0);
+      image_data = context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
 
       calculateHistogram();
 
