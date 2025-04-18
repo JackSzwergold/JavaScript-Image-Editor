@@ -90,6 +90,7 @@ jQuery.noConflict();
       var canvas = document.createElement('canvas');
       var context = canvas.getContext('2d');
 
+      /************************************************************************/
       // TODO: Explpore how to do this stuff.
       // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
       // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
@@ -98,7 +99,99 @@ jQuery.noConflict();
       canvas.height = image_to_edit.height;
 
       context.drawImage(image_to_edit, 0, 0);
-      image_data = context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
+
+      /************************************************************************/
+      // Pasting stuff into a new canvas for final saving,
+      var canvas_save = document.createElement('canvas');
+      var context_save = canvas_save.getContext('2d');
+
+      /************************************************************************/
+      // Setting the crop selector defaults.
+      var crop_x = 0;
+      var crop_y = 0;
+      var crop_w = canvas.width;
+      var crop_h = canvas.height;
+      var canvas_save_ratio = 1;
+
+      // /***********************************************************************/
+      // // If we have a cropping selector in place, use it.
+      // if (crop_selection.hasClass('show') == true) {
+
+      //     /********************************************************************/
+      //     // Set the X and Y values.
+      //     if (typeof(crop_selection.position()) != 'undefined') {
+      //         if (crop_selection.position().left >= 0) {
+      //             crop_x = Math.round(crop_selection.position().left * cropping_ratio);
+      //         } // if
+      //         if (crop_selection.position().top >= 0) {
+      //             crop_y = Math.round(crop_selection.position().top * cropping_ratio);
+      //         } // if
+      //     } // if
+
+      //     /********************************************************************/
+      //     // Set the width value.
+      //     if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
+      //         crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
+      //     } // if
+
+      //     /********************************************************************/
+      //     // Set the height value.
+      //     if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
+      //         crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
+      //     } // if
+
+      //     /********************************************************************/
+      //     // Calculate the canvas save ratio.
+      //     if (crop_w > crop_h) {
+      //         canvas_save_ratio = (resize_width / crop_w);
+      //     } // if
+      //     else {
+      //         canvas_save_ratio = (resize_height / crop_h);
+      //     } // else
+
+      // } // if
+
+      // /************************************************************************/
+      // // Calculations to make sure the canvas is not larger than the content.
+      // crop_w = crop_w > (resize_width - crop_x) ? (resize_width - crop_x) : crop_w;
+      // crop_h = crop_h > (resize_height - crop_y) ? (resize_height - crop_y) : crop_h;
+      // if (crop_x < 0) {
+      //     crop_w = crop_w - Math.abs(crop_x); 
+      //     crop_x = 0;
+      // } // if
+      // if (crop_y < 0) {
+      //     crop_h = crop_h - Math.abs(crop_y); 
+      //     crop_y = 0;
+      // } // if
+
+      /************************************************************************/
+      // Setting the target width and height.
+      var source_target_x = crop_x;
+      var source_target_y = crop_y;
+      var source_target_w = crop_w;
+      var source_target_h = crop_h;
+
+      /************************************************************************/
+      // Setting the new canvas width and height.
+      canvas_save.width = source_target_w * canvas_save_ratio;
+      canvas_save.height = source_target_h * canvas_save_ratio;
+
+      /************************************************************************/
+      // Setting source and destination coordinates.
+      var source_x = source_target_x;
+      var source_y = source_target_y;
+      var source_w = source_target_w;
+      var source_h = source_target_h;
+      var dest_x = 0;
+      var dest_y = 0;
+      var dest_w = canvas_save.width;
+      var dest_h = canvas_save.height; 
+
+      /************************************************************************/
+      // Draw the image onto the new destination canvas.
+      context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
+
+      image_data = context_save.getImageData(source_x, source_y, dest_w, dest_h).data;
 
     } // loadImage
 
