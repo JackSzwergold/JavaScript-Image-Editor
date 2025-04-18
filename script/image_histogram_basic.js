@@ -90,15 +90,15 @@ jQuery.noConflict();
       var canvas = document.createElement('canvas');
       var context = canvas.getContext('2d');
 
-      /************************************************************************/
-      // TODO: Explpore how to do this stuff.
-      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-
       canvas.width = image_to_edit.width;
       canvas.height = image_to_edit.height;
 
       context.drawImage(image_to_edit, 0, 0);
+
+      /************************************************************************/
+      // TODO: Explore how to do this stuff.
+      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(0px)`;
+      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(0px)`;
 
       /************************************************************************/
       // Pasting stuff into a new canvas for final saving,
