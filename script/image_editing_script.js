@@ -158,10 +158,10 @@ jQuery.noConflict();
         // Do it.
         if (rotate == -270) {
             rotate = 0;
-        }
+        } // if
         else {
             rotate -= 90;
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -177,10 +177,10 @@ jQuery.noConflict();
         // Do it.
         if (rotate == 270) {
             rotate = 0;
-        }
+        } // if
         else {
             rotate += 90;
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -196,10 +196,10 @@ jQuery.noConflict();
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_vertical = flip_vertical === 1 ? -1 : 1;
-        }
+        } // if
         else {
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -215,10 +215,10 @@ jQuery.noConflict();
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;
-        }
+        } // if
         else {
             flip_vertical = flip_vertical === 1 ? -1 : 1; 
-        }
+        } // else
 
         /************************************************************************/
         // Apply the filter handler.
@@ -245,22 +245,22 @@ jQuery.noConflict();
         if (image_to_edit.naturalWidth > image_to_edit.naturalHeight) {
             resize_ratio = (resize_width / image_to_edit.naturalWidth);
             cropping_ratio = (resize_width / image_to_edit.width);
-        }
+        } // if
         else {
             resize_ratio = (resize_height / image_to_edit.naturalHeight);
             cropping_ratio = (resize_height / image_to_edit.height);
-        }
+        } // else
 
         /************************************************************************/
         // Apply the resize ratios.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.width = image_to_edit.naturalHeight * resize_ratio;
             canvas.height = image_to_edit.naturalWidth * resize_ratio;
-        }
+        } // if
         else {
             canvas.width = image_to_edit.naturalWidth * resize_ratio;
             canvas.height = image_to_edit.naturalHeight * resize_ratio;
-        }
+        } // else
 
         /************************************************************************/
         // Save the context.
@@ -286,10 +286,10 @@ jQuery.noConflict();
         // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             context.drawImage(image_to_edit, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
-        }
+        } // if
         else {
             context.drawImage(image_to_edit, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
-        }
+        } // else
 
         /************************************************************************/
         // Restore the context.
@@ -317,34 +317,34 @@ jQuery.noConflict();
             if (typeof(crop_selection.position()) != 'undefined') {
                 if (crop_selection.position().left >= 0) {
                     crop_x = Math.round(crop_selection.position().left * cropping_ratio);
-                }
+                } // if
                 if (crop_selection.position().top >= 0) {
                     crop_y = Math.round(crop_selection.position().top * cropping_ratio);
-                }
-            }
+                } // if
+            } // if
 
             /********************************************************************/
             // Set the width value.
             if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
                 crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
-            }
+            } // if
 
             /********************************************************************/
             // Set the height value.
             if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
                 crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
-            }
+            } // if
 
             /********************************************************************/
             // Calculate the canvas save ratio.
             if (crop_w > crop_h) {
                 canvas_save_ratio = (resize_width / crop_w);
-            }
+            } // if
             else {
                 canvas_save_ratio = (resize_height / crop_h);
-            }
+            } // else
 
-        }
+        } // if
 
         /************************************************************************/
         // Calculations to make sure the canvas is not larger than the content.
@@ -353,11 +353,11 @@ jQuery.noConflict();
         if (crop_x < 0) {
             crop_w = crop_w - Math.abs(crop_x); 
             crop_x = 0;
-        }
+        } // if
         if (crop_y < 0) {
             crop_h = crop_h - Math.abs(crop_y); 
             crop_y = 0;
-        }
+        } // if
 
         /************************************************************************/
         // Setting the target width and height.
@@ -508,10 +508,10 @@ jQuery.noConflict();
         // Toggle the crop selector.
         if (crop_selection.hasClass('hide')) {
           enable_crop_selection();
-        }
+        } // if
         else {
           disable_crop_selection();
-        }
+        } // else
 
     } // crop_selection_handler
 
