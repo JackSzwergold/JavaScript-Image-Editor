@@ -113,57 +113,6 @@ jQuery.noConflict();
       var crop_h = canvas.height;
       var canvas_save_ratio = 1;
 
-      // /***********************************************************************/
-      // // If we have a cropping selector in place, use it.
-      // if (crop_selection.hasClass('show') == true) {
-
-      //     /********************************************************************/
-      //     // Set the X and Y values.
-      //     if (typeof(crop_selection.position()) != 'undefined') {
-      //         if (crop_selection.position().left >= 0) {
-      //             crop_x = Math.round(crop_selection.position().left * cropping_ratio);
-      //         } // if
-      //         if (crop_selection.position().top >= 0) {
-      //             crop_y = Math.round(crop_selection.position().top * cropping_ratio);
-      //         } // if
-      //     } // if
-
-      //     /********************************************************************/
-      //     // Set the width value.
-      //     if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
-      //         crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
-      //     } // if
-
-      //     /********************************************************************/
-      //     // Set the height value.
-      //     if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
-      //         crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
-      //     } // if
-
-      //     /********************************************************************/
-      //     // Calculate the canvas save ratio.
-      //     if (crop_w > crop_h) {
-      //         canvas_save_ratio = (resize_width / crop_w);
-      //     } // if
-      //     else {
-      //         canvas_save_ratio = (resize_height / crop_h);
-      //     } // else
-
-      // } // if
-
-      // /************************************************************************/
-      // // Calculations to make sure the canvas is not larger than the content.
-      // crop_w = crop_w > (resize_width - crop_x) ? (resize_width - crop_x) : crop_w;
-      // crop_h = crop_h > (resize_height - crop_y) ? (resize_height - crop_y) : crop_h;
-      // if (crop_x < 0) {
-      //     crop_w = crop_w - Math.abs(crop_x); 
-      //     crop_x = 0;
-      // } // if
-      // if (crop_y < 0) {
-      //     crop_h = crop_h - Math.abs(crop_y); 
-      //     crop_y = 0;
-      // } // if
-
       /************************************************************************/
       // Setting the target width and height.
       var source_target_x = crop_x;
@@ -191,6 +140,8 @@ jQuery.noConflict();
       // Draw the image onto the new destination canvas.
       context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
+      /************************************************************************/
+      // Get the image data.
       image_data = context_save.getImageData(source_x, source_y, dest_w, dest_h).data;
 
     } // loadImage
