@@ -87,16 +87,20 @@ jQuery.noConflict();
     // The load image function.
     function loadImage() {
 
+      /**************************************************************************/
+      // Setting the new canvas and related context.
       var canvas = document.createElement('canvas');
       var context = canvas.getContext('2d');
 
+      /**************************************************************************/
+      // Setting the canvas width and height.
       canvas.width = image_to_edit.width;
       canvas.height = image_to_edit.height;
 
       /**************************************************************************/
       // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
-      context.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
+      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
 
       /**************************************************************************/
       // Draw the image to edit onto a new canvas.
