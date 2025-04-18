@@ -93,21 +93,21 @@ jQuery.noConflict();
       canvas.width = image_to_edit.width;
       canvas.height = image_to_edit.height;
 
-      /************************************************************************/
+      /**************************************************************************/
       // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(4px)`;
-      context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(90deg) blur(4px)`;
+      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
+      context.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
 
-      /************************************************************************/
+      /**************************************************************************/
       // Draw the image to edit onto a new canvas.
       context.drawImage(image_to_edit, 0, 0);
 
-      /************************************************************************/
+      /**************************************************************************/
       // Pasting stuff into a new canvas for final saving,
       var canvas_save = document.createElement('canvas');
       var context_save = canvas_save.getContext('2d');
 
-      /************************************************************************/
+      /**************************************************************************/
       // Setting the crop selector defaults.
       var crop_x = 0;
       var crop_y = 0;
@@ -115,19 +115,19 @@ jQuery.noConflict();
       var crop_h = canvas.height;
       var canvas_save_ratio = 1;
 
-      /************************************************************************/
+      /**************************************************************************/
       // Setting the target width and height.
       var source_target_x = crop_x;
       var source_target_y = crop_y;
       var source_target_w = crop_w;
       var source_target_h = crop_h;
 
-      /************************************************************************/
+      /**************************************************************************/
       // Setting the new canvas width and height.
       canvas_save.width = source_target_w * canvas_save_ratio;
       canvas_save.height = source_target_h * canvas_save_ratio;
 
-      /************************************************************************/
+      /**************************************************************************/
       // Setting source and destination coordinates.
       var source_x = source_target_x;
       var source_y = source_target_y;
@@ -138,29 +138,27 @@ jQuery.noConflict();
       var dest_w = canvas_save.width;
       var dest_h = canvas_save.height; 
 
-      /************************************************************************/
+      /**************************************************************************/
       // Draw the image onto the new destination canvas.
       context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
-      /************************************************************************/
+      /**************************************************************************/
       // Get the image data.
       image_data = context_save.getImageData(source_x, source_y, dest_w, dest_h).data;
 
+      /**************************************************************************/
+      // Set the variables for the Ajax POST and download.
+      // mime_type = 'image/jpeg';
+      // file_extension = 'jpg';
+      // quality = 0.95;
+      // base64_data = canvas_save.toDataURL(mime_type, quality);
 
-        /************************************************************************/
-        // Set the variables for the Ajax POST and download.
-        mime_type = 'image/jpeg';
-        file_extension = 'jpg';
-        quality = 0.95;
-        // destination_url = data_url + data_uri;
-        base64_data = canvas_save.toDataURL(mime_type, quality);
-
-        /************************************************************************/
-        // Do the actual image download.
-        const link = document.createElement('a');
-        link.download = 'test.' + file_extension;
-        link.href = base64_data;
-        link.click();
+      /**************************************************************************/
+      // Do the actual image download.
+      // const link = document.createElement('a');
+      // link.download = 'test.' + file_extension;
+      // link.href = base64_data;
+      // link.click();
 
     } // loadImage
 
