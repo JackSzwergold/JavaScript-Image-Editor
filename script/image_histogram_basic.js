@@ -21,12 +21,6 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // Set the default form values.
-    // var histogram_type_value = 'rgb';
-    // var plot_colors_value = 'flat';
-    // var plot_style_value = 'continuous';
-    // var plot_fill_checked = true;
-    // var accuracy_value = 10;
-
     var histogram_type_value = histogram_type_element ? histogram_type_element.value : 'rgb';
     var plot_colors_value = plot_colors_element ? plot_colors_element.value : 'flat';
     var plot_style_value = plot_style_element ? plot_style_element.value : 'continuous';
@@ -84,26 +78,26 @@ jQuery.noConflict();
 
       /**************************************************************************/
       // Setting the new canvas and related context.
-      var histogram_canvas = document.createElement('canvas');
-      var histogram_context = histogram_canvas.getContext('2d');
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
 
       /**************************************************************************/
       // Setting the canvas width and height.
-      histogram_canvas.width = image_to_edit.width;
-      histogram_canvas.height = image_to_edit.height;
+      canvas.width = image_to_edit.width;
+      canvas.height = image_to_edit.height;
 
       /**************************************************************************/
       // TODO: Explore how to do this stuff.
       image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      histogram_context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
 
       /**************************************************************************/
       // Draw the image to edit onto a new canvas.
-      histogram_context.drawImage(image_to_edit, 0, 0);
+      context.drawImage(image_to_edit, 0, 0);
 
       /**************************************************************************/
       // Get the image data.
-      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+      image_data = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
     } // initImage
 
