@@ -89,80 +89,26 @@ jQuery.noConflict();
 
       /**************************************************************************/
       // Setting the new canvas and related context.
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+      var histogram_canvas = document.createElement('canvas');
+      var histogram_context = histogram_canvas.getContext('2d');
 
       /**************************************************************************/
       // Setting the canvas width and height.
-      canvas.width = image_to_edit.width;
-      canvas.height = image_to_edit.height;
+      histogram_canvas.width = image_to_edit.width;
+      histogram_canvas.height = image_to_edit.height;
 
       /**************************************************************************/
       // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
+      histogram_context.filter = `brightness(100%) contrast(100%) saturate(200%) hue-rotate(0deg) blur(0px)`;
 
       /**************************************************************************/
       // Draw the image to edit onto a new canvas.
-      context.drawImage(image_to_edit, 0, 0);
-
-      /**************************************************************************/
-      // Pasting stuff into a new canvas for final saving,
-      // var canvas_save = document.createElement('canvas');
-      // var context_save = canvas_save.getContext('2d');
-
-      /**************************************************************************/
-      // Setting the crop selector defaults.
-      // var crop_x = 0;
-      // var crop_y = 0;
-      // var crop_w = canvas.width;
-      // var crop_h = canvas.height;
-      // var canvas_save_ratio = 1;
-
-      /**************************************************************************/
-      // Setting the target width and height.
-      // var source_target_x = crop_x;
-      // var source_target_y = crop_y;
-      // var source_target_w = crop_w;
-      // var source_target_h = crop_h;
-
-      /**************************************************************************/
-      // Setting the new canvas width and height.
-      // canvas_save.width = source_target_w * canvas_save_ratio;
-      // canvas_save.height = source_target_h * canvas_save_ratio;
-
-      /**************************************************************************/
-      // Setting source and destination coordinates.
-      // var source_x = source_target_x;
-      // var source_y = source_target_y;
-      // var source_w = source_target_w;
-      // var source_h = source_target_h;
-      var dest_x = 0;
-      var dest_y = 0;
-      var dest_w = canvas.width;
-      var dest_h = canvas.height; 
-
-      /**************************************************************************/
-      // Draw the image onto the new destination canvas.
-      // context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
+      histogram_context.drawImage(image_to_edit, 0, 0);
 
       /**************************************************************************/
       // Get the image data.
-      image_data = context.getImageData(dest_x, dest_y, dest_w, dest_h).data;
-
-      /**************************************************************************/
-      // Set the variables for the Ajax POST and download.
-      // mime_type = 'image/jpeg';
-      // file_extension = 'jpg';
-      // quality = 0.95;
-      // base64_data = canvas_save.toDataURL(mime_type, quality);
-
-      /**************************************************************************/
-      // Do the actual image download.
-      // const link = document.createElement('a');
-      // link.download = 'test.' + file_extension;
-      // link.href = base64_data;
-      // link.click();
+      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
 
     } // loadImage
 
