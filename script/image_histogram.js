@@ -84,23 +84,33 @@ jQuery.noConflict();
     } // initHistogram
 
     /****************************************************************************/
-    // The load image function.
-    function loadImage() {
+    // The init image function.
+    function initImage() {
 
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+      /**************************************************************************/
+      // Setting the new canvas and related context.
+      var histogram_canvas = document.createElement('canvas');
+      var histogram_context = histogram_canvas.getContext('2d');
 
-      // TODO: Explpore how to do this stuff.
-      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      /**************************************************************************/
+      // Setting the canvas width and height.
+      histogram_canvas.width = image_to_edit.width;
+      histogram_canvas.height = image_to_edit.height;
 
-      canvas.width = image_to_edit.width;
-      canvas.height = image_to_edit.height;
+      /**************************************************************************/
+      // TODO: Explore how to do this stuff.
+      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      histogram_context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
 
-      context.drawImage(image_to_edit, 0, 0);
-      image_data = context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
+      /**************************************************************************/
+      // Draw the image to edit onto a new canvas.
+      histogram_context.drawImage(image_to_edit, 0, 0);
 
-    } // loadImage
+      /**************************************************************************/
+      // Get the image data.
+      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+
+    } // initImage
 
     /****************************************************************************/
     // The function to calculate the histogram.
@@ -365,7 +375,7 @@ jQuery.noConflict();
     }
 
     initHistogram();
-    loadImage();
+    initImage();
     calculateHistogram();
 
   }); // $(document).ready
