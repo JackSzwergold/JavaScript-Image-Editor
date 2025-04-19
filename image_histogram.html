@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>JavaScript Image Histogram</title>
+    <title>JavaScript Image Editor</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,110 +17,123 @@
   </head>
   <body>
 
+<input type="hidden" id="BASE_URL" name="BASE_URL" value="http://localhost:8888/JavaScript-Image-Editor/">
+<input type="hidden" id="BASE_URI" name="BASE_URI" value="receiver.php">
+
 <!-- Image Edit Area BEGIN -->
 <div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
 
-  <div class="container">
-    <div class="row p-0 bg-secondary">
-
-      <div class="wrapper p-0 m-0 col my-5 col-12">
-        <div class="preview_image p-0 m-0 col col-12">
-          <div class="d-flex align-items-start justify-content-center">
-            <!-- <div id="crop_constrainer" class="position-absolute border border-3"></div> -->
-            <div class="position-relative">
-              <!-- <img id="image_to_edit" src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
-              <!-- <img id="image_to_edit" src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
-              <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395">
-              <!-- <img id="image_to_edit" src="images/girl_pearl_earring.jpg" class="img-fluid pe-none" width="590" height="699">      -->
-              <div id="crop_selection" class="position-absolute hide"></div>
-            </div>
-          </div>
-
-          <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
-          <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="900">
-          <input type="hidden" id="RESIZE_WIDTH" name="RESIZE_WIDTH" value="900">
-        </div>
-      </div>
-
-      <div class="wrapper p-0 m-0 my-5 col col-12">
-        <div class="d-flex align-items-start justify-content-center">
-          <div class="position-relative">
-            <canvas class="border border-dark bg-white" id="histogram_canvas" width="590" height="240"></canvas>
-          </div>
-        </div>
-      </div>
+  <div class="col col-12">
+    <div class="mt-0">
+      <button type="button" class="submit btn btn-outline-primary btn-md m-0 p-0 py-1 px-3" id="trigger_image_edit" name="trigger_image_edit" value="" data-bs-toggle="modal" data-bs-target="#image_edit_modal">
+        <span class="text-arial-regular">
+          <em class="fa fa-picture-o"></em> Image Edit
+        </span>
+      </button>
 
     </div>
   </div>
+
+  <!-- Image Editing Modal BEGIN -->
+  <div class="modal fade" id="image_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content user-select-none">
+
+        <div class="modal-header p-0 px-3 pt-2 pb-2 bg-dark">
+          <h4 class="modal-title text-white" id="alias_confirmation_title">Editing the Image for N00623551</h4>
+          <button id="modal_close" type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="container">
+          <div class="row p-0 bg-secondary">
+
+            <div class="wrapper p-0 m-0 col col-8 overflow-hidden">
+              <div class="preview_image p-0 m-0 col col-12">
+                <div class="d-flex align-items-center justify-content-center py-sm-2 py-md-5">
+                  <div class="position-relative">
+                    <!-- <img id="image_to_edit" src="images/placeholder.jpg" class="img-fluid pe-none" width="200" height="200"> -->
+                    <!-- <img id="image_to_edit" src="images/test.jpg" class="img-fluid pe-none" width="320" height="320"> -->
+                    <!-- <img id="image_to_edit" src="images/christinas_world.jpg" class="img-fluid pe-none" width="590" height="395"> -->
+                    <img id="image_to_edit" src="images/girl_pearl_earring.jpg" class="img-fluid pe-none" width="420" height="500">   
+                    <div id="crop_selection" class="position-absolute hide"></div>
+                  </div>
+                </div>
+                <input type="hidden" id="N_NUMBER" name="N_NUMBER" value="N00623551">
+                <input type="hidden" id="RESIZE_HEIGHT" name="RESIZE_HEIGHT" value="700">
+                <input type="hidden" id="RESIZE_WIDTH" name="RESIZE_WIDTH" value="700">
+ 
+              </div>
+            </div>
+
+            <div class="p-0 m-0 p-3 col col-4 bg-light">
+
+              <div class="d-grid gap-2 mb-2 bg-white">
+                <canvas class="container border border-dark" id="histogram_canvas"></canvas>
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="brightness_slider">
+                <label for="brightness_slider_control" class="small">Brightness <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="brightness_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="contrast_slider">
+                <label for="contrast_slider_control" class="small">Contrast <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="contrast_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="saturation_slider">
+                <label for="saturation_slider_control" class="small">Saturation <span>100%</span></label>
+                <input type="range" value="100" min="0" max="200" class="form-range col col-12" id="saturation_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="tint_slider">
+                <label for="tint_slider_control" class="small">Tint <span>0deg</span></label>
+                <input type="range" value="0" min="0" max="360" class="form-range col col-12" id="tint_slider_control">
+              </div>
+
+              <div class="d-grid gap-2 mb-2" id="blur_slider">
+                <label for="blur_slider_control" class="small">Blur <span>0px</span></label>
+                <input type="range" value="0" min="0" max="10" class="form-range col col-12" id="blur_slider_control">
+              </div>
+
+              <div class="input-group mb-2">
+                <button id="crop_selection_button" type="button" class="btn btn-dark btn-md col col-12"><em class="fa fa-crop"></em> Crop Selection Toggle</em></button>
+              </div>
+
+              <div class="input-group mb-2">
+                <button id="rotate_left" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat fa-flip-horizontal"></em> Rotate Left</em></button>
+                <button id="rotate_right" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat"></em> Rotate Right</em></button>
+              </div>
+
+              <div class="input-group mb-2">
+                <button id="flip_horizontal" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-h"></em> Flip Horizontal</em></button>
+                <button id="flip_vertical" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-v"></em> Flip Vertical</em></button>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button id="save_image" type="button" class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12"><span id="save_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="save_text" class="d-inline-block">Save</span></button>
+                <button id="download_image" type="button" class="align-baseline pt-md-1 pb-md-1 btn btn-dark btn-sm col col-12">Download</button>
+                <button id="reset_filter" type="button" class="btn btn-outline-danger text-danger bg-white btn-lg col col-12"><span id="reset_spinner" class="d-none spinner-border spinner-border text-danger" role="status"></span><span id="reset_text" class="d-inline-block">Reset</span></button>
+                <input type="file" id="file_input" accept="image/*" hidden>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- Image Editing Modal END -->
 
   <link rel="stylesheet" type="text/css" href="css/jquery/jquery-ui.css" />
   <script src="script/jquery/jquery-ui-1.14.1.js" defer="defer"></script>
   <script src="script/jquery/jquery.ui.touch-punch.min.js" defer="defer"></script>
-  <script src="script/image_histogram.js" defer="defer"></script>
+  <script src="script/image_editing_script_histogram.js" defer="defer"></script>
   <script src="script/context-filter-polyfill/context-filter-polyfill.min.js" defer="defer"></script>
 
 </div>
 <!-- Image Edit Area END -->
-
-<!-- Histogram Stuff BEGIN -->
-<div class="histogram_stuff p-0 m-0 me-2 mb-1 col-auto">
-
-  <div class="container fluid">
-    <div class="row">
-      <div class="col">
-        <label for="histogram_type" class="form-label">Histogram for:</label>
-        <select id="histogram_type" class="form-select">
-          <option value="rgb">RGB</option>
-          <option value="red">Red</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
-          <option value="hue">Hue</option>
-          <option value="sat">Saturation</option>
-          <option value="val">Value (brightness)</option>
-          <option value="cmyk">CMYK</option>
-          <option value="cyan">Cyan</option>
-          <option value="magenta">Magenta</option>
-          <option value="yellow">Yellow</option>
-          <option value="kelvin">Kelvin (Black)</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="plot_colors" class="form-label">Plot colors:</label>
-        <select id="plot_colors" class="form-select">
-          <option value="flat">Flat colors</option>
-          <option value="gradient">Gradients</option>
-          <option value="none">None</option>
-        </select>
-      </div>
-      <div class="col">
-        <label for="plot_style" class="form-label">Plot style:</label>
-        <select id="plot_style" class="form-select">
-          <option value="continuous">Continuous</option>
-          <option value="discreet">Discreet</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="plot_fill" checked>
-          <label class="form-check-label" for="plot_fill">
-            Plot fill
-          </label>
-        </div>
-      </div>
-      <div class="col">
-        <div class="d-grid gap-0 mb-2">
-          <label for="histogram_accuracy" class="small">Count every <span>10</span></label>
-          <input type="range" value="10" min="10" max="50" class="form-range col col-12" id="histogram_accuracy">
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-<!-- Histogram Stuff END -->
-
-</body>
+    
+  </body>
 </html>
