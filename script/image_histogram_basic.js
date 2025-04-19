@@ -79,8 +79,8 @@ jQuery.noConflict();
     } // initHistogram
 
     /****************************************************************************/
-    // The init histogram image function.
-    function initHistogramImage() {
+    // The init image function.
+    function initImage() {
 
       /**************************************************************************/
       // Setting the new canvas and related context.
@@ -105,7 +105,7 @@ jQuery.noConflict();
       // Get the image data.
       image_data = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
-    } // initHistogramImage
+    } // initImage
 
     /****************************************************************************/
     // The function to calculate the histogram.
@@ -259,7 +259,7 @@ jQuery.noConflict();
     } // drawHistogram
 
     initHistogram();
-    initHistogramImage();
+    initImage();
     calculateHistogram();
 
   }); // $(document).ready
