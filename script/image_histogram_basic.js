@@ -64,10 +64,6 @@ jQuery.noConflict();
         };
 
     /**************************************************************************/
-    // Setting the plot style discreet width.
-    var plot_style_discreet_width = Math.round(histogram_canvas.width / 255);
-
-    /**************************************************************************/
     // The function to init the histogram.
     var initHistogram = function () {
 
@@ -197,7 +193,7 @@ jQuery.noConflict();
 
       var ctxStyle;
 
-      if (plot_fill_checked || plot_style_value === 'discreet') {
+      if (plot_fill_checked) {
         ctxStyle = 'fillStyle';
         histogram_context.strokeStyle = '#000';
       } // if
@@ -245,24 +241,17 @@ jQuery.noConflict();
         if (plot_style_value === 'continuous') {
           histogram_context.lineTo(x, histogram_canvas.height - y);
         } // if
-        else if (plot_style_value === 'discreet') {
-          if (plot_fill_checked) {
-            histogram_context.fillRect(x, histogram_canvas.height - y, plot_style_discreet_width, y);
-          } // if
-          else {
-            histogram_context.fillRect(x, histogram_canvas.height - y, plot_style_discreet_width, 2);
-          } // else
-        } // else if
+
       } // for
 
       if (plot_style_value === 'continuous') {
         histogram_context.lineTo(x, histogram_canvas.height);
         if (plot_fill_checked) {
           histogram_context.fill();
-        }
+        } // if
         histogram_context.stroke();
         histogram_context.closePath();
-      }
+      } // if
 
     } // drawHistogram
 
