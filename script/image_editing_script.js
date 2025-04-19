@@ -8,89 +8,85 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // Set the data URL and data URI values.
-    data_url = typeof($('#BASE_URL').val()) != 'undefined' ? $('#BASE_URL').val() : '';
-    data_uri = typeof($('#BASE_URI').val()) != 'undefined' ? $('#BASE_URI').val() : '';
+    var data_url = typeof($('#BASE_URL').val()) != 'undefined' ? $('#BASE_URL').val() : '';
+    var data_uri = typeof($('#BASE_URI').val()) != 'undefined' ? $('#BASE_URI').val() : '';
 
     /**************************************************************************/
     // Set the N Number.
-    file_name = typeof($('#N_NUMBER').val()) != 'undefined' ? $('#N_NUMBER').val() : '';
+    var file_name = typeof($('#N_NUMBER').val()) != 'undefined' ? $('#N_NUMBER').val() : '';
 
     /**************************************************************************/
     // Set the resize height and width.
-    resize_height = typeof($('#RESIZE_HEIGHT').val()) != 'undefined' ? $('#RESIZE_HEIGHT').val() : '';
-    resize_width = typeof($('#RESIZE_WIDTH').val()) != 'undefined' ? $('#RESIZE_WIDTH').val() : '';
+    var resize_height = typeof($('#RESIZE_HEIGHT').val()) != 'undefined' ? $('#RESIZE_HEIGHT').val() : '';
+    var resize_width = typeof($('#RESIZE_WIDTH').val()) != 'undefined' ? $('#RESIZE_WIDTH').val() : '';
 
     /**************************************************************************/
     // Select different elements.
-    // fileInput = document.querySelector('#file_input');
+    // var fileInput = document.querySelector('#file_input');
 
     /**************************************************************************/
     // The slider text values.
-    brightness_text = document.querySelector('#brightness_slider label span');
-    contrast_text = document.querySelector('#contrast_slider label span');
-    saturation_text = document.querySelector('#saturation_slider label span');
-    tint_text = document.querySelector('#tint_slider label span');
-    blur_text = document.querySelector('#blur_slider label span');
+    var brightness_text = document.querySelector('#brightness_slider label span');
+    var contrast_text = document.querySelector('#contrast_slider label span');
+    var saturation_text = document.querySelector('#saturation_slider label span');
+    var tint_text = document.querySelector('#tint_slider label span');
+    var blur_text = document.querySelector('#blur_slider label span');
 
     /**************************************************************************/
     // The slider input items.
-    brightness_slider = document.querySelector('#brightness_slider input');
-    contrast_slider = document.querySelector('#contrast_slider input');
-    saturation_slider = document.querySelector('#saturation_slider input');
-    tint_slider = document.querySelector('#tint_slider input');
-    blur_slider = document.querySelector('#blur_slider input');
-
-    /**************************************************************************/
-    // The rotate buttons.
-    rotate_buttons = document.querySelectorAll('#rotate button');
+    var brightness_slider = document.querySelector('#brightness_slider input');
+    var contrast_slider = document.querySelector('#contrast_slider input');
+    var saturation_slider = document.querySelector('#saturation_slider input');
+    var tint_slider = document.querySelector('#tint_slider input');
+    var blur_slider = document.querySelector('#blur_slider input');
 
     /**************************************************************************/
     // The image to edit itself.
-    image_to_edit = document.querySelector('#image_to_edit');
+    var image_to_edit = document.querySelector('#image_to_edit');
 
     /**************************************************************************/
     // The crop selection area.
-    crop_selection = $('#crop_selection');
+    var crop_selection = $('#crop_selection');
 
     /**************************************************************************/
     // The crop selection button.
-    crop_selection_button = $('#crop_selection_button');
+    var crop_selection_button = $('#crop_selection_button');
 
     /**************************************************************************/
     // The rotation buttons.
-    rotate_left_button = $('#rotate_left');
-    rotate_right_button = $('#rotate_right');
-    flip_horizontal_button = $('#flip_horizontal');
-    flip_vertical_button = $('#flip_vertical');
+    var rotate_left_button = $('#rotate_left');
+    var rotate_right_button = $('#rotate_right');
+    var flip_horizontal_button = $('#flip_horizontal');
+    var flip_vertical_button = $('#flip_vertical');
 
     /**************************************************************************/
     // The main buttions.
-    reset_filter_button = $('#reset_filter');
-    download_image_button = $('#download_image');
-    save_image_button = $('#save_image');
-    modal_close_button = $('#modal_close');
+    var reset_filter_button = $('#reset_filter');
+    var download_image_button = $('#download_image');
+    var save_image_button = $('#save_image');
+    var modal_close_button = $('#modal_close');
 
     /**************************************************************************/
     // The save and reset button related stuff.
-    save_text = $('#save_text');
-    save_spinner = $('#save_spinner');
-    reset_text = $('#reset_text');
-    reset_spinner = $('#reset_spinner');
+    var save_text = $('#save_text');
+    var save_spinner = $('#save_spinner');
+    var reset_text = $('#reset_text');
+    var reset_spinner = $('#reset_spinner');
 
     /**************************************************************************/
     // Initial control values.
-    brightness = 100;
-    contrast = 100;
-    saturation = 100;
-    tint = 0;
-    blur = 0;
-    rotate = 0;
-    flip_horizontal = 1;
-    flip_vertical = 1;
+    var brightness = 100;
+    var contrast = 100;
+    var saturation = 100;
+    var tint = 0;
+    var blur = 0;
+    var rotate = 0;
+    var flip_horizontal = 1;
+    var flip_vertical = 1;
 
     /**************************************************************************/
     // Set the debounce value in milliseconds.
-    general_debounce = 50;
+    var general_debounce = 50;
 
     // const loadImage = () => {
     //     let file = fileInput.files[0];
