@@ -7,6 +7,14 @@ jQuery.noConflict();
   $(document).ready(function() {
 
     /**************************************************************************/
+    // Initial control values.
+    var brightness = 100;
+    var contrast = 100;
+    var saturation = 100;
+    var tint = 0;
+    var blur = 0;
+
+    /**************************************************************************/
     // Get the preview image.
     var image_to_edit = document.getElementById('image_to_edit');
 
@@ -30,14 +38,6 @@ jQuery.noConflict();
     var plot_style_value = plot_style_element ? plot_style_element.value : 'continuous';
     var plot_fill_checked = plot_fill_element ? plot_fill_element.checked : true;
     var accuracy_value = accuracy_element ? accuracy_element.value : 10;
-
-    /**************************************************************************/
-    // Initial control values.
-    var brightness = 100;
-    var contrast = 100;
-    var saturation = 100;
-    var tint = 0;
-    var blur = 0;
 
     /**************************************************************************/
     // Setting the gradient values.
