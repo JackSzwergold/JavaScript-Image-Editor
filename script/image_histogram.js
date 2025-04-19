@@ -7,6 +7,10 @@ jQuery.noConflict();
   $(document).ready(function() {
 
     /**************************************************************************/
+    // Get the preview image.
+    var image_to_edit = document.getElementById('image_to_edit');
+
+    /**************************************************************************/
     // Source: https://a402539.github.io/OCR/examples/histogram.html
     var histogram_canvas = document.getElementById('histogram_canvas');
     var histogram_context = histogram_canvas.getContext('2d');
@@ -21,47 +25,38 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // Set the default form values.
-    var histogram_type_value = 'rgb';
-    var plot_colors_value = 'flat';
-    var plot_style_value = 'continuous';
-    var plot_fill_checked = true;
-    var accuracy_value = 10;
+    var histogram_type_value = histogram_type_element ? histogram_type_element.value : 'rgb';
+    var plot_colors_value = plot_colors_element ? plot_colors_element.value : 'flat';
+    var plot_style_value = plot_style_element ? plot_style_element.value : 'continuous';
+    var plot_fill_checked = plot_fill_element ? plot_fill_element.checked : true;
+    var accuracy_value = accuracy_element ? accuracy_element.value : 10;
 
     /**************************************************************************/
-    // Get the preview image.
-    var image_to_edit = document.getElementById('image_to_edit');
-
+    // Setting the gradient values.
     var gradients = {
           'red': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'green': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'blue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'hue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'cyan': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'magenta': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'yellow': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'kelvin': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
+          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
         };
 
+    /**************************************************************************/
+    // Setting the color values.
     var colors = {
-          'red':   ['#000', '#f00'],
+          'red': ['#000', '#f00'],
           'green': ['#000', '#0f0'],
-          'blue':  ['#000', '#00f'],
-          'hue':   [
-            '#f00',   // 0, Red,       0
-            '#ff0',   // 1, Yellow,   60
-            '#0f0',   // 2, Green,   120
-            '#0ff',   // 3, Cyan,    180
-            '#00f',   // 4, Blue,    240
-            '#f0f',   // 5, Magenta, 300
-            '#f00'],  // 6, Red,     360
-          'val':     ['#000', '#fff'],
-          'kelvin':  ['#fff', '#000'],
-          'cyan':    ['#000', '#0ff'],
-          'yellow':  ['#000', '#ff0'],
-          'magenta': ['#000', '#f0f']
+          'blue': ['#000', '#00f'],
+          'hue': [
+                  '#f00', // 0, Red,       0
+                  '#0f0', // 2, Green,   120
+                  '#00f' // 4, Blue,    240
+                 ],
+          'val':     ['#000', '#fff']
         };
 
+    /**************************************************************************/
+    // Setting the discreet width.
     var discreetWidth = Math.round(histogram_canvas.width / 255);
 
     /****************************************************************************/
@@ -84,23 +79,33 @@ jQuery.noConflict();
     } // initHistogram
 
     /****************************************************************************/
-    // The load image function.
-    function loadImage() {
+    // The init image function.
+    function initImage() {
 
-      var canvas = document.createElement('canvas');
-      var context = canvas.getContext('2d');
+      /**************************************************************************/
+      // Setting the new canvas and related context.
+      var histogram_canvas = document.createElement('canvas');
+      var histogram_context = histogram_canvas.getContext('2d');
 
-      // TODO: Explpore how to do this stuff.
-      // image_to_edit.style.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      // context.filter = `brightness(50%) contrast(200%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      /**************************************************************************/
+      // Setting the canvas width and height.
+      histogram_canvas.width = image_to_edit.width;
+      histogram_canvas.height = image_to_edit.height;
 
-      canvas.width = image_to_edit.width;
-      canvas.height = image_to_edit.height;
+      /**************************************************************************/
+      // TODO: Explore how to do this stuff.
+      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      histogram_context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
 
-      context.drawImage(image_to_edit, 0, 0);
-      image_data = context.getImageData(0, 0, image_to_edit.width, image_to_edit.height).data;
+      /**************************************************************************/
+      // Draw the image to edit onto a new canvas.
+      histogram_context.drawImage(image_to_edit, 0, 0);
 
-    } // loadImage
+      /**************************************************************************/
+      // Get the image data.
+      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+
+    } // initImage
 
     /****************************************************************************/
     // The function to calculate the histogram.
@@ -141,12 +146,10 @@ jQuery.noConflict();
         if (histogram_type_value === 'rgb' || histogram_type_value === 'red' || histogram_type_value === 'green' || histogram_type_value === 
             'blue') {
           val = [image_data[i], image_data[i+1], image_data[i+2]];
-
         } // if
         else if (histogram_type_value === 'cmyk' || histogram_type_value === 'cyan' || histogram_type_value === 'magenta' || 
             histogram_type_value === 'yellow' || histogram_type_value === 'kelvin') {
           val = rgb2cmyk(image_data[i], image_data[i+1], image_data[i+2]);
-
         } // else if
         else if (histogram_type_value === 'hue' || histogram_type_value === 'sat' || histogram_type_value === 'val') {
           val = rgb2hsv(image_data[i], image_data[i+1], image_data[i+2]);
@@ -365,7 +368,7 @@ jQuery.noConflict();
     }
 
     initHistogram();
-    loadImage();
+    initImage();
     calculateHistogram();
 
   }); // $(document).ready
