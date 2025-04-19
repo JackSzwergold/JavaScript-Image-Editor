@@ -32,6 +32,14 @@ jQuery.noConflict();
     var accuracy_value = accuracy_element ? accuracy_element.value : 10;
 
     /**************************************************************************/
+    // Initial control values.
+    var brightness = 100;
+    var contrast = 100;
+    var saturation = 100;
+    var tint = 0;
+    var blur = 0;
+
+    /**************************************************************************/
     // Setting the gradient values.
     var gradients = {
           'red': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
@@ -84,26 +92,26 @@ jQuery.noConflict();
 
       /**************************************************************************/
       // Setting the new canvas and related context.
-      var histogram_canvas = document.createElement('canvas');
-      var histogram_context = histogram_canvas.getContext('2d');
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
 
       /**************************************************************************/
       // Setting the canvas width and height.
-      histogram_canvas.width = image_to_edit.width;
-      histogram_canvas.height = image_to_edit.height;
+      canvas.width = image_to_edit.width;
+      canvas.height = image_to_edit.height;
 
       /**************************************************************************/
       // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      histogram_context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
+      context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
       /**************************************************************************/
       // Draw the image to edit onto a new canvas.
-      histogram_context.drawImage(image_to_edit, 0, 0);
+      context.drawImage(image_to_edit, 0, 0);
 
       /**************************************************************************/
       // Get the image data.
-      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+      image_data = context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
 
     } // initImage
 

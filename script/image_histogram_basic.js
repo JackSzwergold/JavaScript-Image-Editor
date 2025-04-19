@@ -32,6 +32,14 @@ jQuery.noConflict();
     var accuracy_value = accuracy_element ? accuracy_element.value : 10;
 
     /**************************************************************************/
+    // Initial control values.
+    var brightness = 100;
+    var contrast = 100;
+    var saturation = 100;
+    var tint = 0;
+    var blur = 0;
+
+    /**************************************************************************/
     // Setting the gradient values.
     var gradients = {
           'red': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
@@ -93,9 +101,9 @@ jQuery.noConflict();
       canvas.height = image_to_edit.height;
 
       /**************************************************************************/
-      // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      // Assign the filter values.
+      image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
+      context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
       /**************************************************************************/
       // Draw the image to edit onto a new canvas.
