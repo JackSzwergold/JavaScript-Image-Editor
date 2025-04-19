@@ -101,7 +101,7 @@ jQuery.noConflict();
       canvas.height = image_to_edit.height;
 
       /**************************************************************************/
-      // TODO: Explore how to do this stuff.
+      // Assign the filter values.
       image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
       context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
@@ -111,7 +111,7 @@ jQuery.noConflict();
 
       /**************************************************************************/
       // Get the image data.
-      image_data = context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+      image_data = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
     } // initImage
 
