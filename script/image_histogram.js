@@ -7,6 +7,14 @@ jQuery.noConflict();
   $(document).ready(function() {
 
     /**************************************************************************/
+    // Initial control values.
+    var brightness = 100;
+    var contrast = 100;
+    var saturation = 100;
+    var tint = 0;
+    var blur = 0;
+
+    /**************************************************************************/
     // Get the preview image.
     var image_to_edit = document.getElementById('image_to_edit');
 
@@ -48,9 +56,9 @@ jQuery.noConflict();
           'green': ['#000', '#0f0'],
           'blue': ['#000', '#00f'],
           'hue': [
-                  '#f00', // 0, Red,       0
-                  '#0f0', // 2, Green,   120
-                  '#00f' // 4, Blue,    240
+                  '#f00', // 0, Red, 0
+                  '#0f0', // 2, Green, 120
+                  '#00f' // 4, Blue, 240
                  ],
           'val':     ['#000', '#fff']
         };
@@ -59,7 +67,7 @@ jQuery.noConflict();
     // Setting the discreet width.
     var discreetWidth = Math.round(histogram_canvas.width / 255);
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The function to init the histogram.
     var initHistogram = function () {
 
@@ -78,36 +86,36 @@ jQuery.noConflict();
 
     } // initHistogram
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The init image function.
     function initImage() {
 
-      /**************************************************************************/
+      /************************************************************************/
       // Setting the new canvas and related context.
-      var histogram_canvas = document.createElement('canvas');
-      var histogram_context = histogram_canvas.getContext('2d');
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
 
-      /**************************************************************************/
+      /************************************************************************/
       // Setting the canvas width and height.
-      histogram_canvas.width = image_to_edit.width;
-      histogram_canvas.height = image_to_edit.height;
+      canvas.width = image_to_edit.width;
+      canvas.height = image_to_edit.height;
 
-      /**************************************************************************/
-      // TODO: Explore how to do this stuff.
-      image_to_edit.style.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
-      histogram_context.filter = `brightness(100%) contrast(100%) saturate(100%) hue-rotate(0deg) blur(0px)`;
+      /************************************************************************/
+      // Assign the filter values.
+      image_to_edit.style.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
+      context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
-      /**************************************************************************/
+      /************************************************************************/
       // Draw the image to edit onto a new canvas.
-      histogram_context.drawImage(image_to_edit, 0, 0);
+      context.drawImage(image_to_edit, 0, 0);
 
-      /**************************************************************************/
+      /************************************************************************/
       // Get the image data.
-      image_data = histogram_context.getImageData(0, 0, histogram_canvas.width, histogram_canvas.height).data;
+      image_data = context.getImageData(0, 0, canvas.width, canvas.height).data;
 
     } // initImage
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The function to calculate the histogram.
     function calculateHistogram() {
 
@@ -203,7 +211,7 @@ jQuery.noConflict();
 
     } // calculateHistogram
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The function to handle RGB to HSV conversion.
     function rgb2hsv(red, green, blue) {
  
@@ -246,7 +254,7 @@ jQuery.noConflict();
  
     } // rgb2hsv
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The function to handle RGB to CMYK conversion.
     function rgb2cmyk(red, green, blue) {
 
@@ -270,7 +278,7 @@ jQuery.noConflict();
 
     } // rgb2cmyk
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The function to draw the histogram.
     function drawHistogram(histogram_subtype, vals, maxCount) {
 
@@ -345,7 +353,7 @@ jQuery.noConflict();
 
     } // drawHistogram
 
-    /****************************************************************************/
+    /**************************************************************************/
     // The handler to update the histogram.
     if (histogram_type_element != null) {
       histogram_type_element.addEventListener('change', calculateHistogram, false);
@@ -367,6 +375,8 @@ jQuery.noConflict();
       accuracy_element.addEventListener('change', calculateHistogram, false);
     }
 
+    /**************************************************************************/
+    // Setup the histogram.
     initHistogram();
     initImage();
     calculateHistogram();
