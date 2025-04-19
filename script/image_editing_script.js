@@ -98,7 +98,7 @@ jQuery.noConflict();
     //     });
     // }
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to init the image.
     function init_image_handler() {
         image_to_edit.addEventListener('click', () => {
@@ -106,7 +106,7 @@ jQuery.noConflict();
         });
     } // init_image_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to apply the filters.
     function apply_filter_handler() {
 
@@ -125,7 +125,7 @@ jQuery.noConflict();
 
     } // apply_filter_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to update the filters.
     function update_filter_values_handler() {
 
@@ -141,17 +141,17 @@ jQuery.noConflict();
         tint = Math.floor(tint_slider.value);
         blur = Math.floor(blur_slider.value);
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
     } // update_filter_values_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to rotate left.
     function rotate_left_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do it.
         if (rotate == -270) {
             rotate = 0;
@@ -160,17 +160,17 @@ jQuery.noConflict();
             rotate -= 90;
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
     } // rotate_left_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to rotate right.
     function rotate_right_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do it.
         if (rotate == 270) {
             rotate = 0;
@@ -179,17 +179,17 @@ jQuery.noConflict();
             rotate += 90;
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
     } // rotate_left_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to flip horizontal.
     function flip_horizontal_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_vertical = flip_vertical === 1 ? -1 : 1;
@@ -198,17 +198,17 @@ jQuery.noConflict();
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;    
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
     } // flip_horizontal_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to flip vertical.
     function flip_vertical_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do it.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             flip_horizontal = flip_horizontal === 1 ? -1 : 1;
@@ -217,25 +217,25 @@ jQuery.noConflict();
             flip_vertical = flip_vertical === 1 ? -1 : 1; 
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
     } // flip_vertical_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to render the image.
     function render_image_handler() {
 
         var canvas = document.createElement('canvas');
         var context = canvas.getContext('2d');
 
-        /************************************************************************/
+        /**********************************************************************/
         // Set a top limit for the resize width and resize height.
         resize_width = resize_width > 900 ? 900 : resize_width;
         resize_height = resize_height > 900 ? 900 : resize_height;
 
-        /************************************************************************/
+        /**********************************************************************/
         // Calculate the resize and cropping ratios.
         var resize_ratio = 1;
         var cropping_ratio = 1;
@@ -248,7 +248,7 @@ jQuery.noConflict();
             cropping_ratio = (resize_height / image_to_edit.height);
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the resize ratios.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             canvas.width = image_to_edit.naturalHeight * resize_ratio;
@@ -259,27 +259,27 @@ jQuery.noConflict();
             canvas.height = image_to_edit.naturalHeight * resize_ratio;
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Save the context.
         context.save();
 
-        /************************************************************************/
+        /**********************************************************************/
         // Make color and tone adjustments to the image.
         context.filter = `brightness(${brightness}%) contrast(${contrast}%) saturate(${saturation}%) hue-rotate(${tint}deg) blur(${blur}px)`;
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do this for the image rotation stuff.
         context.translate(canvas.width / 2, canvas.height / 2);
  
-        /************************************************************************/
+        /**********************************************************************/
         // Rotate the image.
         context.rotate(rotate * (Math.PI / 180));
 
-        /************************************************************************/
+        /**********************************************************************/
         // Flip the image.
         context.scale(flip_horizontal, flip_vertical);
 
-        /************************************************************************/
+        /**********************************************************************/
         // Rotate the image.
         if (rotate == 90 || rotate == 270 || rotate == -90 || rotate == -270) {
             context.drawImage(image_to_edit, -canvas.height / 2, -canvas.width / 2, canvas.height, canvas.width);
@@ -288,16 +288,16 @@ jQuery.noConflict();
             context.drawImage(image_to_edit, -canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         } // else
 
-        /************************************************************************/
+        /**********************************************************************/
         // Restore the context.
         context.restore();
 
-        /************************************************************************/
+        /**********************************************************************/
         // Pasting stuff into a new canvas for final saving,
         var canvas_save = document.createElement('canvas');
         var context_save = canvas_save.getContext('2d');
 
-        /************************************************************************/
+        /**********************************************************************/
         // Setting the crop selector defaults.
         var crop_x = 0;
         var crop_y = 0;
@@ -305,11 +305,11 @@ jQuery.noConflict();
         var crop_h = canvas.height;
         var canvas_save_ratio = 1;
 
-        /***********************************************************************/
+        /**********************************************************************/
         // If we have a cropping selector in place, use it.
         if (crop_selection.hasClass('show') == true) {
 
-            /********************************************************************/
+            /******************************************************************/
             // Set the X and Y values.
             if (typeof(crop_selection.position()) != 'undefined') {
                 if (crop_selection.position().left >= 0) {
@@ -320,19 +320,19 @@ jQuery.noConflict();
                 } // if
             } // if
 
-            /********************************************************************/
+            /******************************************************************/
             // Set the width value.
             if (typeof(crop_selection.outerWidth()) != 'undefined' || crop_selection.outerWidth() > 0 ) {
                 crop_w = Math.round(crop_selection.outerWidth() * cropping_ratio);
             } // if
 
-            /********************************************************************/
+            /******************************************************************/
             // Set the height value.
             if (typeof(crop_selection.outerHeight()) != 'undefined' || crop_selection.outerHeight() > 0 ) {
                 crop_h = Math.round(crop_selection.outerHeight() * cropping_ratio);
             } // if
 
-            /********************************************************************/
+            /******************************************************************/
             // Calculate the canvas save ratio.
             if (crop_w > crop_h) {
                 canvas_save_ratio = (resize_width / crop_w);
