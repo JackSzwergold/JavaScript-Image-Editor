@@ -266,6 +266,8 @@ jQuery.noConflict();
 
     } // drawHistogram
 
+    /**************************************************************************/
+    // Setup the histogram.
     initHistogram();
     initImage();
     calculateHistogram();

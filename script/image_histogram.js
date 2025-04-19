@@ -375,6 +375,8 @@ jQuery.noConflict();
       accuracy_element.addEventListener('change', calculateHistogram, false);
     }
 
+    /**************************************************************************/
+    // Setup the histogram.
     initHistogram();
     initImage();
     calculateHistogram();

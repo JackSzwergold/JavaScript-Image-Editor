@@ -823,13 +823,13 @@ jQuery.noConflict();
 
     } // drawHistogram
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Setup the histogram.
     initHistogram();
     initImage();
     calculateHistogram();
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Set the listeners for the sliders.
     brightness_slider.addEventListener('input', update_filter_values_handler);
     contrast_slider.addEventListener('input', update_filter_values_handler);
@@ -837,18 +837,18 @@ jQuery.noConflict();
     tint_slider.addEventListener('input', update_filter_values_handler);
     blur_slider.addEventListener('input', update_filter_values_handler);
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Set the listeners for the rotation buttons.
     crop_selection_button.on('click', _.debounce(crop_selection_handler, general_debounce));
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Set the listeners for the rotation buttons.
     rotate_left_button.on('click', _.debounce(rotate_left_handler, general_debounce));
     rotate_right_button.on('click', _.debounce(rotate_right_handler, general_debounce));
     flip_horizontal_button.on('click', _.debounce(flip_horizontal_handler, general_debounce));
     flip_vertical_button.on('click', _.debounce(flip_vertical_handler, general_debounce));
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Set the listeners for the buttons.
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
     download_image_button.on('click', _.debounce(download_image_handler, general_debounce));
