@@ -7,6 +7,10 @@ jQuery.noConflict();
   $(document).ready(function() {
 
     /**************************************************************************/
+    // Get the preview image.
+    var image_to_edit = document.getElementById('image_to_edit');
+
+    /**************************************************************************/
     // Source: https://a402539.github.io/OCR/examples/histogram.html
     var histogram_canvas = document.getElementById('histogram_canvas');
     var histogram_context = histogram_canvas.getContext('2d');
@@ -28,40 +32,31 @@ jQuery.noConflict();
     var accuracy_value = accuracy_element ? accuracy_element.value : 10;
 
     /**************************************************************************/
-    // Get the preview image.
-    var image_to_edit = document.getElementById('image_to_edit');
-
+    // Setting the gradient values.
     var gradients = {
           'red': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'green': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'blue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
           'hue': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'cyan': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'magenta': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'yellow': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0),
-          'kelvin': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
+          'val': histogram_context.createLinearGradient(0, 0, image_to_edit.width, 0)
         };
 
+    /**************************************************************************/
+    // Setting the color values.
     var colors = {
-          'red':   ['#000', '#f00'],
+          'red': ['#000', '#f00'],
           'green': ['#000', '#0f0'],
-          'blue':  ['#000', '#00f'],
-          'hue':   [
-            '#f00',   // 0, Red,       0
-            '#ff0',   // 1, Yellow,   60
-            '#0f0',   // 2, Green,   120
-            '#0ff',   // 3, Cyan,    180
-            '#00f',   // 4, Blue,    240
-            '#f0f',   // 5, Magenta, 300
-            '#f00'],  // 6, Red,     360
-          'val':     ['#000', '#fff'],
-          'kelvin':  ['#fff', '#000'],
-          'cyan':    ['#000', '#0ff'],
-          'yellow':  ['#000', '#ff0'],
-          'magenta': ['#000', '#f0f']
+          'blue': ['#000', '#00f'],
+          'hue': [
+                  '#f00', // 0, Red,       0
+                  '#0f0', // 2, Green,   120
+                  '#00f' // 4, Blue,    240
+                 ],
+          'val':     ['#000', '#fff']
         };
 
+    /**************************************************************************/
+    // Setting the discreet width.
     var discreetWidth = Math.round(histogram_canvas.width / 255);
 
     /****************************************************************************/
