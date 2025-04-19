@@ -128,10 +128,10 @@ jQuery.noConflict();
         } // if
 
         /**********************************************************************/
-        // Update the histogram.
+        // Setup the histogram.
         initImage();
         calculateHistogram();
-
+    
     } // apply_filter_handler
 
     /**************************************************************************/
@@ -352,7 +352,7 @@ jQuery.noConflict();
 
         } // if
 
-        /************************************************************************/
+        /**********************************************************************/
         // Calculations to make sure the canvas is not larger than the content.
         crop_w = crop_w > (resize_width - crop_x) ? (resize_width - crop_x) : crop_w;
         crop_h = crop_h > (resize_height - crop_y) ? (resize_height - crop_y) : crop_h;
@@ -365,19 +365,19 @@ jQuery.noConflict();
             crop_y = 0;
         } // if
 
-        /************************************************************************/
+        /**********************************************************************/
         // Setting the target width and height.
         var source_target_x = crop_x;
         var source_target_y = crop_y;
         var source_target_w = crop_w;
         var source_target_h = crop_h;
 
-        /************************************************************************/
+        /**********************************************************************/
         // Setting the new canvas width and height.
         canvas_save.width = source_target_w * canvas_save_ratio;
         canvas_save.height = source_target_h * canvas_save_ratio;
 
-        /************************************************************************/
+        /**********************************************************************/
         // Setting source and destination coordinates.
         var source_x = source_target_x;
         var source_y = source_target_y;
@@ -388,11 +388,11 @@ jQuery.noConflict();
         var dest_w = canvas_save.width;
         var dest_h = canvas_save.height; 
 
-        /************************************************************************/
+        /**********************************************************************/
         // Draw the image onto the new destination canvas.
         context_save.drawImage(canvas, source_x, source_y, source_w, source_h, dest_x, dest_y, dest_w, dest_h);
 
-        /************************************************************************/
+        /**********************************************************************/
         // Set the variables for the Ajax POST and download.
         mime_type = 'image/jpeg';
         file_extension = 'jpg';
@@ -402,15 +402,15 @@ jQuery.noConflict();
 
     } // render_image_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to save the image.
     function save_image_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Render the image.
         render_image_handler();
 
-        /************************************************************************/
+        /**********************************************************************/
         // Set the Ajax options.
         var ajax_options = {
             url: destination_url,
@@ -447,21 +447,21 @@ jQuery.noConflict();
             }
         };
 
-        /************************************************************************/
+        /**********************************************************************/
         // Run the Ajax call.
         $.ajax(ajax_options);
 
     } // save_image_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to download the image.
     function download_image_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Render the image.
         render_image_handler();
 
-        /************************************************************************/
+        /**********************************************************************/
         // Do the actual image download.
         const link = document.createElement('a');
         link.download = file_name;
@@ -470,11 +470,11 @@ jQuery.noConflict();
 
     } // download_image_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler to reset the filters.
     function reset_filter_handler() {
 
-        /************************************************************************/
+        /**********************************************************************/
         // Reset various values.
         brightness_text.innerText = '100%';
         brightness = brightness_slider.value = 100;
@@ -496,21 +496,21 @@ jQuery.noConflict();
         flip_horizontal = 1;
         flip_vertical = 1;
 
-        /************************************************************************/
+        /**********************************************************************/
         // Apply the filter handler.
         apply_filter_handler();
 
-        /************************************************************************/
+        /**********************************************************************/
         // Disable the crop selection.
         disable_crop_selection();
 
     } // reset_filter_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Handler for the crop selector.
     function crop_selection_handler() {
 
-        /****************************************************************************/
+        /**********************************************************************/
         // Toggle the crop selector.
         if (crop_selection.hasClass('hide')) {
           enable_crop_selection();
@@ -521,7 +521,7 @@ jQuery.noConflict();
 
     } // crop_selection_handler
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Enable the crop selection stuff.
     function enable_crop_selection() {
 
@@ -550,7 +550,7 @@ jQuery.noConflict();
  
     } // enable_crop_selection
 
-    /****************************************************************************/
+    /**************************************************************************/
     // Disable the crop selection stuff.
     function disable_crop_selection() {
 
