@@ -77,8 +77,8 @@ jQuery.noConflict();
         grad = gradients[grad];
         for (i = 0, n = color.length; i < n; i++) {
           grad.addColorStop(i*1/(n-1), color[i]);
-        }
-      }
+        } // for
+      } // for
 
     } // initHistogram
 
@@ -169,7 +169,7 @@ jQuery.noConflict();
 
       if (maxCount === 0) {
         return;
-      }
+      } // if
 
       histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 

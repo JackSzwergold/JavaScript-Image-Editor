@@ -638,8 +638,8 @@ jQuery.noConflict();
         grad = gradients[grad];
         for (i = 0, n = color.length; i < n; i++) {
           grad.addColorStop(i*1/(n-1), color[i]);
-        }
-      }
+        } // for
+      } // for
 
     } // initHistogram
 
@@ -730,7 +730,7 @@ jQuery.noConflict();
 
       if (maxCount === 0) {
         return;
-      }
+      } // if
 
       histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
@@ -816,10 +816,10 @@ jQuery.noConflict();
         histogram_context.lineTo(x, histogram_canvas.height);
         if (plot_fill_checked) {
           histogram_context.fill();
-        }
+        } // if
         histogram_context.stroke();
         histogram_context.closePath();
-      }
+      } // if
 
     } // drawHistogram
 

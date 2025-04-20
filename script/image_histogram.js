@@ -81,8 +81,8 @@ jQuery.noConflict();
         grad = gradients[grad];
         for (i = 0, n = color.length; i < n; i++) {
           grad.addColorStop(i*1/(n-1), color[i]);
-        }
-      }
+        } // for
+      } // for
 
     } // initHistogram
 
@@ -193,7 +193,7 @@ jQuery.noConflict();
 
       if (maxCount === 0) {
         return;
-      }
+      } // if
 
       histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
@@ -231,24 +231,25 @@ jQuery.noConflict();
       // This is gray (red==green==blue)
       if (delta === 0) {
         hue = sat = 0;
-      } else {
+      } // if
+      else {
         sat = delta / max;
 
         if (max === red) {
           hue = (green -  blue) / delta;
-        }
+        } // if
         else if (max === green) {
           hue = (blue  -   red) / delta + 2;
-        }
+        } // else if
         else if (max ===  blue) {
           hue = (red   - green) / delta + 4;
-        }
+        } // else if
 
         hue /= 6;
         if (hue < 0) {
           hue += 1;
-        }
-      }
+        } // if
+      } // else
 
       return [Math.round(hue*255), Math.round(sat*255), Math.round(val*255)];
  
@@ -265,13 +266,13 @@ jQuery.noConflict();
 
       if (black === 1) {
         cyan = magenta = yellow = 0;
-      }
+      } // if
       else {
         var w = 1 - black;
         cyan    = (cyan    - black) / w;
         magenta = (magenta - black) / w;
         yellow  = (yellow  - black) / w;
-      }
+      } // else
 
       return [Math.round(cyan*255), Math.round(magenta*255), 
              Math.round(yellow*255), Math.round(black*255)];
@@ -346,10 +347,10 @@ jQuery.noConflict();
         histogram_context.lineTo(x, histogram_canvas.height);
         if (plot_fill_checked) {
           histogram_context.fill();
-        }
+        } // if
         histogram_context.stroke();
         histogram_context.closePath();
-      }
+      } // if
 
     } // drawHistogram
 
@@ -357,23 +358,23 @@ jQuery.noConflict();
     // The handler to update the histogram.
     if (histogram_type_element != null) {
       histogram_type_element.addEventListener('change', calculateHistogram, false);
-    }
+    } // if
 
     if (plot_style_element != null) {
       plot_style_element.addEventListener('change', calculateHistogram, false);
-    }
+    } // if
 
     if (plot_colors_element != null) {
       plot_colors_element.addEventListener('change', calculateHistogram, false);
-    }
+    } // if
 
     if (plot_fill_element != null) {
       plot_fill_element.addEventListener('change', calculateHistogram, false);
-    }
+    } // if
 
     if (accuracy_element != null) {
       accuracy_element.addEventListener('change', calculateHistogram, false);
-    }
+    } // if
 
     /**************************************************************************/
     // Setup the histogram.
