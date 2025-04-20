@@ -60,12 +60,8 @@ jQuery.noConflict();
                   '#0f0', // 2, Green, 120
                   '#00f' // 4, Blue, 240
                  ],
-          'val':     ['#000', '#fff']
+          'val': ['#000', '#fff']
         };
-
-    /**************************************************************************/
-    // Setting the discreet width.
-    var discreetWidth = Math.round(histogram_canvas.width / 255);
 
     /**************************************************************************/
     // The function to init the histogram.
@@ -81,8 +77,8 @@ jQuery.noConflict();
         grad = gradients[grad];
         for (i = 0, n = color.length; i < n; i++) {
           grad.addColorStop(i*1/(n-1), color[i]);
-        }
-      }
+        } // for
+      } // for
 
     } // initHistogram
 
@@ -173,7 +169,7 @@ jQuery.noConflict();
 
       if (maxCount === 0) {
         return;
-      }
+      } // if
 
       histogram_context.clearRect(0, 0, histogram_canvas.width, histogram_canvas.height);
 
@@ -197,7 +193,7 @@ jQuery.noConflict();
 
       var ctxStyle;
 
-      if (plot_fill_checked || plot_style_value === 'discreet') {
+      if (plot_fill_checked) {
         ctxStyle = 'fillStyle';
         histogram_context.strokeStyle = '#000';
       } // if
@@ -245,24 +241,17 @@ jQuery.noConflict();
         if (plot_style_value === 'continuous') {
           histogram_context.lineTo(x, histogram_canvas.height - y);
         } // if
-        else if (plot_style_value === 'discreet') {
-          if (plot_fill_checked) {
-            histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, y);
-          } // if
-          else {
-            histogram_context.fillRect(x, histogram_canvas.height - y, discreetWidth, 2);
-          } // else
-        } // else if
+
       } // for
 
       if (plot_style_value === 'continuous') {
         histogram_context.lineTo(x, histogram_canvas.height);
         if (plot_fill_checked) {
           histogram_context.fill();
-        }
+        } // if
         histogram_context.stroke();
         histogram_context.closePath();
-      }
+      } // if
 
     } // drawHistogram
 
