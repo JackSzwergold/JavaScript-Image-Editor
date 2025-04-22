@@ -68,7 +68,8 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The upload image related buttons.
-    var file_input_field = $("#file_input");
+    // var file_input_field = $("#file_input");
+    var file_input_field = document.querySelector("#file_input");
     var upload_image_button = $("#upload_image");
 
     /**************************************************************************/
