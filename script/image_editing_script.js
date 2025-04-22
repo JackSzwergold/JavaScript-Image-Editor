@@ -68,8 +68,8 @@ jQuery.noConflict();
 
     /**************************************************************************/
     // The upload image related buttons.
-    var file_input_field = document.querySelector("#file_input");
-    var upload_image_button = document.querySelector("#upload_image");
+    var file_input_field = $("#file_input");
+    var upload_image_button = $("#upload_image");
 
     /**************************************************************************/
     // The save and reset button related stuff.
@@ -92,6 +92,12 @@ jQuery.noConflict();
     /**************************************************************************/
     // Set the debounce value in milliseconds.
     var general_debounce = 50;
+
+    /**************************************************************************/
+    // Handler for the upload image.
+    function upload_image_handler() {
+        file_input_field.click();
+    } // upload_image_handler
 
     /**************************************************************************/
     // Handler to load the image.
@@ -593,13 +599,13 @@ jQuery.noConflict();
     /**************************************************************************/
     // Set the listeners for the buttons.
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
-    // upload_image_button.on('click', _.debounce(() => file_input_field.click(), general_debounce));
     download_image_button.on('click', _.debounce(download_image_handler, general_debounce));
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
 
-
+    /**************************************************************************/
+    // Set the listeners for the image upload stuff buttons.
+    upload_image_button.on('click', _.debounce(upload_image_handler, general_debounce));
     file_input_field.addEventListener('change', load_image_handler);
-    upload_image_button.addEventListener('click', () => file_input_field.click());
 
     window.addEventListener('load', init_image_handler);
 
