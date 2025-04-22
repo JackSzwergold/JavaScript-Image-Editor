@@ -20,14 +20,14 @@
 <input type="hidden" id="BASE_URL" name="BASE_URL" value="http://localhost:8888/JavaScript-Image-Editor/">
 <input type="hidden" id="BASE_URI" name="BASE_URI" value="receiver.php">
 
-<!-- Image Edit Area BEGIN -->
-<div class="image_edit_form p-0 m-0 me-2 mb-1 col-auto">
+<!-- Image Editing Area BEGIN -->
+<div class="image_editing_form p-0 m-0 me-2 mb-1 col-auto">
 
   <div class="col col-12">
     <div class="mt-0">
-      <button type="button" class="submit btn btn-outline-primary btn-md m-0 p-0 py-1 px-3" id="trigger_image_edit" name="trigger_image_edit" value="" data-bs-toggle="modal" data-bs-target="#image_edit_modal">
+      <button type="button" class="submit btn btn-outline-primary btn-md m-0 p-0 py-1 px-3" id="trigger_image_editing" name="trigger_image_editing" value="" data-bs-toggle="modal" data-bs-target="#image_editing_modal">
         <span class="text-arial-regular">
-          <em class="fa fa-picture-o"></em> Image Edit
+          <em class="fa fa-picture-o"></em> Image Editing
         </span>
       </button>
 
@@ -35,7 +35,7 @@
   </div>
 
   <!-- Image Editing Modal BEGIN -->
-  <div class="modal fade" id="image_edit_modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="image_editing_modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content user-select-none">
 
@@ -133,7 +133,7 @@
   <script src="script/context-filter-polyfill/context-filter-polyfill.min.js" defer="defer"></script>
 
 </div>
-<!-- Image Edit Area END -->
+<!-- Image Editing Area END -->
     
   </body>
 </html>
