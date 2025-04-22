@@ -101,14 +101,14 @@ jQuery.noConflict();
     } // upload_image_handler
 
     /**************************************************************************/
-    // Handler to load the image.
-    function load_image_handler() {
+    // Handler to load the file.
+    function load_file_handler() {
         var file = file_input_field.files[0];
         if (!file) {
             return;
         }
         image_to_edit.src = URL.createObjectURL(file);
-    } // load_image_handler
+    } // load_file_handler
 
     /**************************************************************************/
     // Handler to init the image.
@@ -606,7 +606,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // Set the listeners for the image upload stuff buttons.
     upload_image_button.on('click', _.debounce(upload_image_handler, general_debounce));
-    file_input_field.addEventListener('change', load_image_handler);
+    file_input_field.addEventListener('change', load_file_handler);
 
     window.addEventListener('load', init_image_handler);
 
