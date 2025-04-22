@@ -67,9 +67,17 @@ jQuery.noConflict();
     var modal_close_button = $('#modal_close');
 
     /**************************************************************************/
+    // The upload image related buttons.
+    // var file_input_field = $("#file_input");
+    var file_input_field = document.querySelector("#file_input");
+    var upload_image_button = $("#upload_image");
+
+    /**************************************************************************/
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
+    var upload_text = $('#upload_text');
+    var upload_spinner = $('#upload_spinner');
     var reset_text = $('#reset_text');
     var reset_spinner = $('#reset_spinner');
 
@@ -88,15 +96,21 @@ jQuery.noConflict();
     // Set the debounce value in milliseconds.
     var general_debounce = 50;
 
-    // const loadImage = () => {
-    //     let file = fileInput.files[0];
-    //     if (!file) return;
-    //     image_to_edit.src = URL.createObjectURL(file);
-    //     file_name = file.name
-    //     image_to_edit.addEventListener('click', () => {
-    //         reset_filter_button.click();
-    //     });
-    // }
+    /**************************************************************************/
+    // Handler for the upload image.
+    function upload_image_handler() {
+        file_input_field.click();
+    } // upload_image_handler
+
+    /**************************************************************************/
+    // Handler to load the file.
+    function load_file_handler() {
+        var file = file_input_field.files[0];
+        if (!file) {
+            return;
+        }
+        image_to_edit.src = URL.createObjectURL(file);
+    } // load_file_handler
 
     /**************************************************************************/
     // Handler to init the image.
@@ -422,6 +436,8 @@ jQuery.noConflict();
             beforeSend: function(jqXHR, settings) {
                 save_text.removeClass('d-inline-block').addClass('d-none');
                 save_spinner.removeClass('d-none').addClass('d-inline-block');
+                upload_text.removeClass('d-inline-block').addClass('d-none');
+                upload_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_text.removeClass('d-inline-block').addClass('d-none');
                 reset_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_filter_button.prop('disabled', true);
@@ -430,6 +446,8 @@ jQuery.noConflict();
             success: function(response_data, textStatus, jqXHR) {
                 save_text.removeClass('d-none').addClass('d-inline-block');
                 save_spinner.removeClass('d-inline-block').addClass('d-none');
+                upload_text.removeClass('d-none').addClass('d-inline-block');
+                upload_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_text.removeClass('d-none').addClass('d-inline-block');
                 reset_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_filter_button.prop('disabled', false);
@@ -590,6 +608,11 @@ jQuery.noConflict();
     save_image_button.on('click', _.debounce(save_image_handler, general_debounce));
     download_image_button.on('click', _.debounce(download_image_handler, general_debounce));
     reset_filter_button.on('click', _.debounce(reset_filter_handler, general_debounce));
+
+    /**************************************************************************/
+    // Set the listeners for the image upload stuff buttons.
+    upload_image_button.on('click', _.debounce(upload_image_handler, general_debounce));
+    file_input_field.addEventListener('change', load_file_handler);
 
     window.addEventListener('load', init_image_handler);
 
