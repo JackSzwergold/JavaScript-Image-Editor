@@ -67,6 +67,11 @@ jQuery.noConflict();
     var modal_close_button = $('#modal_close');
 
     /**************************************************************************/
+    // The upload image related buttons.
+    var file_input_field = document.querySelector("#file_input");
+    var upload_image_button = document.querySelector("#upload_image");
+
+    /**************************************************************************/
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
@@ -88,15 +93,18 @@ jQuery.noConflict();
     // Set the debounce value in milliseconds.
     var general_debounce = 50;
 
-    // const loadImage = () => {
-    //     let file = fileInput.files[0];
-    //     if (!file) return;
-    //     image_to_edit.src = URL.createObjectURL(file);
-    //     file_name = file.name
-    //     image_to_edit.addEventListener('click', () => {
-    //         reset_filter_button.click();
-    //     });
-    // }
+    /**************************************************************************/
+    // Handler to load the image.
+    function load_image_handler() {
+        var file = file_input_field.files[0];
+        if (!file) {
+            return;
+        }
+        image_to_edit.src = URL.createObjectURL(file);
+    } // load_image_handler
+
+    file_input_field.addEventListener('change', load_image_handler);
+    upload_image_button.addEventListener('click', () => file_input_field.click());
 
     /**************************************************************************/
     // Handler to init the image.
