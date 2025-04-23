@@ -43,6 +43,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The image to edit itself.
     var image_to_edit = document.querySelector('#image_to_edit');
+    var original_image = document.querySelector('#image_to_edit').src;
 
     /**************************************************************************/
     // The crop selection area.
@@ -118,7 +119,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // Handler to restore the original image.
     function restore_original_handler() {
-        alert('Foo!');
+        image_to_edit.src = original_image;
     } // restore_original_handler
 
     /**************************************************************************/
