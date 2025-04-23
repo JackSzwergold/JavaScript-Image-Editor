@@ -77,10 +77,10 @@ jQuery.noConflict();
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
-    var upload_image_text = $('#upload_image_ext');
-    var upload_image_spinner = $('#upload_image_spinner');
-    var restore_original_spinner = $('#restore_original_spinner');
     var restore_original_text = $('#restore_original_text');
+    var restore_original_spinner = $('#restore_original_spinner');
+    var upload_image_text = $('#upload_image_text');
+    var upload_image_spinner = $('#upload_image_spinner');
     var reset_text = $('#reset_text');
     var reset_spinner = $('#reset_spinner');
 
@@ -437,6 +437,8 @@ jQuery.noConflict();
             beforeSend: function(jqXHR, settings) {
                 save_text.removeClass('d-inline-block').addClass('d-none');
                 save_spinner.removeClass('d-none').addClass('d-inline-block');
+                restore_original_text.removeClass('d-inline-block').addClass('d-none');
+                restore_original_spinner.removeClass('d-none').addClass('d-inline-block');
                 upload_image_text.removeClass('d-inline-block').addClass('d-none');
                 upload_image_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_text.removeClass('d-inline-block').addClass('d-none');
@@ -447,6 +449,8 @@ jQuery.noConflict();
             success: function(response_data, textStatus, jqXHR) {
                 save_text.removeClass('d-none').addClass('d-inline-block');
                 save_spinner.removeClass('d-inline-block').addClass('d-none');
+                restore_original_text.removeClass('d-none').addClass('d-inline-block');
+                restore_original_spinner.removeClass('d-inline-block').addClass('d-none');
                 upload_image_text.removeClass('d-none').addClass('d-inline-block');
                 upload_image_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_text.removeClass('d-none').addClass('d-inline-block');
