@@ -77,8 +77,8 @@ jQuery.noConflict();
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
-    var upload_text = $('#upload_text');
-    var upload_spinner = $('#upload_spinner');
+    var upload_image_text = $('#upload_image_ext');
+    var upload_image_spinner = $('#upload_image_spinner');
     var restore_original_spinner = $('#restore_original_spinner');
     var restore_original_text = $('#restore_original_text');
     var reset_text = $('#reset_text');
@@ -437,8 +437,8 @@ jQuery.noConflict();
             beforeSend: function(jqXHR, settings) {
                 save_text.removeClass('d-inline-block').addClass('d-none');
                 save_spinner.removeClass('d-none').addClass('d-inline-block');
-                upload_text.removeClass('d-inline-block').addClass('d-none');
-                upload_spinner.removeClass('d-none').addClass('d-inline-block');
+                upload_image_text.removeClass('d-inline-block').addClass('d-none');
+                upload_image_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_text.removeClass('d-inline-block').addClass('d-none');
                 reset_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_filter_button.prop('disabled', true);
@@ -447,8 +447,8 @@ jQuery.noConflict();
             success: function(response_data, textStatus, jqXHR) {
                 save_text.removeClass('d-none').addClass('d-inline-block');
                 save_spinner.removeClass('d-inline-block').addClass('d-none');
-                upload_text.removeClass('d-none').addClass('d-inline-block');
-                upload_spinner.removeClass('d-inline-block').addClass('d-none');
+                upload_image_text.removeClass('d-none').addClass('d-inline-block');
+                upload_image_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_text.removeClass('d-none').addClass('d-inline-block');
                 reset_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_filter_button.prop('disabled', false);
