@@ -71,12 +71,15 @@ jQuery.noConflict();
     // var file_input_field = $("#file_input");
     var file_input_field = document.querySelector("#file_input");
     var upload_image_button = $("#upload_image");
+    var restore_original_image_button = $("#restore_original_image");
 
     /**************************************************************************/
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
     var upload_text = $('#upload_text');
+    var restore_original_image_spinner = $('#restore_original_image_spinner');
+    var restore_original_image_text = $('#restore_original_image_text');
     var upload_spinner = $('#upload_spinner');
     var reset_text = $('#reset_text');
     var reset_spinner = $('#reset_spinner');
@@ -113,12 +116,10 @@ jQuery.noConflict();
     } // load_file_handler
 
     /**************************************************************************/
-    // Handler to init the image.
-    function init_image_handler() {
-        image_to_edit.addEventListener('click', () => {
-            reset_filter_button.click();
-        });
-    } // init_image_handler
+    // Handler to restore the original image.
+    function restore_original_image_handler() {
+        alert('Foo!');
+    } // restore_original_image_handler
 
     /**************************************************************************/
     // Handler to apply the filters.
@@ -613,8 +614,7 @@ jQuery.noConflict();
     // Set the listeners for the image upload stuff buttons.
     upload_image_button.on('click', _.debounce(upload_image_handler, general_debounce));
     file_input_field.addEventListener('change', load_file_handler);
-
-    window.addEventListener('load', init_image_handler);
+    restore_original_image_button.on('click', _.debounce(restore_original_image_handler, general_debounce));
 
   }); // $(document).ready
 
