@@ -43,6 +43,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // The image to edit itself.
     var image_to_edit = document.querySelector('#image_to_edit');
+    var original_image = document.querySelector('#image_to_edit').src;
 
     /**************************************************************************/
     // The crop selection area.
@@ -71,13 +72,16 @@ jQuery.noConflict();
     // var file_input_field = $("#file_input");
     var file_input_field = document.querySelector("#file_input");
     var upload_image_button = $("#upload_image");
+    var restore_original_button = $("#restore_original");
 
     /**************************************************************************/
     // The save and reset button related stuff.
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
-    var upload_text = $('#upload_text');
-    var upload_spinner = $('#upload_spinner');
+    var restore_original_text = $('#restore_original_text');
+    var restore_original_spinner = $('#restore_original_spinner');
+    var upload_image_text = $('#upload_image_text');
+    var upload_image_spinner = $('#upload_image_spinner');
     var reset_text = $('#reset_text');
     var reset_spinner = $('#reset_spinner');
 
@@ -110,15 +114,16 @@ jQuery.noConflict();
             return;
         }
         image_to_edit.src = URL.createObjectURL(file);
+        restore_original_button.prop('disabled', false);
     } // load_file_handler
 
     /**************************************************************************/
-    // Handler to init the image.
-    function init_image_handler() {
-        image_to_edit.addEventListener('click', () => {
-            reset_filter_button.click();
-        });
-    } // init_image_handler
+    // Handler to restore the original image.
+    function restore_original_handler() {
+        reset_filter_handler();
+        image_to_edit.src = original_image;
+        restore_original_button.prop('disabled', true);
+    } // restore_original_handler
 
     /**************************************************************************/
     // Handler to apply the filters.
@@ -436,8 +441,10 @@ jQuery.noConflict();
             beforeSend: function(jqXHR, settings) {
                 save_text.removeClass('d-inline-block').addClass('d-none');
                 save_spinner.removeClass('d-none').addClass('d-inline-block');
-                upload_text.removeClass('d-inline-block').addClass('d-none');
-                upload_spinner.removeClass('d-none').addClass('d-inline-block');
+                restore_original_text.removeClass('d-inline-block').addClass('d-none');
+                restore_original_spinner.removeClass('d-none').addClass('d-inline-block');
+                upload_image_text.removeClass('d-inline-block').addClass('d-none');
+                upload_image_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_text.removeClass('d-inline-block').addClass('d-none');
                 reset_spinner.removeClass('d-none').addClass('d-inline-block');
                 reset_filter_button.prop('disabled', true);
@@ -446,8 +453,10 @@ jQuery.noConflict();
             success: function(response_data, textStatus, jqXHR) {
                 save_text.removeClass('d-none').addClass('d-inline-block');
                 save_spinner.removeClass('d-inline-block').addClass('d-none');
-                upload_text.removeClass('d-none').addClass('d-inline-block');
-                upload_spinner.removeClass('d-inline-block').addClass('d-none');
+                restore_original_text.removeClass('d-none').addClass('d-inline-block');
+                restore_original_spinner.removeClass('d-inline-block').addClass('d-none');
+                upload_image_text.removeClass('d-none').addClass('d-inline-block');
+                upload_image_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_text.removeClass('d-none').addClass('d-inline-block');
                 reset_spinner.removeClass('d-inline-block').addClass('d-none');
                 reset_filter_button.prop('disabled', false);
@@ -613,8 +622,7 @@ jQuery.noConflict();
     // Set the listeners for the image upload stuff buttons.
     upload_image_button.on('click', _.debounce(upload_image_handler, general_debounce));
     file_input_field.addEventListener('change', load_file_handler);
-
-    window.addEventListener('load', init_image_handler);
+    restore_original_button.on('click', _.debounce(restore_original_handler, general_debounce));
 
   }); // $(document).ready
 

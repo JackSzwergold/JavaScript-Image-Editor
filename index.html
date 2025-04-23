@@ -93,23 +93,26 @@
               </div>
 
               <div class="input-group mb-2">
-                <button id="crop_selection_button" type="button" class="btn btn-dark btn-md col col-12"><em class="fa fa-crop"></em> Crop Selection Toggle</em></button>
+                <button id="crop_selection_button" type="button" class="btn btn-dark btn-md col col-12"><em class="fa fa-crop me-1"></em>Crop Selection Toggle</em></button>
               </div>
 
               <div class="input-group mb-2">
-                <button id="rotate_left" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat fa-flip-horizontal"></em> Rotate Left</em></button>
-                <button id="rotate_right" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat"></em> Rotate Right</em></button>
+                <button id="rotate_left" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat fa-flip-horizontal me-1"></em>Rotate Left</em></button>
+                <button id="rotate_right" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-repeat me-1"></em>Rotate Right</em></button>
               </div>
 
               <div class="input-group mb-2">
-                <button id="flip_horizontal" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-h"></em> Flip Horizontal</em></button>
-                <button id="flip_vertical" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-v"></em> Flip Vertical</em></button>
+                <button id="flip_horizontal" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-h me-1"></em>Flip Horizontal</em></button>
+                <button id="flip_vertical" type="button" class="btn btn-dark btn-md col col-6"><em class="fa fa-arrows-v me-1"></em>Flip Vertical</em></button>
               </div>
 
               <div class="d-grid gap-2">
                 <button id="save_image" type="button" class="align-baseline pt-md-4 pb-md-4 btn btn-dark btn-lg col col-12"><span id="save_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="save_text" class="d-inline-block">Save</span></button>
                 <button id="download_image" type="button" class="align-baseline pt-md-1 pb-md-1 btn btn-dark btn-sm col col-12">Download</button>
-                <button id="upload_image" type="button" class="align-baseline pt-md-1 pb-md-1 btn btn-dark btn-sm col col-12"><span id="upload_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="upload_text" class="d-inline-block"><em class="fa fa-upload me-1"></em>Upload Image</span></button>
+                <div class="input-group mb-2">
+                  <button id="restore_original" type="button" class="btn btn-dark btn-sm col col-6" disabled="disabled"><span id="restore_original_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="restore_original_text" class="d-inline-block"><em class="fa fa-refresh me-1"></em>Restore Original</span></button>
+                  <button id="upload_image" type="button" class="btn btn-dark btn-sm col col-6"><span id="upload_image_spinner" class="d-none spinner-border spinner-border text-light" role="status"></span><span id="upload_image_text" class="d-inline-block"><em class="fa fa-upload me-1"></em>Upload Image</span></button>
+                </div>
                 <button id="reset_filter" type="button" class="btn btn-outline-danger text-danger bg-white btn-lg col col-12"><span id="reset_spinner" class="d-none spinner-border spinner-border text-danger" role="status"></span><span id="reset_text" class="d-inline-block">Reset</span></button>
                 <input type="file" id="file_input" accept="image/*" hidden>
               </div>
