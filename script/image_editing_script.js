@@ -78,9 +78,9 @@ jQuery.noConflict();
     var save_text = $('#save_text');
     var save_spinner = $('#save_spinner');
     var upload_text = $('#upload_text');
+    var upload_spinner = $('#upload_spinner');
     var restore_original_image_spinner = $('#restore_original_image_spinner');
     var restore_original_image_text = $('#restore_original_image_text');
-    var upload_spinner = $('#upload_spinner');
     var reset_text = $('#reset_text');
     var reset_spinner = $('#reset_spinner');
 
