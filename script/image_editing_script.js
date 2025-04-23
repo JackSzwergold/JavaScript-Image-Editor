@@ -119,6 +119,7 @@ jQuery.noConflict();
     /**************************************************************************/
     // Handler to restore the original image.
     function restore_original_handler() {
+        reset_filter_handler();
         image_to_edit.src = original_image;
     } // restore_original_handler
 
