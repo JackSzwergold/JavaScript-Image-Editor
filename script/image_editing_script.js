@@ -114,6 +114,7 @@ jQuery.noConflict();
             return;
         }
         image_to_edit.src = URL.createObjectURL(file);
+        restore_original_button.prop('disabled', false);
     } // load_file_handler
 
     /**************************************************************************/
@@ -121,6 +122,7 @@ jQuery.noConflict();
     function restore_original_handler() {
         reset_filter_handler();
         image_to_edit.src = original_image;
+        restore_original_button.prop('disabled', true);
     } // restore_original_handler
 
     /**************************************************************************/
