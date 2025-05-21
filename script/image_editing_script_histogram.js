@@ -61,7 +61,7 @@ jQuery.noConflict();
     var flip_vertical_button = $('#flip_vertical');
 
     /**************************************************************************/
-    // The main buttions.
+    // The main buttons.
     var reset_filter_button = $('#reset_filter');
     var download_image_button = $('#download_image');
     var save_image_button = $('#save_image');
