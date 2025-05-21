@@ -428,7 +428,7 @@ jQuery.noConflict();
         // Set the Ajax options.
         var ajax_options = {
             url: destination_url,
-            data:{
+            data: {
                 persons: 'profiles',
                 personid: file_name,
                 base64_filename: file_name,
